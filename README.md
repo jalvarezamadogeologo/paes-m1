@@ -94,3 +94,7 @@ distribución); 800 ya está en el percentil superior. El corte ponderado de Med
   DEMRE 2026) y 1000 (PAES nov-dic 2027). Documentado en `plan/entrenamiento-m1.md`.
 - 2026-09-24: la estudiante NO rinde la PAES 2026; su única rendición oficial es la PAES regular
   de nov-dic 2027 (admisión 2028). La meta de 800 para 2026 se mide en ensayos oficiales DEMRE.
+- 2026-09-24: sitio público en GitHub Pages con el material educativo (repo `paes-m1`,
+  https://jalvarezamadogeologo.github.io/paes-m1/). Solo contenido educativo genérico; el
+  seguimiento (`seguimiento/`) y el diagnóstico (`diagnosticos/`) quedan SOLO en local por
+  privacidad (excluidos via `.gitignore`).
