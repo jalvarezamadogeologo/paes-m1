@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calendario — PAES M1</title>
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+
+<div class="navbar">
+  <a class="logo" href="index.html">PAES M1</a>
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="calendario.html" class="activo">Calendario</a>
+    <a href="guias.html">Guías</a>
+    <a href="practica.html">Practicar</a>
+    <a href="descargas.html">Descargas</a>
+  </nav>
+  <div class="modo">
+    <select id="sel-modo" title="Modo de uso">
+      <option value="estudiante">Estudiante</option>
+      <option value="tutor">Tutor</option>
+    </select>
+    <span id="badge-modo"></span>
+  </div>
+</div>
+
+<div class="hero">
+  <h1>Calendario de preparación</h1>
+  <div class="sub">62 semanas · 28/09/2026 → 05/12/2027 · unidad: semana</div>
+  <div class="meta">La semana actual aparece resaltada en verde · Pausa de vacaciones en rojo</div>
+</div>
+
+<main>
+  <div class="nota" id="aviso-actual"></div>
+  <p style="font-size:9.6pt;color:#6B7280">Fechas oficiales DEMRE 2027 (PAES de invierno, inscripción,
+  ensayos, PAES regular) marcadas con * — se ajustan cuando se publique el calendario oficial.</p>
+  <div id="calendario"></div>
+</main>
+
+<footer>PAES M1 · Calendario de preparación</footer>
+
+<div class="modal-fondo" id="modal-clave">
+  <div class="modal">
+    <h3>Modo tutor</h3>
+    <p style="font-size:10pt">Ingresa la clave del tutor.</p>
+    <input type="password" placeholder="Clave del tutor">
+    <p class="error"></p>
+    <div class="botones">
+      <button class="boton sec btn-canc">Cancelar</button>
+      <button class="boton btn-ok">Entrar</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/datos.js"></script>
+<script src="js/app.js"></script>
+<script src="js/calendario.js"></script>
+
+</body>
+</html>

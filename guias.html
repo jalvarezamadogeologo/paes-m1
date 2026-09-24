@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guías — PAES M1</title>
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+
+<div class="navbar">
+  <a class="logo" href="index.html">PAES M1</a>
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="calendario.html">Calendario</a>
+    <a href="guias.html" class="activo">Guías</a>
+    <a href="practica.html">Practicar</a>
+    <a href="descargas.html">Descargas</a>
+  </nav>
+  <div class="modo">
+    <select id="sel-modo" title="Modo de uso">
+      <option value="estudiante">Estudiante</option>
+      <option value="tutor">Tutor</option>
+    </select>
+    <span id="badge-modo"></span>
+  </div>
+</div>
+
+<div class="hero">
+  <h1>Guías de estudio</h1>
+  <div class="sub">Material por fase (F1-F5) y compendio por área</div>
+  <div class="meta">Las guías se abren como página web o en PDF · Sigue el calendario para saber cuál usar</div>
+</div>
+
+<main>
+  <h2>Guías por fase</h2>
+  <div class="cards">
+    <div class="card">
+      <h4>Fase 1 · Base <span style="color:#6B7280;font-size:9pt">W1-W14 · sep-dic 2026</span></h4>
+      <div class="desc">Geometría básica, Funciones y Números · 28 ejercicios con solución.</div>
+      <a href="plan/guias/f1.html">Ver en web</a><a href="plan/guias/f1.pdf" target="_blank">PDF</a>
+    </div>
+    <div class="card">
+      <h4>Fase 2 · Profundizar <span style="color:#6B7280;font-size:9pt">W15-W30 · ene-abr 2027</span></h4>
+      <div class="desc">Geometría y Funciones avanzadas + consolidación · 22 ejercicios.</div>
+      <a href="plan/guias/f2.html">Ver en web</a><a href="plan/guias/f2.pdf" target="_blank">PDF</a>
+    </div>
+    <div class="card">
+      <h4>Fase 3 · Ensayos <span style="color:#6B7280;font-size:9pt">W31-W42 · abr-jul 2027</span></h4>
+      <div class="desc">Protocolo de ensayos, clasificación de errores y refuerzo dirigido.</div>
+      <a href="plan/guias/f3.html">Ver en web</a><a href="plan/guias/f3.pdf" target="_blank">PDF</a>
+    </div>
+    <div class="card">
+      <h4>Fase 4 · Ciclo final <span style="color:#6B7280;font-size:9pt">W43-W59 · jul-nov 2027</span></h4>
+      <div class="desc">Ensayos frecuentes, errores recurrentes e inscripción.</div>
+      <a href="plan/guias/f4.html">Ver en web</a><a href="plan/guias/f4.pdf" target="_blank">PDF</a>
+    </div>
+    <div class="card">
+      <h4>Fase 5 · Ajuste final <span style="color:#6B7280;font-size:9pt">W60-W62 · nov 2027</span></h4>
+      <div class="desc">Repaso ligero, estrategia de examen y checklist pre-PAES.</div>
+      <a href="plan/guias/f5.html">Ver en web</a><a href="plan/guias/f5.pdf" target="_blank">PDF</a>
+    </div>
+  </div>
+
+  <h2>Compendio por área</h2>
+  <div class="cards">
+    <div class="card">
+      <h4>Guía por área (compendio)</h4>
+      <div class="desc">Base teórica de las 6 áreas (Números, Proporcionalidad, Álgebra, Funciones,
+        Geometría, Estadística) + 36 ejercicios clave resueltos. Referencia para consultas y
+        refuerzos.</div>
+      <a href="plan/guia-estudio-m1.html">Ver en web</a><a href="plan/guia-estudio-m1.pdf" target="_blank">PDF</a>
+    </div>
+    <div class="card">
+      <h4>Plan de entrenamiento</h4>
+      <div class="desc">Objetivo, metas, perfil del diagnóstico, fases y medición.</div>
+      <a href="plan/entrenamiento-m1.pdf" target="_blank">PDF</a>
+    </div>
+    <div class="card">
+      <h4>Calendario detallado (PDF)</h4>
+      <div class="desc">Las 62 semanas en un documento para imprimir.</div>
+      <a href="plan/calendario-detallado.pdf" target="_blank">PDF</a>
+    </div>
+  </div>
+
+  <div class="nota">
+    <strong>Sugerencia de uso:</strong> abre el calendario, mira la semana actual y usa la guía de la
+    fase correspondiente. Para practicar lo aprendido, ve a la sección <a href="practica.html">Practicar</a>.
+  </div>
+</main>
+
+<footer>PAES M1 · Guías de estudio</footer>
+
+<div class="modal-fondo" id="modal-clave">
+  <div class="modal">
+    <h3>Modo tutor</h3>
+    <p style="font-size:10pt">Ingresa la clave del tutor.</p>
+    <input type="password" placeholder="Clave del tutor">
+    <p class="error"></p>
+    <div class="botones">
+      <button class="boton sec btn-canc">Cancelar</button>
+      <button class="boton btn-ok">Entrar</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/datos.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>

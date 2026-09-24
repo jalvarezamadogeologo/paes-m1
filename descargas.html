@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Descargas — PAES M1</title>
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+
+<div class="navbar">
+  <a class="logo" href="index.html">PAES M1</a>
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="calendario.html">Calendario</a>
+    <a href="guias.html">Guías</a>
+    <a href="practica.html">Practicar</a>
+    <a href="descargas.html" class="activo">Descargas</a>
+  </nav>
+  <div class="modo">
+    <select id="sel-modo" title="Modo de uso">
+      <option value="estudiante">Estudiante</option>
+      <option value="tutor">Tutor</option>
+    </select>
+    <span id="badge-modo"></span>
+  </div>
+</div>
+
+<div class="hero">
+  <h1>Descargas</h1>
+  <div class="sub">Todos los materiales en PDF para imprimir o guardar</div>
+  <div class="meta">Los PDF se abren en una pestaña nueva · Enlaces de descarga directa</div>
+</div>
+
+<main>
+  <h2>Plan y calendario</h2>
+  <div class="cards">
+    <div class="card">
+      <h4>Plan de entrenamiento M1</h4>
+      <div class="desc">3 páginas · objetivo, metas, fases y medición.</div>
+      <a href="plan/entrenamiento-m1.pdf" target="_blank">Descargar PDF</a>
+    </div>
+    <div class="card">
+      <h4>Calendario detallado</h4>
+      <div class="desc">3 páginas · las 62 semanas semana a semana.</div>
+      <a href="plan/calendario-detallado.pdf" target="_blank">Descargar PDF</a>
+    </div>
+  </div>
+
+  <h2>Guías</h2>
+  <div class="cards">
+    <div class="card">
+      <h4>Guía por área (compendio)</h4>
+      <div class="desc">8 páginas · teoría de las 6 áreas + 36 ejercicios resueltos.</div>
+      <a href="plan/guia-estudio-m1.pdf" target="_blank">Descargar PDF</a>
+    </div>
+    <div class="card">
+      <h4>Guía F1 · Base</h4>
+      <div class="desc">5 páginas · Geometría, Funciones, Números · 28 ejercicios.</div>
+      <a href="plan/guias/f1.pdf" target="_blank">Descargar PDF</a>
+    </div>
+    <div class="card">
+      <h4>Guía F2 · Profundizar</h4>
+      <div class="desc">4 páginas · avanzadas + consolidación · 22 ejercicios.</div>
+      <a href="plan/guias/f2.pdf" target="_blank">Descargar PDF</a>
+    </div>
+    <div class="card">
+      <h4>Guía F3 · Ensayos</h4>
+      <div class="desc">2 páginas · protocolo de ensayos y refuerzo.</div>
+      <a href="plan/guias/f3.pdf" target="_blank">Descargar PDF</a>
+    </div>
+    <div class="card">
+      <h4>Guía F4 · Ciclo final</h4>
+      <div class="desc">1 página · ensayos frecuentes y errores recurrentes.</div>
+      <a href="plan/guias/f4.pdf" target="_blank">Descargar PDF</a>
+    </div>
+    <div class="card">
+      <h4>Guía F5 · Ajuste final</h4>
+      <div class="desc">2 páginas · repaso, estrategia de examen y checklist.</div>
+      <a href="plan/guias/f5.pdf" target="_blank">Descargar PDF</a>
+    </div>
+  </div>
+
+  <h2>Mini-controles (con clave)</h2>
+  <div class="cards">
+    <div class="card">
+      <h4>MC Fase 1</h4>
+      <div class="desc">MC1 Geometría, MC2 Funciones, MC3 Números · con clave.</div>
+      <a href="material/mc/mc-f1.pdf" target="_blank">Descargar PDF</a>
+    </div>
+    <div class="card">
+      <h4>MC Fase 2</h4>
+      <div class="desc">MC4-MC7 (avanzadas + consolidación) · con clave.</div>
+      <a href="material/mc/mc-f2.pdf" target="_blank">Descargar PDF</a>
+    </div>
+    <div class="card">
+      <h4>MC Refuerzo por área</h4>
+      <div class="desc">MC8-MC13 por área para F3-F4 · con clave.</div>
+      <a href="material/mc/mc-f3f4.pdf" target="_blank">Descargar PDF</a>
+    </div>
+  </div>
+
+  <div class="nota">
+    <strong>Nota:</strong> los mini-controles en PDF incluyen la clave al final de cada uno. Si se
+    usan como evaluación, conviene imprimir la primera parte y entregar la clave por separado.
+  </div>
+</main>
+
+<footer>PAES M1 · Descargas</footer>
+
+<div class="modal-fondo" id="modal-clave">
+  <div class="modal">
+    <h3>Modo tutor</h3>
+    <p style="font-size:10pt">Ingresa la clave del tutor.</p>
+    <input type="password" placeholder="Clave del tutor">
+    <p class="error"></p>
+    <div class="botones">
+      <button class="boton sec btn-canc">Cancelar</button>
+      <button class="boton btn-ok">Entrar</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/datos.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>

@@ -4,133 +4,110 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PAES M1 — Preparación Matemática 1</title>
-<style>
-  :root { --azul:#1F3864; --azul-suave:#2E5A9E; --gris-texto:#374151; --gris-suave:#6B7280; --fondo:#F8FAFC; --borde:#E2E8F0; --ambar:#B45309; --verde:#2E7D32; --verde-claro:#E8F5E9; }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: "Calibri", "Segoe UI", "Arial", sans-serif; color: var(--gris-texto); line-height: 1.5; background: #fff; }
-  .hero { background: linear-gradient(135deg, var(--azul) 0%, var(--azul-suave) 100%); color: #fff; padding: 40px 24px 30px; text-align: center; }
-  .hero h1 { font-size: 30pt; font-weight: 700; }
-  .hero .sub { font-size: 13pt; opacity: 0.92; margin-top: 6px; }
-  .hero .meta { font-size: 10pt; opacity: 0.8; margin-top: 12px; }
-  main { max-width: 980px; margin: 0 auto; padding: 24px 20px 40px; }
-  h2 { color: var(--azul); font-size: 17pt; margin: 26px 0 10px; padding-bottom: 5px; border-bottom: 2px solid var(--azul); }
-  h3 { color: var(--azul); font-size: 13pt; margin: 16px 0 6px; }
-  p { margin: 6px 0; }
-  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; margin: 14px 0; }
-  .card { background: var(--fondo); border: 1px solid var(--borde); border-left: 4px solid var(--azul); border-radius: 8px; padding: 14px 16px; }
-  .card h4 { color: var(--azul); font-size: 12pt; margin-bottom: 4px; }
-  .card .desc { font-size: 9.8pt; color: var(--gris-suave); margin-bottom: 8px; }
-  .card a { display: inline-block; margin: 3px 8px 3px 0; font-size: 9.8pt; color: var(--azul-suave); text-decoration: none; font-weight: 600; }
-  .card a:hover { text-decoration: underline; }
-  .badge { display: inline-block; font-size: 8.5pt; font-weight: 600; padding: 2px 9px; border-radius: 10px; margin-right: 6px; }
-  .b-verde { background: var(--verde-claro); color: var(--verde); }
-  .nota { background: var(--fondo); border-left: 4px solid var(--ambar); border-radius: 6px; padding: 10px 14px; margin: 14px 0; font-size: 9.8pt; }
-  footer { text-align: center; color: var(--gris-suave); font-size: 9pt; padding: 16px; border-top: 1px solid var(--borde); }
-</style>
+<link rel="stylesheet" href="css/app.css">
 </head>
 <body>
+
+<div class="navbar">
+  <a class="logo" href="index.html">PAES M1</a>
+  <nav>
+    <a href="index.html" class="activo">Inicio</a>
+    <a href="calendario.html">Calendario</a>
+    <a href="guias.html">Guías</a>
+    <a href="practica.html">Practicar</a>
+    <a href="descargas.html">Descargas</a>
+  </nav>
+  <div class="modo">
+    <select id="sel-modo" title="Modo de uso">
+      <option value="estudiante">Estudiante</option>
+      <option value="tutor">Tutor</option>
+    </select>
+    <span id="badge-modo"></span>
+  </div>
+</div>
 
 <div class="hero">
   <h1>PAES M1</h1>
   <div class="sub">Preparación de Competencia Matemática 1</div>
-  <div class="meta">Rendición PAES regular nov-dic 2027 (admisión 2028) · Metas: 800 (ensayos 2026) y 1000 (2027) · 2 h semanales</div>
+  <div class="meta">Rendición PAES regular nov-dic 2027 (admisión 2028) · Metas: 800 (2026) y 1000 (2027) · 2 h semanales</div>
 </div>
 
 <main>
+  <div id="semana-actual"></div>
 
-  <h2>Plan y calendario</h2>
+  <h2>Secciones</h2>
   <div class="cards">
     <div class="card">
-      <h4>Plan de entrenamiento M1</h4>
-      <div class="desc">Objetivo, metas, perfil del diagnóstico, 5 fases, formato de sesión y medición.</div>
-      <a href="plan/entrenamiento-m1.pdf" target="_blank">PDF</a>
-      <a href="plan/entrenamiento-m1.md" target="_blank">Markdown</a>
+      <h4>Calendario</h4>
+      <div class="desc">Las 62 semanas de preparación, semana a semana, con la actual resaltada.</div>
+      <a class="boton" href="calendario.html">Ver calendario</a>
     </div>
     <div class="card">
-      <h4>Calendario detallado</h4>
-      <div class="desc">62 semanas (28/09/2026 → 05/12/2027): qué estudiar cada semana, mediciones e hitos.</div>
-      <a href="plan/calendario-detallado.pdf" target="_blank">PDF</a>
-      <a href="plan/calendario-detallado.md" target="_blank">Markdown</a>
+      <h4>Guías de estudio</h4>
+      <div class="desc">Guías por fase (F1-F5) y compendio por área, en web y en PDF.</div>
+      <a class="boton" href="guias.html">Ir a las guías</a>
     </div>
     <div class="card">
-      <h4>Carrera objetivo</h4>
-      <div class="desc">Medicina U. de Chile: ponderaciones y requisitos de referencia.</div>
-      <a href="metas/carreras.md" target="_blank">Markdown</a>
-    </div>
-  </div>
-
-  <h2>Guías de estudio</h2>
-  <div class="cards">
-    <div class="card">
-      <h4>Guía por área (compendio)</h4>
-      <div class="desc">Base teórica de las 6 áreas + 36 ejercicios clave resueltos.</div>
-      <a href="plan/guia-estudio-m1.pdf" target="_blank">PDF</a>
-      <a href="plan/guia-estudio-m1.md" target="_blank">Markdown</a>
+      <h4>Practicar</h4>
+      <div class="desc">Mini-controles interactivos: responde y corrige al instante.</div>
+      <a class="boton" href="practica.html">Entrar a practicar</a>
     </div>
     <div class="card">
-      <h4>Guía F1 — Base (W1-W14)</h4>
-      <div class="desc">Geometría básica, Funciones y Números · 28 ejercicios · sep-dic 2026.</div>
-      <a href="plan/guias/f1.pdf" target="_blank">PDF</a>
-      <a href="plan/guias/f1.md" target="_blank">Markdown</a>
-    </div>
-    <div class="card">
-      <h4>Guía F2 — Profundizar (W15-W30)</h4>
-      <div class="desc">Geometría y Funciones avanzadas + consolidación · 22 ejercicios · ene-abr 2027.</div>
-      <a href="plan/guias/f2.pdf" target="_blank">PDF</a>
-      <a href="plan/guias/f2.md" target="_blank">Markdown</a>
-    </div>
-    <div class="card">
-      <h4>Guía F3 — Ensayos (W31-W42)</h4>
-      <div class="desc">Protocolo de ensayos, clasificación de errores y refuerzo dirigido · abr-jul 2027.</div>
-      <a href="plan/guias/f3.pdf" target="_blank">PDF</a>
-      <a href="plan/guias/f3.md" target="_blank">Markdown</a>
-    </div>
-    <div class="card">
-      <h4>Guía F4 — Ciclo final (W43-W59)</h4>
-      <div class="desc">Ensayos frecuentes, errores recurrentes e inscripción · jul-nov 2027.</div>
-      <a href="plan/guias/f4.pdf" target="_blank">PDF</a>
-      <a href="plan/guias/f4.md" target="_blank">Markdown</a>
-    </div>
-    <div class="card">
-      <h4>Guía F5 — Ajuste final (W60-W62)</h4>
-      <div class="desc">Repaso ligero, estrategia de examen y checklist pre-PAES · nov 2027.</div>
-      <a href="plan/guias/f5.pdf" target="_blank">PDF</a>
-      <a href="plan/guias/f5.md" target="_blank">Markdown</a>
-    </div>
-  </div>
-
-  <h2>Mini-controles</h2>
-  <div class="cards">
-    <div class="card">
-      <h4>MC Fase 1 <span class="badge b-verde">W6 · W10 · W12</span></h4>
-      <div class="desc">MC1 Geometría, MC2 Funciones, MC3 Números · con clave.</div>
-      <a href="material/mc/mc-f1.pdf" target="_blank">PDF</a>
-      <a href="material/mc/mc-f1.md" target="_blank">Markdown</a>
-    </div>
-    <div class="card">
-      <h4>MC Fase 2 <span class="badge b-verde">W22 · W26 · W28 · W29</span></h4>
-      <div class="desc">MC4 Geometría avanzada, MC5 Funciones avanzadas, MC6 Prop.+Álgebra, MC7 Estadística · con clave.</div>
-      <a href="material/mc/mc-f2.pdf" target="_blank">PDF</a>
-      <a href="material/mc/mc-f2.md" target="_blank">Markdown</a>
-    </div>
-    <div class="card">
-      <h4>MC Refuerzo por área <span class="badge b-verde">F3-F4</span></h4>
-      <div class="desc">MC8-13 por área (Números, Proporcionalidad, Álgebra, Funciones, Geometría, Estadística) · con clave.</div>
-      <a href="material/mc/mc-f3f4.pdf" target="_blank">PDF</a>
-      <a href="material/mc/mc-f3f4.md" target="_blank">Markdown</a>
+      <h4>Descargas</h4>
+      <div class="desc">Todos los materiales en PDF para imprimir o guardar.</div>
+      <a class="boton" href="descargas.html">Ver descargas</a>
     </div>
   </div>
 
   <div class="nota">
-    <strong>Nota:</strong> este sitio contiene el material educativo (contenido genérico y anónimo).
-    El seguimiento de la preparación (bitácora, perfil de áreas y ensayos) no se publica por
-    privacidad. Las fechas oficiales DEMRE 2027 se ajustan cuando se publiquen. Material elaborado
-    el 2026-09-24; ejercicios y claves verificados numéricamente.
+    <strong>Nota:</strong> las claves de los mini-controles solo se muestran en modo tutor (las
+    gestiona el tutor). En modo estudiante, la práctica corrige cada respuesta al instante y
+    entrega el puntaje al final de cada mini-control. Las fechas oficiales DEMRE 2027 se ajustan
+    cuando se publiquen.
   </div>
-
 </main>
 
-<footer>PAES M1 · Preparación de Matemática 1 · Proyecto personal · jalvarezamadogeologo</footer>
+<footer>PAES M1 · Preparación de Matemática 1 · Material educativo anónimo</footer>
+
+<!-- Modal clave tutor -->
+<div class="modal-fondo" id="modal-clave">
+  <div class="modal">
+    <h3>Modo tutor</h3>
+    <p style="font-size:10pt">Ingresa la clave del tutor para ver las respuestas correctas.</p>
+    <input type="password" placeholder="Clave del tutor">
+    <p class="error"></p>
+    <div class="botones">
+      <button class="boton sec btn-canc">Cancelar</button>
+      <button class="boton btn-ok">Entrar</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/datos.js"></script>
+<script src="js/app.js"></script>
+<script>
+  function renderSemana() {
+    const n = semanaActual();
+    const cont = document.getElementById("semana-actual");
+    if (n === 0) {
+      cont.innerHTML = '<div class="nota"><strong>La preparación comienza la semana del 28/09/2026 (W1).</strong> Aún estás antes del inicio: revisa las guías F1 para ir adelantando.</div>';
+      return;
+    }
+    const s = SEMANAS[n - 1];
+    const esPausa = s.fase === "P";
+    const estado = esPausa ? '<span class="aviso"><strong>Pausa de vacaciones:</strong> sin estudio programado.</span>' : "";
+    cont.innerHTML =
+      '<div class="card">' +
+      '<h4>Semana actual · W' + n + ' (' + fechasSemana(n) + ')</h4>' +
+      '<div class="desc">' + esc(NOMBRE_FASE[s.fase] || s.fase) + '</div>' +
+      '<p><strong>Esta semana:</strong> ' + esc(s.c) + '</p>' +
+      (s.m ? '<p><strong>Medición:</strong> ' + esc(s.m) + '</p>' : '') +
+      (esPausa ? '<p style="color:#D32F2F;font-weight:600">Sin estudio programado.</p>' : '') +
+      '<p style="margin-top:8px"><a class="boton" href="guias.html">Abrir la guía de esta fase</a></p>' +
+      '</div>';
+  }
+  renderSemana();
+</script>
 
 </body>
 </html>

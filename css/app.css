@@ -1,0 +1,91 @@
+:root {
+  --azul: #1F3864;
+  --azul-suave: #2E5A9E;
+  --gris-texto: #374151;
+  --gris-suave: #6B7280;
+  --fondo: #F8FAFC;
+  --borde: #E2E8F0;
+  --ambar: #B45309;
+  --verde: #2E7D32;
+  --verde-claro: #E8F5E9;
+  --rojo: #D32F2F;
+  --rojo-claro: #FDE7E9;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: "Calibri", "Segoe UI", "Arial", sans-serif; color: var(--gris-texto); line-height: 1.5; background: #fff; }
+
+/* Navbar */
+.navbar { background: var(--azul); color: #fff; display: flex; align-items: center; flex-wrap: wrap; padding: 0 20px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
+.navbar .logo { font-weight: 700; font-size: 14pt; padding: 14px 18px 14px 0; color: #fff; text-decoration: none; }
+.navbar nav a { color: #D9E2F3; text-decoration: none; padding: 16px 14px; display: inline-block; font-size: 10.5pt; font-weight: 600; }
+.navbar nav a:hover, .navbar nav a.activo { color: #fff; background: var(--azul-suave); }
+.navbar .modo { margin-left: auto; padding: 8px 0; font-size: 9pt; }
+
+/* Hero */
+.hero { background: linear-gradient(135deg, var(--azul) 0%, var(--azul-suave) 100%); color: #fff; padding: 34px 24px; text-align: center; }
+.hero h1 { font-size: 26pt; font-weight: 700; }
+.hero .sub { font-size: 12.5pt; opacity: 0.92; margin-top: 6px; }
+.hero .meta { font-size: 10pt; opacity: 0.8; margin-top: 10px; }
+
+main { max-width: 1000px; margin: 0 auto; padding: 22px 20px 40px; }
+h2 { color: var(--azul); font-size: 16pt; margin: 24px 0 10px; padding-bottom: 4px; border-bottom: 2px solid var(--azul); }
+h3 { color: var(--azul); font-size: 13pt; margin: 16px 0 6px; }
+p { margin: 6px 0; }
+
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; margin: 14px 0; }
+.card { background: var(--fondo); border: 1px solid var(--borde); border-left: 4px solid var(--azul); border-radius: 8px; padding: 14px 16px; }
+.card h4 { color: var(--azul); font-size: 12pt; margin-bottom: 4px; }
+.card .desc { font-size: 9.8pt; color: var(--gris-suave); margin-bottom: 8px; }
+.card a { display: inline-block; margin: 3px 8px 3px 0; font-size: 9.8pt; color: var(--azul-suave); text-decoration: none; font-weight: 600; }
+.card a:hover { text-decoration: underline; }
+.card .boton { background: var(--azul); color: #fff; border: none; border-radius: 6px; padding: 6px 14px; font-size: 10pt; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; }
+.card .boton:hover { background: var(--azul-suave); text-decoration: none; }
+
+.nota { background: var(--fondo); border-left: 4px solid var(--ambar); border-radius: 6px; padding: 10px 14px; margin: 14px 0; font-size: 9.8pt; }
+.aviso { background: var(--rojo-claro); border-left: 4px solid var(--rojo); border-radius: 6px; padding: 10px 14px; margin: 14px 0; font-size: 9.8pt; }
+
+/* Tablas (calendario) */
+table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 9.6pt; }
+thead th { background: var(--azul); color: #fff; text-align: left; padding: 6px 10px; font-weight: 600; }
+tbody td { padding: 6px 10px; border-bottom: 1px solid var(--borde); vertical-align: top; }
+tbody tr:nth-child(even) { background: var(--fondo); }
+tr.semana-actual { background: var(--verde-claro); font-weight: 600; }
+tr.pausa { background: var(--rojo-claro); }
+
+/* Practica */
+.filtro { display: flex; gap: 10px; flex-wrap: wrap; margin: 12px 0; }
+.filtro select, .filtro button { font-size: 10pt; padding: 7px 12px; border-radius: 6px; border: 1px solid var(--borde); background: #fff; }
+.filtro button.principal { background: var(--azul); color: #fff; border: none; cursor: pointer; font-weight: 600; }
+.pregunta { border: 1px solid var(--borde); border-radius: 8px; margin: 12px 0; padding: 14px 16px; }
+.pregunta .enun { font-size: 10.5pt; margin-bottom: 10px; }
+.opciones { list-style: none; }
+.opciones li { margin: 5px 0; }
+.opciones label { display: flex; align-items: flex-start; gap: 8px; border: 1px solid var(--borde); border-radius: 6px; padding: 8px 12px; cursor: pointer; font-size: 10pt; }
+.opciones input { margin-top: 3px; }
+.opciones label:hover { background: var(--fondo); }
+.opciones label.correcta { background: var(--verde-claro); border-color: var(--verde); }
+.opciones label.incorrecta { background: var(--rojo-claro); border-color: var(--rojo); }
+.opciones label.deshabilitada { cursor: default; opacity: 0.85; }
+.pregunta .retro { margin-top: 10px; font-size: 10pt; font-weight: 600; }
+.pregunta .retro.ok { color: var(--verde); }
+.pregunta .retro.mal { color: var(--rojo); }
+.barra { position: sticky; bottom: 0; background: #fff; border-top: 2px solid var(--borde); padding: 10px 0; display: flex; gap: 10px; align-items: center; }
+.barra .boton { background: var(--azul); color: #fff; border: none; border-radius: 6px; padding: 8px 16px; font-size: 10.5pt; font-weight: 600; cursor: pointer; }
+.barra .boton:disabled { background: var(--gris-suave); cursor: not-allowed; }
+.barra .info { margin-left: auto; font-size: 10pt; color: var(--gris-suave); }
+.resultado { background: var(--verde-claro); border: 1px solid var(--verde); border-radius: 8px; padding: 16px; margin: 14px 0; text-align: center; font-size: 13pt; font-weight: 700; color: var(--verde); }
+.clave-tutor { background: var(--fondo); border: 1px solid var(--borde); border-radius: 8px; padding: 12px 16px; margin: 12px 0; font-size: 10pt; }
+
+footer { text-align: center; color: var(--gris-suave); font-size: 9pt; padding: 16px; border-top: 1px solid var(--borde); }
+
+/* Modal simple para clave tutor */
+.modal-fondo { position: fixed; inset: 0; background: rgba(0,0,0,0.4); display: none; align-items: center; justify-content: center; z-index: 200; }
+.modal-fondo.visible { display: flex; }
+.modal { background: #fff; border-radius: 10px; padding: 22px 26px; max-width: 340px; width: 90%; }
+.modal h3 { margin-top: 0; }
+.modal input { width: 100%; padding: 8px 10px; font-size: 11pt; border: 1px solid var(--borde); border-radius: 6px; margin: 10px 0; }
+.modal .botones { display: flex; gap: 8px; justify-content: flex-end; }
+.modal .boton { background: var(--azul); color: #fff; border: none; border-radius: 6px; padding: 7px 14px; font-size: 10pt; cursor: pointer; font-weight: 600; }
+.modal .boton.sec { background: var(--gris-suave); }
+.modal .error { color: var(--rojo); font-size: 9.5pt; margin-top: 6px; }
