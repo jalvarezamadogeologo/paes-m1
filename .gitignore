@@ -1,0 +1,8 @@
+# Datos de seguimiento de la estudiante (privacidad) — NO se publican
+seguimiento/
+
+# Prueba diagnóstica y resultado con respuestas (datos de la estudiante)
+diagnosticos/
+
+# Inventario local de material (no es material educativo)
+material/indice.md

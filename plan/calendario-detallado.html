@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Calendario detallado de entrenamiento M1</title>
+<style>
+  :root { --azul:#1F3864; --azul-suave:#2E5A9E; --gris-texto:#374151; --gris-suave:#6B7280; --fondo:#F8FAFC; --borde:#E2E8F0; --ambar:#B45309; --verde:#2E7D32; --rojo:#D32F2F; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  @page { size: A4; margin: 12mm 12mm; }
+  body { font-family: "Calibri", "Segoe UI", "Arial", sans-serif; color: var(--gris-texto); font-size: 9.2pt; line-height: 1.4; }
+  .portada { background: linear-gradient(135deg, var(--azul) 0%, var(--azul-suave) 100%); color: #fff; border-radius: 10px; padding: 18px 24px; margin-bottom: 12px; }
+  .portada h1 { font-size: 18pt; font-weight: 700; }
+  .portada .subtitulo { font-size: 10pt; opacity: 0.92; margin-top: 4px; }
+  .portada .meta-linea { font-size: 9pt; opacity: 0.8; margin-top: 8px; }
+  h2 { color: var(--azul); font-size: 12pt; font-weight: 700; margin: 14px 0 7px; padding-bottom: 3px; border-bottom: 2px solid var(--azul); page-break-after: avoid; }
+  p { margin: 4px 0; }
+  ul, ol { margin: 4px 0 4px 18px; }
+  li { margin: 2px 0; }
+  strong { color: var(--azul); }
+  table { width: 100%; border-collapse: collapse; margin: 6px 0; font-size: 8.6pt; }
+  thead th { background: var(--azul); color: #fff; text-align: left; padding: 4px 8px; font-weight: 600; }
+  tbody td { padding: 4px 8px; border-bottom: 1px solid var(--borde); vertical-align: top; }
+  tbody tr:nth-child(even) { background: var(--fondo); }
+  tr { page-break-inside: avoid; }
+  .pausa { background: #FDE7E9; border-left: 4px solid var(--rojo); border-radius: 6px; padding: 6px 10px; margin: 8px 0; font-size: 9pt; font-weight: 600; color: var(--rojo); }
+  .nota { background: var(--fondo); border-left: 4px solid var(--ambar); border-radius: 6px; padding: 7px 11px; margin: 8px 0; font-size: 8.8pt; }
+  .footer-note { margin-top: 14px; padding-top: 7px; border-top: 1px solid var(--borde); font-size: 8.2pt; color: var(--gris-suave); text-align: center; }
+</style>
+</head>
+<body>
+
+<div class="portada">
+  <h1>Calendario detallado de entrenamiento M1</h1>
+  <div class="subtitulo">Semana a semana · 28/09/2026 → 05/12/2027 · 2 h semanales</div>
+  <div class="meta-linea">Unidad: semana (día flexible dentro de ella) · Pausa de vacaciones W17-W20 · Fechas DEMRE 2027 por confirmar (*)</div>
+</div>
+
+<h2>Reglas</h2>
+<ul>
+  <li><strong>Unidad temporal:</strong> la semana (lunes a domingo referencial); el día exacto de la sesión es flexible.</li>
+  <li><strong>Pausa de vacaciones:</strong> W17-W20 (18-ene al 14-feb-2027): sin estudio programado.</li>
+  <li><strong>F2 se estira a ene-abr 2027</strong> (mismas 12 semanas de estudio, interrumpidas por la pausa).</li>
+  <li><strong>Fechas oficiales DEMRE 2027 aún no publicadas:</strong> las semanas con * se ajustan al calendario oficial.</li>
+  <li><strong>Medición:</strong> MC = mini-control (10 preguntas); Ensayo = ensayo completo M1.</li>
+</ul>
+
+<h2>Fase 1 — Base de Geometría y Funciones (W1-W14 · 28/09/2026 - 03/01/2027)</h2>
+<table>
+  <thead><tr><th style="width:8%">Sem</th><th style="width:18%">Fechas</th><th>Contenido</th><th style="width:22%">Medición / hito</th></tr></thead>
+  <tbody>
+    <tr><td>W1</td><td>28/09 - 04/10</td><td>Geometría: ángulos y rectas</td><td>—</td></tr>
+    <tr><td>W2</td><td>05/10 - 11/10</td><td>Geometría: triángulos</td><td>—</td></tr>
+    <tr><td>W3</td><td>12/10 - 18/10</td><td>Geometría: congruencia y semejanza</td><td>—</td></tr>
+    <tr><td>W4</td><td>19/10 - 25/10</td><td>Geometría: Pitágoras</td><td>—</td></tr>
+    <tr><td>W5</td><td>26/10 - 01/11</td><td>Geometría: áreas y perímetros</td><td>—</td></tr>
+    <tr><td>W6</td><td>02/11 - 08/11</td><td>Geometría: problemas integrados</td><td><strong>MC1 Geometría</strong></td></tr>
+    <tr><td>W7</td><td>09/11 - 15/11</td><td>Funciones: concepto</td><td>—</td></tr>
+    <tr><td>W8</td><td>16/11 - 22/11</td><td>Funciones: lineal y afín</td><td>—</td></tr>
+    <tr><td>W9</td><td>23/11 - 29/11</td><td>Funciones: cuadrática</td><td>—</td></tr>
+    <tr><td>W10</td><td>30/11 - 06/12</td><td>Funciones: modelación</td><td><strong>MC2 Funciones</strong></td></tr>
+    <tr><td>W11</td><td>07/12 - 13/12</td><td>Números en contexto</td><td>—</td></tr>
+    <tr><td>W12</td><td>14/12 - 20/12</td><td>Repaso integrado</td><td>MC3 Números (opcional)</td></tr>
+    <tr><td>W13</td><td>21/12 - 27/12</td><td>Ensayo oficial DEMRE (dic 2026)</td><td><strong>Hito: 800</strong></td></tr>
+    <tr><td>W14</td><td>28/12 - 03/01</td><td>Análisis y cierre F1</td><td>Registro</td></tr>
+  </tbody>
+</table>
+
+<div class="pausa">Pausa de vacaciones W17-W20 (18/01 - 14/02/2027): sin estudio programado.</div>
+
+<h2>Fase 2 — Completar y profundizar (W15-W16 + W21-W30 · 04/01 - 25/04/2027)</h2>
+<table>
+  <thead><tr><th style="width:8%">Sem</th><th style="width:18%">Fechas</th><th>Contenido</th><th style="width:22%">Medición / hito</th></tr></thead>
+  <tbody>
+    <tr><td>W15</td><td>04/01 - 10/01</td><td>Geometría avanzada: circunferencia</td><td>—</td></tr>
+    <tr><td>W16</td><td>11/01 - 17/01</td><td>Geometría avanzada: trigonometría</td><td>—</td></tr>
+    <tr><td>W21</td><td>15/02 - 21/02</td><td>Geometría avanzada: cuerpos geométricos</td><td>—</td></tr>
+    <tr><td>W22</td><td>22/02 - 28/02</td><td>Geometría en contexto</td><td><strong>MC4 Geometría avanzada</strong></td></tr>
+    <tr><td>W23</td><td>01/03 - 07/03</td><td>Funciones: exponencial</td><td>—</td></tr>
+    <tr><td>W24</td><td>08/03 - 14/03</td><td>Funciones: modelación</td><td>Ensayo DEMRE 1er ciclo (mar) *</td></tr>
+    <tr><td>W25</td><td>15/03 - 21/03</td><td>Funciones: modelación 800+</td><td>—</td></tr>
+    <tr><td>W26</td><td>22/03 - 28/03</td><td>Repaso de Funciones</td><td><strong>MC5 Funciones avanzadas</strong></td></tr>
+    <tr><td>W27</td><td>29/03 - 04/04</td><td>Números en profundidad</td><td>—</td></tr>
+    <tr><td>W28</td><td>05/04 - 11/04</td><td>Proporcionalidad y Álgebra alta</td><td><strong>MC6 Prop. + Álgebra</strong></td></tr>
+    <tr><td>W29</td><td>12/04 - 18/04</td><td>Estadística alta</td><td><strong>MC7 Estadística</strong></td></tr>
+    <tr><td>W30</td><td>19/04 - 25/04</td><td>Ensayo + cierre F2</td><td>Ensayo DEMRE 1er ciclo (abr) *</td></tr>
+  </tbody>
+</table>
+
+<h2>Fase 3 — Ensayos oficiales (W31-W42 · 26/04 - 18/07/2027)</h2>
+<table>
+  <thead><tr><th style="width:8%">Sem</th><th style="width:18%">Fechas</th><th>Contenido</th><th style="width:22%">Medición / hito</th></tr></thead>
+  <tbody>
+    <tr><td>W31</td><td>26/04 - 02/05</td><td>Ensayo 1 + clasificación de errores</td><td>Ensayo</td></tr>
+    <tr><td>W32</td><td>03/05 - 09/05</td><td>Refuerzo dirigido A</td><td>—</td></tr>
+    <tr><td>W33</td><td>10/05 - 16/05</td><td>Ensayo 2</td><td>Ensayo</td></tr>
+    <tr><td>W34</td><td>17/05 - 23/05</td><td>Refuerzo dirigido B</td><td>—</td></tr>
+    <tr><td>W35</td><td>24/05 - 30/05</td><td>Ensayo 3</td><td>Ensayo</td></tr>
+    <tr><td>W36</td><td>31/05 - 06/06</td><td>Refuerzo dirigido C</td><td>—</td></tr>
+    <tr><td>W37</td><td>07/06 - 13/06</td><td>Ensayo 4</td><td>Ensayo</td></tr>
+    <tr><td>W38</td><td>14/06 - 20/06</td><td>Preparación PAES de invierno</td><td>—</td></tr>
+    <tr><td>W39</td><td>21/06 - 27/06</td><td><strong>PAES de invierno</strong> *</td><td><strong>Hito (puntaje válido)</strong></td></tr>
+    <tr><td>W40</td><td>28/06 - 04/07</td><td>Análisis de resultados</td><td>Registro</td></tr>
+    <tr><td>W41</td><td>05/07 - 11/07</td><td>Refuerzo según invierno</td><td>—</td></tr>
+    <tr><td>W42</td><td>12/07 - 18/07</td><td>Ensayo 5 + cierre F3</td><td>Ensayo</td></tr>
+  </tbody>
+</table>
+
+<h2>Fase 4 — Ciclo final (W43-W59 · 19/07 - 14/11/2027)</h2>
+<table>
+  <thead><tr><th style="width:8%">Sem</th><th style="width:18%">Fechas</th><th>Contenido</th><th style="width:22%">Medición / hito</th></tr></thead>
+  <tbody>
+    <tr><td>W43</td><td>19/07 - 25/07</td><td>Inscripción * + ensayo 1</td><td>Ensayo / inscripción</td></tr>
+    <tr><td>W44</td><td>26/07 - 01/08</td><td>Refuerzo A</td><td>—</td></tr>
+    <tr><td>W45</td><td>02/08 - 08/08</td><td>Refuerzo A (cont.)</td><td>—</td></tr>
+    <tr><td>W46</td><td>09/08 - 15/08</td><td>Ensayo 2</td><td>Ensayo DEMRE 2do ciclo (ago) *</td></tr>
+    <tr><td>W47</td><td>16/08 - 22/08</td><td>Análisis + refuerzo B</td><td>—</td></tr>
+    <tr><td>W48</td><td>23/08 - 29/08</td><td>Refuerzo B</td><td>—</td></tr>
+    <tr><td>W49</td><td>30/08 - 05/09</td><td>Ensayo 3</td><td>Ensayo DEMRE 2do ciclo (sep) *</td></tr>
+    <tr><td>W50</td><td>06/09 - 12/09</td><td>Análisis + refuerzo C</td><td>—</td></tr>
+    <tr><td>W51</td><td>13/09 - 19/09</td><td>Refuerzo C</td><td>—</td></tr>
+    <tr><td>W52</td><td>20/09 - 26/09</td><td>Ensayo 4</td><td>Ensayo</td></tr>
+    <tr><td>W53</td><td>27/09 - 03/10</td><td>Refuerzo D</td><td>—</td></tr>
+    <tr><td>W54</td><td>04/10 - 10/10</td><td>Refuerzo D</td><td>—</td></tr>
+    <tr><td>W55</td><td>11/10 - 17/10</td><td>Ensayo 5</td><td>Ensayo</td></tr>
+    <tr><td>W56</td><td>18/10 - 24/10</td><td>Análisis + refuerzo E</td><td>—</td></tr>
+    <tr><td>W57</td><td>25/10 - 31/10</td><td>Refuerzo E</td><td>—</td></tr>
+    <tr><td>W58</td><td>01/11 - 07/11</td><td>Ensayo 6</td><td>Ensayo</td></tr>
+    <tr><td>W59</td><td>08/11 - 14/11</td><td>Consolidación final, cierre F4</td><td>—</td></tr>
+  </tbody>
+</table>
+
+<h2>Fase 5 — Ajuste final y PAES (W60-W62 · 15/11 - 05/12/2027)</h2>
+<table>
+  <thead><tr><th style="width:8%">Sem</th><th style="width:18%">Fechas</th><th>Contenido</th><th style="width:22%">Medición / hito</th></tr></thead>
+  <tbody>
+    <tr><td>W60</td><td>15/11 - 21/11</td><td>Repaso ligero + estrategia</td><td>—</td></tr>
+    <tr><td>W61</td><td>22/11 - 28/11</td><td>Simulación completa</td><td>Ensayo</td></tr>
+    <tr><td>W62</td><td>29/11 - 05/12</td><td><strong>PAES regular (rendición)</strong> *</td><td><strong>Hito: 1000</strong></td></tr>
+  </tbody>
+</table>
+
+<h2>Resumen de hitos</h2>
+<table>
+  <thead><tr><th>Hito</th><th style="width:12%">Semana</th><th style="width:20%">Fecha (referencial)</th><th style="width:15%">Meta</th></tr></thead>
+  <tbody>
+    <tr><td>Ensayo oficial DEMRE</td><td>W13</td><td>dic 2026</td><td>800 M1</td></tr>
+    <tr><td>Fin de F1</td><td>W14</td><td>03/01/2027</td><td>Cierre</td></tr>
+    <tr><td>Pausa de vacaciones</td><td>W17-W20</td><td>18/01 - 14/02/2027</td><td>—</td></tr>
+    <tr><td>Ensayos DEMRE 1er ciclo</td><td>W24-W30</td><td>mar-abr 2027</td><td>Medición</td></tr>
+    <tr><td>PAES de invierno *</td><td>W39</td><td>jun 2027</td><td>Puntaje válido</td></tr>
+    <tr><td>Inscripción PAES regular *</td><td>W43</td><td>jul-ago 2027</td><td>—</td></tr>
+    <tr><td>Ensayos DEMRE 2do ciclo *</td><td>W46-W49</td><td>ago-sep 2027</td><td>Medición</td></tr>
+    <tr><td>PAES regular *</td><td>W62</td><td>nov-dic 2027</td><td><strong>1000 M1</strong></td></tr>
+  </tbody>
+</table>
+
+<div class="nota">* Fechas a confirmar con el calendario oficial DEMRE 2027. Seguimiento y reglas de ajuste:
+seguimiento/sistema.md (fuente local). Criterio de avance por área: debilidad → parcial con ≥50% en
+MC consecutivos; parcial → fortaleza con ≥75%.</div>
+
+<div class="footer-note">Calendario detallado M1 · Proyecto PAES de Javier · PDF generado 2026-09-24</div>
+
+</body>
+</html>

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Plan de entrenamiento — Matemática 1 (M1)</title>
+<style>
+  :root {
+    --azul: #1F3864;
+    --azul-suave: #2E5A9E;
+    --teal: #0F766E;
+    --gris-texto: #374151;
+    --gris-suave: #6B7280;
+    --fondo: #F8FAFC;
+    --borde: #E2E8F0;
+    --rojo: #D32F2F;
+    --ambar: #B45309;
+    --verde: #2E7D32;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  @page { size: A4; margin: 14mm 14mm; }
+  body {
+    font-family: "Calibri", "Segoe UI", "Arial", sans-serif;
+    color: var(--gris-texto);
+    font-size: 10.5pt;
+    line-height: 1.45;
+  }
+
+  /* Header */
+  .portada {
+    background: linear-gradient(135deg, var(--azul) 0%, var(--azul-suave) 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 20px 26px;
+    margin-bottom: 16px;
+  }
+  .portada h1 { font-size: 21pt; font-weight: 700; letter-spacing: 0.3px; }
+  .portada .subtitulo { font-size: 10.5pt; opacity: 0.92; margin-top: 4px; }
+  .portada .meta-linea { font-size: 9pt; opacity: 0.8; margin-top: 10px; }
+
+  h2 {
+    color: var(--azul);
+    font-size: 13pt;
+    font-weight: 700;
+    margin: 18px 0 8px;
+    padding-bottom: 4px;
+    border-bottom: 2px solid var(--azul);
+  }
+  h3 { color: var(--azul); font-size: 11pt; margin: 10px 0 6px; }
+  p { margin: 5px 0; }
+  ul, ol { margin: 5px 0 5px 18px; }
+  li { margin: 3px 0; }
+
+  /* Cards de resumen */
+  .grid-metas {
+    display: flex; gap: 10px; margin: 10px 0;
+  }
+  .card {
+    flex: 1;
+    background: var(--fondo);
+    border: 1px solid var(--borde);
+    border-left: 4px solid var(--azul);
+    border-radius: 8px;
+    padding: 10px 14px;
+  }
+  .card .etiqueta { font-size: 8.5pt; text-transform: uppercase; letter-spacing: 0.6px; color: var(--gris-suave); }
+  .card .valor { font-size: 14pt; font-weight: 700; color: var(--azul); margin-top: 2px; }
+  .card .detalle { font-size: 8.8pt; color: var(--gris-suave); margin-top: 2px; }
+  .card.teal { border-left-color: var(--teal); }
+  .card.teal .valor { color: var(--teal); }
+
+  /* Tablas */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+    font-size: 9.6pt;
+  }
+  thead th {
+    background: var(--azul);
+    color: #fff;
+    text-align: left;
+    padding: 6px 10px;
+    font-weight: 600;
+  }
+  tbody td {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--borde);
+    vertical-align: top;
+  }
+  tbody tr:nth-child(even) { background: var(--fondo); }
+  tr { page-break-inside: avoid; }
+
+  /* Barra de logro */
+  .logro {
+    display: inline-block;
+    width: 90px;
+    height: 9px;
+    background: #E5E7EB;
+    border-radius: 5px;
+    vertical-align: middle;
+    margin-right: 6px;
+    overflow: hidden;
+  }
+  .logro span { display: block; height: 100%; border-radius: 5px; }
+
+  /* Badges de prioridad */
+  .badge {
+    display: inline-block;
+    font-size: 8.2pt;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 10px;
+    white-space: nowrap;
+  }
+  .b-debil { background: #FDE7E9; color: var(--rojo); }
+  .b-parcial { background: #FEF3C7; color: var(--ambar); }
+  .b-fortaleza { background: #E8F5E9; color: var(--verde); }
+
+  /* Fases */
+  .fase {
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    margin: 10px 0;
+    overflow: hidden;
+    page-break-inside: avoid;
+  }
+  .fase-head {
+    background: var(--fondo);
+    padding: 8px 14px;
+    border-bottom: 1px solid var(--borde);
+  }
+  .fase-head .num { color: var(--azul); font-weight: 700; font-size: 10.5pt; }
+  .fase-head .peri { color: var(--gris-suave); font-size: 9pt; margin-left: 6px; }
+  .fase-body { padding: 8px 14px 10px; }
+  .fase-body .objetivo { font-size: 9.6pt; color: var(--gris-texto); margin-bottom: 6px; font-style: italic; }
+  .hito {
+    display: inline-block;
+    background: var(--teal);
+    color: #fff;
+    font-size: 8.6pt;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 10px;
+    margin-top: 6px;
+  }
+  .nota {
+    background: var(--fondo);
+    border-left: 4px solid var(--ambar);
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin: 10px 0;
+    font-size: 9.4pt;
+  }
+  .footer-note {
+    margin-top: 16px;
+    padding-top: 8px;
+    border-top: 1px solid var(--borde);
+    font-size: 8.4pt;
+    color: var(--gris-suave);
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<div class="portada">
+  <h1>Plan de entrenamiento — Matemática 1 (M1)</h1>
+  <div class="subtitulo">Preparación PAES · Diagnóstico 2026-09-24 (12/24 bruto, 50%)</div>
+  <div class="meta-linea">Estudiante: 3° medio 2026 → 4° medio 2027 · Rendición oficial: PAES nov-dic 2027 (admisión 2028)</div>
+</div>
+
+<div class="grid-metas">
+  <div class="card">
+    <div class="etiqueta">Meta 2026 · Referencia</div>
+    <div class="valor">800 pts</div>
+    <div class="detalle">Ensayo oficial DEMRE (dic 2026). No rinde la PAES 2026.</div>
+  </div>
+  <div class="card teal">
+    <div class="etiqueta">Meta 2027 · Oficial</div>
+    <div class="valor">1000 pts</div>
+    <div class="detalle">PAES regular nov-dic 2027 · Admisión 2028.</div>
+  </div>
+  <div class="card teal">
+    <div class="etiqueta">Dedicación</div>
+    <div class="valor">2 h/sem</div>
+    <div class="detalle">Solo M1. Horizonte: ~14 meses (sep 2026 - nov 2027).</div>
+  </div>
+</div>
+
+<div class="nota">
+  <strong>Nota de realismo:</strong> 800 está en el percentil superior de la escala; 1000 es el tope
+  absoluto y exige rendimiento casi perfecto. El corte ponderado de Medicina UCH 2026 fue 931,15 con
+  M1 ponderando 20%; M1 es necesaria pero no suficiente (Ciencias pondera 35% y tiene su propia
+  preparación, fuera del alcance de este plan).
+</div>
+
+<h2>1 · Perfil del diagnóstico (punto de partida)</h2>
+<table>
+  <thead>
+    <tr><th style="width:28%">Área</th><th style="width:16%">Logro</th><th>Prioridad en el plan</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>5. Geometría</td>
+      <td><span class="logro"><span style="width:0%;background:var(--rojo)"></span></span>0%</td>
+      <td><span class="badge b-debil">Debilidad clara</span> Refuerzo prioritario desde la base</td>
+    </tr>
+    <tr>
+      <td>4. Funciones</td>
+      <td><span class="logro"><span style="width:25%;background:var(--rojo)"></span></span>25%</td>
+      <td><span class="badge b-debil">Debilidad clara</span> Refuerzo prioritario desde la base</td>
+    </tr>
+    <tr>
+      <td>1. Números</td>
+      <td><span class="logro"><span style="width:50%;background:var(--ambar)"></span></span>50%</td>
+      <td><span class="badge b-parcial">Parcial</span> Consolidar (soporta a Geometría y Funciones)</td>
+    </tr>
+    <tr>
+      <td>2. Proporcionalidad</td>
+      <td><span class="logro"><span style="width:75%;background:var(--verde)"></span></span>75%</td>
+      <td><span class="badge b-fortaleza">Fortaleza</span> Mantener con práctica ligera</td>
+    </tr>
+    <tr>
+      <td>3. Álgebra</td>
+      <td><span class="logro"><span style="width:75%;background:var(--verde)"></span></span>75%</td>
+      <td><span class="badge b-fortaleza">Fortaleza</span> Mantener con práctica ligera</td>
+    </tr>
+    <tr>
+      <td>6. Estadística</td>
+      <td><span class="logro"><span style="width:75%;background:var(--verde)"></span></span>75%</td>
+      <td><span class="badge b-fortaleza">Fortaleza</span> Mantener con práctica ligera</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>2 · Estrategia general</h2>
+<ol>
+  <li><strong>Concentrar las horas en las debilidades:</strong> Geometría y Funciones reciben la
+      mayor parte del tiempo de estudio; Números se consolida porque es la base de cálculo de las
+      otras áreas.</li>
+  <li><strong>No abandonar las fortalezas:</strong> en cada sesión, 20-30 min de práctica mixta con
+      preguntas de Proporcionalidad, Álgebra y Estadística para no perder el nivel.</li>
+  <li><strong>Enfoque por habilidad:</strong> en el diagnóstico, 19 de 24 preguntas son de
+      "Resolver problemas" (10) y "Modelar" (9). El entrenamiento enfatiza problemas en contexto y
+      modelación, no mecánica repetitiva.</li>
+  <li><strong>Medición continua:</strong> mini-control por área cada 2 semanas y ensayo completo M1
+      cada 4-6 semanas; todo registrado en <code>seguimiento/ensayos.md</code>.</li>
+</ol>
+
+<h2>3 · Formato de sesión semanal (2 h)</h2>
+<table>
+  <thead>
+    <tr><th style="width:32%">Bloque</th><th style="width:14%">Duración</th><th>Contenido</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Repaso breve (retrieval)</td><td>20 min</td><td>3-4 preguntas del tema de la sesión anterior</td></tr>
+    <tr><td>Tema nuevo con ejercicios guiados</td><td>60 min</td><td>Primero juntas (modelar el razonamiento), luego sola</td></tr>
+    <tr><td>Práctica mixta</td><td>30-40 min</td><td>2-3 preguntas de áreas fortaleza + 1-2 de áreas débiles ya trabajadas</td></tr>
+    <tr><td>Cierre</td><td>10 min</td><td>Anotar dudas y temas para la próxima sesión</td></tr>
+  </tbody>
+</table>
+
+<h2>4 · Fases</h2>
+
+<div class="fase">
+  <div class="fase-head"><span class="num">Fase 1 · Base de Geometría y Funciones</span><span class="peri">sep-dic 2026 · ~14 semanas · ~28 h</span></div>
+  <div class="fase-body">
+    <p class="objetivo">Objetivo: levantar las dos debilidades críticas desde cero y lograr 800 en
+    el ensayo oficial DEMRE de fin de año (diciembre 2026).</p>
+    <table>
+      <thead><tr><th style="width:16%">Semanas</th><th style="width:26%">Foco</th><th>Contenido</th></tr></thead>
+      <tbody>
+        <tr><td>1-6</td><td>Geometría básica</td><td>Ángulos y rectas; triángulos (congruencia, semejanza); teorema de Pitágoras; áreas y perímetros</td></tr>
+        <tr><td>7-10</td><td>Funciones</td><td>Lineal y afín (pendiente, gráfica, modelación); cuadrática (vértice, intersecciones, modelación)</td></tr>
+        <tr><td>11-12</td><td>Números + repaso</td><td>Porcentajes, fracciones, potencias y raíces en contexto; repaso integrado de Geometría y Funciones</td></tr>
+        <tr><td>13-14</td><td>Ensayo oficial DEMRE</td><td>Ensayo nacional oficial DEMRE de fin de año (dic 2026). Meta 800</td></tr>
+      </tbody>
+    </table>
+    <span class="hito">Hito de salida: ensayo oficial DEMRE de diciembre 2026 con 800 en M1</span>
+  </div>
+</div>
+
+<div class="fase">
+  <div class="fase-head"><span class="num">Fase 2 · Completar y profundizar</span><span class="peri">ene-abr 2027 · 12 semanas de estudio · ~24 h (pausa 18/01-14/02)</span></div>
+  <div class="fase-body">
+    <table>
+      <thead><tr><th style="width:16%">Semanas</th><th style="width:26%">Foco</th><th>Contenido</th></tr></thead>
+      <tbody>
+        <tr><td>1-4</td><td>Geometría avanzada</td><td>Circunferencia; razones trigonométricas básicas; cuerpos geométricos (volúmenes)</td></tr>
+        <tr><td>5-8</td><td>Funciones avanzadas</td><td>Exponencial (crecimiento y modelación); problemas de modelación tipo corte 800+</td></tr>
+        <tr><td>9-12</td><td>Consolidación</td><td>Números en profundidad; elevar fortalezas (Proporcionalidad, Álgebra, Estadística) con preguntas de dificultad alta (tipo M2/corte 800+)</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="fase">
+  <div class="fase-head"><span class="num">Fase 3 · Ensayos oficiales</span><span class="peri">abr-jul 2027 · ~12 semanas</span></div>
+  <div class="fase-body">
+    <ul>
+      <li>Ensayos nacionales DEMRE 1er ciclo (mar-abr 2027).</li>
+      <li>PAES de invierno (jun 2027) como ensayo oficial con puntaje válido.</li>
+      <li>Análisis dirigido de errores: cada error se clasifica por área y se refuerza la semana siguiente.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="fase">
+  <div class="fase-head"><span class="num">Fase 4 · Ciclo final</span><span class="peri">jul-nov 2027 · ~17 semanas</span></div>
+  <div class="fase-body">
+    <ul>
+      <li>Inscripción PAES regular (jul-ago 2027).</li>
+      <li>Ensayos nacionales DEMRE 2do ciclo (ago-sep 2027).</li>
+      <li>Ensayo completo propio cada 3-4 semanas; refuerzo según errores recurrentes registrados.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="fase">
+  <div class="fase-head"><span class="num">Fase 5 · Ajuste final</span><span class="peri">nov 2027 · ~3 semanas</span></div>
+  <div class="fase-body">
+    <ul>
+      <li>Repaso ligero y estrategia de examen (gestión de tiempo, orden de preguntas).</li>
+      <li>Rendición PAES regular nov-dic 2027. Meta 1000.</li>
+    </ul>
+    <span class="hito">Meta final: 1000 puntos M1 en la PAES regular nov-dic 2027</span>
+  </div>
+</div>
+
+<h2>5 · Calendario de medición</h2>
+<table>
+  <thead>
+    <tr><th style="width:22%">Frecuencia</th><th style="width:42%">Instrumento</th><th>Registro</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Cada 2 semanas</td><td>Mini-control por área (10 preguntas del área en curso)</td><td><code>seguimiento/ensayos.md</code></td></tr>
+    <tr><td>Cada 4-6 semanas</td><td>Ensayo completo M1 (DEMRE oficial o propio)</td><td><code>seguimiento/ensayos.md</code></td></tr>
+    <tr><td>Hitos</td><td>Ensayo DEMRE dic 2026, invierno 2027, PAES 2027</td><td><code>seguimiento/ensayos.md</code></td></tr>
+  </tbody>
+</table>
+<p>Criterio de avance por área: pasar de debilidad a parcial se logra con ≥50% en mini-controles
+consecutivos; de parcial a fortaleza con ≥75%.</p>
+
+<div class="footer-note">Plan de entrenamiento M1 · Proyecto PAES de Javier · Fuente editable:
+plan/entrenamiento-m1.md · PDF generado 2026-09-24</div>
+
+</body>
+</html>
