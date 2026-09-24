@@ -1,0 +1,310 @@
+/* ============================================================
+   PAES M1 — CSS compartido de las guías web
+   Pantalla: lectura amigable. @media print: A4 compacto (PDF).
+   ============================================================ */
+
+:root {
+  --azul: #1F3864;
+  --azul-suave: #2E5A9E;
+  --azul-claro: #EAF0FA;
+  --teal: #0F766E;
+  --gris-texto: #333B48;
+  --gris-suave: #64748B;
+  --fondo: #F6F8FB;
+  --borde: #E2E8F0;
+  --ambar: #B45309;
+  --ambar-claro: #FEF3C7;
+  --verde: #15803D;
+  --verde-claro: #F0FDF4;
+  --rojo: #B91C1C;
+  --rojo-claro: #FEF2F2;
+  --blanco: #FFFFFF;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "Calibri", "Segoe UI", "Arial", sans-serif;
+  color: var(--gris-texto);
+  font-size: 11pt;
+  line-height: 1.65;
+  background: #fff;
+}
+
+/* ---------- Navbar de la app ---------- */
+.app-nav {
+  background: var(--azul);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 0 22px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+}
+.app-nav .logo { font-weight: 700; font-size: 13pt; padding: 13px 16px 13px 0; color: #fff; text-decoration: none; }
+.app-nav a.link { color: #D9E2F3; text-decoration: none; padding: 14px 13px; display: inline-block; font-size: 10.5pt; font-weight: 600; }
+.app-nav a.link:hover { color: #fff; background: var(--azul-suave); }
+
+/* ---------- Contenedor de la guia ---------- */
+.guia-wrap { max-width: 860px; margin: 0 auto; padding: 26px 26px 60px; }
+
+/* ---------- Breadcrumb / volver ---------- */
+.breadcrumb { font-size: 9.6pt; margin: 6px 0 14px; }
+.breadcrumb a { color: var(--azul-suave); text-decoration: none; font-weight: 600; }
+.breadcrumb a:hover { text-decoration: underline; }
+
+/* ---------- Cabecera de la guia ---------- */
+.guia-header {
+  background: linear-gradient(135deg, var(--azul) 0%, var(--azul-suave) 100%);
+  color: #fff;
+  border-radius: 14px;
+  padding: 26px 30px;
+  margin-bottom: 20px;
+  box-shadow: 0 6px 18px rgba(31,56,100,0.25);
+}
+.guia-header h1 { font-size: 24pt; font-weight: 700; line-height: 1.2; }
+.guia-header .subtitulo { font-size: 11.5pt; opacity: 0.94; margin-top: 6px; }
+.guia-header .meta-linea { font-size: 9.8pt; opacity: 0.82; margin-top: 12px; }
+.guia-header .pill {
+  display: inline-block;
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 20px;
+  padding: 3px 14px;
+  font-size: 9.5pt;
+  font-weight: 600;
+  margin: 10px 6px 0 0;
+}
+
+/* ---------- Indice (TOC) ---------- */
+.toc {
+  background: var(--fondo);
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  padding: 16px 22px;
+  margin: 0 0 22px;
+}
+.toc .titulo { font-weight: 700; color: var(--azul); font-size: 10.5pt; text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 8px; }
+.toc ol { margin-left: 20px; }
+.toc li { margin: 4px 0; }
+.toc a { color: var(--azul-suave); text-decoration: none; font-weight: 600; font-size: 10.5pt; }
+.toc a:hover { text-decoration: underline; color: var(--azul); }
+
+/* ---------- Titulos de seccion ---------- */
+h2 {
+  color: var(--azul);
+  font-size: 17pt;
+  font-weight: 700;
+  margin: 34px 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 3px solid var(--azul);
+  scroll-margin-top: 70px;
+}
+h2 .fase-tag { display: inline-block; font-size: 9.5pt; background: var(--azul-claro); color: var(--azul); border-radius: 14px; padding: 3px 12px; margin-left: 10px; vertical-align: middle; font-weight: 600; }
+h3 {
+  color: var(--azul);
+  font-size: 13.5pt;
+  font-weight: 700;
+  margin: 24px 0 8px;
+  scroll-margin-top: 70px;
+}
+h3 .semana-tag { font-size: 9.5pt; color: var(--gris-suave); font-weight: 600; margin-left: 8px; }
+
+/* ---------- Texto ---------- */
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0 8px 22px; }
+li { margin: 5px 0; }
+strong { color: var(--azul); }
+code { background: var(--fondo); border: 1px solid var(--borde); border-radius: 4px; padding: 1px 6px; font-size: 0.92em; }
+
+/* ---------- Bloques de teoria ---------- */
+.teoria {
+  background: var(--fondo);
+  border: 1px solid var(--borde);
+  border-left: 5px solid var(--azul-suave);
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin: 10px 0;
+  font-size: 10.8pt;
+}
+.formula {
+  background: var(--azul-claro);
+  border: 1px solid #C9D8F2;
+  border-left: 5px solid var(--azul);
+  border-radius: 10px;
+  padding: 12px 18px;
+  margin: 10px 0;
+  font-family: "Cambria Math", "Cambria", serif;
+  font-size: 11.5pt;
+  color: var(--azul);
+  line-height: 1.6;
+}
+.idea {
+  background: var(--ambar-claro);
+  border-left: 5px solid var(--ambar);
+  border-radius: 10px;
+  padding: 10px 16px;
+  margin: 10px 0;
+  font-size: 10.6pt;
+}
+.nota {
+  background: var(--fondo);
+  border-left: 5px solid var(--ambar);
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin: 12px 0;
+  font-size: 10.5pt;
+}
+.pausa {
+  background: var(--rojo-claro);
+  border-left: 5px solid var(--rojo);
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin: 14px 0;
+  font-size: 10.8pt;
+  font-weight: 600;
+  color: var(--rojo);
+}
+.hito {
+  display: inline-block;
+  background: var(--teal);
+  color: #fff;
+  font-size: 10pt;
+  font-weight: 700;
+  padding: 6px 16px;
+  border-radius: 20px;
+  margin-top: 10px;
+}
+
+/* ---------- Ejercicios ---------- */
+.ejercicio {
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  margin: 14px 0;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+.ej-head {
+  background: var(--fondo);
+  padding: 8px 16px;
+  border-bottom: 1px solid var(--borde);
+  font-weight: 700;
+  color: var(--azul);
+  font-size: 10.5pt;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.ej-head .num {
+  background: var(--azul);
+  color: #fff;
+  border-radius: 8px;
+  font-size: 9pt;
+  padding: 2px 10px;
+}
+.ej-enun { padding: 12px 16px; font-size: 10.8pt; }
+.ej-sol {
+  background: var(--verde-claro);
+  padding: 10px 16px;
+  font-size: 10.6pt;
+  border-top: 1px dashed #BBE5C4;
+}
+.ej-sol .tag {
+  display: inline-block;
+  font-size: 8.5pt;
+  font-weight: 800;
+  color: var(--verde);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-right: 8px;
+}
+
+/* ---------- Tablas ---------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0;
+  font-size: 10pt;
+}
+thead th {
+  background: var(--azul);
+  color: #fff;
+  text-align: left;
+  padding: 8px 12px;
+  font-weight: 600;
+}
+tbody td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--borde);
+  vertical-align: top;
+}
+tbody tr:nth-child(even) { background: var(--fondo); }
+
+/* ---------- Boton volver arriba ---------- */
+.subir {
+  position: fixed;
+  bottom: 22px;
+  right: 22px;
+  background: var(--azul);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 46px;
+  height: 46px;
+  font-size: 16pt;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  opacity: 0;
+  transition: opacity 0.25s;
+  z-index: 90;
+}
+.subir.visible { opacity: 1; }
+
+/* ---------- Footer ---------- */
+.guia-footer {
+  margin-top: 34px;
+  padding-top: 14px;
+  border-top: 1px solid var(--borde);
+  font-size: 9.4pt;
+  color: var(--gris-suave);
+  text-align: center;
+}
+.guia-footer .nav-abajo { margin-bottom: 10px; }
+.guia-footer .nav-abajo a { color: var(--azul-suave); text-decoration: none; font-weight: 600; margin: 0 8px; }
+.guia-footer .nav-abajo a:hover { text-decoration: underline; }
+
+/* ============================================================
+   IMPRESION / PDF (A4 compacto)
+   ============================================================ */
+@media print {
+  @page { size: A4; margin: 13mm 13mm; }
+  body { font-size: 9.6pt; line-height: 1.42; }
+  .app-nav, .toc, .subir, .breadcrumb, .guia-footer .nav-abajo { display: none !important; }
+  .guia-wrap { max-width: none; padding: 0; }
+  .guia-header { border-radius: 8px; padding: 16px 20px; box-shadow: none; margin-bottom: 10px; }
+  .guia-header h1 { font-size: 17pt; }
+  .guia-header .subtitulo { font-size: 10pt; }
+  .guia-header .meta-linea { font-size: 8.8pt; }
+  .guia-header .pill { font-size: 8.5pt; }
+  h2 { font-size: 13pt; margin: 16px 0 7px; padding-bottom: 4px; border-bottom: 2px solid var(--azul); }
+  h2 .fase-tag { font-size: 8.5pt; padding: 2px 9px; }
+  h3 { font-size: 11pt; margin: 12px 0 5px; }
+  .teoria, .formula, .idea, .nota, .pausa { border-radius: 6px; padding: 7px 11px; margin: 6px 0; font-size: 9.4pt; }
+  .formula { font-size: 10pt; }
+  .ejercicio { border-radius: 6px; margin: 7px 0; box-shadow: none; page-break-inside: avoid; }
+  .ej-head { padding: 5px 10px; font-size: 9.2pt; }
+  .ej-head .num { font-size: 8.2pt; padding: 1px 8px; }
+  .ej-enun { padding: 6px 10px; font-size: 9.4pt; }
+  .ej-sol { padding: 6px 10px; font-size: 9.3pt; }
+  .ej-sol .tag { font-size: 7.8pt; }
+  table { font-size: 9pt; margin: 8px 0; }
+  thead th { padding: 5px 9px; }
+  tbody td { padding: 5px 9px; }
+  tr, .ejercicio, .teoria, .formula { page-break-inside: avoid; }
+  h2, h3 { page-break-after: avoid; }
+  .guia-footer { margin-top: 14px; padding-top: 7px; font-size: 8.3pt; }
+}

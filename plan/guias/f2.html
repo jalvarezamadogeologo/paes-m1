@@ -2,231 +2,219 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Guía F2 — Completar y profundizar</title>
-<style>
-  :root {
-    --azul: #1F3864; --azul-suave: #2E5A9E; --azul-claro: #EAF0FA; --teal: #0F766E;
-    --gris-texto: #374151; --gris-suave: #6B7280; --fondo: #F8FAFC; --borde: #E2E8F0;
-    --rojo: #D32F2F; --ambar: #B45309; --verde: #2E7D32; --verde-claro: #E8F5E9;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  @page { size: A4; margin: 13mm 13mm; }
-  body { font-family: "Calibri", "Segoe UI", "Arial", sans-serif; color: var(--gris-texto); font-size: 10pt; line-height: 1.42; }
-  .portada { background: linear-gradient(135deg, var(--azul) 0%, var(--azul-suave) 100%); color: #fff; border-radius: 10px; padding: 20px 26px; margin-bottom: 14px; }
-  .portada h1 { font-size: 19pt; font-weight: 700; }
-  .portada .subtitulo { font-size: 10.5pt; opacity: 0.92; margin-top: 4px; }
-  .portada .meta-linea { font-size: 9pt; opacity: 0.8; margin-top: 8px; }
-  h2 { color: var(--azul); font-size: 12.5pt; font-weight: 700; margin: 16px 0 8px; padding-bottom: 4px; border-bottom: 2px solid var(--azul); page-break-after: avoid; }
-  h3 { color: var(--azul); font-size: 11pt; margin: 12px 0 5px; page-break-after: avoid; }
-  p { margin: 5px 0; }
-  ul, ol { margin: 5px 0 5px 18px; }
-  li { margin: 2.5px 0; }
-  strong { color: var(--azul); }
-  .teoria { background: var(--fondo); border: 1px solid var(--borde); border-left: 4px solid var(--azul-suave); border-radius: 6px; padding: 7px 12px; margin: 7px 0; page-break-inside: avoid; }
-  .formula { background: var(--azul-claro); border: 1px solid #C9D8F2; border-radius: 6px; padding: 6px 12px; margin: 6px 0; font-family: "Cambria Math", "Cambria", serif; font-size: 10.5pt; color: var(--azul); page-break-inside: avoid; }
-  .idea { background: #FEF3C7; border-left: 4px solid var(--ambar); border-radius: 6px; padding: 6px 12px; margin: 7px 0; font-size: 9.4pt; page-break-inside: avoid; }
-  .ejercicio { border: 1px solid var(--borde); border-radius: 6px; margin: 6px 0; overflow: hidden; page-break-inside: avoid; }
-  .ej-head { background: var(--fondo); padding: 4px 12px; border-bottom: 1px solid var(--borde); font-weight: 600; color: var(--azul); font-size: 9.3pt; }
-  .ej-enun { padding: 5px 12px; font-size: 9.5pt; }
-  .ej-sol { background: var(--verde-claro); padding: 5px 12px; font-size: 9.5pt; border-top: 1px dashed #B7D9B7; }
-  .ej-sol .tag { display: inline-block; font-size: 8pt; font-weight: 700; color: var(--verde); text-transform: uppercase; letter-spacing: 0.5px; margin-right: 6px; }
-  table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 9.3pt; }
-  thead th { background: var(--azul); color: #fff; text-align: left; padding: 5px 9px; font-weight: 600; }
-  tbody td { padding: 5px 9px; border-bottom: 1px solid var(--borde); vertical-align: top; }
-  tbody tr:nth-child(even) { background: var(--fondo); }
-  tr { page-break-inside: avoid; }
-  .pausa { background: #FDE7E9; border-left: 4px solid var(--rojo); border-radius: 6px; padding: 7px 12px; margin: 10px 0; font-size: 9.5pt; font-weight: 600; color: var(--rojo); }
-  .nota { background: var(--fondo); border-left: 4px solid var(--ambar); border-radius: 6px; padding: 8px 12px; margin: 10px 0; font-size: 9.3pt; }
-  .footer-note { margin-top: 16px; padding-top: 8px; border-top: 1px solid var(--borde); font-size: 8.4pt; color: var(--gris-suave); text-align: center; }
-</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guía F2 — Completar y profundizar | PAES M1</title>
+<link rel="stylesheet" href="../../css/guias.css">
 </head>
 <body>
 
-<div class="portada">
-  <h1>Guía F2 — Completar y profundizar</h1>
-  <div class="subtitulo">Fase 2 del plan de entrenamiento M1 · 12 semanas de estudio · 2 h semanales</div>
-  <div class="meta-linea">04/01 - 25/04/2027 (con pausa 18/01-14/02) · Objetivo: completar Geometría y Funciones, elevar fortalezas a dificultad alta</div>
+<div class="app-nav">
+  <a class="logo" href="../../index.html">PAES M1</a>
+  <a class="link" href="../../calendario.html">Calendario</a>
+  <a class="link" href="../../guias.html">Guías</a>
+  <a class="link" href="../../practica.html">Practicar</a>
+  <a class="link" href="../../descargas.html">Descargas</a>
 </div>
 
-<h2>Navegación de la fase</h2>
-<table>
-  <thead><tr><th style="width:22%">Semana</th><th style="width:30%">Tema</th><th>Sección del compendio</th></tr></thead>
-  <tbody>
-    <tr><td>W15, W16, W21, W22</td><td>Geometría avanzada</td><td>5.5, 5.6, 5.7</td></tr>
-    <tr><td>W23-W26</td><td>Funciones avanzadas</td><td>4.4, 4.5</td></tr>
-    <tr><td>W27-W30</td><td>Consolidación</td><td>1, 2, 3, 6 (dificultad alta)</td></tr>
-  </tbody>
-</table>
-<div class="nota">Práctica mixta (20-30 min por sesión): mantener fortalezas con ejercicios del compendio.
-Hitos de medición: ensayos nacionales DEMRE 1er ciclo (mar-abr 2027).</div>
+<main class="guia-wrap">
+  <div class="breadcrumb"><a href="../../guias.html">← Volver a guías</a></div>
 
-<!-- ============ BLOQUE A ============ -->
-<h2>Bloque A — Geometría avanzada (W15, W16, W21, W22)</h2>
+  <header class="guia-header">
+    <h1>Guía F2 — Completar y profundizar</h1>
+    <div class="subtitulo">Fase 2 del plan de entrenamiento M1 · 12 semanas de estudio · 2 h semanales</div>
+    <div class="meta-linea">04/01 - 25/04/2027 (con pausa 18/01-14/02) · Objetivo: completar Geometría y Funciones, elevar fortalezas</div>
+    <span class="pill">Hito: ensayos DEMRE 1er ciclo (mar-abr 2027)</span>
+  </header>
 
-<h3>Semana 15 · Circunferencia</h3>
-<div class="teoria">Cuerda: segmento que une dos puntos; el diámetro es la mayor cuerda. La distancia del centro a una
-cuerda y su mitad forman un triángulo rectángulo con el radio (Pitágoras). Sector circular:
-área = (θ/360°)·πr². Perímetro del sector = 2r + arco.</div>
-<div class="ejercicio">
-  <div class="ej-head">Ejercicio 1</div>
-  <div class="ej-enun">En una circunferencia de radio 13, una cuerda dista 5 del centro. ¿Cuánto mide la cuerda?</div>
-  <div class="ej-sol"><span class="tag">Solución</span> Mitad = √(169 − 25) = √144 = 12 → cuerda = <strong>24</strong>.</div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">Ejercicio 2</div>
-  <div class="ej-enun">Un sector de 90° en un círculo de radio 6. ¿Área del sector?</div>
-  <div class="ej-sol"><span class="tag">Solución</span> (90/360)·π·36 = <strong>9π ≈ 28,3</strong>.</div>
-</div>
+  <nav class="toc" id="toc"></nav>
 
-<h3>Semana 16 · Trigonometría básica</h3>
-<div class="formula">sen(α) = opuesto/hipotenusa · cos(α) = adyacente/hipotenusa · tan(α) = opuesto/adyacente<br>
-Valores notables: sen 30° = 1/2 · tan 45° = 1 · tan 60° = √3 · altura = distancia · tan(ángulo)</div>
-<div class="ejercicio">
-  <div class="ej-head">Ejercicio 3</div>
-  <div class="ej-enun">En un triángulo rectángulo, el cateto opuesto a α mide 6 y la hipotenusa 10. Calcular sen(α) y tan(α).</div>
-  <div class="ej-sol"><span class="tag">Solución</span> sen(α) = 6/10 = 0,6; cateto adyacente = √(100−36) = 8 → tan(α) = 6/8 = <strong>0,75</strong>.</div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">Ejercicio 4</div>
-  <div class="ej-enun">Desde un punto a 30 m de un árbol, el ángulo de elevación es 60°. ¿Altura del árbol?</div>
-  <div class="ej-sol"><span class="tag">Solución</span> h = 30·tan 60° = <strong>30√3 m</strong>.</div>
-</div>
+  <h2>Navegación de la fase</h2>
+  <table>
+    <thead><tr><th style="width:26%">Semana</th><th style="width:30%">Tema</th><th>Sección del compendio</th></tr></thead>
+    <tbody>
+      <tr><td>W15, W16, W21, W22</td><td>Geometría avanzada</td><td>5.5, 5.6, 5.7</td></tr>
+      <tr><td>W23-W26</td><td>Funciones avanzadas</td><td>4.4, 4.5</td></tr>
+      <tr><td>W27-W30</td><td>Consolidación</td><td>1, 2, 3, 6 (dificultad alta)</td></tr>
+    </tbody>
+  </table>
+  <div class="nota">Práctica mixta (20-30 min por sesión): mantener fortalezas con ejercicios del compendio.
+  Hitos de medición: ensayos nacionales DEMRE 1er ciclo (mar-abr 2027).</div>
 
-<div class="pausa">Pausa de vacaciones W17-W20 (18/01 - 14/02/2027): sin estudio programado.</div>
+  <h2>Bloque A — Geometría avanzada <span class="fase-tag">W15 · W16 · W21 · W22</span></h2>
 
-<h3>Semana 21 · Cuerpos geométricos (volúmenes)</h3>
-<div class="formula">Prisma/cilindro: V = área base · altura · Pirámide/cono: V = (área base · altura)/3 · Esfera: V = (4/3)πr³<br>
-Cilindro: V = πr²h · Cono: V = (πr²h)/3</div>
-<div class="ejercicio">
-  <div class="ej-head">Ejercicio 5</div>
-  <div class="ej-enun">Un cilindro de radio 4 y altura 10. Calcular su volumen (π ≈ 3).</div>
-  <div class="ej-sol"><span class="tag">Solución</span> 3·16·10 = <strong>480</strong>.</div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">Ejercicio 6</div>
-  <div class="ej-enun">Un cono de radio 3 y altura 9. Calcular su volumen (π ≈ 3).</div>
-  <div class="ej-sol"><span class="tag">Solución</span> (3·9·9)/3 = <strong>81</strong>.</div>
-</div>
+  <h3>Semana 15 · Circunferencia</h3>
+  <div class="teoria">Cuerda: segmento que une dos puntos; el diámetro es la mayor cuerda. La distancia del centro a una
+  cuerda y su mitad forman un triángulo rectángulo con el radio (Pitágoras). Sector circular:
+  área = (θ/360°)·πr². Perímetro del sector = 2r + arco.</div>
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">1</span> Cuerda en la circunferencia</div>
+    <div class="ej-enun">En una circunferencia de radio 13, una cuerda dista 5 del centro. ¿Cuánto mide la cuerda?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> Mitad = √(169 − 25) = √144 = 12 → cuerda = <strong>24</strong>.</div>
+  </div>
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">2</span> Área del sector</div>
+    <div class="ej-enun">Un sector de 90° en un círculo de radio 6. ¿Área del sector?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> (90/360)·π·36 = <strong>9π ≈ 28,3</strong>.</div>
+  </div>
 
-<h3>Semana 22 · Geometría en contexto + mini-control</h3>
-<div class="ejercicio">
-  <div class="ej-head">Ejercicio 7</div>
-  <div class="ej-enun">Un cuadrado de lado 8 tiene inscrito un círculo. ¿Área de la región fuera del círculo?</div>
-  <div class="ej-sol"><span class="tag">Solución</span> 64 − π·16 = <strong>64 − 16π</strong>.</div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">Ejercicio 8</div>
-  <div class="ej-enun">Un rectángulo de 12 × 5 se reduce con factor 5/8. ¿Área del dibujo?</div>
-  <div class="ej-sol"><span class="tag">Solución</span> 60·(5/8)² = 60·25/64 = <strong>23,44</strong>.</div>
-</div>
-<div class="nota"><strong>Mini-control (10 preguntas)</strong> de W15-W22 (circunferencia, trigonometría, volúmenes).</div>
+  <h3>Semana 16 · Trigonometría básica</h3>
+  <div class="formula">sen(α) = opuesto/hipotenusa · cos(α) = adyacente/hipotenusa · tan(α) = opuesto/adyacente<br>
+  Valores notables: sen 30° = 1/2 · tan 45° = 1 · tan 60° = √3 · altura = distancia · tan(ángulo)</div>
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">3</span> Razones trigonométricas</div>
+    <div class="ej-enun">En un triángulo rectángulo, el cateto opuesto a α mide 6 y la hipotenusa 10. Calcular sen(α) y tan(α).</div>
+    <div class="ej-sol"><span class="tag">Solución</span> sen(α) = 6/10 = 0,6; cateto adyacente = √(100−36) = 8 → tan(α) = 6/8 = <strong>0,75</strong>.</div>
+  </div>
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">4</span> Árbol y ángulo de elevación</div>
+    <div class="ej-enun">Desde un punto a 30 m de un árbol, el ángulo de elevación es 60°. ¿Altura del árbol?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> h = 30·tan 60° = <strong>30√3 m</strong>.</div>
+  </div>
 
-<!-- ============ BLOQUE B ============ -->
-<h2>Bloque B — Funciones avanzadas (W23-W26)</h2>
+  <div class="pausa">Pausa de vacaciones W17-W20 (18/01 - 14/02/2027): sin estudio programado.</div>
 
-<h3>Semana 23 · Función exponencial</h3>
-<div class="formula">f(x) = a·b<sup>x</sup> (b &gt; 0, b ≠ 1) — b &gt; 1 crece; 0 &lt; b &lt; 1 decrece · multiplicación por k cada período → a·kⁿ</div>
-<div class="ejercicio">
-  <div class="ej-head">Ejercicio 9</div>
-  <div class="ej-enun">Una población de 500 se triplica cada año. ¿Cuántos individuos hay tras 3 años?</div>
-  <div class="ej-sol"><span class="tag">Solución</span> 500·3³ = <strong>13.500</strong>.</div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">Ejercicio 10</div>
-  <div class="ej-enun">Una bacteria se duplica cada hora; al inicio hay 100. ¿Cuántas tras 4 horas?</div>
-  <div class="ej-sol"><span class="tag">Solución</span> 100·2⁴ = <strong>1.600</strong>.</div>
-</div>
+  <h3>Semana 21 · Cuerpos geométricos (volúmenes)</h3>
+  <div class="formula">Prisma/cilindro: V = área base · altura · Pirámide/cono: V = (área base · altura)/3 · Esfera: V = (4/3)πr³<br>
+  Cilindro: V = πr²h · Cono: V = (πr²h)/3</div>
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">5</span> Volumen del cilindro</div>
+    <div class="ej-enun">Un cilindro de radio 4 y altura 10. Calcular su volumen (π ≈ 3).</div>
+    <div class="ej-sol"><span class="tag">Solución</span> 3·16·10 = <strong>480</strong>.</div>
+  </div>
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">6</span> Volumen del cono</div>
+    <div class="ej-enun">Un cono de radio 3 y altura 9. Calcular su volumen (π ≈ 3).</div>
+    <div class="ej-sol"><span class="tag">Solución</span> (3·9·9)/3 = <strong>81</strong>.</div>
+  </div>
 
-<h3>Semana 24 · Modelación con funciones</h3>
-<div class="teoria">Tasa de cambio constante → lineal; variación cuadrática (área, proyectil) → cuadrática;
-multiplicación por un factor fijo → exponencial. Medición: ensayo DEMRE 1er ciclo (mar) si está
-disponible.</div>
-<div class="ejercicio">
-  <div class="ej-head">Ejercicio 11</div>
-  <div class="ej-enun">Un valor de $200 crece 50% cada año. ¿Cuánto vale tras 3 años?</div>
-  <div class="ej-sol"><span class="tag">Solución</span> 200·(1,5)³ = <strong>$675</strong>.</div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">Ejercicio 12</div>
-  <div class="ej-enun">El costo de producir n unidades es C(n) = 2n² + 50n + 200. Calcular el costo de 10 unidades y el costo medio.</div>
-  <div class="ej-sol"><span class="tag">Solución</span> C(10) = 200 + 500 + 200 = <strong>900</strong>; costo medio = 900/10 = <strong>90</strong>.</div>
-</div>
+  <h3>Semana 22 · Geometría en contexto + mini-control</h3>
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">7</span> Cuadrado con círculo</div>
+    <div class="ej-enun">Un cuadrado de lado 8 tiene inscrito un círculo. ¿Área de la región fuera del círculo?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> 64 − π·16 = <strong>64 − 16π</strong>.</div>
+  </div>
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">8</span> Escala y área</div>
+    <div class="ej-enun">Un rectángulo de 12 × 5 se reduce con factor 5/8. ¿Área del dibujo?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> 60·(5/8)² = 60·25/64 = <strong>23,44</strong>.</div>
+  </div>
+  <div class="nota"><strong>Mini-control (10 preguntas)</strong> de W15-W22: <a href="../../practica.html">Practicar</a> (MC4 Geometría avanzada).</div>
 
-<h3>Semana 25 · Modelación avanzada (tipo corte 800+)</h3>
-<div class="ejercicio">
-  <div class="ej-head">Ejercicio 13</div>
-  <div class="ej-enun">Un cultivo crece según N(t) = 100·2^(t/2) con t en horas. ¿Cuántas bacterias hay tras 6 h?</div>
-  <div class="ej-sol"><span class="tag">Solución</span> N(6) = 100·2³ = <strong>800</strong>.</div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">Ejercicio 14</div>
-  <div class="ej-enun">Un rectángulo de perímetro fijo 40 tiene un lado x. Expresar su área y hallar el máximo.</div>
-  <div class="ej-sol"><span class="tag">Solución</span> A(x) = x(20 − x) = −x² + 20x; vértice en x = 10 → área máxima = <strong>100</strong>.</div>
-</div>
+  <h2>Bloque B — Funciones avanzadas <span class="fase-tag">W23-W26</span></h2>
 
-<h3>Semana 26 · Repaso de Funciones + mini-control</h3>
-<div class="ejercicio">
-  <div class="ej-head">Ejercicio 15</div>
-  <div class="ej-enun">f(x) = 2^(x−1). Calcular f(5).</div>
-  <div class="ej-sol"><span class="tag">Solución</span> 2⁴ = <strong>16</strong>.</div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">Ejercicio 16</div>
-  <div class="ej-enun">Una empresa vende q unidades con ingreso I(q) = 5.000q − 20q². ¿Cantidad que maximiza el ingreso?</div>
-  <div class="ej-sol"><span class="tag">Solución</span> Vértice q = 5.000/40 = <strong>125</strong>.</div>
-</div>
-<div class="nota"><strong>Mini-control (10 preguntas)</strong> de W23-W26 (exponencial y modelación).</div>
+  <h3>Semana 23 · Función exponencial</h3>
+  <div class="formula">f(x) = a·b<sup>x</sup> (b &gt; 0, b ≠ 1) — b &gt; 1 crece; 0 &lt; b &lt; 1 decrece · multiplicación por k cada período → a·kⁿ</div>
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">9</span> Población que se triplica</div>
+    <div class="ej-enun">Una población de 500 se triplica cada año. ¿Cuántos individuos hay tras 3 años?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> 500·3³ = <strong>13.500</strong>.</div>
+  </div>
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">10</span> Bacterias que se duplican</div>
+    <div class="ej-enun">Una bacteria se duplica cada hora; al inicio hay 100. ¿Cuántas tras 4 horas?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> 100·2⁴ = <strong>1.600</strong>.</div>
+  </div>
 
-<!-- ============ BLOQUE C ============ -->
-<h2>Bloque C — Consolidación a dificultad alta (W27-W30)</h2>
-<div class="nota">Objetivo: Números en profundidad y elevar Proporcionalidad, Álgebra y Estadística a preguntas
-tipo corte 800+ (nivel M2). Ejercicios de dificultad alta.</div>
+  <h3>Semana 24 · Modelación con funciones</h3>
+  <div class="teoria">Tasa de cambio constante → lineal; variación cuadrática (área, proyectil) → cuadrática;
+  multiplicación por un factor fijo → exponencial. Medición: ensayo DEMRE 1er ciclo (mar) si está
+  disponible.</div>
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">11</span> Crecimiento porcentual</div>
+    <div class="ej-enun">Un valor de $200 crece 50% cada año. ¿Cuánto vale tras 3 años?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> 200·(1,5)³ = <strong>$675</strong>.</div>
+  </div>
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">12</span> Costo cuadrático</div>
+    <div class="ej-enun">El costo de producir n unidades es C(n) = 2n² + 50n + 200. Calcular el costo de 10 unidades y el costo medio.</div>
+    <div class="ej-sol"><span class="tag">Solución</span> C(10) = 200 + 500 + 200 = <strong>900</strong>; costo medio = 900/10 = <strong>90</strong>.</div>
+  </div>
 
-<h3>Semana 27 · Números en profundidad</h3>
-<div class="ejercicio">
-  <div class="ej-head">Ejercicio 17</div>
-  <div class="ej-enun">Un precio baja 10% y luego sube 10%. ¿Variación neta?</div>
-  <div class="ej-sol"><span class="tag">Solución</span> 0,9·1,1 = 0,99 → <strong>disminuye 1%</strong>.</div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">Ejercicio 18</div>
-  <div class="ej-enun">Ordenar de menor a mayor: 7/8, 0,88, 11/12.</div>
-  <div class="ej-sol"><span class="tag">Solución</span> 7/8 = 0,875; 11/12 ≈ 0,9167 → <strong>7/8 &lt; 0,88 &lt; 11/12</strong>.</div>
-</div>
+  <h3>Semana 25 · Modelación avanzada (tipo corte 800+)</h3>
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">13</span> Crecimiento con exponente fraccionario</div>
+    <div class="ej-enun">Un cultivo crece según N(t) = 100·2^(t/2) con t en horas. ¿Cuántas bacterias hay tras 6 h?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> N(6) = 100·2³ = <strong>800</strong>.</div>
+  </div>
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">14</span> Área máxima</div>
+    <div class="ej-enun">Un rectángulo de perímetro fijo 40 tiene un lado x. Expresar su área y hallar el máximo.</div>
+    <div class="ej-sol"><span class="tag">Solución</span> A(x) = x(20 − x) = −x² + 20x; vértice en x = 10 → área máxima = <strong>100</strong>.</div>
+  </div>
 
-<h3>Semana 28 · Proporcionalidad y Álgebra a dificultad alta</h3>
-<div class="ejercicio">
-  <div class="ej-head">Ejercicio 19</div>
-  <div class="ej-enun">8 obreros hacen 2/5 de una obra en 6 días. ¿Cuántos días tardan 5 obreros en terminar el resto?</div>
-  <div class="ej-sol"><span class="tag">Solución</span> Tasa por obrero-día = (2/5)/(8·6) = 1/120. Resto = 3/5 con 5 obreros: t = (3/5)/(5/120) = <strong>14,4 días</strong>.</div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">Ejercicio 20</div>
-  <div class="ej-enun">Dos números suman 12 y la diferencia de sus cuadrados es 72. ¿Cuáles son?</div>
-  <div class="ej-sol"><span class="tag">Solución</span> a² − b² = (a+b)(a−b) = 12(a−b) = 72 → a−b = 6 → <strong>a = 9, b = 3</strong>.</div>
-</div>
+  <h3>Semana 26 · Repaso de Funciones + mini-control</h3>
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">15</span> Potencia con exponente</div>
+    <div class="ej-enun">f(x) = 2^(x−1). Calcular f(5).</div>
+    <div class="ej-sol"><span class="tag">Solución</span> 2⁴ = <strong>16</strong>.</div>
+  </div>
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">16</span> Ingreso máximo</div>
+    <div class="ej-enun">Una empresa vende q unidades con ingreso I(q) = 5.000q − 20q². ¿Cantidad que maximiza el ingreso?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> Vértice q = 5.000/40 = <strong>125</strong>.</div>
+  </div>
+  <div class="nota"><strong>Mini-control (10 preguntas)</strong> de W23-W26: <a href="../../practica.html">Practicar</a> (MC5 Funciones avanzadas).</div>
 
-<h3>Semana 29 · Estadística a dificultad alta</h3>
-<div class="ejercicio">
-  <div class="ej-head">Ejercicio 21</div>
-  <div class="ej-enun">El promedio de 5 números es 20. Se agrega un sexto y el promedio sube a 22. ¿Cuál es el sexto?</div>
-  <div class="ej-sol"><span class="tag">Solución</span> Suma₅ = 100; suma₆ = 132 → sexto = <strong>32</strong>.</div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">Ejercicio 22</div>
-  <div class="ej-enun">Se lanzan dos dados. ¿Probabilidad de que la suma sea menor que 5?</div>
-  <div class="ej-sol"><span class="tag">Solución</span> Sumas 2, 3, 4 → 6 de 36 → <strong>1/6</strong>.</div>
-</div>
+  <h2>Bloque C — Consolidación a dificultad alta <span class="fase-tag">W27-W30</span></h2>
+  <div class="nota">Objetivo: Números en profundidad y elevar Proporcionalidad, Álgebra y Estadística a preguntas
+  tipo corte 800+ (nivel M2). Ejercicios de dificultad alta.</div>
 
-<h3>Semana 30 · Ensayo completo + cierre de fase</h3>
-<ul>
-  <li>Ensayo completo M1 (usar el ensayo DEMRE 1er ciclo de abril si está disponible).</li>
-  <li>Analizar errores, registrar en <code>seguimiento/ensayos.md</code> y cerrar la fase.</li>
-</ul>
-<div class="nota">Criterio de avance: Geometría y Funciones ≥50% en los MC de la fase; fortalezas mantenidas
-≥75% con las preguntas de dificultad alta.</div>
+  <h3>Semana 27 · Números en profundidad</h3>
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">17</span> Variación neta</div>
+    <div class="ej-enun">Un precio baja 10% y luego sube 10%. ¿Variación neta?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> 0,9·1,1 = 0,99 → <strong>disminuye 1%</strong>.</div>
+  </div>
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">18</span> Ordenar racionales</div>
+    <div class="ej-enun">Ordenar de menor a mayor: 7/8, 0,88, 11/12.</div>
+    <div class="ej-sol"><span class="tag">Solución</span> 7/8 = 0,875; 11/12 ≈ 0,9167 → <strong>7/8 &lt; 0,88 &lt; 11/12</strong>.</div>
+  </div>
 
-<div class="footer-note">Guía F2 · Proyecto PAES de Javier · Fuente editable: plan/guias/f2.md · PDF generado 2026-09-24</div>
+  <h3>Semana 28 · Proporcionalidad y Álgebra a dificultad alta</h3>
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">19</span> Obreros y obra</div>
+    <div class="ej-enun">8 obreros hacen 2/5 de una obra en 6 días. ¿Cuántos días tardan 5 obreros en terminar el resto?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> Tasa por obrero-día = (2/5)/(8·6) = 1/120. Resto = 3/5 con 5 obreros: t = (3/5)/(5/120) = <strong>14,4 días</strong>.</div>
+  </div>
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">20</span> Diferencia de cuadrados</div>
+    <div class="ej-enun">Dos números suman 12 y la diferencia de sus cuadrados es 72. ¿Cuáles son?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> a² − b² = (a+b)(a−b) = 12(a−b) = 72 → a−b = 6 → <strong>a = 9, b = 3</strong>.</div>
+  </div>
 
+  <h3>Semana 29 · Estadística a dificultad alta</h3>
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">21</span> Sexto dato</div>
+    <div class="ej-enun">El promedio de 5 números es 20. Se agrega un sexto y el promedio sube a 22. ¿Cuál es el sexto?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> Suma₅ = 100; suma₆ = 132 → sexto = <strong>32</strong>.</div>
+  </div>
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">22</span> Probabilidad con dados</div>
+    <div class="ej-enun">Se lanzan dos dados. ¿Probabilidad de que la suma sea menor que 5?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> Sumas 2, 3, 4 → 6 de 36 → <strong>1/6</strong>.</div>
+  </div>
+
+  <h3>Semana 30 · Ensayo completo + cierre de fase</h3>
+  <ul>
+    <li>Ensayo completo M1 (usar el ensayo DEMRE 1er ciclo de abril si está disponible).</li>
+    <li>Analizar errores, registrar y cerrar la fase.</li>
+  </ul>
+  <div class="nota">Criterio de avance: Geometría y Funciones ≥50% en los MC de la fase; fortalezas mantenidas
+  ≥75% con las preguntas de dificultad alta.</div>
+
+  <footer class="guia-footer">
+    <div class="nav-abajo">
+      <a href="f1.html">← Anterior: Guía F1</a>
+      <a href="../../guias.html">Volver a guías</a>
+      <a href="f3.html">Siguiente: Guía F3 →</a>
+    </div>
+    Guía F2 · Fuente editable: <code>f2.md</code> · PDF: <a href="f2.pdf" target="_blank">f2.pdf</a>
+  </footer>
+</main>
+
+<button class="subir" id="subir" title="Volver arriba">↑</button>
+
+<script src="../../js/guias.js"></script>
 </body>
 </html>

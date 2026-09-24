@@ -2,571 +2,218 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Guía de estudio — Matemática 1 (M1)</title>
-<style>
-  :root {
-    --azul: #1F3864;
-    --azul-suave: #2E5A9E;
-    --azul-claro: #EAF0FA;
-    --teal: #0F766E;
-    --gris-texto: #374151;
-    --gris-suave: #6B7280;
-    --fondo: #F8FAFC;
-    --borde: #E2E8F0;
-    --rojo: #D32F2F;
-    --ambar: #B45309;
-    --verde: #2E7D32;
-    --verde-claro: #E8F5E9;
-    --ambar-claro: #FEF3C7;
-    --rojo-claro: #FDE7E9;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  @page { size: A4; margin: 13mm 13mm; }
-  body {
-    font-family: "Calibri", "Segoe UI", "Arial", sans-serif;
-    color: var(--gris-texto);
-    font-size: 10pt;
-    line-height: 1.42;
-  }
-
-  /* Portada */
-  .portada {
-    background: linear-gradient(135deg, var(--azul) 0%, var(--azul-suave) 100%);
-    color: #fff;
-    border-radius: 10px;
-    padding: 22px 26px;
-    margin-bottom: 14px;
-  }
-  .portada h1 { font-size: 20pt; font-weight: 700; }
-  .portada .subtitulo { font-size: 10.5pt; opacity: 0.92; margin-top: 4px; }
-  .portada .meta-linea { font-size: 9pt; opacity: 0.8; margin-top: 8px; }
-
-  h2.area {
-    color: #fff;
-    background: var(--azul);
-    font-size: 12.5pt;
-    padding: 7px 14px;
-    border-radius: 6px;
-    margin: 16px 0 10px;
-    page-break-after: avoid;
-  }
-  h2.area .prio { font-weight: 400; font-size: 9pt; opacity: 0.9; margin-left: 8px; }
-  h3 { color: var(--azul); font-size: 11pt; margin: 12px 0 5px; page-break-after: avoid; }
-  p { margin: 5px 0; }
-  ul, ol { margin: 5px 0 5px 18px; }
-  li { margin: 2.5px 0; }
-  strong { color: var(--azul); }
-
-  /* Bloques de teoria */
-  .teoria {
-    background: var(--fondo);
-    border: 1px solid var(--borde);
-    border-left: 4px solid var(--azul-suave);
-    border-radius: 6px;
-    padding: 8px 12px;
-    margin: 7px 0;
-    page-break-inside: avoid;
-  }
-  .formula {
-    background: var(--azul-claro);
-    border: 1px solid #C9D8F2;
-    border-radius: 6px;
-    padding: 6px 12px;
-    margin: 6px 0;
-    font-family: "Cambria Math", "Cambria", serif;
-    font-size: 10.5pt;
-    color: var(--azul);
-    page-break-inside: avoid;
-  }
-  .idea {
-    background: var(--ambar-claro);
-    border-left: 4px solid var(--ambar);
-    border-radius: 6px;
-    padding: 6px 12px;
-    margin: 7px 0;
-    font-size: 9.4pt;
-    page-break-inside: avoid;
-  }
-
-  /* Ejercicios */
-  .ejercicio {
-    border: 1px solid var(--borde);
-    border-radius: 6px;
-    margin: 7px 0;
-    overflow: hidden;
-    page-break-inside: avoid;
-  }
-  .ej-head {
-    background: var(--fondo);
-    padding: 5px 12px;
-    border-bottom: 1px solid var(--borde);
-    font-weight: 600;
-    color: var(--azul);
-    font-size: 9.6pt;
-  }
-  .ej-enun { padding: 6px 12px; font-size: 9.6pt; }
-  .ej-sol {
-    background: var(--verde-claro);
-    padding: 6px 12px;
-    font-size: 9.6pt;
-    border-top: 1px dashed #B7D9B7;
-  }
-  .ej-sol .tag {
-    display: inline-block;
-    font-size: 8pt;
-    font-weight: 700;
-    color: var(--verde);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-right: 6px;
-  }
-
-  /* Badges de prioridad */
-  .badge {
-    display: inline-block;
-    font-size: 8.2pt;
-    font-weight: 600;
-    padding: 2px 9px;
-    border-radius: 10px;
-    white-space: nowrap;
-  }
-  .b-debil { background: var(--rojo-claro); color: var(--rojo); }
-  .b-parcial { background: var(--ambar-claro); color: var(--ambar); }
-  .b-fortaleza { background: var(--verde-claro); color: var(--verde); }
-
-  /* Mapa de estudio */
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 8px 0;
-    font-size: 9.3pt;
-  }
-  thead th {
-    background: var(--azul);
-    color: #fff;
-    text-align: left;
-    padding: 5px 9px;
-    font-weight: 600;
-  }
-  tbody td {
-    padding: 5px 9px;
-    border-bottom: 1px solid var(--borde);
-    vertical-align: top;
-  }
-  tbody tr:nth-child(even) { background: var(--fondo); }
-  tr { page-break-inside: avoid; }
-
-  .nota {
-    background: var(--fondo);
-    border-left: 4px solid var(--ambar);
-    border-radius: 6px;
-    padding: 8px 12px;
-    margin: 10px 0;
-    font-size: 9.3pt;
-  }
-  .footer-note {
-    margin-top: 16px;
-    padding-top: 8px;
-    border-top: 1px solid var(--borde);
-    font-size: 8.4pt;
-    color: var(--gris-suave);
-    text-align: center;
-  }
-</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guía por área (compendio) — PAES M1</title>
+<link rel="stylesheet" href="../css/guias.css">
 </head>
 <body>
 
-<div class="portada">
-  <h1>Guía de estudio — Matemática 1 (PAES)</h1>
-  <div class="subtitulo">Base teórica + ejercicios clave resueltos · 6 áreas · 36 ejercicios</div>
-  <div class="meta-linea">Material del plan de entrenamiento M1 · Elaborada 2026-09-24 · Prioridades según diagnóstico 2026-09-24</div>
+<div class="app-nav">
+  <a class="logo" href="../index.html">PAES M1</a>
+  <a class="link" href="../calendario.html">Calendario</a>
+  <a class="link" href="../guias.html">Guías</a>
+  <a class="link" href="../practica.html">Practicar</a>
+  <a class="link" href="../descargas.html">Descargas</a>
 </div>
 
-<h2 style="color:var(--azul);background:none;padding:0;margin:14px 0 8px;border-bottom:2px solid var(--azul);border-radius:0;font-size:13pt">Cómo usar esta guía</h2>
-<ol>
-  <li>Estudiar la base teórica de cada tema.</li>
-  <li>Resolver los ejercicios clave sin mirar la solución; después comparar con el desarrollo dado.</li>
-  <li>Marcar los temas que cuestan para retomarlos en la siguiente sesión (el plan usa repaso de 20 min).</li>
-  <li>La prioridad de estudio sigue el plan: <strong>Geometría y Funciones primero</strong> (debilidades), luego Números, y Proporcionalidad/Álgebra/Estadística se mantienen con práctica ligera.</li>
-</ol>
+<main class="guia-wrap">
+  <div class="breadcrumb"><a href="../guias.html">← Volver a guías</a></div>
 
-<h2 style="color:var(--azul);background:none;padding:0;margin:14px 0 8px;border-bottom:2px solid var(--azul);border-radius:0;font-size:13pt">Mapa de estudio</h2>
-<table>
-  <thead>
-    <tr><th style="width:22%">Área</th><th style="width:15%">Prioridad</th><th style="width:22%">Fase del plan</th><th>Temas</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>1. Números</td><td><span class="badge b-parcial">Consolidar</span></td><td>F1 (11-12), F2 (9-12)</td><td>Conjuntos numéricos, potencias y raíces, porcentajes</td></tr>
-    <tr><td>2. Proporcionalidad</td><td><span class="badge b-fortaleza">Fortaleza</span></td><td>F1-F2 (práctica mixta)</td><td>Razones y proporciones, directa e inversa, escalas, repartos y mezclas</td></tr>
-    <tr><td>3. Álgebra</td><td><span class="badge b-fortaleza">Fortaleza</span></td><td>F1-F2 (práctica mixta)</td><td>Expresiones, productos notables, ecuaciones, sistemas, valor absoluto</td></tr>
-    <tr><td>4. Funciones</td><td><span class="badge b-debil">Debilidad</span></td><td>F1 (7-10), F2 (5-8)</td><td>Concepto, lineal y afín, cuadrática, exponencial, modelación</td></tr>
-    <tr><td>5. Geometría</td><td><span class="badge b-debil">Debilidad crítica</span></td><td>F1 (1-6), F2 (1-4)</td><td>Ángulos y triángulos, Pitágoras, semejanza, áreas, circunferencia, trigonometría, volúmenes</td></tr>
-    <tr><td>6. Estadística</td><td><span class="badge b-fortaleza">Fortaleza</span></td><td>F1-F2 (práctica mixta)</td><td>Medidas de tendencia central, probabilidad, probabilidad compuesta, promedio ponderado</td></tr>
-  </tbody>
-</table>
+  <header class="guia-header">
+    <h1>Guía por área — Compendio</h1>
+    <div class="subtitulo">Base teórica de las 6 áreas de la PAES M1 + 36 ejercicios clave resueltos</div>
+    <div class="meta-linea">Referencia para consultas y refuerzos · Acompaña a las guías por fase (F1-F5)</div>
+    <span class="pill">Números</span><span class="pill">Proporcionalidad</span><span class="pill">Álgebra</span>
+    <span class="pill">Funciones</span><span class="pill">Geometría</span><span class="pill">Estadística</span>
+  </header>
 
-<!-- ============ AREA 1 ============ -->
-<h2 class="area">1 · Números y operaciones <span class="prio">Prioridad: consolidar (50%) · Base de cálculo de las demás áreas</span></h2>
+  <nav class="toc" id="toc"></nav>
 
-<h3>1.1 Conjuntos numéricos</h3>
-<ul>
-  <li><strong>Naturales (N):</strong> 1, 2, 3, ...</li>
-  <li><strong>Enteros (Z):</strong> ..., −2, −1, 0, 1, 2, ...</li>
-  <li><strong>Racionales (Q):</strong> números que se escriben como fracción a/b con a, b enteros y b ≠ 0. Incluyen decimales finitos (0,75 = 3/4) y periódicos (0,333... = 1/3).</li>
-  <li><strong>Irracionales (I):</strong> no son fracción; desarrollo decimal infinito no periódico. Ejemplos: √2, √3, π.</li>
-  <li><strong>Reales (R):</strong> unión de racionales e irracionales.</li>
-</ul>
-<div class="idea">La raíz cuadrada de un número que no es un cuadrado perfecto es irracional (√8 = 2√2). Un decimal finito o periódico siempre es racional.</div>
+  <h2>Cómo usar esta guía</h2>
+  <ol>
+    <li>Estudiar la base teórica de cada tema.</li>
+    <li>Resolver los ejercicios clave sin mirar la solución; después comparar con el desarrollo dado.</li>
+    <li>Marcar los temas que cuestan para retomarlos en la siguiente sesión (el plan usa repaso de 20 min).</li>
+    <li>La prioridad de estudio sigue el plan: <strong>Geometría y Funciones primero</strong> (debilidades), luego
+        Números, y Proporcionalidad/Álgebra/Estadística se mantienen con práctica ligera.</li>
+  </ol>
 
-<h3>1.2 Potencias y raíces</h3>
-<div class="formula">a<sup>m</sup> · a<sup>n</sup> = a<sup>m+n</sup> &nbsp;&nbsp;·&nbsp;&nbsp; a<sup>m</sup> / a<sup>n</sup> = a<sup>m−n</sup> &nbsp;&nbsp;·&nbsp;&nbsp; (a<sup>m</sup>)<sup>n</sup> = a<sup>m·n</sup><br>
-a<sup>0</sup> = 1 &nbsp;&nbsp;·&nbsp;&nbsp; a<sup>−n</sup> = 1/a<sup>n</sup> &nbsp;&nbsp;·&nbsp;&nbsp; a<sup>1/n</sup> = ⁿ√a</div>
-<p>Ejemplos: (√16)<sup>−2</sup> = 4<sup>−2</sup> = 1/16 &nbsp;·&nbsp; √8 = √(4·2) = 2√2.</p>
+  <h2>Mapa de estudio</h2>
+  <table>
+    <thead><tr><th style="width:22%">Área</th><th style="width:15%">Prioridad</th><th style="width:22%">Fase del plan</th><th>Temas</th></tr></thead>
+    <tbody>
+      <tr><td>1. Números</td><td>Consolidar</td><td>F1 (11-12), F2 (9-12)</td><td>Conjuntos numéricos, potencias y raíces, porcentajes</td></tr>
+      <tr><td>2. Proporcionalidad</td><td>Fortaleza</td><td>F1-F2 (práctica mixta)</td><td>Razones y proporciones, directa e inversa, escalas, repartos y mezclas</td></tr>
+      <tr><td>3. Álgebra</td><td>Fortaleza</td><td>F1-F2 (práctica mixta)</td><td>Expresiones, productos notables, ecuaciones, sistemas, valor absoluto</td></tr>
+      <tr><td>4. Funciones</td><td>Debilidad</td><td>F1 (7-10), F2 (5-8)</td><td>Concepto, lineal y afín, cuadrática, exponencial, modelación</td></tr>
+      <tr><td>5. Geometría</td><td>Debilidad crítica</td><td>F1 (1-6), F2 (1-4)</td><td>Ángulos y triángulos, Pitágoras, semejanza, áreas, circunferencia, trigonometría, volúmenes</td></tr>
+      <tr><td>6. Estadística</td><td>Fortaleza</td><td>F1-F2 (práctica mixta)</td><td>Medidas de tendencia central, probabilidad, probabilidad compuesta, promedio ponderado</td></tr>
+    </tbody>
+  </table>
 
-<h3>1.3 Porcentajes</h3>
-<ul>
-  <li>Porcentaje = fracción de denominador 100: 25% = 0,25.</li>
-  <li>Aumentar en p% equivale a multiplicar por (1 + p/100).</li>
-  <li>Disminuir en p% equivale a multiplicar por (1 − p/100).</li>
-  <li>Porcentajes encadenados <strong>no se suman</strong>: subir 20% y bajar 20% da 1,20 · 0,80 = 0,96 → disminuyó 4%.</li>
-</ul>
+  <h2>1 · Números y operaciones</h2>
+  <div class="teoria"><strong>Prioridad: consolidar (50%).</strong> Es la base de cálculo de todas las demás áreas.
+  Conjuntos: N, Z, Q (fracciones y decimales finitos/periódicos), I (√2, √3, π) y R.
+  La raíz cuadrada de un número que no es un cuadrado perfecto es irracional (√8 = 2√2).</div>
+  <div class="formula">a<sup>m</sup>·a<sup>n</sup> = a<sup>m+n</sup> · a<sup>m</sup>/a<sup>n</sup> = a<sup>m−n</sup> · (a<sup>m</sup>)<sup>n</sup> = a<sup>m·n</sup> · a<sup>0</sup> = 1 · a<sup>−n</sup> = 1/a<sup>n</sup> · a<sup>1/n</sup> = ⁿ√a</div>
+  <p>Porcentajes: aumentar p% = multiplicar por (1 + p/100); disminuir p% = multiplicar por (1 − p/100).
+  <strong>Los porcentajes encadenados no se suman:</strong> subir 20% y bajar 20% da 1,20·0,80 = 0,96 (−4%).</p>
 
-<h3>Ejercicios clave — Números</h3>
-<div class="ejercicio">
-  <div class="ej-head">E1 · Diagnóstico P1</div>
-  <div class="ej-enun">Un producto cuesta $X. Si su precio aumenta 20% y luego disminuye 20%, ¿qué ocurre con el precio final?</div>
-  <div class="ej-sol"><span class="tag">Solución</span> Precio final = X · 1,20 · 0,80 = X · 0,96. Queda en 96% del original: <strong>disminuye 4%</strong>.</div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">E2 · Diagnóstico P2</div>
-  <div class="ej-enun">Calcular (√16)<sup>−2</sup> · 8.</div>
-  <div class="ej-sol"><span class="tag">Solución</span> (√16)<sup>−2</sup> = 4<sup>−2</sup> = 1/16. Luego 1/16 · 8 = <strong>1/2</strong>.</div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">E3 · Diagnóstico P3</div>
-  <div class="ej-enun">Ordenar de menor a mayor: 2/3, 0,7, 5/7, 3/4.</div>
-  <div class="ej-sol"><span class="tag">Solución</span> 2/3 ≈ 0,667; 0,7; 5/7 ≈ 0,714; 3/4 = 0,75 → <strong>2/3 &lt; 0,7 &lt; 5/7 &lt; 3/4</strong>.</div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">E4 · Diagnóstico P4</div>
-  <div class="ej-enun">¿Cuál de los siguientes números es irracional? √8, 0,5, 1/3, 0,75.</div>
-  <div class="ej-sol"><span class="tag">Solución</span> √8 = 2√2 no es fracción → <strong>irracional</strong>. Los demás son racionales.</div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">E5 · Extra</div>
-  <div class="ej-enun">Un valor de $40.000 sube 15% y luego baja 10%. ¿Cuál es el valor final?</div>
-  <div class="ej-sol"><span class="tag">Solución</span> 40.000 · 1,15 · 0,90 = 40.000 · 1,035 = <strong>$41.400</strong>.</div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">E6 · Extra</div>
-  <div class="ej-enun">Calcular 2³ · 2⁵ / 2⁶.</div>
-  <div class="ej-sol"><span class="tag">Solución</span> 2<sup>3+5−6</sup> = 2² = <strong>4</strong>.</div>
-</div>
+  <div class="ejercicio"><div class="ej-head"><span class="num">E1</span> Diagnóstico P1</div>
+    <div class="ej-enun">Un producto cuesta $X. Si su precio aumenta 20% y luego disminuye 20%, ¿qué ocurre?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> X·1,20·0,80 = X·0,96 → <strong>disminuye 4%</strong>.</div></div>
+  <div class="ejercicio"><div class="ej-head"><span class="num">E2</span> Diagnóstico P2</div>
+    <div class="ej-enun">Calcular (√16)<sup>−2</sup> · 8.</div>
+    <div class="ej-sol"><span class="tag">Solución</span> 4<sup>−2</sup> = 1/16; 1/16·8 = <strong>1/2</strong>.</div></div>
+  <div class="ejercicio"><div class="ej-head"><span class="num">E3</span> Diagnóstico P3</div>
+    <div class="ej-enun">Ordenar de menor a mayor: 2/3, 0,7, 5/7, 3/4.</div>
+    <div class="ej-sol"><span class="tag">Solución</span> <strong>2/3 &lt; 0,7 &lt; 5/7 &lt; 3/4</strong>.</div></div>
+  <div class="ejercicio"><div class="ej-head"><span class="num">E4</span> Diagnóstico P4</div>
+    <div class="ej-enun">¿Cuál es irracional: √8, 0,5, 1/3, 0,75?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> <strong>√8 = 2√2</strong> (los demás son racionales).</div></div>
+  <div class="ejercicio"><div class="ej-head"><span class="num">E5</span> Extra</div>
+    <div class="ej-enun">Un valor de $40.000 sube 15% y luego baja 10%. ¿Valor final?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> 40.000·1,15·0,90 = <strong>$41.400</strong>.</div></div>
+  <div class="ejercicio"><div class="ej-head"><span class="num">E6</span> Extra</div>
+    <div class="ej-enun">Calcular 2³·2⁵/2⁶.</div>
+    <div class="ej-sol"><span class="tag">Solución</span> 2<sup>3+5−6</sup> = 2² = <strong>4</strong>.</div></div>
 
-<!-- ============ AREA 2 ============ -->
-<h2 class="area">2 · Proporcionalidad <span class="prio">Prioridad: fortaleza (75%) · Mantener y elevar a dificultad alta en F2</span></h2>
+  <h2>2 · Proporcionalidad</h2>
+  <div class="teoria"><strong>Prioridad: fortaleza (75%).</strong> Mantener con práctica ligera; elevar a dificultad alta en F2.
+  Proporción a/b = c/d → a·d = b·c. Directa: y = k·x. Inversa: y = k/x. Escalas: 1:E; las áreas escalan con el
+  cuadrado de la razón (k²). Mezclas: promedio ponderado (cantidad·valor)/total.</div>
+  <div class="ejercicio"><div class="ej-head"><span class="num">E7</span> Diagnóstico P5</div>
+    <div class="ej-enun">5 máquinas producen 1.200 piezas en 4 h. ¿Cuántas horas tardan 4 máquinas en producir 1.500 piezas?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> t = 4·(5/4)·(1.500/1.200) = 6,25 h = <strong>6 h 15 min</strong>.</div></div>
+  <div class="ejercicio"><div class="ej-head"><span class="num">E8</span> Diagnóstico P6</div>
+    <div class="ej-enun">Mezcla de 3 kg al 10% y 2 kg al 25%. ¿Porcentaje de cobre?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> (0,3 + 0,5)/5 = <strong>16%</strong>.</div></div>
+  <div class="ejercicio"><div class="ej-head"><span class="num">E9</span> Diagnóstico P7</div>
+    <div class="ej-enun">Terreno 40 m × 25 m a escala 1:100. ¿Área en el plano?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> 1.000 m² / 10.000 = <strong>1.000 cm²</strong>.</div></div>
+  <div class="ejercicio"><div class="ej-head"><span class="num">E10</span> Diagnóstico P8</div>
+    <div class="ej-enun">Hombres:mujeres 3:2; entran 2 mujeres → 5:4. ¿Cuántas mujeres hay?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> (3k)/(2k+2) = 5/4 → k = 5 → mujeres = <strong>15</strong>.</div></div>
+  <div class="ejercicio"><div class="ej-head"><span class="num">E11</span> Extra</div>
+    <div class="ej-enun">3 obreros tardan 12 días. ¿Cuántos tardan 6 obreros?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> 12·(3/6) = <strong>6 días</strong>.</div></div>
+  <div class="ejercicio"><div class="ej-head"><span class="num">E12</span> Extra</div>
+    <div class="ej-enun">Mapa 1:50.000; 8 cm en el mapa. ¿Distancia real?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> 8·50.000 = 400.000 cm = <strong>4 km</strong>.</div></div>
 
-<h3>2.1 Razones y proporciones</h3>
-<ul>
-  <li>Razón entre a y b: a/b.</li>
-  <li>Proporción: a/b = c/d. Propiedad fundamental: <strong>a·d = b·c</strong>.</li>
-  <li>Reparto proporcional en razón k : m: A = k·t y B = m·t con t común.</li>
-</ul>
+  <h2>3 · Álgebra</h2>
+  <div class="teoria"><strong>Prioridad: fortaleza (75%).</strong> Mantener; elevar con dificultad alta en F2.
+  Productos notables y valor absoluto:</div>
+  <div class="formula">(a+b)² = a² + 2ab + b² · (a−b)² = a² − 2ab + b² · (a+b)(a−b) = a² − b² · (x+a)(x+b) = x² + (a+b)x + ab<br>
+  |x − a| ≤ b ⇔ a−b ≤ x ≤ a+b · |x − a| ≥ b ⇔ x ≤ a−b o x ≥ a+b</div>
+  <div class="ejercicio"><div class="ej-head"><span class="num">E13</span> Diagnóstico P9</div>
+    <div class="ej-enun">El lado de un cuadrado aumenta 3 cm y su área aumenta 69 cm². ¿Lado original?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> (x+3)² = x² + 69 → x = <strong>10 cm</strong>.</div></div>
+  <div class="ejercicio"><div class="ej-head"><span class="num">E14</span> Diagnóstico P10</div>
+    <div class="ej-enun">Suma 17 y producto 60. ¿Cuáles son los números?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> t² − 17t + 60 = 0 → <strong>12 y 5</strong>.</div></div>
+  <div class="ejercicio"><div class="ej-head"><span class="num">E15</span> Diagnóstico P11</div>
+    <div class="ej-enun">Promedio 20 y diferencia 14. ¿Cuál es el mayor?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> a+b = 40; a−b = 14 → <strong>27</strong>.</div></div>
+  <div class="ejercicio"><div class="ej-head"><span class="num">E16</span> Diagnóstico P12</div>
+    <div class="ej-enun">Resolver |x − 2| ≤ 5.</div>
+    <div class="ej-sol"><span class="tag">Solución</span> <strong>[−3, 7]</strong>.</div></div>
+  <div class="ejercicio"><div class="ej-head"><span class="num">E17</span> Extra</div>
+    <div class="ej-enun">Resolver x² − 5x + 6 = 0.</div>
+    <div class="ej-sol"><span class="tag">Solución</span> (x−2)(x−3) = 0 → <strong>x = 2 o 3</strong>.</div></div>
+  <div class="ejercicio"><div class="ej-head"><span class="num">E18</span> Extra</div>
+    <div class="ej-enun">Resolver x + y = 10; x − y = 4.</div>
+    <div class="ej-sol"><span class="tag">Solución</span> <strong>(7, 3)</strong>.</div></div>
 
-<h3>2.2 Proporcionalidad directa e inversa</h3>
-<div class="formula">Directa: y = k·x (si x se duplica, y se duplica) &nbsp;&nbsp;·&nbsp;&nbsp; Inversa: y = k/x (si x se duplica, y se reduce a la mitad)</div>
-<p>Regla de tres simple y compuesta: ordenar los datos, identificar si cada relación es directa o inversa y despejar la incógnita.</p>
+  <h2>4 · Funciones</h2>
+  <div class="teoria"><strong>Prioridad: debilidad clara (25%).</strong> Refuerzo prioritario desde la base (F1 semanas 7-10).</div>
+  <div class="formula">Lineal: f(x) = kx · Afín: f(x) = mx + n (m = pendiente, n = ordenada al origen) · m = (y₂−y₁)/(x₂−x₁)<br>
+  Cuadrática: f(x) = ax² + bx + c; vértice x = −b/(2a) · Exponencial: f(x) = a·b<sup>x</sup> · Proyectil: h(t) = −5t² + v₀t + h₀</div>
+  <div class="ejercicio"><div class="ej-head"><span class="num">E19</span> Diagnóstico P13</div>
+    <div class="ej-enun">Cargo fijo $4.000 + $600/h. Modelar C(x).</div>
+    <div class="ej-sol"><span class="tag">Solución</span> <strong>C(x) = 4.000 + 600x</strong>.</div></div>
+  <div class="ejercicio"><div class="ej-head"><span class="num">E20</span> Diagnóstico P14</div>
+    <div class="ej-enun">h(t) = −5t² + 40t. ¿Altura máxima?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> t = 4 → <strong>80 m</strong>.</div></div>
+  <div class="ejercicio"><div class="ej-head"><span class="num">E21</span> Diagnóstico P15</div>
+    <div class="ej-enun">100 bacterias se duplican cada hora. ¿Tras 4 h?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> 100·2⁴ = <strong>1.600</strong>.</div></div>
+  <div class="ejercicio"><div class="ej-head"><span class="num">E22</span> Diagnóstico P16</div>
+    <div class="ej-enun">f afín con f(3) = 15 y pendiente 5. ¿f(8)?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> f(8) = 15 + 25 = <strong>40</strong>.</div></div>
+  <div class="ejercicio"><div class="ej-head"><span class="num">E23</span> Extra</div>
+    <div class="ej-enun">Pendiente de la recta por (1, 3) y (4, 9).</div>
+    <div class="ej-sol"><span class="tag">Solución</span> m = 6/3 = <strong>2</strong>.</div></div>
+  <div class="ejercicio"><div class="ej-head"><span class="num">E24</span> Extra</div>
+    <div class="ej-enun">$200 crece 50% anual. ¿Tras 3 años?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> 200·(1,5)³ = <strong>$675</strong>.</div></div>
 
-<h3>2.3 Escalas y unidades</h3>
-<ul>
-  <li>Escala 1 : E: 1 unidad del dibujo = E unidades reales.</li>
-  <li>Las <strong>áreas</strong> escalan con el cuadrado de la razón de semejanza: escala lineal 5/8 → área se multiplica por (5/8)².</li>
-  <li>Superficies: 1 m² = 10.000 cm²; 1 km² = 1.000.000 m².</li>
-</ul>
+  <h2>5 · Geometría</h2>
+  <div class="teoria"><strong>Prioridad: debilidad crítica (0%).</strong> Refuerzo prioritario desde la base (F1 semanas 1-6).</div>
+  <div class="formula">Pitágoras: h² = c₁² + c₂² · A cuadrado = lado² · A rectángulo = b·h · A triángulo = b·h/2 · A círculo = πr² · P = 2πr<br>
+  Sector = (θ/360°)·πr² · sen(α) = op/hip · cos(α) = ady/hip · tan(α) = op/ady · V prisma/cilindro = base·h · V pirámide/cono = (base·h)/3 · V esfera = (4/3)πr³</div>
+  <div class="ejercicio"><div class="ej-head"><span class="num">E25</span> Diagnóstico P17</div>
+    <div class="ej-enun">30 m de distancia, ángulo 60°. ¿Altura del árbol?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> h = 30·tan 60° = <strong>30√3 m</strong>.</div></div>
+  <div class="ejercicio"><div class="ej-head"><span class="num">E26</span> Diagnóstico P18</div>
+    <div class="ej-enun">Rectángulo 12 cm con escala 5/8. ¿Base en el dibujo?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> 12·5/8 = <strong>7,5 cm</strong>.</div></div>
+  <div class="ejercicio"><div class="ej-head"><span class="num">E27</span> Diagnóstico P19</div>
+    <div class="ej-enun">Figura de 60 m² con cuarto de círculo de radio 4. ¿Área restante?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> 60 − π·4²/4 = <strong>60 − 4π m²</strong>.</div></div>
+  <div class="ejercicio"><div class="ej-head"><span class="num">E28</span> Diagnóstico P20</div>
+    <div class="ej-enun">Cuerda a 6 cm del centro en radio 10. ¿Longitud?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> 2·√(100−36) = <strong>16 cm</strong>.</div></div>
+  <div class="ejercicio"><div class="ej-head"><span class="num">E29</span> Extra</div>
+    <div class="ej-enun">Catetos 5 y 12. ¿Hipotenusa?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> √169 = <strong>13</strong>.</div></div>
+  <div class="ejercicio"><div class="ej-head"><span class="num">E30</span> Extra</div>
+    <div class="ej-enun">Cono radio 3, altura 9 (π ≈ 3). ¿Volumen?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> (π·9·9)/3 = 27π ≈ <strong>81</strong>.</div></div>
 
-<h3>2.4 Mezclas y promedios ponderados</h3>
-<p>Promedio de una mezcla = suma de (cantidad · valor) / cantidad total.</p>
-<p>Ejemplo: 3 kg al 10% y 2 kg al 25% → (0,10·3 + 0,25·2)/5 = 0,16 → 16%.</p>
+  <h2>6 · Estadística y probabilidad</h2>
+  <div class="teoria"><strong>Prioridad: fortaleza (75%).</strong> Mantener; elevar a dificultad alta en F2.
+  Media = suma/cantidad. Mediana: valor central (par: promedio de los dos centrales). Moda: más frecuente.
+  La media es sensible a valores extremos. Probabilidad: P = favorables/totales. Con reposición: P(A y B) = P(A)·P(B).
+  Sin reposición: la segunda probabilidad cambia. Promedio ponderado: (n₁·x̄₁ + n₂·x̄₂)/(n₁ + n₂).</div>
+  <div class="ejercicio"><div class="ej-head"><span class="num">E31</span> Diagnóstico P21</div>
+    <div class="ej-enun">Datos 12, 14, 16, 20, 28. Comparar media y mediana.</div>
+    <div class="ej-sol"><span class="tag">Solución</span> Media 18, mediana 16 → <strong>la media sube más</strong>.</div></div>
+  <div class="ejercicio"><div class="ej-head"><span class="num">E32</span> Diagnóstico P22</div>
+    <div class="ej-enun">Dos dados. P(suma 8)?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> (2,6)(3,5)(4,4)(5,3)(6,2) → <strong>5/36</strong>.</div></div>
+  <div class="ejercicio"><div class="ej-head"><span class="num">E33</span> Diagnóstico P23</div>
+    <div class="ej-enun">4 rojas + 3 azules, 2 sin reposición. ¿Ambas rojas?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> (4/7)·(3/6) = <strong>2/7</strong>.</div></div>
+  <div class="ejercicio"><div class="ej-head"><span class="num">E34</span> Diagnóstico P24</div>
+    <div class="ej-enun">15 estudiantes 5,2 + 5 estudiantes 4,0. ¿Promedio del grupo?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> (15·5,2 + 5·4,0)/20 = <strong>4,9</strong>.</div></div>
+  <div class="ejercicio"><div class="ej-head"><span class="num">E35</span> Extra</div>
+    <div class="ej-enun">3 verdes + 2 rojas. P(roja)?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> <strong>2/5 = 0,4</strong>.</div></div>
+  <div class="ejercicio"><div class="ej-head"><span class="num">E36</span> Extra</div>
+    <div class="ej-enun">Moneda 3 veces. P(exactamente 2 caras)?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> CCL, CLC, LCC → <strong>3/8</strong>.</div></div>
 
-<h3>Ejercicios clave — Proporcionalidad</h3>
-<div class="ejercicio">
-  <div class="ej-head">E7 · Diagnóstico P5</div>
-  <div class="ej-enun">5 máquinas producen 1.200 piezas en 4 horas. ¿Cuántas horas tardan 4 máquinas en producir 1.500 piezas (mismo ritmo)?</div>
-  <div class="ej-sol"><span class="tag">Solución</span> Regla de tres compuesta. Máquinas inversa, piezas directa:<br>
-  t = 4 · (5/4) · (1.500/1.200) = 6,25 h = <strong>6 h 15 min</strong>.</div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">E8 · Diagnóstico P6</div>
-  <div class="ej-enun">Se mezclan 3 kg de una aleación con 10% de cobre y 2 kg con 25% de cobre. ¿Qué porcentaje de cobre tiene la mezcla?</div>
-  <div class="ej-sol"><span class="tag">Solución</span> Cobre total = 0,3 + 0,5 = 0,8 kg sobre 5 kg → 0,8/5 = <strong>16%</strong>.</div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">E9 · Diagnóstico P7</div>
-  <div class="ej-enun">Un terreno rectangular de 40 m × 25 m se representa a escala 1:100. ¿Cuál es el área en el plano?</div>
-  <div class="ej-sol"><span class="tag">Solución</span> En el plano: 40 cm × 25 cm = <strong>1.000 cm²</strong>. (Área real 1.000 m² dividida por 10.000.)</div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">E10 · Diagnóstico P8</div>
-  <div class="ej-enun">En un grupo, hombres y mujeres están en razón 3:2. Si entran 2 mujeres, la nueva razón es 5:4. ¿Cuántas mujeres hay?</div>
-  <div class="ej-sol"><span class="tag">Solución</span> Hombres = 3k, mujeres = 2k. (3k)/(2k+2) = 5/4 → 12k = 10k + 10 → k = 5. Mujeres = <strong>15</strong>.</div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">E11 · Extra</div>
-  <div class="ej-enun">3 obreros construyen una muralla en 12 días. ¿Cuántos días tardan 6 obreros?</div>
-  <div class="ej-sol"><span class="tag">Solución</span> Inversamente proporcional: 12 · (3/6) = <strong>6 días</strong>.</div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">E12 · Extra</div>
-  <div class="ej-enun">Un mapa usa escala 1:50.000. Dos pueblos distan 8 cm en el mapa. ¿Distancia real?</div>
-  <div class="ej-sol"><span class="tag">Solución</span> 8 · 50.000 = 400.000 cm = <strong>4 km</strong>.</div>
-</div>
+  <h2>Notas finales</h2>
+  <div class="nota">
+    Los ejercicios marcados "(Diagnóstico P#)" corresponden a la prueba diagnóstica M1 2026-09-24 y su
+    solución coincide con la clave oficial. Verificación numérica de los 36 ejercicios realizada el
+    2026-09-24. Orden de estudio semanal: ver el <a href="../calendario.html">calendario</a> y las
+    <a href="../guias.html">guías por fase</a>.
+  </div>
 
-<!-- ============ AREA 3 ============ -->
-<h2 class="area">3 · Álgebra <span class="prio">Prioridad: fortaleza (75%) · Mantener y elevar en F2</span></h2>
+  <footer class="guia-footer">
+    <div class="nav-abajo">
+      <a href="../guias.html">← Volver a guías</a>
+      <a href="guias/f1.html">Ir a Guía F1 →</a>
+    </div>
+    Compendio por área · Fuente editable: <code>guia-estudio-m1.md</code> · PDF: <a href="guia-estudio-m1.pdf" target="_blank">PDF</a>
+  </footer>
+</main>
 
-<h3>3.1 Productos notables</h3>
-<div class="formula">(a + b)² = a² + 2ab + b² &nbsp;&nbsp;·&nbsp;&nbsp; (a − b)² = a² − 2ab + b²<br>
-(a + b)(a − b) = a² − b² &nbsp;&nbsp;·&nbsp;&nbsp; (x + a)(x + b) = x² + (a+b)x + ab</div>
+<button class="subir" id="subir" title="Volver arriba">↑</button>
 
-<h3>3.2 Ecuaciones</h3>
-<ul>
-  <li>Primer grado: despejar con operaciones inversas.</li>
-  <li>Segundo grado ax² + bx + c = 0: factorización o fórmula general x = [−b ± √(b² − 4ac)] / 2a.</li>
-  <li>Problemas de planteo: identificar la incógnita, traducir el enunciado y verificar la solución (ej. (x+3)² = x² + 69).</li>
-</ul>
-
-<h3>3.3 Sistemas de ecuaciones</h3>
-<p>Métodos: sustitución, igualación, reducción. Si x+y = S y x·y = P, los números son las soluciones de t² − S·t + P = 0.</p>
-
-<h3>3.4 Valor absoluto e inecuaciones</h3>
-<div class="formula">|x| ≤ b ⇔ −b ≤ x ≤ b &nbsp;&nbsp;·&nbsp;&nbsp; |x − a| ≤ b ⇔ a − b ≤ x ≤ a + b<br>
-|x − a| ≥ b ⇔ x ≤ a − b &nbsp;o&nbsp; x ≥ a + b</div>
-
-<h3>Ejercicios clave — Álgebra</h3>
-<div class="ejercicio">
-  <div class="ej-head">E13 · Diagnóstico P9</div>
-  <div class="ej-enun">El lado de un cuadrado aumenta 3 cm y su área aumenta 69 cm². ¿Cuál era el lado original?</div>
-  <div class="ej-sol"><span class="tag">Solución</span> (x+3)² = x² + 69 → x² + 6x + 9 = x² + 69 → 6x = 60 → <strong>x = 10 cm</strong>.</div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">E14 · Diagnóstico P10</div>
-  <div class="ej-enun">La suma de dos números es 17 y su producto es 60. ¿Cuáles son?</div>
-  <div class="ej-sol"><span class="tag">Solución</span> t² − 17t + 60 = 0 → (t−12)(t−5) = 0 → <strong>12 y 5</strong>.</div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">E15 · Diagnóstico P11</div>
-  <div class="ej-enun">El promedio de dos números es 20 y su diferencia es 14. ¿Cuál es el mayor?</div>
-  <div class="ej-sol"><span class="tag">Solución</span> a+b = 40; a−b = 14 → 2a = 54 → <strong>27</strong>.</div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">E16 · Diagnóstico P12</div>
-  <div class="ej-enun">Resolver |x − 2| ≤ 5.</div>
-  <div class="ej-sol"><span class="tag">Solución</span> −5 ≤ x−2 ≤ 5 → <strong>[−3, 7]</strong>.</div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">E17 · Extra</div>
-  <div class="ej-enun">Resolver x² − 5x + 6 = 0.</div>
-  <div class="ej-sol"><span class="tag">Solución</span> (x−2)(x−3) = 0 → <strong>x = 2 o x = 3</strong>.</div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">E18 · Extra</div>
-  <div class="ej-enun">Resolver el sistema: x + y = 10; x − y = 4.</div>
-  <div class="ej-sol"><span class="tag">Solución</span> Sumando: 2x = 14 → x = 7; y = 3. <strong>(7, 3)</strong>.</div>
-</div>
-
-<!-- ============ AREA 4 ============ -->
-<h2 class="area">4 · Funciones <span class="prio">Prioridad: debilidad (25%) · Refuerzo prioritario (F1 semanas 7-10)</span></h2>
-
-<h3>4.1 Concepto de función</h3>
-<ul>
-  <li>Asigna a cada entrada x exactamente una salida y = f(x).</li>
-  <li>Dominio: valores que puede tomar x. Recorrido: valores que toma f(x).</li>
-  <li>Se representa con tabla, gráfico, fórmula o descripción verbal.</li>
-</ul>
-
-<h3>4.2 Función lineal y afín</h3>
-<div class="formula">Lineal: f(x) = k·x (pasa por el origen) &nbsp;&nbsp;·&nbsp;&nbsp; Afín: f(x) = mx + n<br>
-Pendiente: m = (y₂ − y₁)/(x₂ − x₁) &nbsp;&nbsp;·&nbsp;&nbsp; f(x₂) = f(x₁) + m·(x₂ − x₁)</div>
-<p>Si m &gt; 0 crece; si m &lt; 0 decrece. n es la intersección con el eje Y.</p>
-
-<h3>4.3 Función cuadrática</h3>
-<div class="formula">f(x) = ax² + bx + c (a ≠ 0) → parábola. Vértice: x<sub>v</sub> = −b/(2a)</div>
-<ul>
-  <li>a &gt; 0 abre hacia arriba (mínimo); a &lt; 0 abre hacia abajo (máximo).</li>
-  <li>Raíces: puntos donde corta el eje X.</li>
-  <li>Proyectil: h(t) = −5t² + v₀·t + h₀ (metros, segundos; −5 ≈ g/2).</li>
-</ul>
-
-<h3>4.4 Función exponencial</h3>
-<div class="formula">f(x) = a · b<sup>x</sup> (b &gt; 0, b ≠ 1) — b &gt; 1 crece; 0 &lt; b &lt; 1 decrece</div>
-<p>Duplicaciones: si una cantidad se duplica cada período, tras n períodos vale cantidad · 2ⁿ.</p>
-
-<h3>4.5 Modelación</h3>
-<p>Traducir el enunciado a una fórmula: identificar qué varía, la constante inicial y la tasa de cambio. Ejemplo: costo fijo + costo por unidad → C(x) = 4.000 + 600x.</p>
-
-<h3>Ejercicios clave — Funciones</h3>
-<div class="ejercicio">
-  <div class="ej-head">E19 · Diagnóstico P13</div>
-  <div class="ej-enun">Una empresa cobra $4.000 de cargo fijo y $600 por hora. Modelar el costo C(x) para x horas.</div>
-  <div class="ej-sol"><span class="tag">Solución</span> <strong>C(x) = 4.000 + 600x</strong>.</div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">E20 · Diagnóstico P14</div>
-  <div class="ej-enun">Un proyectil tiene altura h(t) = −5t² + 40t (metros, t segundos). ¿Cuál es la altura máxima?</div>
-  <div class="ej-sol"><span class="tag">Solución</span> Vértice en t = −40/(2·(−5)) = 4 s. h(4) = −80 + 160 = <strong>80 m</strong>.</div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">E21 · Diagnóstico P15</div>
-  <div class="ej-enun">Una bacteria se duplica cada hora. Si al inicio hay 100 bacterias, ¿cuántas hay tras 4 horas?</div>
-  <div class="ej-sol"><span class="tag">Solución</span> 100 · 2⁴ = <strong>1.600</strong>.</div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">E22 · Diagnóstico P16</div>
-  <div class="ej-enun">f es una función afín con f(3) = 15 y pendiente 5. Calcular f(8).</div>
-  <div class="ej-sol"><span class="tag">Solución</span> f(8) = 15 + 5·(8−3) = 15 + 25 = <strong>40</strong>.</div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">E23 · Extra</div>
-  <div class="ej-enun">Encontrar la pendiente de la recta que pasa por (1, 3) y (4, 9).</div>
-  <div class="ej-sol"><span class="tag">Solución</span> m = (9−3)/(4−1) = <strong>2</strong>.</div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">E24 · Extra</div>
-  <div class="ej-enun">Un valor de $200 crece 50% cada año. ¿Cuánto vale tras 3 años?</div>
-  <div class="ej-sol"><span class="tag">Solución</span> 200 · 1,5³ = 200 · 3,375 = <strong>$675</strong>.</div>
-</div>
-
-<!-- ============ AREA 5 ============ -->
-<h2 class="area">5 · Geometría <span class="prio">Prioridad: debilidad crítica (0%) · Refuerzo prioritario desde la base (F1 semanas 1-6)</span></h2>
-
-<h3>5.1 Ángulos y triángulos</h3>
-<ul>
-  <li>Suma de ángulos interiores de un triángulo: 180°.</li>
-  <li>Ángulos entre paralelas cortadas por una transversal: alternos internos y correspondientes iguales; conjugados suman 180°.</li>
-  <li>Equilátero (3 × 60°), isósceles (ángulos basales iguales), escaleno.</li>
-  <li>Congruencia: misma forma y tamaño. Semejanza: ángulos iguales, lados proporcionales.</li>
-</ul>
-
-<h3>5.2 Teorema de Pitágoras</h3>
-<div class="formula">hipotenusa² = cateto₁² + cateto₂² &nbsp;&nbsp;→&nbsp;&nbsp; catetos 6 y 8 → h = √(36+64) = 10</div>
-
-<h3>5.3 Semejanza y escalas</h3>
-<p>Si la razón de semejanza es k, los lados se multiplican por k y las <strong>áreas por k²</strong>.</p>
-
-<h3>5.4 Áreas y perímetros</h3>
-<div class="formula">Cuadrado: A = lado² · Rectángulo: A = b·h · Triángulo: A = b·h/2 · Círculo: A = πr², P = 2πr</div>
-
-<h3>5.5 Circunferencia</h3>
-<ul>
-  <li>Cuerda: segmento que une dos puntos. El diámetro es la mayor cuerda.</li>
-  <li>Distancia del centro a una cuerda y su mitad forman triángulo rectángulo con el radio (Pitágoras).</li>
-  <li>Sector circular: área = (θ/360°)·πr². Perímetro = 2r + arco.</li>
-</ul>
-
-<h3>5.6 Trigonometría básica</h3>
-<div class="formula">sen(α) = opuesto/hipotenusa &nbsp;·&nbsp; cos(α) = adyacente/hipotenusa &nbsp;·&nbsp; tan(α) = opuesto/adyacente<br>
-Valores notables: sen 30° = 1/2 · tan 45° = 1 · tan 60° = √3</div>
-<p>Aplicación: altura h = distancia · tan(ángulo de elevación).</p>
-
-<h3>5.7 Cuerpos geométricos</h3>
-<div class="formula">Prisma / cilindro: V = área base · altura &nbsp;·&nbsp; Pirámide / cono: V = (área base · altura)/3 &nbsp;·&nbsp; Esfera: V = (4/3)πr³</div>
-
-<h3>Ejercicios clave — Geometría</h3>
-<div class="ejercicio">
-  <div class="ej-head">E25 · Diagnóstico P17</div>
-  <div class="ej-enun">Desde un punto a 30 m de un árbol, el ángulo de elevación a la copa es 60°. ¿Altura del árbol?</div>
-  <div class="ej-sol"><span class="tag">Solución</span> tan 60° = h/30 → h = 30·√3 = <strong>30√3 m</strong>.</div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">E26 · Diagnóstico P18</div>
-  <div class="ej-enun">Un rectángulo de 12 cm × 8 cm se reduce con factor de escala 5/8. ¿Cuánto mide la base en el dibujo?</div>
-  <div class="ej-sol"><span class="tag">Solución</span> 12 · 5/8 = <strong>7,5 cm</strong>.</div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">E27 · Diagnóstico P19</div>
-  <div class="ej-enun">Una figura de área 60 m² contiene un cuarto de círculo de radio 4 m. Calcular el área de la región restante.</div>
-  <div class="ej-sol"><span class="tag">Solución</span> Cuarto de círculo = π·4²/4 = 4π. Área restante = <strong>60 − 4π m²</strong>.</div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">E28 · Diagnóstico P20</div>
-  <div class="ej-enun">En una circunferencia de radio 10 cm, una cuerda dista 6 cm del centro. ¿Cuánto mide la cuerda?</div>
-  <div class="ej-sol"><span class="tag">Solución</span> Mitad = √(10² − 6²) = 8 cm → cuerda = <strong>16 cm</strong>.</div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">E29 · Extra</div>
-  <div class="ej-enun">Calcular la hipotenusa de un triángulo rectángulo con catetos 5 y 12.</div>
-  <div class="ej-sol"><span class="tag">Solución</span> √(25 + 144) = √169 = <strong>13</strong>.</div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">E30 · Extra</div>
-  <div class="ej-enun">Un cono tiene base de radio 3 cm y altura 9 cm. Calcular su volumen (π ≈ 3).</div>
-  <div class="ej-sol"><span class="tag">Solución</span> V = (π·3²·9)/3 = 27π ≈ <strong>81 cm³</strong> (con π ≈ 3).</div>
-</div>
-
-<!-- ============ AREA 6 ============ -->
-<h2 class="area">6 · Estadística y probabilidad <span class="prio">Prioridad: fortaleza (75%) · Mantener y elevar en F2</span></h2>
-
-<h3>6.1 Medidas de tendencia central</h3>
-<ul>
-  <li>Media = suma de datos / cantidad de datos.</li>
-  <li>Mediana: valor central al ordenar (par de datos → promedio de los dos centrales).</li>
-  <li>Moda: dato más frecuente.</li>
-  <li>La media es sensible a valores extremos: al agregar datos altos, sube más que la mediana.</li>
-</ul>
-
-<h3>6.2 Probabilidad clásica</h3>
-<div class="formula">P(evento) = casos favorables / casos totales &nbsp;·&nbsp; Dos dados: 36 resultados</div>
-
-<h3>6.3 Probabilidad compuesta</h3>
-<ul>
-  <li>Con reposición (independientes): P(A y B) = P(A) · P(B).</li>
-  <li>Sin reposición (dependientes): la segunda probabilidad cambia. Ejemplo: 4 rojas y 3 azules, sacar 2 rojas sin reposición: (4/7)·(3/6) = 2/7.</li>
-</ul>
-
-<h3>6.4 Promedio ponderado</h3>
-<div class="formula">Promedio total = (n₁·x̄₁ + n₂·x̄₂) / (n₁ + n₂)</div>
-
-<h3>Ejercicios clave — Estadística</h3>
-<div class="ejercicio">
-  <div class="ej-head">E31 · Diagnóstico P21</div>
-  <div class="ej-enun">Datos: 12, 14, 16, 20, 28. Comparar media y mediana.</div>
-  <div class="ej-sol"><span class="tag">Solución</span> Media = 90/5 = 18. Mediana (central) = 16. La media es mayor: el 28 la jala hacia arriba. <strong>Media 18, mediana 16; la media sube más.</strong></div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">E32 · Diagnóstico P22</div>
-  <div class="ej-enun">Se lanzan dos dados. ¿Probabilidad de que la suma sea 8?</div>
-  <div class="ej-sol"><span class="tag">Solución</span> Pares que suman 8: (2,6)(3,5)(4,4)(5,3)(6,2) → <strong>5/36</strong>.</div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">E33 · Diagnóstico P23</div>
-  <div class="ej-enun">Una urna tiene 4 bolas rojas y 3 azules. Se sacan dos sin reposición. ¿Probabilidad de que ambas sean rojas?</div>
-  <div class="ej-sol"><span class="tag">Solución</span> (4/7)·(3/6) = 12/42 = <strong>2/7</strong>.</div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">E34 · Diagnóstico P24</div>
-  <div class="ej-enun">15 estudiantes promedian 5,2 y 5 promedian 4,0. ¿Promedio del grupo?</div>
-  <div class="ej-sol"><span class="tag">Solución</span> (15·5,2 + 5·4,0)/20 = 98/20 = <strong>4,9</strong>.</div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">E35 · Extra</div>
-  <div class="ej-enun">En una caja hay 3 fichas verdes y 2 rojas. Se saca una al azar. ¿Probabilidad de roja?</div>
-  <div class="ej-sol"><span class="tag">Solución</span> <strong>2/5 = 0,4 (40%)</strong>.</div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">E36 · Extra</div>
-  <div class="ej-enun">Lanzar una moneda 3 veces. ¿Probabilidad de exactamente 2 caras?</div>
-  <div class="ej-sol"><span class="tag">Solución</span> Resultados con 2 caras: CCL, CLC, LCC → <strong>3/8</strong>.</div>
-</div>
-
-<div class="nota">
-  <strong>Nota:</strong> los ejercicios marcados "(Diagnóstico P#)" corresponden a la prueba diagnóstica
-  M1 2026-09-24 y su solución coincide con la clave oficial. Verificación numérica de los 36 ejercicios
-  realizada el 2026-09-24. Orden de estudio semanal y calendarios de medición: ver
-  <code>plan/entrenamiento-m1.md</code>.
-</div>
-
-<div class="footer-note">Guía de estudio M1 · Proyecto PAES de Javier · Fuente editable:
-plan/guia-estudio-m1.md · PDF generado 2026-09-24</div>
-
+<script src="../js/guias.js"></script>
 </body>
 </html>

@@ -2,265 +2,253 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Guía F1 — Base de Geometría y Funciones</title>
-<style>
-  :root {
-    --azul: #1F3864; --azul-suave: #2E5A9E; --azul-claro: #EAF0FA; --teal: #0F766E;
-    --gris-texto: #374151; --gris-suave: #6B7280; --fondo: #F8FAFC; --borde: #E2E8F0;
-    --rojo: #D32F2F; --ambar: #B45309; --verde: #2E7D32; --verde-claro: #E8F5E9;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  @page { size: A4; margin: 13mm 13mm; }
-  body { font-family: "Calibri", "Segoe UI", "Arial", sans-serif; color: var(--gris-texto); font-size: 10pt; line-height: 1.42; }
-  .portada { background: linear-gradient(135deg, var(--azul) 0%, var(--azul-suave) 100%); color: #fff; border-radius: 10px; padding: 20px 26px; margin-bottom: 14px; }
-  .portada h1 { font-size: 19pt; font-weight: 700; }
-  .portada .subtitulo { font-size: 10.5pt; opacity: 0.92; margin-top: 4px; }
-  .portada .meta-linea { font-size: 9pt; opacity: 0.8; margin-top: 8px; }
-  h2 { color: var(--azul); font-size: 12.5pt; font-weight: 700; margin: 16px 0 8px; padding-bottom: 4px; border-bottom: 2px solid var(--azul); page-break-after: avoid; }
-  h3 { color: var(--azul); font-size: 11pt; margin: 12px 0 5px; page-break-after: avoid; }
-  p { margin: 5px 0; }
-  ul, ol { margin: 5px 0 5px 18px; }
-  li { margin: 2.5px 0; }
-  strong { color: var(--azul); }
-  .teoria { background: var(--fondo); border: 1px solid var(--borde); border-left: 4px solid var(--azul-suave); border-radius: 6px; padding: 7px 12px; margin: 7px 0; page-break-inside: avoid; }
-  .formula { background: var(--azul-claro); border: 1px solid #C9D8F2; border-radius: 6px; padding: 6px 12px; margin: 6px 0; font-family: "Cambria Math", "Cambria", serif; font-size: 10.5pt; color: var(--azul); page-break-inside: avoid; }
-  .idea { background: #FEF3C7; border-left: 4px solid var(--ambar); border-radius: 6px; padding: 6px 12px; margin: 7px 0; font-size: 9.4pt; page-break-inside: avoid; }
-  .ejercicio { border: 1px solid var(--borde); border-radius: 6px; margin: 6px 0; overflow: hidden; page-break-inside: avoid; }
-  .ej-head { background: var(--fondo); padding: 4px 12px; border-bottom: 1px solid var(--borde); font-weight: 600; color: var(--azul); font-size: 9.3pt; }
-  .ej-enun { padding: 5px 12px; font-size: 9.5pt; }
-  .ej-sol { background: var(--verde-claro); padding: 5px 12px; font-size: 9.5pt; border-top: 1px dashed #B7D9B7; }
-  .ej-sol .tag { display: inline-block; font-size: 8pt; font-weight: 700; color: var(--verde); text-transform: uppercase; letter-spacing: 0.5px; margin-right: 6px; }
-  table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 9.3pt; }
-  thead th { background: var(--azul); color: #fff; text-align: left; padding: 5px 9px; font-weight: 600; }
-  tbody td { padding: 5px 9px; border-bottom: 1px solid var(--borde); vertical-align: top; }
-  tbody tr:nth-child(even) { background: var(--fondo); }
-  tr { page-break-inside: avoid; }
-  .nota { background: var(--fondo); border-left: 4px solid var(--ambar); border-radius: 6px; padding: 8px 12px; margin: 10px 0; font-size: 9.3pt; }
-  .footer-note { margin-top: 16px; padding-top: 8px; border-top: 1px solid var(--borde); font-size: 8.4pt; color: var(--gris-suave); text-align: center; }
-</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guía F1 — Base de Geometría y Funciones | PAES M1</title>
+<link rel="stylesheet" href="../../css/guias.css">
 </head>
 <body>
 
-<div class="portada">
-  <h1>Guía F1 — Base de Geometría y Funciones</h1>
-  <div class="subtitulo">Fase 1 del plan de entrenamiento M1 · Semanas W1-W14 · 2 h semanales</div>
-  <div class="meta-linea">28/09/2026 - 03/01/2027 · Objetivo: levantar Geometría y Funciones desde cero · Hito: ensayo DEMRE dic 2026 con 800</div>
+<div class="app-nav">
+  <a class="logo" href="../../index.html">PAES M1</a>
+  <a class="link" href="../../calendario.html">Calendario</a>
+  <a class="link" href="../../guias.html">Guías</a>
+  <a class="link" href="../../practica.html">Practicar</a>
+  <a class="link" href="../../descargas.html">Descargas</a>
 </div>
 
-<h2>Navegación de la fase</h2>
-<table>
-  <thead><tr><th style="width:20%">Semana</th><th style="width:30%">Tema</th><th>Sección del compendio</th></tr></thead>
-  <tbody>
-    <tr><td>W1-W6</td><td>Geometría básica</td><td>5.1, 5.2, 5.3, 5.4</td></tr>
-    <tr><td>W7-W10</td><td>Funciones</td><td>4.1, 4.2, 4.3, 4.5</td></tr>
-    <tr><td>W11-W12</td><td>Números + repaso</td><td>1.1, 1.2, 1.3</td></tr>
-    <tr><td>W13-W14</td><td>Ensayo + cierre</td><td>— (ver calendario)</td></tr>
-  </tbody>
-</table>
-<div class="nota">Práctica mixta (20-30 min por sesión, fortalezas): Proporcionalidad, Álgebra y Estadística
-— usar los ejercicios E7-E18 y E31-E36 del compendio (<code>guia-estudio-m1.md</code>).</div>
+<main class="guia-wrap">
+  <div class="breadcrumb"><a href="../../guias.html">← Volver a guías</a></div>
 
-<!-- ============ BLOQUE A ============ -->
-<h2>Bloque A — Geometría básica (W1-W6)</h2>
+  <header class="guia-header">
+    <h1>Guía F1 — Base de Geometría y Funciones</h1>
+    <div class="subtitulo">Fase 1 del plan de entrenamiento M1 · Semanas W1-W14 · 2 h semanales</div>
+    <div class="meta-linea">28/09/2026 - 03/01/2027 · Objetivo: levantar Geometría (0%) y Funciones (25%) desde cero</div>
+    <span class="pill">Hito: ensayo DEMRE dic 2026 con 800</span>
+  </header>
 
-<h3>Semana 1 · Ángulos y rectas</h3>
-<div class="teoria">La suma de los ángulos interiores de un triángulo es 180°. Ángulos entre paralelas cortadas por
-una transversal: los alternos internos y los correspondientes son iguales; los conjugados suman 180°.
-Complementarios: suman 90°. Suplementarios: suman 180°.</div>
-<div class="ejercicio">
-  <div class="ej-head">Ejercicio 1</div>
-  <div class="ej-enun">Dos ángulos son complementarios y uno mide el doble del otro. ¿Cuánto mide el mayor?</div>
-  <div class="ej-sol"><span class="tag">Solución</span> x + 2x = 90° → x = 30° → el mayor mide <strong>60°</strong>.</div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">Ejercicio 2</div>
-  <div class="ej-enun">Un ángulo mide 35° y otro es suplementario. ¿Cuánto mide el segundo?</div>
-  <div class="ej-sol"><span class="tag">Solución</span> 180° − 35° = <strong>145°</strong>.</div>
-</div>
+  <nav class="toc" id="toc"></nav>
 
-<h3>Semana 2 · Triángulos</h3>
-<div class="teoria">Equilátero (3 lados iguales, 3 ángulos de 60°); isósceles (2 lados iguales, ángulos basales
-iguales); escaleno (3 lados distintos). Suma de ángulos = 180°.</div>
-<div class="ejercicio">
-  <div class="ej-head">Ejercicio 3</div>
-  <div class="ej-enun">Los ángulos de un triángulo están en razón 1:2:3. ¿Cuánto mide cada uno?</div>
-  <div class="ej-sol"><span class="tag">Solución</span> 6k = 180° → k = 30° → <strong>30°, 60°, 90°</strong>.</div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">Ejercicio 4</div>
-  <div class="ej-enun">Un triángulo isósceles tiene un ángulo basal de 40°. ¿Cuánto mide el ángulo del vértice?</div>
-  <div class="ej-sol"><span class="tag">Solución</span> 180° − 2·40° = <strong>100°</strong>.</div>
-</div>
+  <h2>Navegación de la fase</h2>
+  <table>
+    <thead><tr><th style="width:20%">Semana</th><th style="width:30%">Tema</th><th>Sección del compendio</th></tr></thead>
+    <tbody>
+      <tr><td>W1-W6</td><td>Geometría básica</td><td>5.1, 5.2, 5.3, 5.4</td></tr>
+      <tr><td>W7-W10</td><td>Funciones</td><td>4.1, 4.2, 4.3, 4.5</td></tr>
+      <tr><td>W11-W12</td><td>Números + repaso</td><td>1.1, 1.2, 1.3</td></tr>
+      <tr><td>W13-W14</td><td>Ensayo + cierre</td><td>— (ver calendario)</td></tr>
+    </tbody>
+  </table>
+  <div class="nota">Práctica mixta (20-30 min por sesión, fortalezas): Proporcionalidad, Álgebra y Estadística
+  — usar los ejercicios E7-E18 y E31-E36 del compendio.</div>
 
-<h3>Semana 3 · Congruencia y semejanza</h3>
-<div class="teoria">Congruencia: misma forma y tamaño. Semejanza: ángulos iguales y lados proporcionales (razón de
-semejanza k). Si k &gt; 1 la figura se agranda.</div>
-<div class="ejercicio">
-  <div class="ej-head">Ejercicio 5</div>
-  <div class="ej-enun">Un triángulo de lados 3, 4 y 5 es semejante a otro cuyo lado mayor mide 15. ¿Cuánto miden los otros lados?</div>
-  <div class="ej-sol"><span class="tag">Solución</span> Factor = 15/5 = 3 → lados = 3·3 = 9 y 4·3 = 12 → <strong>9 y 12</strong>.</div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">Ejercicio 6</div>
-  <div class="ej-enun">Dos rectángulos son semejantes con razón 2. Si el menor tiene base 4 y altura 3, ¿cuál es el área del mayor?</div>
-  <div class="ej-sol"><span class="tag">Solución</span> Lados del mayor = 8 y 6 → área = <strong>48</strong>.</div>
-</div>
+  <h2>Bloque A — Geometría básica <span class="fase-tag">W1-W6</span></h2>
 
-<h3>Semana 4 · Teorema de Pitágoras</h3>
-<div class="formula">hipotenusa² = cateto₁² + cateto₂² &nbsp;&nbsp;·&nbsp;&nbsp; Tripletas útiles: 3-4-5, 5-12-13, 6-8-10</div>
-<div class="ejercicio">
-  <div class="ej-head">Ejercicio 7</div>
-  <div class="ej-enun">Una escalera de 13 m apoyada en una pared alcanza 12 m de altura. ¿A qué distancia de la pared está la base?</div>
-  <div class="ej-sol"><span class="tag">Solución</span> d = √(13² − 12²) = √25 = <strong>5 m</strong>.</div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">Ejercicio 8</div>
-  <div class="ej-enun">Los catetos de un triángulo rectángulo miden 6 y 8. Calcular la hipotenusa.</div>
-  <div class="ej-sol"><span class="tag">Solución</span> √(36 + 64) = <strong>10</strong>.</div>
-</div>
+  <h3>Semana 1 · Ángulos y rectas</h3>
+  <div class="teoria">La suma de los ángulos interiores de un triángulo es 180°. Ángulos entre paralelas cortadas por
+  una transversal: los alternos internos y los correspondientes son iguales; los conjugados suman 180°.
+  Complementarios: suman 90°. Suplementarios: suman 180°.</div>
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">1</span> Ángulos complementarios</div>
+    <div class="ej-enun">Dos ángulos son complementarios y uno mide el doble del otro. ¿Cuánto mide el mayor?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> x + 2x = 90° → x = 30° → el mayor mide <strong>60°</strong>.</div>
+  </div>
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">2</span> Ángulo suplementario</div>
+    <div class="ej-enun">Un ángulo mide 35°. ¿Cuánto mide su suplementario?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> 180° − 35° = <strong>145°</strong>.</div>
+  </div>
 
-<h3>Semana 5 · Áreas y perímetros</h3>
-<div class="formula">Cuadrado: A = lado² · Rectángulo: A = b·h, P = 2(b+h) · Triángulo: A = b·h/2 · Círculo: A = πr², P = 2πr</div>
-<div class="ejercicio">
-  <div class="ej-head">Ejercicio 9</div>
-  <div class="ej-enun">Un rectángulo tiene área 48 cm² y largo 8 cm. ¿Cuál es su perímetro?</div>
-  <div class="ej-sol"><span class="tag">Solución</span> Ancho = 6 → P = 2(8+6) = <strong>28 cm</strong>.</div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">Ejercicio 10</div>
-  <div class="ej-enun">Calcular el área de un círculo de radio 3.</div>
-  <div class="ej-sol"><span class="tag">Solución</span> π·9 = <strong>9π ≈ 28,3</strong>.</div>
-</div>
+  <h3>Semana 2 · Triángulos</h3>
+  <div class="teoria">Equilátero (3 lados iguales, 3 ángulos de 60°); isósceles (2 lados iguales, ángulos basales
+  iguales); escaleno (3 lados distintos). Suma de ángulos = 180°.</div>
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">3</span> Razón de ángulos</div>
+    <div class="ej-enun">Los ángulos de un triángulo están en razón 1:2:3. ¿Cuánto mide cada uno?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> 6k = 180° → k = 30° → <strong>30°, 60°, 90°</strong>.</div>
+  </div>
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">4</span> Triángulo isósceles</div>
+    <div class="ej-enun">Un triángulo isósceles tiene un ángulo basal de 40°. ¿Cuánto mide el ángulo del vértice?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> 180° − 2·40° = <strong>100°</strong>.</div>
+  </div>
 
-<h3>Semana 6 · Problemas integrados + mini-control</h3>
-<div class="ejercicio">
-  <div class="ej-head">Ejercicio 11</div>
-  <div class="ej-enun">Un cuadrado de lado 6 tiene inscrito un círculo. ¿Área de la región fuera del círculo?</div>
-  <div class="ej-sol"><span class="tag">Solución</span> 36 − π·3² = <strong>36 − 9π</strong>.</div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">Ejercicio 12</div>
-  <div class="ej-enun">Un triángulo rectángulo isósceles tiene catetos de 5 cm. ¿Cuánto mide la hipotenusa?</div>
-  <div class="ej-sol"><span class="tag">Solución</span> √(25+25) = <strong>5√2 cm</strong>.</div>
-</div>
-<div class="nota"><strong>Mini-control (10 preguntas)</strong> de W1-W6: preparar con los ejercicios 1-12 y el E29 del
-compendio. Registrar en <code>seguimiento/ensayos.md</code>.</div>
+  <h3>Semana 3 · Congruencia y semejanza</h3>
+  <div class="teoria">Congruencia: misma forma y tamaño. Semejanza: ángulos iguales y lados proporcionales (razón de
+  semejanza k). Si k &gt; 1 la figura se agranda.</div>
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">5</span> Semejanza de triángulos</div>
+    <div class="ej-enun">Un triángulo de lados 3, 4 y 5 es semejante a otro cuyo lado mayor mide 15. ¿Cuánto miden los otros lados?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> Factor = 15/5 = 3 → lados = 3·3 = 9 y 4·3 = 12 → <strong>9 y 12</strong>.</div>
+  </div>
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">6</span> Semejanza y área</div>
+    <div class="ej-enun">Dos rectángulos son semejantes con razón 2. Si el menor tiene base 4 y altura 3, ¿cuál es el área del mayor?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> Lados del mayor = 8 y 6 → área = <strong>48</strong>.</div>
+  </div>
 
-<!-- ============ BLOQUE B ============ -->
-<h2>Bloque B — Funciones (W7-W10)</h2>
+  <h3>Semana 4 · Teorema de Pitágoras</h3>
+  <div class="formula">hipotenusa² = cateto₁² + cateto₂² &nbsp;·&nbsp; Tripletas útiles: 3-4-5, 5-12-13, 6-8-10</div>
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">7</span> Escalera apoyada</div>
+    <div class="ej-enun">Una escalera de 13 m apoyada en una pared alcanza 12 m de altura. ¿A qué distancia de la pared está la base?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> d = √(13² − 12²) = √25 = <strong>5 m</strong>.</div>
+  </div>
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">8</span> Hipotenusa</div>
+    <div class="ej-enun">Los catetos de un triángulo rectángulo miden 6 y 8. Calcular la hipotenusa.</div>
+    <div class="ej-sol"><span class="tag">Solución</span> √(36 + 64) = <strong>10</strong>.</div>
+  </div>
 
-<h3>Semana 7 · Concepto de función</h3>
-<div class="teoria">Una función asigna a cada entrada x exactamente una salida f(x). Dominio: valores de x;
-recorrido: valores de f(x). Evaluar f en un valor es reemplazar x por ese valor.</div>
-<div class="ejercicio">
-  <div class="ej-head">Ejercicio 13</div>
-  <div class="ej-enun">Si f(x) = 3x − 2, calcular f(5) y f(0).</div>
-  <div class="ej-sol"><span class="tag">Solución</span> f(5) = 13; f(0) = <strong>−2</strong>.</div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">Ejercicio 14</div>
-  <div class="ej-enun">Si f(x) = x² + 1, calcular f(3) y f(−2).</div>
-  <div class="ej-sol"><span class="tag">Solución</span> f(3) = 10; f(−2) = <strong>5</strong>.</div>
-</div>
+  <h3>Semana 5 · Áreas y perímetros</h3>
+  <div class="formula">Cuadrado: A = lado² · Rectángulo: A = b·h, P = 2(b+h) · Triángulo: A = b·h/2 · Círculo: A = πr², P = 2πr</div>
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">9</span> Perímetro del rectángulo</div>
+    <div class="ej-enun">Un rectángulo tiene área 48 cm² y largo 8 cm. ¿Cuál es su perímetro?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> Ancho = 6 → P = 2(8+6) = <strong>28 cm</strong>.</div>
+  </div>
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">10</span> Área del círculo</div>
+    <div class="ej-enun">Calcular el área de un círculo de radio 3.</div>
+    <div class="ej-sol"><span class="tag">Solución</span> π·9 = <strong>9π ≈ 28,3</strong>.</div>
+  </div>
 
-<h3>Semana 8 · Función lineal y afín</h3>
-<div class="formula">Lineal: f(x) = kx · Afín: f(x) = mx + n · Pendiente: m = (y₂ − y₁)/(x₂ − x₁) · f(x₂) = f(x₁) + m·(x₂ − x₁)</div>
-<div class="ejercicio">
-  <div class="ej-head">Ejercicio 15</div>
-  <div class="ej-enun">La recta pasa por (0, −1) y (2, 5). Escribir su ecuación.</div>
-  <div class="ej-sol"><span class="tag">Solución</span> m = (5−(−1))/(2−0) = 3; n = −1 → <strong>f(x) = 3x − 1</strong>.</div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">Ejercicio 16</div>
-  <div class="ej-enun">f es afín con f(3) = 15 y pendiente 5. Calcular f(8).</div>
-  <div class="ej-sol"><span class="tag">Solución</span> f(8) = 15 + 5·5 = <strong>40</strong>.</div>
-</div>
+  <h3>Semana 6 · Problemas integrados + mini-control</h3>
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">11</span> Cuadrado con círculo inscrito</div>
+    <div class="ej-enun">Un cuadrado de lado 6 tiene inscrito un círculo. ¿Área de la región fuera del círculo?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> 36 − π·3² = <strong>36 − 9π</strong>.</div>
+  </div>
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">12</span> Rectángulo isósceles</div>
+    <div class="ej-enun">Un triángulo rectángulo isósceles tiene catetos de 5 cm. ¿Cuánto mide la hipotenusa?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> √(25+25) = <strong>5√2 cm</strong>.</div>
+  </div>
+  <div class="nota"><strong>Mini-control (10 preguntas)</strong> de W1-W6: practícalo en la sección
+  <a href="../../practica.html">Practicar</a> (MC1 Geometría) o en PDF.</div>
 
-<h3>Semana 9 · Función cuadrática</h3>
-<div class="formula">f(x) = ax² + bx + c → parábola. Vértice: x<sub>v</sub> = −b/(2a) · Proyectil: h(t) = −5t² + v₀t + h₀</div>
-<div class="ejercicio">
-  <div class="ej-head">Ejercicio 17</div>
-  <div class="ej-enun">f(x) = x² − 4x + 3. Calcular vértice y raíces.</div>
-  <div class="ej-sol"><span class="tag">Solución</span> Vértice x = 2, f(2) = −1; raíces: (x−1)(x−3) = 0 → <strong>1 y 3</strong>.</div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">Ejercicio 18</div>
-  <div class="ej-enun">Un proyectil tiene h(t) = −5t² + 40t. ¿Altura máxima?</div>
-  <div class="ej-sol"><span class="tag">Solución</span> t = 4 → h(4) = −80 + 160 = <strong>80 m</strong>.</div>
-</div>
+  <h2>Bloque B — Funciones <span class="fase-tag">W7-W10</span></h2>
 
-<h3>Semana 10 · Modelación + mini-control</h3>
-<div class="teoria">Traducir el enunciado a una fórmula: constante inicial + tasa de cambio. Ejemplo: costo fijo +
-costo por unidad → C(x) = 4.000 + 600x.</div>
-<div class="ejercicio">
-  <div class="ej-head">Ejercicio 19</div>
-  <div class="ej-enun">Un taxi cobra $300 de bajada y $250 por km. Costo de un viaje de 8 km.</div>
-  <div class="ej-sol"><span class="tag">Solución</span> C(8) = 300 + 250·8 = <strong>$2.300</strong>.</div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">Ejercicio 20</div>
-  <div class="ej-enun">El costo de fabricar x artículos es C(x) = 2.000 + 500x. ¿Cuánto cuesta fabricar 12?</div>
-  <div class="ej-sol"><span class="tag">Solución</span> 2.000 + 6.000 = <strong>$8.000</strong>.</div>
-</div>
-<div class="nota"><strong>Mini-control (10 preguntas)</strong> de W7-W10 (concepto, lineal/afín, cuadrática, modelación).</div>
+  <h3>Semana 7 · Concepto de función</h3>
+  <div class="teoria">Una función asigna a cada entrada x exactamente una salida f(x). Dominio: valores de x;
+  recorrido: valores de f(x). Evaluar f en un valor es reemplazar x por ese valor.</div>
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">13</span> Evaluar función</div>
+    <div class="ej-enun">Si f(x) = 3x − 2, calcular f(5) y f(0).</div>
+    <div class="ej-sol"><span class="tag">Solución</span> f(5) = 13; f(0) = <strong>−2</strong>.</div>
+  </div>
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">14</span> Evaluar cuadrática</div>
+    <div class="ej-enun">Si f(x) = x² + 1, calcular f(3) y f(−2).</div>
+    <div class="ej-sol"><span class="tag">Solución</span> f(3) = 10; f(−2) = <strong>5</strong>.</div>
+  </div>
 
-<!-- ============ BLOQUE C ============ -->
-<h2>Bloque C — Números + repaso (W11-W12)</h2>
+  <h3>Semana 8 · Función lineal y afín</h3>
+  <div class="formula">Lineal: f(x) = kx · Afín: f(x) = mx + n · Pendiente: m = (y₂ − y₁)/(x₂ − x₁) · f(x₂) = f(x₁) + m·(x₂ − x₁)</div>
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">15</span> Ecuación de la recta</div>
+    <div class="ej-enun">La recta pasa por (0, −1) y (2, 5). Escribir su ecuación.</div>
+    <div class="ej-sol"><span class="tag">Solución</span> m = (5−(−1))/(2−0) = 3; n = −1 → <strong>f(x) = 3x − 1</strong>.</div>
+  </div>
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">16</span> Valor con pendiente</div>
+    <div class="ej-enun">f es afín con f(3) = 15 y pendiente 5. Calcular f(8).</div>
+    <div class="ej-sol"><span class="tag">Solución</span> f(8) = 15 + 5·5 = <strong>40</strong>.</div>
+  </div>
 
-<h3>Semana 11 · Números en contexto</h3>
-<div class="formula">a<sup>m</sup>·a<sup>n</sup> = a<sup>m+n</sup> · a<sup>−n</sup> = 1/a<sup>n</sup> · a<sup>1/n</sup> = ⁿ√a · aumentar p% = ·(1+p/100) · encadenados no se suman</div>
-<div class="ejercicio">
-  <div class="ej-head">Ejercicio 21</div>
-  <div class="ej-enun">Calcular (2/3 + 1/4) · 12.</div>
-  <div class="ej-sol"><span class="tag">Solución</span> (8/12 + 3/12)·12 = 11/12·12 = <strong>11</strong>.</div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">Ejercicio 22</div>
-  <div class="ej-enun">¿Qué porcentaje de 250 es 40?</div>
-  <div class="ej-sol"><span class="tag">Solución</span> 40/250 = 0,16 = <strong>16%</strong>.</div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">Ejercicio 23</div>
-  <div class="ej-enun">Simplificar √50.</div>
-  <div class="ej-sol"><span class="tag">Solución</span> √(25·2) = <strong>5√2</strong> (irracional).</div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">Ejercicio 24</div>
-  <div class="ej-enun">Calcular 3⁻² · 3⁴.</div>
-  <div class="ej-sol"><span class="tag">Solución</span> 3² = <strong>9</strong>.</div>
-</div>
+  <h3>Semana 9 · Función cuadrática</h3>
+  <div class="formula">f(x) = ax² + bx + c → parábola. Vértice: x<sub>v</sub> = −b/(2a) · Proyectil: h(t) = −5t² + v₀t + h₀</div>
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">17</span> Vértice y raíces</div>
+    <div class="ej-enun">f(x) = x² − 4x + 3. Calcular vértice y raíces.</div>
+    <div class="ej-sol"><span class="tag">Solución</span> Vértice x = 2, f(2) = −1; raíces: (x−1)(x−3) = 0 → <strong>1 y 3</strong>.</div>
+  </div>
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">18</span> Proyectil</div>
+    <div class="ej-enun">Un proyectil tiene h(t) = −5t² + 40t. ¿Altura máxima?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> t = 4 → h(4) = −80 + 160 = <strong>80 m</strong>.</div>
+  </div>
 
-<h3>Semana 12 · Repaso integrado de Geometría y Funciones</h3>
-<div class="ejercicio">
-  <div class="ej-head">Ejercicio 25</div>
-  <div class="ej-enun">Un rectángulo de 12 cm de base tiene área 96 cm². Si se reduce a escala 1/2, ¿cuál es el área del dibujo?</div>
-  <div class="ej-sol"><span class="tag">Solución</span> Altura = 8; área dibujo = 96·(1/2)² = <strong>24 cm²</strong>.</div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">Ejercicio 26</div>
-  <div class="ej-enun">f(x) = 2x + 5. ¿Para qué x se cumple f(x) = 21?</div>
-  <div class="ej-sol"><span class="tag">Solución</span> 2x + 5 = 21 → x = <strong>8</strong>.</div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">Ejercicio 27</div>
-  <div class="ej-enun">Un cuadrado tiene lado x. Si su perímetro es 28, ¿cuánto mide su diagonal?</div>
-  <div class="ej-sol"><span class="tag">Solución</span> Lado = 7 → diagonal = <strong>7√2</strong>.</div>
-</div>
-<div class="ejercicio">
-  <div class="ej-head">Ejercicio 28</div>
-  <div class="ej-enun">El precio de un artículo es $P. Sube 10% y luego baja 10%. ¿Variación neta?</div>
-  <div class="ej-sol"><span class="tag">Solución</span> P·1,1·0,9 = P·0,99 → <strong>disminuye 1%</strong>.</div>
-</div>
+  <h3>Semana 10 · Modelación + mini-control</h3>
+  <div class="teoria">Traducir el enunciado a una fórmula: constante inicial + tasa de cambio. Ejemplo: costo fijo +
+  costo por unidad → C(x) = 4.000 + 600x.</div>
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">19</span> Costo del taxi</div>
+    <div class="ej-enun">Un taxi cobra $300 de bajada y $250 por km. Costo de un viaje de 8 km.</div>
+    <div class="ej-sol"><span class="tag">Solución</span> C(8) = 300 + 250·8 = <strong>$2.300</strong>.</div>
+  </div>
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">20</span> Costo de fabricación</div>
+    <div class="ej-enun">El costo de fabricar x artículos es C(x) = 2.000 + 500x. ¿Cuánto cuesta fabricar 12?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> 2.000 + 6.000 = <strong>$8.000</strong>.</div>
+  </div>
+  <div class="nota"><strong>Mini-control (10 preguntas)</strong> de W7-W10: <a href="../../practica.html">Practicar</a> (MC2 Funciones).</div>
 
-<h2>Cierre de fase (W13-W14)</h2>
-<ul>
-  <li><strong>W13:</strong> ensayo oficial DEMRE (dic 2026) — hito 800. Condiciones reales: cronómetro, sin interrupciones.</li>
-  <li><strong>W14:</strong> analizar errores (por área y habilidad), registrar en <code>seguimiento/ensayos.md</code> y cerrar la fase.</li>
-</ul>
-<div class="nota">Criterio de avance: Geometría y Funciones deben pasar de "debilidad clara" a al menos "parcial"
-(≥50% en el MC correspondiente y en el ensayo) antes de terminar la fase.</div>
+  <h2>Bloque C — Números + repaso <span class="fase-tag">W11-W12</span></h2>
 
-<div class="footer-note">Guía F1 · Proyecto PAES de Javier · Fuente editable: plan/guias/f1.md · PDF generado 2026-09-24</div>
+  <h3>Semana 11 · Números en contexto</h3>
+  <div class="formula">a<sup>m</sup>·a<sup>n</sup> = a<sup>m+n</sup> · a<sup>−n</sup> = 1/a<sup>n</sup> · a<sup>1/n</sup> = ⁿ√a · aumentar p% = ·(1+p/100) · encadenados no se suman</div>
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">21</span> Operación con fracciones</div>
+    <div class="ej-enun">Calcular (2/3 + 1/4) · 12.</div>
+    <div class="ej-sol"><span class="tag">Solución</span> (8/12 + 3/12)·12 = 11/12·12 = <strong>11</strong>.</div>
+  </div>
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">22</span> Porcentaje</div>
+    <div class="ej-enun">¿Qué porcentaje de 250 es 40?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> 40/250 = 0,16 = <strong>16%</strong>.</div>
+  </div>
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">23</span> Simplificar raíz</div>
+    <div class="ej-enun">Simplificar √50.</div>
+    <div class="ej-sol"><span class="tag">Solución</span> √(25·2) = <strong>5√2</strong> (irracional).</div>
+  </div>
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">24</span> Potencias</div>
+    <div class="ej-enun">Calcular 3⁻² · 3⁴.</div>
+    <div class="ej-sol"><span class="tag">Solución</span> 3² = <strong>9</strong>.</div>
+  </div>
 
+  <h3>Semana 12 · Repaso integrado de Geometría y Funciones</h3>
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">25</span> Escala y área</div>
+    <div class="ej-enun">Un rectángulo de 12 cm de base tiene área 96 cm². Si se reduce a escala 1/2, ¿cuál es el área del dibujo?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> Altura = 8; área dibujo = 96·(1/2)² = <strong>24 cm²</strong>.</div>
+  </div>
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">26</span> Despejar x</div>
+    <div class="ej-enun">f(x) = 2x + 5. ¿Para qué x se cumple f(x) = 21?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> 2x + 5 = 21 → x = <strong>8</strong>.</div>
+  </div>
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">27</span> Diagonal del cuadrado</div>
+    <div class="ej-enun">Un cuadrado tiene lado x. Si su perímetro es 28, ¿cuánto mide su diagonal?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> Lado = 7 → diagonal = <strong>7√2</strong>.</div>
+  </div>
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">28</span> Variación neta</div>
+    <div class="ej-enun">El precio de un artículo es $P. Sube 10% y luego baja 10%. ¿Variación neta?</div>
+    <div class="ej-sol"><span class="tag">Solución</span> P·1,1·0,9 = P·0,99 → <strong>disminuye 1%</strong>.</div>
+  </div>
+
+  <h2>Cierre de fase <span class="fase-tag">W13-W14</span></h2>
+  <ul>
+    <li><strong>W13:</strong> ensayo oficial DEMRE (dic 2026) — hito 800. Condiciones reales: cronómetro, sin interrupciones.</li>
+    <li><strong>W14:</strong> analizar errores (por área y habilidad), registrar y cerrar la fase.</li>
+  </ul>
+  <div class="nota">Criterio de avance: Geometría y Funciones deben pasar de "debilidad clara" a al menos "parcial"
+  (≥50% en el MC correspondiente y en el ensayo) antes de terminar la fase.</div>
+
+  <footer class="guia-footer">
+    <div class="nav-abajo">
+      <a href="../../guias.html">← Volver a guías</a>
+      <a href="f2.html">Siguiente: Guía F2 →</a>
+    </div>
+    Guía F1 · Fuente editable: <code>f1.md</code> · PDF: <a href="f1.pdf" target="_blank">f1.pdf</a>
+  </footer>
+</main>
+
+<button class="subir" id="subir" title="Volver arriba">↑</button>
+
+<script src="../../js/guias.js"></script>
 </body>
 </html>
