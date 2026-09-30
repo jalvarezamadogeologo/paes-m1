@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Semana 1 · Ángulos y rectas — Guía de estudio y práctica | PAES M1</title>
+<style>
+/* ============================================================
+   PAES M1 — Guía semanal de la estudiante
+   Pantalla: lectura amigable. @media print: A4 compacto (PDF).
+   ============================================================ */
+:root {
+  --azul: #1F3864;
+  --azul-suave: #2E5A9E;
+  --azul-claro: #EAF0FA;
+  --gris-texto: #333B48;
+  --gris-suave: #64748B;
+  --borde: #E2E8F0;
+  --ambar: #B45309;
+  --ambar-claro: #FEF3C7;
+  --verde: #15803D;
+  --verde-claro: #F0FDF4;
+  --rojo: #B91C1C;
+  --rojo-claro: #FEF2F2;
+  --blanco: #FFFFFF;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "Calibri", "Segoe UI", "Arial", sans-serif;
+  color: var(--gris-texto);
+  font-size: 11pt;
+  line-height: 1.65;
+  background: #fff;
+}
+
+.guia-wrap { max-width: 860px; margin: 0 auto; padding: 26px 26px 60px; }
+
+/* Cabecera */
+.guia-header {
+  background: linear-gradient(135deg, var(--azul) 0%, var(--azul-suave) 100%);
+  color: #fff;
+  border-radius: 14px;
+  padding: 26px 30px;
+  margin-bottom: 20px;
+  box-shadow: 0 6px 18px rgba(31,56,100,0.25);
+}
+.guia-header h1 { font-size: 24pt; font-weight: 700; line-height: 1.2; }
+.guia-header .subtitulo { font-size: 11.5pt; opacity: 0.94; margin-top: 6px; }
+.guia-header .meta-linea { font-size: 9.8pt; opacity: 0.82; margin-top: 12px; }
+.guia-header .pill {
+  display: inline-block;
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 20px;
+  padding: 3px 14px;
+  font-size: 9.5pt;
+  font-weight: 600;
+  margin: 10px 6px 0 0;
+}
+.volver-indice {
+  display: inline-block;
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 20px;
+  padding: 4px 14px;
+  font-size: 9.5pt;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  margin-bottom: 4px;
+}
+.volver-indice:hover { background: rgba(255,255,255,0.32); }
+
+h2 {
+  color: var(--azul);
+  font-size: 17pt;
+  font-weight: 700;
+  margin: 34px 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 3px solid var(--azul);
+}
+h3 { color: var(--azul); font-size: 13.5pt; font-weight: 700; margin: 24px 0 8px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0 8px 22px; }
+li { margin: 5px 0; }
+strong { color: var(--azul); }
+
+/* Bloques */
+.teoria {
+  background: var(--azul-claro);
+  border: 1px solid #C9D8F2;
+  border-left: 5px solid var(--azul);
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin: 10px 0;
+}
+.formula {
+  background: var(--azul-claro);
+  border: 1px solid #C9D8F2;
+  border-left: 5px solid var(--azul);
+  border-radius: 10px;
+  padding: 12px 18px;
+  margin: 10px 0;
+  font-family: "Cambria Math", "Cambria", serif;
+  font-size: 11.5pt;
+  color: var(--azul);
+  line-height: 1.6;
+}
+.idea {
+  background: var(--ambar-claro);
+  border-left: 5px solid var(--ambar);
+  border-radius: 10px;
+  padding: 10px 16px;
+  margin: 10px 0;
+  font-size: 10.6pt;
+}
+.ejemplo {
+  background: var(--verde-claro);
+  border-left: 5px solid var(--verde);
+  border-radius: 10px;
+  padding: 10px 16px;
+  margin: 10px 0;
+  font-size: 10.6pt;
+}
+.ejemplo .tag { font-weight: 800; color: var(--verde); text-transform: uppercase; font-size: 8.5pt; letter-spacing: 0.6px; margin-right: 8px; }
+
+/* Ejercicios */
+.ejercicio {
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  margin: 14px 0;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+.ej-head {
+  background: var(--azul-claro);
+  padding: 8px 16px;
+  border-bottom: 1px solid var(--borde);
+  font-weight: 700;
+  color: var(--azul);
+  font-size: 10.5pt;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.ej-head .num {
+  background: var(--azul);
+  color: #fff;
+  border-radius: 8px;
+  font-size: 9pt;
+  padding: 2px 10px;
+}
+.ej-enun { padding: 12px 16px; font-size: 10.8pt; }
+.ej-alt { padding: 4px 16px 12px; font-size: 10.5pt; color: var(--gris-texto); }
+.ej-respuesta {
+  margin: 0 16px 14px;
+  border: 1px dashed var(--azul-suave);
+  border-radius: 8px;
+  padding: 22px 16px;
+  color: var(--gris-suave);
+  font-size: 9.8pt;
+  text-align: center;
+  background: #FAFBFD;
+}
+.ej-respuesta.doble { padding: 56px 16px; }
+
+/* Tablas */
+table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 10pt; }
+thead th { background: var(--azul); color: #fff; text-align: left; padding: 8px 12px; font-weight: 600; }
+tbody td { padding: 8px 12px; border-bottom: 1px solid var(--borde); vertical-align: top; }
+tbody tr:nth-child(even) { background: var(--azul-claro); }
+
+/* Claves (para el tutor) */
+.claves {
+  background: var(--rojo-claro);
+  border: 1px solid #F3C1C1;
+  border-left: 5px solid var(--rojo);
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin: 16px 0;
+}
+.claves h3 { color: var(--rojo); }
+.claves ul { font-size: 10.5pt; }
+.aviso-tutor {
+  background: var(--ambar-claro);
+  border-left: 5px solid var(--ambar);
+  border-radius: 10px;
+  padding: 10px 16px;
+  margin: 10px 0;
+  font-size: 10.6pt;
+  font-weight: 600;
+}
+
+/* Figuras */
+.figura {
+  background: #fff;
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin: 12px 0;
+  text-align: center;
+}
+.figura svg { max-width: 100%; height: auto; }
+.figura svg text { font-family: "Calibri", "Segoe UI", "Arial", sans-serif; }
+.figura .cap {
+  display: block;
+  margin-top: 8px;
+  font-size: 9.8pt;
+  color: var(--gris-suave);
+  font-style: italic;
+  line-height: 1.5;
+}
+.figura .cap strong { color: var(--azul); font-style: normal; }
+
+/* ============================================================
+   IMPRESION / PDF (A4 compacto)
+   ============================================================ */
+@media print {
+  @page { size: A4; margin: 13mm 13mm; }
+  body { font-size: 9.6pt; line-height: 1.45; }
+  .guia-wrap { max-width: none; padding: 0; }
+  .guia-header { border-radius: 8px; padding: 16px 20px; box-shadow: none; margin-bottom: 10px; }
+  .guia-header h1 { font-size: 17pt; }
+  .guia-header .subtitulo { font-size: 10pt; }
+  .guia-header .meta-linea { font-size: 8.8pt; }
+  .guia-header .pill { font-size: 8.5pt; }
+  .volver-indice { display: none; }
+  h2 { font-size: 13pt; margin: 16px 0 7px; padding-bottom: 4px; border-bottom: 2px solid var(--azul); }
+  h3 { font-size: 11pt; margin: 12px 0 5px; }
+  .teoria, .formula, .idea, .ejemplo { border-radius: 6px; padding: 7px 11px; margin: 6px 0; font-size: 9.4pt; }
+  .formula { font-size: 10pt; }
+  .ejercicio { border-radius: 6px; margin: 7px 0; box-shadow: none; page-break-inside: avoid; }
+  .ej-head { padding: 5px 10px; font-size: 9.2pt; }
+  .ej-head .num { font-size: 8.2pt; padding: 1px 8px; }
+  .ej-enun { padding: 6px 10px; font-size: 9.4pt; }
+  .ej-alt { padding: 3px 10px 6px; font-size: 9.2pt; }
+  .ej-respuesta { margin: 0 10px 8px; padding: 14px 12px; font-size: 8.8pt; }
+  .ej-respuesta.doble { padding: 40px 12px; }
+  .claves { border-radius: 6px; padding: 8px 11px; margin: 8px 0; }
+  .claves ul { font-size: 9.2pt; }
+  .figura { border-radius: 6px; padding: 5px 9px; margin: 5px 0; page-break-inside: avoid; }
+  .figura .cap { font-size: 8.4pt; margin-top: 4px; }
+  table { font-size: 9pt; margin: 8px 0; }
+  thead th { padding: 5px 9px; }
+  tbody td { padding: 5px 9px; }
+  tr, .ejercicio, .teoria, .formula, .ejemplo { page-break-inside: avoid; }
+  h2, h3 { page-break-after: avoid; }
+  .claves { page-break-before: always; }
+}
+</style>
+</head>
+<body>
+<div class="guia-wrap">
+
+  <header class="guia-header">
+    <a class="volver-indice" href="../index.html">← Volver al índice</a>
+    <h1>Semana 1 · Ángulos y rectas</h1>
+    <div class="subtitulo">Guía de estudio y práctica — Competencia Matemática 1 (PAES)</div>
+    <div class="meta-linea">Sesión de 2 h · 28/09 - 04/10/2026 · Fase 1: Geometría básica</div>
+    <span class="pill">Tema nuevo: ángulos y rectas</span>
+    <span class="pill">Práctica: complementarios, suplementarios, paralelas</span>
+  </header>
+
+  
+
+  <p style="margin: 12px 0;">
+    <a href="semana-01.pdf" download style="display:inline-block;background:#1F3864;color:#fff;padding:8px 18px;border-radius:20px;text-decoration:none;font-weight:700;">
+      Descargar guía en PDF
+    </a>
+  </p>
+
+  <h2>Objetivos de la semana</h2>
+  <ul>
+    <li>Comprender qué son los ángulos complementarios y suplementarios, y calcularlos.</li>
+    <li>Reconocer los ángulos que se forman al cortarse dos rectas (opuestos por el vértice y adyacentes).</li>
+    <li>Identificar los ángulos entre paralelas cortadas por una transversal (alternos, correspondientes, conjugados).</li>
+  </ul>
+
+  <h2>1. Complementarios y suplementarios</h2>
+
+  <div class="teoria">
+    <p><strong>Complementarios:</strong> dos ángulos son complementarios si <strong>suman 90°</strong>.</p>
+    <p><strong>Suplementarios:</strong> dos ángulos son suplementarios si <strong>suman 180°</strong>.</p>
+    <p>Para encontrar el complemento de un ángulo: restar de 90°. Para el suplemento: restar de 180°.</p>
+  </div>
+
+  <div class="formula">
+    Complemento de α = 90° − α<br>
+    Suplemento de α = 180° − α
+  </div>
+
+  <div class="ejemplo">
+    <span class="tag">Ejemplo resuelto</span>
+    El complemento de 35° es 90° − 35° = <strong>55°</strong>. El suplemento de 35° es 180° − 35° = <strong>145°</strong>.
+  </div>
+
+  <div class="figura">
+    <svg viewBox="0 0 460 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ángulos complementarios y suplementarios">
+      <text x="115" y="28" text-anchor="middle" font-size="13" font-weight="700" fill="#1F3864">Complementarios (suman 90°)</text>
+      <text x="345" y="28" text-anchor="middle" font-size="13" font-weight="700" fill="#1F3864">Suplementarios (suman 180°)</text>
+      <line x1="35" y1="120" x2="195" y2="120" stroke="#1F3864" stroke-width="2"/>
+      <line x1="115" y1="120" x2="115" y2="25" stroke="#1F3864" stroke-width="2"/>
+      <line x1="115" y1="120" x2="151.86" y2="94.19" stroke="#2E5A9E" stroke-width="2"/>
+      <path d="M 127 120 L 127 108 L 115 108" fill="none" stroke="#64748B" stroke-width="1.5"/>
+      <path d="M 147 120 A 32 32 0 0 0 141.21 101.65" fill="none" stroke="#2E5A9E" stroke-width="2.2"/>
+      <path d="M 141.21 101.65 A 32 32 0 0 0 115 88" fill="none" stroke="#B45309" stroke-width="2.2"/>
+      <text x="156.01" y="107.07" text-anchor="middle" font-size="13" font-weight="700" fill="#2E5A9E">α</text>
+      <text x="134.86" y="81.86" text-anchor="middle" font-size="11.5" font-weight="700" fill="#B45309">90° − α</text>
+      <text x="132" y="100" text-anchor="middle" font-size="10" font-weight="700" fill="#64748B">90°</text>
+      <line x1="265" y1="120" x2="425" y2="120" stroke="#1F3864" stroke-width="2"/>
+      <line x1="345" y1="120" x2="370.71" y2="89.36" stroke="#2E5A9E" stroke-width="2"/>
+      <path d="M 365.57 95.49 A 32 32 0 0 1 377 120" fill="none" stroke="#2E5A9E" stroke-width="2.2"/>
+      <path d="M 365.57 95.49 A 32 32 0 0 0 313 120" fill="none" stroke="#B45309" stroke-width="2.2"/>
+      <text x="383.97" y="101.83" text-anchor="middle" font-size="13" font-weight="700" fill="#2E5A9E">α</text>
+      <text x="326.83" y="81.03" text-anchor="middle" font-size="11.5" font-weight="700" fill="#B45309">180° − α</text>
+    </svg>
+    <span class="cap"><strong>Ángulo α</strong> con su complemento (90° − α) y su suplemento (180° − α).</span>
+  </div>
+
+  <div class="idea">
+    💡 Truco para no confundirse: <strong>complemento</strong> = "completa" el ángulo recto de 90°;
+    <strong>suplemento</strong> = "suple" hasta la línea recta de 180°.
+  </div>
+
+  <h2>2. Ángulos al cortarse dos rectas</h2>
+
+  <div class="teoria">
+    <p>Cuando dos rectas se cortan forman una "X". Se crean cuatro ángulos:</p>
+    <ul>
+      <li><strong>Opuestos por el vértice:</strong> los que quedan enfrentados. Son <strong>iguales</strong>.</li>
+      <li><strong>Adyacentes:</strong> los que comparten un lado. Son <strong>suplementarios</strong> (suman 180°).</li>
+    </ul>
+    <p>Si un ángulo mide 42°, el opuesto por el vértice también mide 42°, y los dos adyacentes miden 138° cada uno.</p>
+  </div>
+
+  <div class="figura">
+    <svg viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Dos rectas que se cortan: opuestos por el vértice y adyacentes">
+      <line x1="60" y1="40" x2="340" y2="200" stroke="#1F3864" stroke-width="2"/>
+      <line x1="60" y1="200" x2="340" y2="40" stroke="#1F3864" stroke-width="2"/>
+      <path d="M 224.31 106.11 A 28 28 0 0 0 175.69 106.11" fill="none" stroke="#2E5A9E" stroke-width="2.2"/>
+      <path d="M 175.69 133.89 A 28 28 0 0 0 224.31 133.89" fill="none" stroke="#2E5A9E" stroke-width="2.2"/>
+      <path d="M 224.31 133.89 A 28 28 0 0 0 224.31 106.11" fill="none" stroke="#B45309" stroke-width="2.2"/>
+      <path d="M 175.69 106.11 A 28 28 0 0 0 175.69 133.89" fill="none" stroke="#B45309" stroke-width="2.2"/>
+      <text x="200" y="84" text-anchor="middle" font-size="13" font-weight="700" fill="#2E5A9E">α</text>
+      <text x="200" y="156" text-anchor="middle" font-size="13" font-weight="700" fill="#2E5A9E">α</text>
+      <text x="236" y="120" text-anchor="middle" font-size="13" font-weight="700" fill="#B45309">β</text>
+      <text x="164" y="120" text-anchor="middle" font-size="13" font-weight="700" fill="#B45309">β</text>
+      <text x="200" y="190" text-anchor="middle" font-size="11" font-weight="700" fill="#333B48">α + β = 180°</text>
+    </svg>
+    <span class="cap"><strong>Opuestos por el vértice:</strong> α = α (iguales). <strong>Adyacentes:</strong> β y β; α + β = 180°.</span>
+  </div>
+
+  <h2>3. Paralelas cortadas por una transversal</h2>
+
+  <div class="teoria">
+    <p>Una recta (transversal) corta dos rectas paralelas. Se forman <strong>8 ángulos</strong>, pero solo hay
+    <strong>dos medidas distintas</strong>: los agudos son todos iguales, los obtusos son todos iguales, y
+    agudo + obtuso = 180°.</p>
+    <ul>
+      <li><strong>Alternos internos (forma de Z):</strong> iguales.</li>
+      <li><strong>Correspondientes (forma de F):</strong> iguales.</li>
+      <li><strong>Conjugados (forma de C):</strong> suman 180°.</li>
+    </ul>
+    <p>Si un ángulo mide 110°, su alterno interno mide 110° y su conjugado mide 180° − 110° = 70°.</p>
+  </div>
+
+  <div class="figura">
+    <svg viewBox="0 0 420 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Paralelas cortadas por una transversal con ángulos alternos, correspondientes y conjugados">
+      <line x1="30" y1="70" x2="390" y2="70" stroke="#1F3864" stroke-width="2.4"/>
+      <line x1="30" y1="190" x2="390" y2="190" stroke="#1F3864" stroke-width="2.4"/>
+      <text x="20" y="74" text-anchor="middle" font-size="12" font-weight="700" fill="#1F3864">L₁</text>
+      <text x="20" y="194" text-anchor="middle" font-size="12" font-weight="700" fill="#1F3864">L₂</text>
+      <line x1="100" y1="235" x2="340" y2="25" stroke="#2E5A9E" stroke-width="2"/>
+      <text x="348" y="30" text-anchor="middle" font-size="12" font-weight="700" fill="#2E5A9E">t</text>
+      <path d="M 300.61 59.46 A 16 16 0 0 1 304.57 70" fill="none" stroke="#2E5A9E" stroke-width="2.2"/>
+      <path d="M 276.53 80.54 A 16 16 0 0 1 272.57 70" fill="none" stroke="#2E5A9E" stroke-width="2.2"/>
+      <path d="M 300.61 59.46 A 16 16 0 0 0 272.57 70" fill="none" stroke="#94A3B8" stroke-width="2.2"/>
+      <path d="M 304.57 70 A 16 16 0 0 1 276.53 80.54" fill="none" stroke="#94A3B8" stroke-width="2.2"/>
+      <text x="311.97" y="61.21" text-anchor="middle" font-size="11" font-weight="700" fill="#2E5A9E">α</text>
+      <text x="265.17" y="78.79" text-anchor="middle" font-size="11" font-weight="700" fill="#2E5A9E">α</text>
+      <text x="279.78" y="46.6" text-anchor="middle" font-size="11" font-weight="700" fill="#94A3B8">β</text>
+      <text x="297.36" y="93.4" text-anchor="middle" font-size="11" font-weight="700" fill="#94A3B8">β</text>
+      <path d="M 163.47 179.46 A 16 16 0 0 1 167.43 190" fill="none" stroke="#2E5A9E" stroke-width="2.2"/>
+      <path d="M 139.39 200.54 A 16 16 0 0 1 135.43 190" fill="none" stroke="#2E5A9E" stroke-width="2.2"/>
+      <path d="M 163.47 179.46 A 16 16 0 0 0 135.43 190" fill="none" stroke="#94A3B8" stroke-width="2.2"/>
+      <path d="M 167.43 190 A 16 16 0 0 1 139.39 200.54" fill="none" stroke="#94A3B8" stroke-width="2.2"/>
+      <text x="174.83" y="181.21" text-anchor="middle" font-size="11" font-weight="700" fill="#2E5A9E">α</text>
+      <text x="128.03" y="198.79" text-anchor="middle" font-size="11" font-weight="700" fill="#2E5A9E">α</text>
+      <text x="142.64" y="166.6" text-anchor="middle" font-size="11" font-weight="700" fill="#94A3B8">β</text>
+      <text x="160.22" y="213.4" text-anchor="middle" font-size="11" font-weight="700" fill="#94A3B8">β</text>
+    </svg>
+    <span class="cap"><strong>Alternos internos</strong> (forma de Z) y <strong>correspondientes</strong> (forma de F): iguales.
+    <strong>Conjugados</strong> (forma de C): suman 180°.</span>
+  </div>
+
+  <h2>4. Ejercicios para practicar</h2>
+
+  
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">1</span> Complementarios</div>
+    <div class="ej-enun">Dos ángulos son complementarios y uno mide el doble del otro. ¿Cuánto mide el ángulo mayor?</div>
+    <div class="ej-alt">A) 30° · B) 45° · C) 60° · D) 90° · E) 120°</div>
+    <div class="ej-respuesta">Desarrollo y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">2</span> Suplementarios</div>
+    <div class="ej-enun">Un ángulo mide 35°. ¿Cuánto mide su suplementario?</div>
+    <div class="ej-alt">A) 35° · B) 55° · C) 145° · D) 155° · E) 325°</div>
+    <div class="ej-respuesta">Desarrollo y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">3</span> Consecutivos</div>
+    <div class="ej-enun">Tres ángulos consecutivos suman 180°. Dos miden 50° y 70°. ¿Cuánto mide el tercero?</div>
+    <div class="ej-alt">A) 40° · B) 50° · C) 60° · D) 70° · E) 120°</div>
+    <div class="ej-respuesta">Desarrollo y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">4</span> Opuestos por el vértice</div>
+    <div class="ej-enun">Dos rectas se intersectan formando un ángulo de 42°. ¿Cuánto mide el ángulo adyacente a él?</div>
+    <div class="ej-alt">A) 42° · B) 48° · C) 90° · D) 138° · E) 318°</div>
+    <div class="ej-respuesta">Desarrollo y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">5</span> Planteo con ecuación</div>
+    <div class="ej-enun">Un ángulo mide 15° menos que el doble de su complemento. ¿Cuánto mide el ángulo?</div>
+    <div class="ej-alt">A) 35° · B) 45° · C) 55° · D) 65° · E) 75°</div>
+    <div class="ej-respuesta doble">Desarrollo y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">6</span> Alternos internos</div>
+    <div class="ej-enun">Dos rectas paralelas son cortadas por una transversal. Un ángulo alterno interno mide 110°. ¿Cuánto mide su conjugado interno?</div>
+    <div class="ej-alt">A) 40° · B) 70° · C) 110° · D) 130° · E) 180°</div>
+    <div class="ej-respuesta">Dibujo, desarrollo y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">7</span> Paralelas (formato PAES)</div>
+    <div class="ej-enun">En la figura, L1 y L2 son paralelas cortadas por una transversal. Si el ángulo α mide 65°, ¿cuánto mide el ángulo β, conjugado interno de α?</div>
+    <div class="ej-alt">A) 25° · B) 65° · C) 90° · D) 115° · E) 125°</div>
+    <div class="ej-respuesta doble">Dibujo, desarrollo y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">8</span> Ángulos en la "X"</div>
+    <div class="ej-enun">Dos rectas se intersectan. Uno de los ángulos formados mide 130°. ¿Cuánto miden los otros tres?</div>
+    <div class="ej-alt">A) 130°, 50°, 50° · B) 130°, 130°, 50° · C) 50°, 50°, 50° · D) 130°, 130°, 130° · E) 65°, 65°, 65°</div>
+    <div class="ej-respuesta">Dibujo, desarrollo y respuesta</div>
+  </div>
+
+  <h2>5. Práctica de mantenimiento (fortalezas)</h2>
+
+  <div class="teoria">
+    <p>Estas preguntas repasan áreas que ya dominas (Proporcionalidad y Estadística). Resolverlas en 10 minutos.</p>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">9</span> Proporcionalidad</div>
+    <div class="ej-enun">Un auto recorre 240 km con 20 L de bencina. ¿Cuántos km recorre con 30 L (mismo consumo)?</div>
+    <div class="ej-alt">A) 300 km · B) 330 km · C) 360 km · D) 400 km · E) 480 km</div>
+    <div class="ej-respuesta">Desarrollo y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">10</span> Estadística</div>
+    <div class="ej-enun">El promedio de 12, 14, 16 y 18 es:</div>
+    <div class="ej-alt">A) 14 · B) 15 · C) 16 · D) 17 · E) 18</div>
+    <div class="ej-respuesta">Desarrollo y respuesta</div>
+  </div>
+
+  
+<div class="contenedor-claves">
+    <button class="btn-toggle-claves" onclick="toggleClaves()">
+        <span id="texto-toggle">Mostrar claves</span>
+    </button>
+    <div class="claves" id="claves-respuestas" style="display: none;">
+        <div class="claves">
+    <h3>Claves — Semana 1 (solo para el tutor)</h3>
+    <ul>
+      <li><strong>1.</strong> C — x + 2x = 90° → x = 30° → mayor = 60°.</li>
+      <li><strong>2.</strong> C — 180° − 35° = 145°.</li>
+      <li><strong>3.</strong> C — 180° − 50° − 70° = 60°.</li>
+      <li><strong>4.</strong> D — adyacentes suman 180° → 180° − 42° = 138°.</li>
+      <li><strong>5.</strong> C — x = 2(90° − x) − 15° → 3x = 165° → x = 55°.</li>
+      <li><strong>6.</strong> B — conjugados suman 180° → 180° − 110° = 70°.</li>
+      <li><strong>7.</strong> D — conjugado interno → 180° − 65° = 115°.</li>
+      <li><strong>8.</strong> A — opuesto = 130°; adyacentes = 50° cada uno.</li>
+      <li><strong>9.</strong> C — 240/20 = 12 km/L → 12·30 = 360 km.</li>
+      <li><strong>10.</strong> B — (12+14+16+18)/4 = 60/4 = 15.</li>
+    </ul>
+  </div>
+    </div>
+</div>
+
+<style>
+.contenedor-claves {
+    margin: 30px 0 20px;
+}
+.btn-toggle-claves {
+    background: #2E5A9E;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+.btn-toggle-claves:hover {
+    background: #1F3864;
+}
+.claves {
+    margin-top: 12px;
+    padding: 16px;
+    background: #F0FDF4;
+    border: 1px solid #BBF7D0;
+    border-radius: 10px;
+}
+.claves h3 {
+    color: #15803D;
+    margin-bottom: 8px;
+}
+</style>
+
+<script>
+function toggleClaves() {
+    var el = document.getElementById('claves-respuestas');
+    var btn = document.getElementById('texto-toggle');
+    if (el.style.display === 'none') {
+        el.style.display = 'block';
+        btn.textContent = 'Ocultar claves';
+    } else {
+        el.style.display = 'none';
+        btn.textContent = 'Mostrar claves';
+    }
+}
+</script>
+</div>
+<div style="max-width: 860px; margin: 0 auto; padding: 24px 26px 40px; border-top: 1px solid #E2E8F0; margin-top: 30px;">
+<div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; align-items: center;">
+<a href="../index.html" style="display:inline-block;padding:9px 18px;border-radius:20px;text-decoration:none;font-weight:700;font-size:10pt;background:#1F3864;color:#fff;">← Volver al inicio</a>
+<div style="display: flex; gap: 10px;">
+<a href="semana-02.html" style="display:inline-block;padding:9px 18px;border-radius:20px;text-decoration:none;font-weight:700;font-size:10pt;background:#EAF0FA;color:#1F3864;border:1px solid #C9D8F2;">Semana siguiente →</a>
+</div>
+</div>
+</div>
+</body>
+</html>

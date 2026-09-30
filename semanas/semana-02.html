@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Semana 2 · Triángulos — Guía de estudio y práctica | PAES M1</title>
+<style>
+/* ============================================================
+   PAES M1 — Guía semanal de la estudiante
+   Pantalla: lectura amigable. @media print: A4 compacto (PDF).
+   ============================================================ */
+:root {
+  --azul: #1F3864;
+  --azul-suave: #2E5A9E;
+  --azul-claro: #EAF0FA;
+  --gris-texto: #333B48;
+  --gris-suave: #64748B;
+  --borde: #E2E8F0;
+  --ambar: #B45309;
+  --ambar-claro: #FEF3C7;
+  --verde: #15803D;
+  --verde-claro: #F0FDF4;
+  --rojo: #B91C1C;
+  --rojo-claro: #FEF2F2;
+  --blanco: #FFFFFF;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "Calibri", "Segoe UI", "Arial", sans-serif;
+  color: var(--gris-texto);
+  font-size: 11pt;
+  line-height: 1.65;
+  background: #fff;
+}
+
+.guia-wrap { max-width: 860px; margin: 0 auto; padding: 26px 26px 60px; }
+
+/* Cabecera */
+.guia-header {
+  background: linear-gradient(135deg, var(--azul) 0%, var(--azul-suave) 100%);
+  color: #fff;
+  border-radius: 14px;
+  padding: 26px 30px;
+  margin-bottom: 20px;
+  box-shadow: 0 6px 18px rgba(31,56,100,0.25);
+}
+.guia-header h1 { font-size: 24pt; font-weight: 700; line-height: 1.2; }
+.guia-header .subtitulo { font-size: 11.5pt; opacity: 0.94; margin-top: 6px; }
+.guia-header .meta-linea { font-size: 9.8pt; opacity: 0.82; margin-top: 12px; }
+.guia-header .pill {
+  display: inline-block;
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 20px;
+  padding: 3px 14px;
+  font-size: 9.5pt;
+  font-weight: 600;
+  margin: 10px 6px 0 0;
+}
+.volver-indice {
+  display: inline-block;
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 20px;
+  padding: 4px 14px;
+  font-size: 9.5pt;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  margin-bottom: 4px;
+}
+.volver-indice:hover { background: rgba(255,255,255,0.32); }
+
+h2 {
+  color: var(--azul);
+  font-size: 17pt;
+  font-weight: 700;
+  margin: 34px 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 3px solid var(--azul);
+}
+h3 { color: var(--azul); font-size: 13.5pt; font-weight: 700; margin: 24px 0 8px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0 8px 22px; }
+li { margin: 5px 0; }
+strong { color: var(--azul); }
+
+/* Bloques */
+.teoria {
+  background: var(--azul-claro);
+  border: 1px solid #C9D8F2;
+  border-left: 5px solid var(--azul);
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin: 10px 0;
+}
+.formula {
+  background: var(--azul-claro);
+  border: 1px solid #C9D8F2;
+  border-left: 5px solid var(--azul);
+  border-radius: 10px;
+  padding: 12px 18px;
+  margin: 10px 0;
+  font-family: "Cambria Math", "Cambria", serif;
+  font-size: 11.5pt;
+  color: var(--azul);
+  line-height: 1.6;
+}
+.idea {
+  background: var(--ambar-claro);
+  border-left: 5px solid var(--ambar);
+  border-radius: 10px;
+  padding: 10px 16px;
+  margin: 10px 0;
+  font-size: 10.6pt;
+}
+.ejemplo {
+  background: var(--verde-claro);
+  border-left: 5px solid var(--verde);
+  border-radius: 10px;
+  padding: 10px 16px;
+  margin: 10px 0;
+  font-size: 10.6pt;
+}
+.ejemplo .tag { font-weight: 800; color: var(--verde); text-transform: uppercase; font-size: 8.5pt; letter-spacing: 0.6px; margin-right: 8px; }
+
+/* Ejercicios */
+.ejercicio {
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  margin: 14px 0;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+.ej-head {
+  background: var(--azul-claro);
+  padding: 8px 16px;
+  border-bottom: 1px solid var(--borde);
+  font-weight: 700;
+  color: var(--azul);
+  font-size: 10.5pt;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.ej-head .num {
+  background: var(--azul);
+  color: #fff;
+  border-radius: 8px;
+  font-size: 9pt;
+  padding: 2px 10px;
+}
+.ej-enun { padding: 12px 16px; font-size: 10.8pt; }
+.ej-alt { padding: 4px 16px 12px; font-size: 10.5pt; color: var(--gris-texto); }
+.ej-respuesta {
+  margin: 0 16px 14px;
+  border: 1px dashed var(--azul-suave);
+  border-radius: 8px;
+  padding: 22px 16px;
+  color: var(--gris-suave);
+  font-size: 9.8pt;
+  text-align: center;
+  background: #FAFBFD;
+}
+.ej-respuesta.doble { padding: 56px 16px; }
+
+/* Tablas */
+table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 10pt; }
+thead th { background: var(--azul); color: #fff; text-align: left; padding: 8px 12px; font-weight: 600; }
+tbody td { padding: 8px 12px; border-bottom: 1px solid var(--borde); vertical-align: top; }
+tbody tr:nth-child(even) { background: var(--azul-claro); }
+
+/* Claves (para el tutor) */
+.claves {
+  background: var(--rojo-claro);
+  border: 1px solid #F3C1C1;
+  border-left: 5px solid var(--rojo);
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin: 16px 0;
+}
+.claves h3 { color: var(--rojo); }
+.claves ul { font-size: 10.5pt; }
+.aviso-tutor {
+  background: var(--ambar-claro);
+  border-left: 5px solid var(--ambar);
+  border-radius: 10px;
+  padding: 10px 16px;
+  margin: 10px 0;
+  font-size: 10.6pt;
+  font-weight: 600;
+}
+
+/* Figuras */
+.figura {
+  background: #fff;
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin: 12px 0;
+  text-align: center;
+}
+.figura svg { max-width: 100%; height: auto; }
+.figura svg text { font-family: "Calibri", "Segoe UI", "Arial", sans-serif; }
+.figura .cap {
+  display: block;
+  margin-top: 8px;
+  font-size: 9.8pt;
+  color: var(--gris-suave);
+  font-style: italic;
+  line-height: 1.5;
+}
+.figura .cap strong { color: var(--azul); font-style: normal; }
+
+/* ============================================================
+   IMPRESION / PDF (A4 compacto)
+   ============================================================ */
+@media print {
+  @page { size: A4; margin: 13mm 13mm; }
+  body { font-size: 9.6pt; line-height: 1.45; }
+  .guia-wrap { max-width: none; padding: 0; }
+  .guia-header { border-radius: 8px; padding: 16px 20px; box-shadow: none; margin-bottom: 10px; }
+  .guia-header h1 { font-size: 17pt; }
+  .guia-header .subtitulo { font-size: 10pt; }
+  .guia-header .meta-linea { font-size: 8.8pt; }
+  .guia-header .pill { font-size: 8.5pt; }
+  .volver-indice { display: none; }
+  h2 { font-size: 13pt; margin: 16px 0 7px; padding-bottom: 4px; border-bottom: 2px solid var(--azul); }
+  h3 { font-size: 11pt; margin: 12px 0 5px; }
+  .teoria, .formula, .idea, .ejemplo { border-radius: 6px; padding: 7px 11px; margin: 6px 0; font-size: 9.4pt; }
+  .formula { font-size: 10pt; }
+  .ejercicio { border-radius: 6px; margin: 7px 0; box-shadow: none; page-break-inside: avoid; }
+  .ej-head { padding: 5px 10px; font-size: 9.2pt; }
+  .ej-head .num { font-size: 8.2pt; padding: 1px 8px; }
+  .ej-enun { padding: 6px 10px; font-size: 9.4pt; }
+  .ej-alt { padding: 3px 10px 6px; font-size: 9.2pt; }
+  .ej-respuesta { margin: 0 10px 8px; padding: 14px 12px; font-size: 8.8pt; }
+  .ej-respuesta.doble { padding: 40px 12px; }
+  .claves { border-radius: 6px; padding: 8px 11px; margin: 8px 0; }
+  .claves ul { font-size: 9.2pt; }
+  .figura { border-radius: 6px; padding: 5px 9px; margin: 5px 0; page-break-inside: avoid; }
+  .figura .cap { font-size: 8.4pt; margin-top: 4px; }
+  table { font-size: 9pt; margin: 8px 0; }
+  thead th { padding: 5px 9px; }
+  tbody td { padding: 5px 9px; }
+  tr, .ejercicio, .teoria, .formula, .ejemplo { page-break-inside: avoid; }
+  h2, h3 { page-break-after: avoid; }
+  .claves { page-break-before: always; }
+}
+</style>
+</head>
+<body>
+<div class="guia-wrap">
+
+  <header class="guia-header">
+    <a class="volver-indice" href="../index.html">← Volver al índice</a>
+    <h1>Semana 2 · Triángulos</h1>
+    <div class="subtitulo">Guía de estudio y práctica — Competencia Matemática 1 (PAES)</div>
+    <div class="meta-linea">Sesión de 2 h · 05/10 - 11/10/2026 · Fase 1: Geometría básica</div>
+    <span class="pill">Tema nuevo: triángulos</span>
+    <span class="pill">Práctica: clasificación, suma de ángulos, isósceles</span>
+  </header>
+
+  
+
+  <p style="margin: 12px 0;">
+    <a href="semana-02.pdf" download style="display:inline-block;background:#1F3864;color:#fff;padding:8px 18px;border-radius:20px;text-decoration:none;font-weight:700;">
+      Descargar guía en PDF
+    </a>
+  </p>
+
+  <h2>Objetivos de la semana</h2>
+  <ul>
+    <li>Usar la regla principal: los ángulos interiores de un triángulo suman 180°.</li>
+    <li>Clasificar triángulos por sus lados y por sus ángulos.</li>
+    <li>Resolver problemas con triángulos isósceles (ángulos basales iguales).</li>
+    <li>Usar el ángulo exterior y la desigualdad triangular.</li>
+  </ul>
+
+  <h2>1. Los ángulos interiores suman 180°</h2>
+
+  <div class="teoria">
+    <p>En cualquier triángulo, la suma de sus tres ángulos interiores es siempre <strong>180°</strong>.</p>
+    <p>Si conoces dos ángulos, el tercero se calcula restando de 180°.</p>
+  </div>
+
+  <div class="formula">
+    α + β + γ = 180°
+  </div>
+
+  <div class="ejemplo">
+    <span class="tag">Ejemplo resuelto</span>
+    Un triángulo tiene ángulos de 65° y 45°. El tercero es 180° − 65° − 45° = <strong>70°</strong>.
+  </div>
+
+  <div class="figura">
+    <svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Triángulo con ángulos interiores α, β y γ">
+      <polygon points="60,200 340,200 200,60" fill="#EAF0FA" stroke="#1F3864" stroke-width="2.4"/>
+      <text x="40" y="214" text-anchor="middle" font-size="13" font-weight="700" fill="#1F3864">A</text>
+      <text x="348" y="214" text-anchor="middle" font-size="13" font-weight="700" fill="#1F3864">B</text>
+      <text x="196" y="46" text-anchor="middle" font-size="13" font-weight="700" fill="#1F3864">C</text>
+      <path d="M 94 200 A 34 34 0 0 0 84.04 175.96" fill="none" stroke="#2E5A9E" stroke-width="2.2"/>
+      <path d="M 306 200 A 34 34 0 0 1 315.96 175.96" fill="none" stroke="#B45309" stroke-width="2.2"/>
+      <path d="M 175.96 84.04 A 34 34 0 0 0 224.04 84.04" fill="none" stroke="#15803D" stroke-width="2.2"/>
+      <text x="102.5" y="182.4" text-anchor="middle" font-size="13" font-weight="700" fill="#2E5A9E">α</text>
+      <text x="297.5" y="182.4" text-anchor="middle" font-size="13" font-weight="700" fill="#B45309">β</text>
+      <text x="200" y="106" text-anchor="middle" font-size="13" font-weight="700" fill="#15803D">γ</text>
+      <text x="200" y="224" text-anchor="middle" font-size="13" font-weight="700" fill="#1F3864">α + β + γ = 180°</text>
+    </svg>
+    <span class="cap">Los tres ángulos interiores de <strong>cualquier</strong> triángulo suman 180°.</span>
+  </div>
+
+  <div class="idea">
+    💡 Ojo: esta regla es SOLO para triángulos. Un cuadrilátero (4 lados) suma 360°, no 180°.
+  </div>
+
+  <h2>2. Clasificación de triángulos</h2>
+
+  <div class="teoria">
+    <p><strong>Por sus lados:</strong></p>
+    <ul>
+      <li><strong>Equilátero:</strong> 3 lados iguales → 3 ángulos de 60°.</li>
+      <li><strong>Isósceles:</strong> 2 lados iguales → los ángulos basales son iguales.</li>
+      <li><strong>Escaleno:</strong> 3 lados distintos → 3 ángulos distintos.</li>
+    </ul>
+    <p><strong>Por sus ángulos:</strong></p>
+    <ul>
+      <li><strong>Acutángulo:</strong> todos los ángulos miden menos de 90°.</li>
+      <li><strong>Rectángulo:</strong> tiene un ángulo de 90°.</li>
+      <li><strong>Obtusángulo:</strong> tiene un ángulo mayor de 90°.</li>
+    </ul>
+    <p>Las dos clasificaciones son independientes: un triángulo 30°-60°-90° es <strong>escaleno y
+    rectángulo</strong> a la vez.</p>
+  </div>
+
+  <div class="figura">
+    <svg viewBox="0 0 460 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Clasificación de triángulos por sus lados">
+      <polygon points="85,183.92 25,80 145,80" fill="#EAF0FA" stroke="#1F3864" stroke-width="2.2"/>
+      <line x1="85" y1="84" x2="85" y2="76" stroke="#1F3864" stroke-width="2"/>
+      <line x1="58.46" y1="129.96" x2="51.54" y2="133.96" stroke="#1F3864" stroke-width="2"/>
+      <line x1="118.46" y1="133.96" x2="111.54" y2="129.96" stroke="#1F3864" stroke-width="2"/>
+      <text x="85" y="24" text-anchor="middle" font-size="12" font-weight="700" fill="#1F3864">Equilátero</text>
+      <text x="85" y="216" text-anchor="middle" font-size="10.5" font-weight="400" fill="#333B48">3 lados iguales</text>
+      <polygon points="230,190 175,80 285,80" fill="#EAF0FA" stroke="#1F3864" stroke-width="2.2"/>
+      <line x1="206.08" y1="133.21" x2="198.92" y2="136.79" stroke="#1F3864" stroke-width="2"/>
+      <line x1="261.08" y1="136.79" x2="253.92" y2="133.21" stroke="#1F3864" stroke-width="2"/>
+      <line x1="228" y1="84" x2="228" y2="76" stroke="#1F3864" stroke-width="2"/>
+      <line x1="232" y1="84" x2="232" y2="76" stroke="#1F3864" stroke-width="2"/>
+      <text x="230" y="24" text-anchor="middle" font-size="12" font-weight="700" fill="#1F3864">Isósceles</text>
+      <text x="230" y="216" text-anchor="middle" font-size="10.5" font-weight="400" fill="#333B48">2 lados iguales</text>
+      <polygon points="375,190 315,80 435,140" fill="#EAF0FA" stroke="#1F3864" stroke-width="2.2"/>
+      <line x1="348.51" y1="133.08" x2="341.49" y2="136.92" stroke="#1F3864" stroke-width="2"/>
+      <line x1="371.42" y1="112.68" x2="375" y2="105.53" stroke="#1F3864" stroke-width="2"/>
+      <line x1="375" y1="114.47" x2="378.58" y2="107.32" stroke="#1F3864" stroke-width="2"/>
+      <line x1="405.51" y1="159.37" x2="410.63" y2="165.51" stroke="#1F3864" stroke-width="2"/>
+      <line x1="402.44" y1="161.93" x2="407.56" y2="168.07" stroke="#1F3864" stroke-width="2"/>
+      <line x1="399.37" y1="164.49" x2="404.49" y2="170.63" stroke="#1F3864" stroke-width="2"/>
+      <text x="375" y="24" text-anchor="middle" font-size="12" font-weight="700" fill="#1F3864">Escaleno</text>
+      <text x="375" y="216" text-anchor="middle" font-size="10.5" font-weight="400" fill="#333B48">3 lados distintos</text>
+    </svg>
+    <span class="cap">Las marcas iguales (/) indican <strong>lados de la misma medida</strong>.</span>
+  </div>
+
+  <div class="figura">
+    <svg viewBox="0 0 460 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Clasificación de triángulos por sus ángulos">
+      <polygon points="85,183.92 25,80 145,80" fill="#EAF0FA" stroke="#1F3864" stroke-width="2.2"/>
+      <path d="M 50 80 A 25 25 0 0 1 37.5 101.65" fill="none" stroke="#2E5A9E" stroke-width="2.2"/>
+      <path d="M 120 80 A 25 25 0 0 0 132.5 101.65" fill="none" stroke="#2E5A9E" stroke-width="2.2"/>
+      <path d="M 72.5 162.27 A 25 25 0 0 1 97.5 162.27" fill="none" stroke="#2E5A9E" stroke-width="2.2"/>
+      <text x="85" y="24" text-anchor="middle" font-size="12" font-weight="700" fill="#1F3864">Acutángulo</text>
+      <text x="85" y="216" text-anchor="middle" font-size="10.5" font-weight="400" fill="#333B48">3 ángulos &lt; 90°</text>
+      <polygon points="175,190 285,190 175,80" fill="#EAF0FA" stroke="#1F3864" stroke-width="2.2"/>
+      <path d="M 187 190 L 187 178 L 175 178" fill="none" stroke="#2E5A9E" stroke-width="1.5"/>
+      <text x="230" y="24" text-anchor="middle" font-size="12" font-weight="700" fill="#1F3864">Rectángulo</text>
+      <text x="230" y="216" text-anchor="middle" font-size="10.5" font-weight="400" fill="#333B48">1 ángulo = 90°</text>
+      <polygon points="330,190 395,190 455,80" fill="#EAF0FA" stroke="#1F3864" stroke-width="2.2"/>
+      <path d="M 406.97 168.05 A 25 25 0 0 0 370 190" fill="none" stroke="#B45309" stroke-width="2.2"/>
+      <text x="390" y="24" text-anchor="middle" font-size="12" font-weight="700" fill="#1F3864">Obtusángulo</text>
+      <text x="390" y="216" text-anchor="middle" font-size="10.5" font-weight="400" fill="#333B48">1 ángulo &gt; 90°</text>
+    </svg>
+    <span class="cap"><strong>Acutángulo</strong> (todo agudo) · <strong>Rectángulo</strong> (cuadradito = 90°) ·
+    <strong>Obtusángulo</strong> (uno obtuso).</span>
+  </div>
+
+  <h2>3. Triángulo isósceles: ángulos basales iguales</h2>
+
+  <div class="teoria">
+    <p>En un isósceles, los <strong>dos ángulos basales son iguales</strong> (están junto a la base).</p>
+    <p>El ángulo del vértice = 180° − 2·(ángulo basal).</p>
+  </div>
+
+  <div class="formula">
+    Basal = (180° − vértice) ÷ 2<br>
+    Vértice = 180° − 2·basal
+  </div>
+
+  <div class="ejemplo">
+    <span class="tag">Ejemplo resuelto</span>
+    Un isósceles tiene un ángulo basal de 40°. El vértice mide 180° − 2·40° = <strong>100°</strong>.
+  </div>
+
+  <div class="figura">
+    <svg viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Triángulo isósceles con ángulos basales iguales">
+      <polygon points="200,60 80,200 320,200" fill="#EAF0FA" stroke="#1F3864" stroke-width="2.4"/>
+      <line x1="136.96" y1="127.4" x2="143.04" y2="132.6" stroke="#1F3864" stroke-width="2.2"/>
+      <line x1="256.96" y1="132.6" x2="263.04" y2="127.4" stroke="#1F3864" stroke-width="2.2"/>
+      <line x1="198" y1="204" x2="198" y2="196" stroke="#1F3864" stroke-width="2.2"/>
+      <line x1="202" y1="204" x2="202" y2="196" stroke="#1F3864" stroke-width="2.2"/>
+      <path d="M 180.48 82.78 A 30 30 0 0 0 219.52 82.78" fill="none" stroke="#B45309" stroke-width="2.2"/>
+      <path d="M 98.22 178.74 A 28 28 0 0 1 108 200" fill="none" stroke="#2E5A9E" stroke-width="2.2"/>
+      <path d="M 301.78 178.74 A 28 28 0 0 0 292 200" fill="none" stroke="#2E5A9E" stroke-width="2.2"/>
+      <text x="200" y="100" text-anchor="middle" font-size="13" font-weight="700" fill="#B45309">α</text>
+      <text x="114.52" y="184.12" text-anchor="middle" font-size="13" font-weight="700" fill="#2E5A9E">β</text>
+      <text x="285.48" y="184.12" text-anchor="middle" font-size="13" font-weight="700" fill="#2E5A9E">β</text>
+      <text x="200" y="230" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1F3864">β = β · los ángulos basales son iguales</text>
+    </svg>
+    <span class="cap">Los lados marcados iguales quedan <strong>frente</strong> a los ángulos basales β.</span>
+  </div>
+
+  <div class="idea">
+    💡 Marca en la figura los lados iguales: los ángulos que quedan frente a ellos son los iguales.
+  </div>
+
+  <h2>4. Ángulo exterior y desigualdad triangular</h2>
+
+  <div class="teoria">
+    <p><strong>Ángulo exterior:</strong> si prolongas un lado del triángulo, el ángulo que se forma
+    afuera es igual a la suma de los dos ángulos interiores NO adyacentes a él.</p>
+    <p><strong>Desigualdad triangular:</strong> para que tres medidas puedan formar un triángulo, la
+    suma de dos lados debe ser SIEMPRE mayor que el tercero. Si 2 + 3 = 5 y el tercero mide 6, NO
+    existe el triángulo.</p>
+  </div>
+
+  <div class="formula">
+    Ángulo exterior = A + B (los dos interiores no adyacentes)
+  </div>
+
+  <div class="ejemplo">
+    <span class="tag">Ejemplo resuelto</span>
+    Si A = 50° y B = 60°, el ángulo exterior en C es 50° + 60° = <strong>110°</strong>.
+  </div>
+
+  <div class="figura">
+    <svg viewBox="0 0 440 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ángulo exterior de un triángulo">
+      <polygon points="120,235 320,235 220,90" fill="#EAF0FA" stroke="#1F3864" stroke-width="2.4"/>
+      <line x1="220" y1="90" x2="271.72" y2="15" stroke="#64748B" stroke-width="1.8" stroke-dasharray="6,5"/>
+      <text x="108" y="245" text-anchor="middle" font-size="13" font-weight="700" fill="#1F3864">A</text>
+      <text x="330" y="245" text-anchor="middle" font-size="13" font-weight="700" fill="#1F3864">B</text>
+      <text x="206" y="76" text-anchor="middle" font-size="13" font-weight="700" fill="#1F3864">C</text>
+      <text x="279.72" y="18" text-anchor="middle" font-size="11.5" font-weight="700" fill="#64748B">D</text>
+      <path d="M 150 235 A 30 30 0 0 0 137.03 210.3" fill="none" stroke="#2E5A9E" stroke-width="2.2"/>
+      <path d="M 290 235 A 30 30 0 0 1 302.97 210.3" fill="none" stroke="#2E5A9E" stroke-width="2.2"/>
+      <path d="M 239.3 62.01 A 34 34 0 0 1 239.3 117.99" fill="none" stroke="#B91C1C" stroke-width="2.2"/>
+      <text x="156.3" y="215.94" text-anchor="middle" font-size="12.5" font-weight="700" fill="#2E5A9E">A</text>
+      <text x="283.7" y="215.94" text-anchor="middle" font-size="12.5" font-weight="700" fill="#2E5A9E">B</text>
+      <text x="265" y="90" text-anchor="start" font-size="13" font-weight="700" fill="#B91C1C">exterior</text>
+      <text x="220" y="252" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1F3864">exterior = A + B</text>
+    </svg>
+    <span class="cap">El <strong>ángulo exterior</strong> en un vértice es igual a la suma de los dos interiores
+    <strong>no adyacentes</strong>: exterior = A + B.</span>
+  </div>
+
+  <h2>5. Ejercicios para practicar</h2>
+
+  
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">1</span> Tercer ángulo</div>
+    <div class="ej-enun">Un triángulo tiene ángulos de 65° y 45°. ¿Cuánto mide el tercer ángulo?</div>
+    <div class="ej-alt">A) 60° · B) 70° · C) 80° · D) 90° · E) 110°</div>
+    <div class="ej-respuesta">Desarrollo y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">2</span> Ángulos en razón</div>
+    <div class="ej-enun">Los ángulos de un triángulo están en razón 1:2:3. ¿Cuánto mide cada uno?</div>
+    <div class="ej-alt">A) 30°, 60°, 90° · B) 20°, 40°, 60° · C) 40°, 60°, 80° · D) 45°, 45°, 90° · E) 36°, 72°, 72°</div>
+    <div class="ej-respuesta">Desarrollo y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">3</span> Isósceles con basal conocido</div>
+    <div class="ej-enun">Un triángulo isósceles tiene un ángulo basal de 40°. ¿Cuánto mide el ángulo del vértice?</div>
+    <div class="ej-alt">A) 40° · B) 80° · C) 100° · D) 120° · E) 140°</div>
+    <div class="ej-respuesta">Desarrollo y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">4</span> Isósceles con vértice conocido</div>
+    <div class="ej-enun">Un triángulo isósceles tiene el ángulo del vértice de 80°. ¿Cuánto mide cada ángulo basal?</div>
+    <div class="ej-alt">A) 40° · B) 50° · C) 60° · D) 80° · E) 100°</div>
+    <div class="ej-respuesta">Desarrollo y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">5</span> Razón 2:3:4</div>
+    <div class="ej-enun">Los ángulos de un triángulo están en razón 2:3:4. ¿Cuánto mide el ángulo mayor?</div>
+    <div class="ej-alt">A) 60° · B) 70° · C) 80° · D) 90° · E) 100°</div>
+    <div class="ej-respuesta">Desarrollo y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">6</span> Ángulo exterior</div>
+    <div class="ej-enun">En un triángulo ABC, el ángulo A mide 50° y el ángulo B mide 60°. ¿Cuánto mide el ángulo exterior en el vértice C?</div>
+    <div class="ej-alt">A) 60° · B) 70° · C) 110° · D) 120° · E) 130°</div>
+    <div class="ej-respuesta doble">Dibujo, desarrollo y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">7</span> Desigualdad triangular</div>
+    <div class="ej-enun">¿Con cuál de los siguientes tríos de medidas NO se puede construir un triángulo?</div>
+    <div class="ej-alt">A) 3, 4, 5 · B) 5, 5, 8 · C) 2, 3, 6 · D) 4, 5, 6 · E) 7, 8, 9</div>
+    <div class="ej-respuesta">Desarrollo y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">8</span> Isósceles con planteo</div>
+    <div class="ej-enun">En un triángulo isósceles, el ángulo del vértice mide el triple que un ángulo basal. ¿Cuánto mide el ángulo del vértice?</div>
+    <div class="ej-alt">A) 36° · B) 72° · C) 100° · D) 108° · E) 120°</div>
+    <div class="ej-respuesta doble">Desarrollo y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">9</span> Detectar el ángulo que no puede ser basal</div>
+    <div class="ej-enun">Un triángulo isósceles tiene un ángulo de 100°. ¿Cuánto miden los otros dos?</div>
+    <div class="ej-alt">A) 40° y 40° · B) 50° y 30° · C) 80° y 0° · D) 100° y −20° · E) 60° y 20°</div>
+    <div class="ej-respuesta doble">Justificación y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">10</span> Clasificación doble</div>
+    <div class="ej-enun">Un triángulo tiene ángulos de 30°, 60° y 90°. ¿Cómo se clasifica?</div>
+    <div class="ej-alt">A) Equilátero y rectángulo · B) Escaleno y rectángulo · C) Isósceles y acutángulo · D) Escaleno y obtusángulo · E) Isósceles y rectángulo</div>
+    <div class="ej-respuesta">Desarrollo y respuesta</div>
+  </div>
+
+  <h2>6. Práctica de mantenimiento (fortalezas)</h2>
+
+  <div class="teoria">
+    <p>Estas preguntas repasan áreas que ya dominas (Proporcionalidad y Estadística). Resolverlas en 10 minutos.</p>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">11</span> Proporcionalidad</div>
+    <div class="ej-enun">En un mapa a escala 1:50.000, 4 cm representan:</div>
+    <div class="ej-alt">A) 2 km · B) 4 km · C) 20 km · D) 40 km · E) 200 km</div>
+    <div class="ej-respuesta">Desarrollo y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">12</span> Estadística</div>
+    <div class="ej-enun">Se lanzan dos dados. ¿Cuál es la probabilidad de que la suma sea 8?</div>
+    <div class="ej-alt">A) 4/36 · B) 5/36 · C) 6/36 · D) 7/36 · E) 8/36</div>
+    <div class="ej-respuesta">Desarrollo y respuesta</div>
+  </div>
+
+  
+<div class="contenedor-claves">
+    <button class="btn-toggle-claves" onclick="toggleClaves()">
+        <span id="texto-toggle">Mostrar claves</span>
+    </button>
+    <div class="claves" id="claves-respuestas" style="display: none;">
+        <div class="claves">
+    <h3>Claves — Semana 2 (solo para el tutor)</h3>
+    <ul>
+      <li><strong>1.</strong> B — 180° − 65° − 45° = 70°.</li>
+      <li><strong>2.</strong> A — 6k = 180° → k = 30° → 30°, 60°, 90°.</li>
+      <li><strong>3.</strong> C — 180° − 2·40° = 100°.</li>
+      <li><strong>4.</strong> B — (180° − 80°)/2 = 50°.</li>
+      <li><strong>5.</strong> C — 9k = 180° → k = 20° → 4·20° = 80°.</li>
+      <li><strong>6.</strong> C — exterior = A + B = 50° + 60° = 110°.</li>
+      <li><strong>7.</strong> C — 2 + 3 = 5 &lt; 6, no se puede.</li>
+      <li><strong>8.</strong> D — basal = x, vértice = 3x → 5x = 180° → x = 36° → vértice = 108°.</li>
+      <li><strong>9.</strong> A — el de 100° no puede ser basal (dos basales sumarían 200° > 180°); los otros dos son 40° y 40°.</li>
+      <li><strong>10.</strong> B — 3 lados distintos (escaleno) y un ángulo de 90° (rectángulo).</li>
+      <li><strong>11.</strong> A — 4·50.000 = 200.000 cm = 2 km.</li>
+      <li><strong>12.</strong> B — pares (2,6)(3,5)(4,4)(5,3)(6,2) = 5/36.</li>
+    </ul>
+  </div>
+    </div>
+</div>
+
+<style>
+.contenedor-claves {
+    margin: 30px 0 20px;
+}
+.btn-toggle-claves {
+    background: #2E5A9E;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+.btn-toggle-claves:hover {
+    background: #1F3864;
+}
+.claves {
+    margin-top: 12px;
+    padding: 16px;
+    background: #F0FDF4;
+    border: 1px solid #BBF7D0;
+    border-radius: 10px;
+}
+.claves h3 {
+    color: #15803D;
+    margin-bottom: 8px;
+}
+</style>
+
+<script>
+function toggleClaves() {
+    var el = document.getElementById('claves-respuestas');
+    var btn = document.getElementById('texto-toggle');
+    if (el.style.display === 'none') {
+        el.style.display = 'block';
+        btn.textContent = 'Ocultar claves';
+    } else {
+        el.style.display = 'none';
+        btn.textContent = 'Mostrar claves';
+    }
+}
+</script>
+</div>
+<div style="max-width: 860px; margin: 0 auto; padding: 24px 26px 40px; border-top: 1px solid #E2E8F0; margin-top: 30px;">
+<div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; align-items: center;">
+<a href="../index.html" style="display:inline-block;padding:9px 18px;border-radius:20px;text-decoration:none;font-weight:700;font-size:10pt;background:#1F3864;color:#fff;">← Volver al inicio</a>
+<div style="display: flex; gap: 10px;">
+<a href="semana-01.html" style="display:inline-block;padding:9px 18px;border-radius:20px;text-decoration:none;font-weight:700;font-size:10pt;background:#EAF0FA;color:#1F3864;border:1px solid #C9D8F2;">← Semana anterior</a>
+</div>
+</div>
+</div>
+</body>
+</html>

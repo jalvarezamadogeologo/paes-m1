@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PAES M1 — Material de estudio</title>
+<style>
+
+/* Reset y base */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+    font-family: "Segoe UI", Calibri, "Helvetica Neue", Arial, sans-serif;
+    color: #333B48;
+    background: #F6F8FB;
+    line-height: 1.65;
+    min-height: 100vh;
+}
+
+/* Portada */
+.portada {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 40px 24px;
+}
+
+.portada-header {
+    text-align: center;
+    margin-bottom: 36px;
+}
+
+.portada-header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1F3864;
+    line-height: 1.2;
+}
+
+.portada-header .subtitulo {
+    font-size: 1.05rem;
+    color: #64748B;
+    margin-top: 8px;
+}
+
+/* Calendario de estudio */
+.calendario-estudio {
+    background: #fff;
+    border: 1px solid #E2E8F0;
+    border-radius: 14px;
+    padding: 24px 28px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.calendario-estudio h2 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #1F3864;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #E2E8F0;
+}
+
+.semana-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 9px 12px;
+    border-bottom: 1px solid #F0F3F7;
+    border-radius: 8px;
+    transition: background 0.15s;
+}
+
+.semana-item:last-child {
+    border-bottom: none;
+}
+
+.semana-item:hover {
+    background: #F6F8FB;
+}
+
+.semana-item .num {
+    font-weight: 700;
+    color: #1F3864;
+    font-size: 0.9rem;
+    min-width: 28px;
+    flex-shrink: 0;
+}
+
+.semana-item .info {
+    flex: 1;
+    min-width: 0;
+}
+
+.semana-item .titulo-unidad {
+    font-size: 0.9rem;
+    color: #333B48;
+    line-height: 1.4;
+}
+
+.semana-item .fechas {
+    font-size: 0.8rem;
+    color: #94A3B8;
+    margin-top: 2px;
+}
+
+.semana-item .punto-disponible {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #22C55E;
+    flex-shrink: 0;
+    margin-top: 6px;
+}
+
+.semana-item.sin-guia {
+    opacity: 0.55;
+}
+
+.semana-item.sin-guia .titulo-unidad {
+    color: #94A3B8;
+}
+
+.semana-item.pausa {
+    opacity: 0.4;
+    font-style: italic;
+}
+
+.semana-item.pausa .titulo-unidad {
+    color: #94A3B8;
+}
+
+.semana-item.hito {
+    border-left: 3px solid #2E5A9E;
+    padding-left: 9px;
+}
+
+.leyenda-calendario {
+    display: flex;
+    gap: 16px;
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid #E2E8F0;
+    font-size: 0.8rem;
+    color: #64748B;
+}
+
+.leyenda-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.leyenda-item .punto {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.leyenda-item .punto.verde {
+    background: #22C55E;
+}
+
+.leyenda-item .punto.gris {
+    background: #CBD5E1;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.15s;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-blanco {
+    background: #fff;
+    color: #1F3864;
+}
+
+.btn-blanco:hover {
+    background: #EAF0FA;
+}
+
+.btn-ghost {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.btn-ghost:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* Acciones dentro de cada fila de semana */
+.semana-item .acciones {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.btn-pequeno {
+    padding: 6px 14px;
+    font-size: 0.85rem;
+    border-radius: 6px;
+}
+
+.btn-azul {
+    background: #2E5A9E;
+    color: #fff;
+}
+
+.btn-azul:hover {
+    background: #1F3864;
+}
+
+.btn-outline {
+    background: transparent;
+    color: #2E5A9E;
+    border: 1px solid #2E5A9E;
+}
+
+.btn-outline:hover {
+    background: #2E5A9E;
+    color: #fff;
+}
+
+.badge {
+    display: inline-block;
+    background: #E2E8F0;
+    color: #64748B;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 12px;
+}
+
+/* Pie */
+.pie {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #E2E8F0;
+    color: #94A3B8;
+    font-size: 0.85rem;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .portada { padding: 24px 16px; }
+    .portada-header h1 { font-size: 1.5rem; }
+    .semana-item { flex-direction: column; align-items: flex-start; gap: 6px; }
+    .semana-item .acciones { width: 100%; }
+    .semana-item .acciones .btn { flex: 1; text-align: center; }
+}
+
+</style>
+</head>
+<body>
+<div class="portada">
+<div class="portada-header">
+<h1>PAES M1 — Matemática</h1>
+<div class="subtitulo">Material de estudio semanal</div>
+</div>
+<div class="calendario-estudio">
+<h2>Calendario de estudio</h2>
+<div class="semana-item pausa">
+<span class="num">[Pausa]</span>
+<div class="info">
+<div class="titulo-unidad">—</div>
+<div class="fechas">18/01 - 14/02</div>
+</div>
+</div>
+<div class="semana-item">
+<span class="num">Semana 1</span>
+<div class="info">
+<div class="titulo-unidad">Geometría: ángulos y rectas (paralelas, transversal)</div>
+<div class="fechas">28/09 - 04/10</div>
+</div>
+<div class="acciones">
+<a href="semanas/semana-01.html" class="btn btn-pequeno btn-azul">Ver guía</a>
+<a href="semanas/semana-01.pdf" class="btn btn-pequeno btn-outline" download>PDF</a>
+</div>
+</div>
+<div class="semana-item">
+<span class="num">Semana 2</span>
+<div class="info">
+<div class="titulo-unidad">Geometría: triángulos (clasificación, suma de ángulos)</div>
+<div class="fechas">05/10 - 11/10</div>
+</div>
+<div class="acciones">
+<a href="semanas/semana-02.html" class="btn btn-pequeno btn-azul">Ver guía</a>
+<a href="semanas/semana-02.pdf" class="btn btn-pequeno btn-outline" download>PDF</a>
+</div>
+</div>
+<div class="semana-item sin-guia">
+<span class="num">Semana 3</span>
+<div class="info">
+<div class="titulo-unidad">Geometría: congruencia y semejanza de triángulos</div>
+<div class="fechas">12/10 - 18/10</div>
+</div>
+<span class="badge">Próximamente</span>
+</div>
+<div class="semana-item sin-guia">
+<span class="num">Semana 4</span>
+<div class="info">
+<div class="titulo-unidad">Geometría: teorema de Pitágoras</div>
+<div class="fechas">19/10 - 25/10</div>
+</div>
+<span class="badge">Próximamente</span>
+</div>
+<div class="semana-item sin-guia">
+<span class="num">Semana 5</span>
+<div class="info">
+<div class="titulo-unidad">Geometría: áreas y perímetros (polígonos)</div>
+<div class="fechas">26/10 - 01/11</div>
+</div>
+<span class="badge">Próximamente</span>
+</div>
+<div class="semana-item sin-guia">
+<span class="num">Semana 6</span>
+<div class="info">
+<div class="titulo-unidad">Geometría: problemas integrados</div>
+<div class="fechas">02/11 - 08/11</div>
+</div>
+<span class="badge">Próximamente</span>
+</div>
+<div class="semana-item sin-guia">
+<span class="num">Semana 7</span>
+<div class="info">
+<div class="titulo-unidad">Funciones: concepto, dominio/recorrido, representaciones</div>
+<div class="fechas">09/11 - 15/11</div>
+</div>
+<span class="badge">Próximamente</span>
+</div>
+<div class="semana-item sin-guia">
+<span class="num">Semana 8</span>
+<div class="info">
+<div class="titulo-unidad">Funciones: lineal y afín (pendiente, gráfica)</div>
+<div class="fechas">16/11 - 22/11</div>
+</div>
+<span class="badge">Próximamente</span>
+</div>
+<div class="semana-item sin-guia">
+<span class="num">Semana 9</span>
+<div class="info">
+<div class="titulo-unidad">Funciones: cuadrática (vértice, raíces, modelación)</div>
+<div class="fechas">23/11 - 29/11</div>
+</div>
+<span class="badge">Próximamente</span>
+</div>
+<div class="semana-item sin-guia">
+<span class="num">Semana 10</span>
+<div class="info">
+<div class="titulo-unidad">Funciones: modelación en contexto</div>
+<div class="fechas">30/11 - 06/12</div>
+</div>
+<span class="badge">Próximamente</span>
+</div>
+<div class="semana-item sin-guia">
+<span class="num">Semana 11</span>
+<div class="info">
+<div class="titulo-unidad">Números: porcentajes, fracciones, potencias y raíces</div>
+<div class="fechas">07/12 - 13/12</div>
+</div>
+<span class="badge">Próximamente</span>
+</div>
+<div class="semana-item sin-guia">
+<span class="num">Semana 12</span>
+<div class="info">
+<div class="titulo-unidad">Repaso integrado de Geometría y Funciones</div>
+<div class="fechas">14/12 - 20/12</div>
+</div>
+<span class="badge">Próximamente</span>
+</div>
+<div class="semana-item sin-guia hito">
+<span class="num">Semana 13</span>
+<div class="info">
+<div class="titulo-unidad">**Ensayo oficial DEMRE (dic 2026)**</div>
+<div class="fechas">21/12 - 27/12</div>
+</div>
+<span class="badge">Próximamente</span>
+</div>
+<div class="semana-item sin-guia">
+<span class="num">Semana 14</span>
+<div class="info">
+<div class="titulo-unidad">Análisis de resultados, registro, cierre de F1</div>
+<div class="fechas">28/12 - 03/01</div>
+</div>
+<span class="badge">Próximamente</span>
+</div>
+<div class="semana-item sin-guia">
+<span class="num">Semana 15</span>
+<div class="info">
+<div class="titulo-unidad">Geometría avanzada: circunferencia (cuerdas, ángulos, sector)</div>
+<div class="fechas">04/01 - 10/01</div>
+</div>
+<span class="badge">Próximamente</span>
+</div>
+<div class="semana-item sin-guia">
+<span class="num">Semana 16</span>
+<div class="info">
+<div class="titulo-unidad">Geometría avanzada: trigonometría básica (sen, cos, tan)</div>
+<div class="fechas">11/01 - 17/01</div>
+</div>
+<span class="badge">Próximamente</span>
+</div>
+<div class="semana-item sin-guia">
+<span class="num">Semana 21</span>
+<div class="info">
+<div class="titulo-unidad">Geometría avanzada: cuerpos geométricos (volúmenes)</div>
+<div class="fechas">15/02 - 21/02</div>
+</div>
+<span class="badge">Próximamente</span>
+</div>
+<div class="semana-item sin-guia">
+<span class="num">Semana 22</span>
+<div class="info">
+<div class="titulo-unidad">Geometría en contexto (problemas integrados)</div>
+<div class="fechas">22/02 - 28/02</div>
+</div>
+<span class="badge">Próximamente</span>
+</div>
+<div class="semana-item sin-guia">
+<span class="num">Semana 23</span>
+<div class="info">
+<div class="titulo-unidad">Funciones: exponencial en profundidad</div>
+<div class="fechas">01/03 - 07/03</div>
+</div>
+<span class="badge">Próximamente</span>
+</div>
+<div class="semana-item sin-guia">
+<span class="num">Semana 24</span>
+<div class="info">
+<div class="titulo-unidad">Funciones: modelación (lineal, cuadrática, exponencial)</div>
+<div class="fechas">08/03 - 14/03</div>
+</div>
+<span class="badge">Próximamente</span>
+</div>
+<div class="semana-item sin-guia">
+<span class="num">Semana 25</span>
+<div class="info">
+<div class="titulo-unidad">Funciones: modelación avanzada tipo corte 800+</div>
+<div class="fechas">15/03 - 21/03</div>
+</div>
+<span class="badge">Próximamente</span>
+</div>
+<div class="semana-item sin-guia">
+<span class="num">Semana 26</span>
+<div class="info">
+<div class="titulo-unidad">Repaso de Funciones</div>
+<div class="fechas">22/03 - 28/03</div>
+</div>
+<span class="badge">Próximamente</span>
+</div>
+<div class="semana-item sin-guia">
+<span class="num">Semana 27</span>
+<div class="info">
+<div class="titulo-unidad">Números en profundidad (porcentajes encadenados, potencias)</div>
+<div class="fechas">29/03 - 04/04</div>
+</div>
+<span class="badge">Próximamente</span>
+</div>
+<div class="semana-item sin-guia">
+<span class="num">Semana 28</span>
+<div class="info">
+<div class="titulo-unidad">Proporcionalidad y Álgebra a dificultad alta</div>
+<div class="fechas">05/04 - 11/04</div>
+</div>
+<span class="badge">Próximamente</span>
+</div>
+<div class="semana-item sin-guia">
+<span class="num">Semana 29</span>
+<div class="info">
+<div class="titulo-unidad">Estadística a dificultad alta</div>
+<div class="fechas">12/04 - 18/04</div>
+</div>
+<span class="badge">Próximamente</span>
+</div>
+<div class="semana-item sin-guia">
+<span class="num">Semana 30</span>
+<div class="info">
+<div class="titulo-unidad">Ensayo completo + análisis</div>
+<div class="fechas">19/04 - 25/04</div>
+</div>
+<span class="badge">Próximamente</span>
+</div>
+<div class="semana-item sin-guia">
+<span class="num">Semana 31</span>
+<div class="info">
+<div class="titulo-unidad">Ensayo completo 1 + clasificación de errores por área</div>
+<div class="fechas">26/04 - 02/05</div>
+</div>
+<span class="badge">Próximamente</span>
+</div>
+<div class="semana-item sin-guia">
+<span class="num">Semana 32</span>
+<div class="info">
+<div class="titulo-unidad">Refuerzo dirigido A (áreas con más errores)</div>
+<div class="fechas">03/05 - 09/05</div>
+</div>
+<span class="badge">Próximamente</span>
+</div>
+<div class="semana-item sin-guia">
+<span class="num">Semana 33</span>
+<div class="info">
+<div class="titulo-unidad">Ensayo completo 2</div>
+<div class="fechas">10/05 - 16/05</div>
+</div>
+<span class="badge">Próximamente</span>
+</div>
+<div class="semana-item sin-guia">
+<span class="num">Semana 34</span>
+<div class="info">
+<div class="titulo-unidad">Refuerzo dirigido B</div>
+<div class="fechas">17/05 - 23/05</div>
+</div>
+<span class="badge">Próximamente</span>
+</div>
+<div class="semana-item sin-guia">
+<span class="num">Semana 35</span>
+<div class="info">
+<div class="titulo-unidad">Ensayo completo 3</div>
+<div class="fechas">24/05 - 30/05</div>
+</div>
+<span class="badge">Próximamente</span>
+</div>
+<div class="semana-item sin-guia">
+<span class="num">Semana 36</span>
+<div class="info">
+<div class="titulo-unidad">Refuerzo dirigido C</div>
+<div class="fechas">31/05 - 06/06</div>
+</div>
+<span class="badge">Próximamente</span>
+</div>
+<div class="semana-item sin-guia">
+<span class="num">Semana 37</span>
+<div class="info">
+<div class="titulo-unidad">Ensayo completo 4</div>
+<div class="fechas">07/06 - 13/06</div>
+</div>
+<span class="badge">Próximamente</span>
+</div>
+<div class="semana-item sin-guia">
+<span class="num">Semana 38</span>
+<div class="info">
+<div class="titulo-unidad">Preparación PAES de invierno (repaso ligero + estrategia)</div>
+<div class="fechas">14/06 - 20/06</div>
+</div>
+<span class="badge">Próximamente</span>
+</div>
+<div class="semana-item sin-guia hito">
+<span class="num">Semana 39</span>
+<div class="info">
+<div class="titulo-unidad">**PAES de invierno** *</div>
+<div class="fechas">21/06 - 27/06</div>
+</div>
+<span class="badge">Próximamente</span>
+</div>
+<div class="semana-item sin-guia">
+<span class="num">Semana 40</span>
+<div class="info">
+<div class="titulo-unidad">Análisis de resultados de invierno</div>
+<div class="fechas">28/06 - 04/07</div>
+</div>
+<span class="badge">Próximamente</span>
+</div>
+<div class="semana-item sin-guia">
+<span class="num">Semana 41</span>
+<div class="info">
+<div class="titulo-unidad">Refuerzo según resultados de invierno</div>
+<div class="fechas">05/07 - 11/07</div>
+</div>
+<span class="badge">Próximamente</span>
+</div>
+<div class="semana-item sin-guia">
+<span class="num">Semana 42</span>
+<div class="info">
+<div class="titulo-unidad">Ensayo completo 5 + cierre F3</div>
+<div class="fechas">12/07 - 18/07</div>
+</div>
+<span class="badge">Próximamente</span>
+</div>
+<div class="semana-item sin-guia">
+<span class="num">Semana 43</span>
+<div class="info">
+<div class="titulo-unidad">Inscripción PAES regular * + ensayo completo 1</div>
+<div class="fechas">19/07 - 25/07</div>
+</div>
+<span class="badge">Próximamente</span>
+</div>
+<div class="semana-item sin-guia">
+<span class="num">Semana 44</span>
+<div class="info">
+<div class="titulo-unidad">Refuerzo dirigido A</div>
+<div class="fechas">26/07 - 01/08</div>
+</div>
+<span class="badge">Próximamente</span>
+</div>
+<div class="semana-item sin-guia">
+<span class="num">Semana 45</span>
+<div class="info">
+<div class="titulo-unidad">Refuerzo dirigido A (continuación)</div>
+<div class="fechas">02/08 - 08/08</div>
+</div>
+<span class="badge">Próximamente</span>
+</div>
+<div class="semana-item sin-guia">
+<span class="num">Semana 46</span>
+<div class="info">
+<div class="titulo-unidad">Ensayo completo 2</div>
+<div class="fechas">09/08 - 15/08</div>
+</div>
+<span class="badge">Próximamente</span>
+</div>
+<div class="semana-item sin-guia">
+<span class="num">Semana 47</span>
+<div class="info">
+<div class="titulo-unidad">Análisis + refuerzo B</div>
+<div class="fechas">16/08 - 22/08</div>
+</div>
+<span class="badge">Próximamente</span>
+</div>
+<div class="semana-item sin-guia">
+<span class="num">Semana 48</span>
+<div class="info">
+<div class="titulo-unidad">Refuerzo B</div>
+<div class="fechas">23/08 - 29/08</div>
+</div>
+<span class="badge">Próximamente</span>
+</div>
+<div class="semana-item sin-guia">
+<span class="num">Semana 49</span>
+<div class="info">
+<div class="titulo-unidad">Ensayo completo 3</div>
+<div class="fechas">30/08 - 05/09</div>
+</div>
+<span class="badge">Próximamente</span>
+</div>
+<div class="semana-item sin-guia">
+<span class="num">Semana 50</span>
+<div class="info">
+<div class="titulo-unidad">Análisis + refuerzo C</div>
+<div class="fechas">06/09 - 12/09</div>
+</div>
+<span class="badge">Próximamente</span>
+</div>
+<div class="semana-item sin-guia">
+<span class="num">Semana 51</span>
+<div class="info">
+<div class="titulo-unidad">Refuerzo C</div>
+<div class="fechas">13/09 - 19/09</div>
+</div>
+<span class="badge">Próximamente</span>
+</div>
+<div class="semana-item sin-guia">
+<span class="num">Semana 52</span>
+<div class="info">
+<div class="titulo-unidad">Ensayo completo 4</div>
+<div class="fechas">20/09 - 26/09</div>
+</div>
+<span class="badge">Próximamente</span>
+</div>
+<div class="semana-item sin-guia">
+<span class="num">Semana 53</span>
+<div class="info">
+<div class="titulo-unidad">Refuerzo D</div>
+<div class="fechas">27/09 - 03/10</div>
+</div>
+<span class="badge">Próximamente</span>
+</div>
+<div class="semana-item sin-guia">
+<span class="num">Semana 54</span>
+<div class="info">
+<div class="titulo-unidad">Refuerzo D</div>
+<div class="fechas">04/10 - 10/10</div>
+</div>
+<span class="badge">Próximamente</span>
+</div>
+<div class="semana-item sin-guia">
+<span class="num">Semana 55</span>
+<div class="info">
+<div class="titulo-unidad">Ensayo completo 5</div>
+<div class="fechas">11/10 - 17/10</div>
+</div>
+<span class="badge">Próximamente</span>
+</div>
+<div class="semana-item sin-guia">
+<span class="num">Semana 56</span>
+<div class="info">
+<div class="titulo-unidad">Análisis + refuerzo E</div>
+<div class="fechas">18/10 - 24/10</div>
+</div>
+<span class="badge">Próximamente</span>
+</div>
+<div class="semana-item sin-guia">
+<span class="num">Semana 57</span>
+<div class="info">
+<div class="titulo-unidad">Refuerzo E</div>
+<div class="fechas">25/10 - 31/10</div>
+</div>
+<span class="badge">Próximamente</span>
+</div>
+<div class="semana-item sin-guia">
+<span class="num">Semana 58</span>
+<div class="info">
+<div class="titulo-unidad">Ensayo completo 6</div>
+<div class="fechas">01/11 - 07/11</div>
+</div>
+<span class="badge">Próximamente</span>
+</div>
+<div class="semana-item sin-guia">
+<span class="num">Semana 59</span>
+<div class="info">
+<div class="titulo-unidad">Consolidación final, revisión de errores recurrentes, cierre F4</div>
+<div class="fechas">08/11 - 14/11</div>
+</div>
+<span class="badge">Próximamente</span>
+</div>
+<div class="semana-item sin-guia">
+<span class="num">Semana 60</span>
+<div class="info">
+<div class="titulo-unidad">Repaso ligero (fórmulas, errores recurrentes, gestión de tiempo)</div>
+<div class="fechas">15/11 - 21/11</div>
+</div>
+<span class="badge">Próximamente</span>
+</div>
+<div class="semana-item sin-guia">
+<span class="num">Semana 61</span>
+<div class="info">
+<div class="titulo-unidad">Simulación completa + estrategia de examen</div>
+<div class="fechas">22/11 - 28/11</div>
+</div>
+<span class="badge">Próximamente</span>
+</div>
+<div class="semana-item sin-guia hito">
+<span class="num">Semana 62</span>
+<div class="info">
+<div class="titulo-unidad">**PAES regular (rendición)** *</div>
+<div class="fechas">29/11 - 05/12</div>
+</div>
+<span class="badge">Próximamente</span>
+</div>
+<div class="leyenda-calendario">
+<div class="leyenda-item"><div class="punto verde"></div><span>Guía disponible</span></div>
+</div>
+</div>
+<div class="pie">Material semanal · PAES M1</div>
+</div>
+</body>
+</html>
