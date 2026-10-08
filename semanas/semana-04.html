@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Semana 4 · Teorema de Pitágoras — Guía de estudio y práctica | PAES M1</title>
+<style>
+/* ============================================================
+   PAES M1 — Guía semanal de la estudiante
+   Pantalla: lectura amigable. @media print: A4 compacto (PDF).
+   ============================================================ */
+:root {
+  --azul: #1F3864;
+  --azul-suave: #2E5A9E;
+  --azul-claro: #EAF0FA;
+  --gris-texto: #333B48;
+  --gris-suave: #64748B;
+  --borde: #E2E8F0;
+  --ambar: #B45309;
+  --ambar-claro: #FEF3C7;
+  --verde: #15803D;
+  --verde-claro: #F0FDF4;
+  --rojo: #B91C1C;
+  --rojo-claro: #FEF2F2;
+  --blanco: #FFFFFF;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "Calibri", "Segoe UI", "Arial", sans-serif;
+  color: var(--gris-texto);
+  font-size: 11pt;
+  line-height: 1.65;
+  background: #fff;
+}
+
+.guia-wrap { max-width: 860px; margin: 0 auto; padding: 26px 26px 60px; }
+
+/* Cabecera */
+.guia-header {
+  background: linear-gradient(135deg, var(--azul) 0%, var(--azul-suave) 100%);
+  color: #fff;
+  border-radius: 14px;
+  padding: 26px 30px;
+  margin-bottom: 20px;
+  box-shadow: 0 6px 18px rgba(31,56,100,0.25);
+}
+.guia-header h1 { font-size: 24pt; font-weight: 700; line-height: 1.2; }
+.guia-header .subtitulo { font-size: 11.5pt; opacity: 0.94; margin-top: 6px; }
+.guia-header .meta-linea { font-size: 9.8pt; opacity: 0.82; margin-top: 12px; }
+.guia-header .pill {
+  display: inline-block;
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 20px;
+  padding: 3px 14px;
+  font-size: 9.5pt;
+  font-weight: 600;
+  margin: 10px 6px 0 0;
+}
+.volver-indice {
+  display: inline-block;
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 20px;
+  padding: 4px 14px;
+  font-size: 9.5pt;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  margin-bottom: 4px;
+}
+.volver-indice:hover { background: rgba(255,255,255,0.32); }
+
+h2 {
+  color: var(--azul);
+  font-size: 17pt;
+  font-weight: 700;
+  margin: 34px 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 3px solid var(--azul);
+}
+h3 { color: var(--azul); font-size: 13.5pt; font-weight: 700; margin: 24px 0 8px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0 8px 22px; }
+li { margin: 5px 0; }
+strong { color: var(--azul); }
+
+/* Bloques */
+.teoria {
+  background: var(--azul-claro);
+  border: 1px solid #C9D8F2;
+  border-left: 5px solid var(--azul);
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin: 10px 0;
+}
+.formula {
+  background: var(--azul-claro);
+  border: 1px solid #C9D8F2;
+  border-left: 5px solid var(--azul);
+  border-radius: 10px;
+  padding: 12px 18px;
+  margin: 10px 0;
+  font-family: "Cambria Math", "Cambria", serif;
+  font-size: 11.5pt;
+  color: var(--azul);
+  line-height: 1.6;
+}
+.idea {
+  background: var(--ambar-claro);
+  border-left: 5px solid var(--ambar);
+  border-radius: 10px;
+  padding: 10px 16px;
+  margin: 10px 0;
+  font-size: 10.6pt;
+}
+.ejemplo {
+  background: var(--verde-claro);
+  border-left: 5px solid var(--verde);
+  border-radius: 10px;
+  padding: 10px 16px;
+  margin: 10px 0;
+  font-size: 10.6pt;
+}
+.ejemplo .tag { font-weight: 800; color: var(--verde); text-transform: uppercase; font-size: 8.5pt; letter-spacing: 0.6px; margin-right: 8px; }
+
+/* Ejercicios */
+.ejercicio {
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  margin: 14px 0;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+.ej-head {
+  background: var(--azul-claro);
+  padding: 8px 16px;
+  border-bottom: 1px solid var(--borde);
+  font-weight: 700;
+  color: var(--azul);
+  font-size: 10.5pt;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.ej-head .num {
+  background: var(--azul);
+  color: #fff;
+  border-radius: 8px;
+  font-size: 9pt;
+  padding: 2px 10px;
+}
+.ej-enun { padding: 12px 16px; font-size: 10.8pt; }
+.ej-alt { padding: 4px 16px 12px; font-size: 10.5pt; color: var(--gris-texto); }
+.ej-respuesta {
+  margin: 0 16px 14px;
+  border: 1px dashed var(--azul-suave);
+  border-radius: 8px;
+  padding: 22px 16px;
+  color: var(--gris-suave);
+  font-size: 9.8pt;
+  text-align: center;
+  background: #FAFBFD;
+}
+.ej-respuesta.doble { padding: 56px 16px; }
+
+/* Tablas */
+table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 10pt; }
+thead th { background: var(--azul); color: #fff; text-align: left; padding: 8px 12px; font-weight: 600; }
+tbody td { padding: 8px 12px; border-bottom: 1px solid var(--borde); vertical-align: top; }
+tbody tr:nth-child(even) { background: var(--azul-claro); }
+
+/* Claves (para el tutor) */
+.claves {
+  background: var(--rojo-claro);
+  border: 1px solid #F3C1C1;
+  border-left: 5px solid var(--rojo);
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin: 16px 0;
+}
+.claves h3 { color: var(--rojo); }
+.claves ul { font-size: 10.5pt; }
+.aviso-tutor {
+  background: var(--ambar-claro);
+  border-left: 5px solid var(--ambar);
+  border-radius: 10px;
+  padding: 10px 16px;
+  margin: 10px 0;
+  font-size: 10.6pt;
+  font-weight: 600;
+}
+
+/* Figuras */
+.figura {
+  background: #fff;
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin: 12px 0;
+  text-align: center;
+}
+.figura svg { max-width: 100%; height: auto; }
+.figura svg text { font-family: "Calibri", "Segoe UI", "Arial", sans-serif; }
+.figura .cap {
+  display: block;
+  margin-top: 8px;
+  font-size: 9.8pt;
+  color: var(--gris-suave);
+  font-style: italic;
+  line-height: 1.5;
+}
+.figura .cap strong { color: var(--azul); font-style: normal; }
+
+/* ============================================================
+   IMPRESION / PDF (A4 compacto)
+   ============================================================ */
+@media print {
+  @page { size: A4; margin: 13mm 13mm; }
+  body { font-size: 9.6pt; line-height: 1.45; }
+  .guia-wrap { max-width: none; padding: 0; }
+  .guia-header { border-radius: 8px; padding: 16px 20px; box-shadow: none; margin-bottom: 10px; }
+  .guia-header h1 { font-size: 17pt; }
+  .guia-header .subtitulo { font-size: 10pt; }
+  .guia-header .meta-linea { font-size: 8.8pt; }
+  .guia-header .pill { font-size: 8.5pt; }
+  .volver-indice { display: none; }
+  h2 { font-size: 13pt; margin: 16px 0 7px; padding-bottom: 4px; border-bottom: 2px solid var(--azul); }
+  h3 { font-size: 11pt; margin: 12px 0 5px; }
+  .teoria, .formula, .idea, .ejemplo { border-radius: 6px; padding: 7px 11px; margin: 6px 0; font-size: 9.4pt; }
+  .formula { font-size: 10pt; }
+  .ejercicio { border-radius: 6px; margin: 7px 0; box-shadow: none; page-break-inside: avoid; }
+  .ej-head { padding: 5px 10px; font-size: 9.2pt; }
+  .ej-head .num { font-size: 8.2pt; padding: 1px 8px; }
+  .ej-enun { padding: 6px 10px; font-size: 9.4pt; }
+  .ej-alt { padding: 3px 10px 6px; font-size: 9.2pt; }
+  .ej-respuesta { margin: 0 10px 8px; padding: 14px 12px; font-size: 8.8pt; }
+  .ej-respuesta.doble { padding: 40px 12px; }
+  .claves { border-radius: 6px; padding: 8px 11px; margin: 8px 0; }
+  .claves ul { font-size: 9.2pt; }
+  .figura { border-radius: 6px; padding: 5px 9px; margin: 5px 0; page-break-inside: avoid; }
+  .figura .cap { font-size: 8.4pt; margin-top: 4px; }
+  table { font-size: 9pt; margin: 8px 0; }
+  thead th { padding: 5px 9px; }
+  tbody td { padding: 5px 9px; }
+  tr, .ejercicio, .teoria, .formula, .ejemplo { page-break-inside: avoid; }
+  h2, h3 { page-break-after: avoid; }
+  .claves { page-break-before: always; }
+}
+</style>
+</head>
+<body>
+<div class="guia-wrap">
+
+  <header class="guia-header">
+    <a class="volver-indice" href="../index.html">← Volver al índice</a>
+    <h1>Semana 4 · Teorema de Pitágoras</h1>
+    <div class="subtitulo">Guía de estudio y práctica — Competencia Matemática 1 (PAES)</div>
+    <div class="meta-linea">Sesión de 2 h · 19/10 - 25/10/2026 · Fase 1: Geometría básica</div>
+    <span class="pill">Tema nuevo: teorema de Pitágoras</span>
+    <span class="pill">Práctica: hipotenusa, catetos, recíproco, aplicaciones</span>
+  </header>
+
+  
+
+  <p style="margin: 12px 0;">
+    <a href="semana-04.pdf" download style="display:inline-block;background:#1F3864;color:#fff;padding:8px 18px;border-radius:20px;text-decoration:none;font-weight:700;">
+      Descargar guía en PDF
+    </a>
+  </p>
+
+  <h2>Objetivos de la semana</h2>
+  <ul>
+    <li>Reconocer la hipotenusa y los catetos y aplicar el teorema solo en triángulos rectángulos.</li>
+    <li>Calcular un cateto con el despeje inverso (restar, no sumar).</li>
+    <li>Reconocer tripletas pitagóricas (3-4-5, 6-8-10, 5-12-13) y sus múltiplos.</li>
+    <li>Usar el recíproco para decidir si un triángulo es rectángulo.</li>
+    <li>Aplicar el teorema a la diagonal del rectángulo y del cuadrado y a la altura del equilátero.</li>
+  </ul>
+
+  <h2>1. El teorema y su condición de uso</h2>
+
+  <div class="teoria">
+    <p>En un <strong>triángulo rectángulo</strong> (el que tiene un ángulo de 90°), el lado opuesto
+    al ángulo recto se llama <strong>hipotenusa</strong> y es siempre el <strong>lado mayor</strong>.
+    Los otros dos lados son los <strong>catetos</strong>.</p>
+    <p>El teorema de Pitágoras relaciona los tres lados:</p>
+  </div>
+
+  <div class="formula">
+    hipotenusa² = cateto₁² + cateto₂² &nbsp;&nbsp;·&nbsp;&nbsp; c² = a² + b²
+  </div>
+
+  <div class="idea">
+    💡 El teorema SOLO se aplica en triángulos rectángulos. Antes de usarlo, ubica el ángulo de 90°:
+    la hipotenusa es el lado que queda <strong>frente</strong> a él.
+  </div>
+
+  <div class="figura">
+    <svg viewBox="0 0 440 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Triángulo rectángulo con catetos a y b e hipotenusa c">
+      <polygon points="70,45 310,205 70,205" fill="#EAF0FA" stroke="#1F3864" stroke-width="2.4"/>
+      <path d="M 84 205 L 84 191 L 70 191" fill="none" stroke="#64748B" stroke-width="1.5"/>
+      <text x="52" y="125" text-anchor="middle" font-size="13" font-weight="700" fill="#1F3864">a</text>
+      <text x="190" y="223" text-anchor="middle" font-size="13" font-weight="700" fill="#1F3864">b</text>
+      <text x="199.98" y="110.02" text-anchor="middle" font-size="13" font-weight="700" fill="#2E5A9E">c</text>
+      <text x="210" y="250" text-anchor="middle" font-size="13" font-weight="700" fill="#1F3864">c² = a² + b²</text>
+    </svg>
+    <span class="cap"><strong>Teorema de Pitágoras:</strong> en un triángulo rectángulo, los <strong>catetos e hipotenusa</strong> cumplen c² = a² + b². La hipotenusa es el lado mayor, frente al ángulo de 90°.</span>
+  </div>
+
+  <div class="ejemplo">
+    <span class="tag">Ejemplo resuelto</span>
+    Catetos 6 y 8 → c² = 6² + 8² = 36 + 64 = 100 → c = √100 = <strong>10</strong>.
+  </div>
+
+  <h2>2. Tripletas pitagóricas</h2>
+
+  <div class="teoria">
+    <p>Hay triángulos rectángulos con lados enteros que conviene <strong>memorizar</strong>: se llaman
+    <strong>tripletas pitagóricas</strong>. Reconocerlas ahorra el cálculo completo en la prueba.</p>
+    <ul>
+      <li><strong>3-4-5</strong> (y sus múltiplos: 6-8-10, 9-12-15, …)</li>
+      <li><strong>5-12-13</strong></li>
+      <li><strong>8-15-17</strong></li>
+    </ul>
+  </div>
+
+  <div class="figura">
+    <svg viewBox="0 0 560 270" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Tripletas pitagóricas 3-4-5 y su múltiplo 6-8-10">
+      <polygon points="50,165 130,225 50,225" fill="#EAF0FA" stroke="#1F3864" stroke-width="2.4"/>
+      <path d="M 62 225 L 62 213 L 50 213" fill="none" stroke="#64748B" stroke-width="1.5"/>
+      <polygon points="310,105 470,225 310,225" fill="#EAF0FA" stroke="#1F3864" stroke-width="2.4"/>
+      <path d="M 322 225 L 322 213 L 310 213" fill="none" stroke="#64748B" stroke-width="1.5"/>
+      <text x="35" y="195" text-anchor="middle" font-size="12" font-weight="700" fill="#1F3864">3</text>
+      <text x="90" y="240" text-anchor="middle" font-size="12" font-weight="700" fill="#1F3864">4</text>
+      <text x="99.6" y="182.2" text-anchor="middle" font-size="12" font-weight="700" fill="#2E5A9E">5</text>
+      <text x="295" y="165" text-anchor="middle" font-size="12" font-weight="700" fill="#1F3864">6</text>
+      <text x="390" y="240" text-anchor="middle" font-size="12" font-weight="700" fill="#1F3864">8</text>
+      <text x="399.6" y="152.2" text-anchor="middle" font-size="12" font-weight="700" fill="#2E5A9E">10</text>
+      <text x="220" y="152" text-anchor="middle" font-size="17" font-weight="700" fill="#B45309">× 2</text>
+      <text x="90" y="262" text-anchor="middle" font-size="12" font-weight="700" fill="#64748B">3-4-5</text>
+      <text x="390" y="262" text-anchor="middle" font-size="12" font-weight="700" fill="#64748B">6-8-10</text>
+    </svg>
+    <span class="cap">Las <strong>tripletas pitagóricas</strong> se conservan al multiplicar: el triángulo 6-8-10 es el 3-4-5 con todos sus lados ×2, y sigue siendo rectángulo.</span>
+  </div>
+
+  <div class="ejemplo">
+    <span class="tag">Ejemplo resuelto</span>
+    3-4-5 ×2 → 6-8-10; ×3 → 9-12-15. Basta reconocer la familia para responder sin calcular raíces.
+  </div>
+
+  <h2>3. Despeje inverso: calcular un cateto</h2>
+
+  <div class="teoria">
+    <p>Si conocemos la hipotenusa y un cateto y piden el otro, despejamos de c² = a² + b²:</p>
+  </div>
+
+  <div class="formula">
+    cateto = √(hipotenusa² − otro cateto²)
+  </div>
+
+  <div class="idea">
+    💡 Al buscar un cateto se <strong>resta</strong> (no se suma). Sumar es el error más común: deja el
+    resultado más grande que la hipotenusa, lo que es imposible.
+  </div>
+
+  <div class="figura">
+    <svg viewBox="0 0 420 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Triángulo rectángulo con hipotenusa 17, cateto 15 y cateto desconocido">
+      <polygon points="70,85 134,205 70,205" fill="#EAF0FA" stroke="#1F3864" stroke-width="2.4"/>
+      <path d="M 83 205 L 83 192 L 70 192" fill="none" stroke="#64748B" stroke-width="1.5"/>
+      <text x="53" y="145" text-anchor="middle" font-size="12" font-weight="700" fill="#1F3864">15</text>
+      <text x="102" y="221" text-anchor="middle" font-size="13" font-weight="700" fill="#B45309">x</text>
+      <text x="116.12" y="137.47" text-anchor="middle" font-size="12" font-weight="700" fill="#2E5A9E">17</text>
+      <text x="215" y="232" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1F3864">x = √(17² − 15²) = √64 = 8</text>
+    </svg>
+    <span class="cap"><strong>Despeje inverso:</strong> con hipotenusa 17 y un cateto 15, el otro cateto es √(17² − 15²) = √64 = 8.</span>
+  </div>
+
+  <div class="ejemplo">
+    <span class="tag">Ejemplo resuelto</span>
+    Hipotenusa 17, cateto 15 → x = √(289 − 225) = √64 = <strong>8</strong>.
+  </div>
+
+  <h2>4. El recíproco del teorema</h2>
+
+  <div class="teoria">
+    <p>El <strong>recíproco</strong> también es cierto: si en un triángulo se cumple
+    a² + b² = c², entonces el triángulo <strong>es rectángulo</strong>. Sirve para las preguntas del
+    tipo "¿cuál de estos triángulos es rectángulo?".</p>
+  </div>
+
+  <div class="ejemplo">
+    <span class="tag">Ejemplo resuelto</span>
+    8-15-17: 8² + 15² = 64 + 225 = 289 = 17² ✓ es rectángulo.
+    4-5-6: 16 + 25 = 41 ≠ 36 ✗ no lo es.
+  </div>
+
+  <h2>5. Aplicaciones: diagonal y altura</h2>
+
+  <div class="teoria">
+    <p>El teorema aparece escondido en figuras conocidas:</p>
+    <ul>
+      <li><strong>Diagonal de un rectángulo:</strong> d = √(base² + altura²).</li>
+      <li><strong>Diagonal de un cuadrado:</strong> d = lado · √2.</li>
+      <li><strong>Altura de un triángulo equilátero de lado L:</strong> h = √(L² − (L/2)²) = L·√3/2.</li>
+    </ul>
+  </div>
+
+  <div class="figura">
+    <svg viewBox="0 0 620 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Aplicaciones: diagonal del rectángulo, diagonal del cuadrado y altura del equilátero">
+      <polygon points="40,190 200,190 200,100 40,100" fill="#EAF0FA" stroke="#1F3864" stroke-width="2.2"/>
+      <line x1="40" y1="190" x2="200" y2="100" stroke="#2E5A9E" stroke-width="2.2"/>
+      <path d="M 52 190 L 52 178 L 40 178" fill="none" stroke="#64748B" stroke-width="1.5"/>
+      <text x="120" y="205" text-anchor="middle" font-size="12" font-weight="700" fill="#64748B">b</text>
+      <text x="28" y="148" text-anchor="middle" font-size="12" font-weight="700" fill="#64748B">h</text>
+      <text x="113" y="134" text-anchor="middle" font-size="12" font-weight="700" fill="#2E5A9E">d</text>
+      <polygon points="260,190 370,190 370,80 260,80" fill="#EAF0FA" stroke="#1F3864" stroke-width="2.2"/>
+      <line x1="260" y1="190" x2="370" y2="80" stroke="#2E5A9E" stroke-width="2.2"/>
+      <path d="M 272 190 L 272 178 L 260 178" fill="none" stroke="#64748B" stroke-width="1.5"/>
+      <text x="315" y="205" text-anchor="middle" font-size="12" font-weight="700" fill="#64748B">L</text>
+      <text x="302" y="126" text-anchor="middle" font-size="12" font-weight="700" fill="#2E5A9E">L√2</text>
+      <polygon points="430,205 550,205 490,101.08" fill="#EAF0FA" stroke="#1F3864" stroke-width="2.2"/>
+      <line x1="490" y1="101.08" x2="490" y2="205" stroke="#64748B" stroke-width="1.6" stroke-dasharray="5,4"/>
+      <path d="M 502 205 L 502 193 L 490 193" fill="none" stroke="#64748B" stroke-width="1.5"/>
+      <text x="490" y="220" text-anchor="middle" font-size="12" font-weight="700" fill="#64748B">L</text>
+      <text x="498" y="150" text-anchor="middle" font-size="12" font-weight="700" fill="#2E5A9E">h</text>
+      <text x="120" y="235" text-anchor="middle" font-size="11" font-weight="400" fill="#333B48">d = √(b² + h²)</text>
+      <text x="315" y="235" text-anchor="middle" font-size="11" font-weight="400" fill="#333B48">d = L·√2</text>
+      <text x="490" y="235" text-anchor="middle" font-size="11" font-weight="400" fill="#333B48">h = L·√3/2</text>
+    </svg>
+    <span class="cap">El teorema resuelve la <strong>diagonal</strong> del rectángulo (d = √(b² + h²)), la del cuadrado (d = L√2) y la altura del equilátero (h = L√3/2).</span>
+  </div>
+
+  <div class="ejemplo">
+    <span class="tag">Ejemplo resuelto</span>
+    Equilátero de lado 6 → h = √(6² − 3²) = √27 = <strong>3√3</strong> cm.
+  </div>
+
+  <h2>6. Ejercicios para practicar</h2>
+
+  
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">1</span> Calcular la hipotenusa</div>
+    <div class="ej-enun">En un triángulo rectángulo los catetos miden 6 cm y 8 cm. ¿Cuánto mide la hipotenusa?</div>
+    <div class="opciones" data-ej="1"><button type="button" class="opcion" data-ej="1" data-val="A">A) 10 cm</button><button type="button" class="opcion" data-ej="1" data-val="B">B) 12 cm</button><button type="button" class="opcion" data-ej="1" data-val="C">C) 14 cm</button><button type="button" class="opcion" data-ej="1" data-val="D">D) 28 cm</button><button type="button" class="opcion" data-ej="1" data-val="E">E) 100 cm</button></div>
+    <div class="ej-respuesta">Desarrollo y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">2</span> Contexto: escalera</div>
+    <div class="ej-enun">Una escalera de 10 m se apoya en un muro, con su base a 6 m del muro. ¿A qué altura del muro llega la escalera?</div>
+    <div class="opciones" data-ej="2"><button type="button" class="opcion" data-ej="2" data-val="A">A) 4 m</button><button type="button" class="opcion" data-ej="2" data-val="B">B) 6 m</button><button type="button" class="opcion" data-ej="2" data-val="C">C) 8 m</button><button type="button" class="opcion" data-ej="2" data-val="D">D) 12 m</button><button type="button" class="opcion" data-ej="2" data-val="E">E) 16 m</button></div>
+    <div class="ej-respuesta">Dibujo, desarrollo y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">3</span> Despeje inverso</div>
+    <div class="ej-enun">Un triángulo rectángulo tiene hipotenusa 17 y un cateto 15. ¿Cuánto mide el otro cateto?</div>
+    <div class="opciones" data-ej="3"><button type="button" class="opcion" data-ej="3" data-val="A">A) 2</button><button type="button" class="opcion" data-ej="3" data-val="B">B) 8</button><button type="button" class="opcion" data-ej="3" data-val="C">C) 12</button><button type="button" class="opcion" data-ej="3" data-val="D">D) 15</button><button type="button" class="opcion" data-ej="3" data-val="E">E) 32</button></div>
+    <div class="ej-respuesta">Desarrollo y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">4</span> Diagonal del rectángulo</div>
+    <div class="ej-enun">Un rectángulo mide 9 × 12. ¿Cuánto mide su diagonal?</div>
+    <div class="opciones" data-ej="4"><button type="button" class="opcion" data-ej="4" data-val="A">A) 15</button><button type="button" class="opcion" data-ej="4" data-val="B">B) 21</button><button type="button" class="opcion" data-ej="4" data-val="C">C) 108</button><button type="button" class="opcion" data-ej="4" data-val="D">D) 144</button><button type="button" class="opcion" data-ej="4" data-val="E">E) 225</button></div>
+    <div class="ej-respuesta">Desarrollo y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">5</span> Altura del equilátero</div>
+    <div class="ej-enun">¿Cuánto mide la altura de un triángulo equilátero de lado 6 cm?</div>
+    <div class="opciones" data-ej="5"><button type="button" class="opcion" data-ej="5" data-val="A">A) 3 cm</button><button type="button" class="opcion" data-ej="5" data-val="B">B) 3√3 cm</button><button type="button" class="opcion" data-ej="5" data-val="C">C) 6√3 cm</button><button type="button" class="opcion" data-ej="5" data-val="D">D) 9 cm</button><button type="button" class="opcion" data-ej="5" data-val="E">E) 3√2 cm</button></div>
+    <div class="ej-respuesta doble">Dibujo, desarrollo y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">6</span> Recíproco del teorema</div>
+    <div class="ej-enun">¿Cuál de los siguientes triángulos es rectángulo?</div>
+    <div class="opciones" data-ej="6"><button type="button" class="opcion" data-ej="6" data-val="A">A) 4, 5, 6</button><button type="button" class="opcion" data-ej="6" data-val="B">B) 5, 12, 13</button><button type="button" class="opcion" data-ej="6" data-val="C">C) 6, 7, 8</button><button type="button" class="opcion" data-ej="6" data-val="D">D) 8, 10, 12</button><button type="button" class="opcion" data-ej="6" data-val="E">E) 9, 10, 11</button></div>
+    <div class="ej-respuesta doble">Justificación y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">7</span> Ahorro por la diagonal</div>
+    <div class="ej-enun">Un terreno rectangular mide 30 m × 40 m. Si una persona lo cruza por la diagonal en vez de caminar por dos lados, ¿cuántos metros se ahorra?</div>
+    <div class="opciones" data-ej="7"><button type="button" class="opcion" data-ej="7" data-val="A">A) 10 m</button><button type="button" class="opcion" data-ej="7" data-val="B">B) 15 m</button><button type="button" class="opcion" data-ej="7" data-val="C">C) 20 m</button><button type="button" class="opcion" data-ej="7" data-val="D">D) 25 m</button><button type="button" class="opcion" data-ej="7" data-val="E">E) 30 m</button></div>
+    <div class="ej-respuesta doble">Desarrollo y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">8</span> Diagonal del cuadrado</div>
+    <div class="ej-enun">¿Cuál es la diagonal de un cuadrado de lado 5 cm?</div>
+    <div class="opciones" data-ej="8"><button type="button" class="opcion" data-ej="8" data-val="A">A) 5 cm</button><button type="button" class="opcion" data-ej="8" data-val="B">B) 5√2 cm</button><button type="button" class="opcion" data-ej="8" data-val="C">C) 10 cm</button><button type="button" class="opcion" data-ej="8" data-val="D">D) 25 cm</button><button type="button" class="opcion" data-ej="8" data-val="E">E) 10√2 cm</button></div>
+    <div class="ej-respuesta">Desarrollo y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">9</span> Múltiplo de una tripleta</div>
+    <div class="ej-enun">Los lados de un triángulo rectángulo son proporcionales a 3, 4 y 5. Si el cateto menor mide 9 cm, ¿cuánto mide la hipotenusa?</div>
+    <div class="opciones" data-ej="9"><button type="button" class="opcion" data-ej="9" data-val="A">A) 12 cm</button><button type="button" class="opcion" data-ej="9" data-val="B">B) 15 cm</button><button type="button" class="opcion" data-ej="9" data-val="C">C) 16 cm</button><button type="button" class="opcion" data-ej="9" data-val="D">D) 20 cm</button><button type="button" class="opcion" data-ej="9" data-val="E">E) 25 cm</button></div>
+    <div class="ej-respuesta doble">Desarrollo y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">10</span> Contexto: escalera (inverso)</div>
+    <div class="ej-enun">Una escalera de 13 m está apoyada en una pared y alcanza 12 m de altura. ¿A qué distancia de la pared está la base?</div>
+    <div class="opciones" data-ej="10"><button type="button" class="opcion" data-ej="10" data-val="A">A) 5 m</button><button type="button" class="opcion" data-ej="10" data-val="B">B) 6 m</button><button type="button" class="opcion" data-ej="10" data-val="C">C) 7 m</button><button type="button" class="opcion" data-ej="10" data-val="D">D) 1 m</button><button type="button" class="opcion" data-ej="10" data-val="E">E) 25 m</button></div>
+    <div class="ej-respuesta">Dibujo, desarrollo y respuesta</div>
+  </div>
+
+  <h2>7. Práctica de mantenimiento (fortalezas)</h2>
+
+  <div class="teoria">
+    <p>Estas preguntas repasan áreas que ya dominas (Proporcionalidad y Estadística). Resolverlas en 10 minutos.</p>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">11</span> Proporcionalidad</div>
+    <div class="ej-enun">Si 3 cuadernos cuestan $1.800, ¿cuánto cuestan 5 cuadernos al mismo precio unitario?</div>
+    <div class="opciones" data-ej="11"><button type="button" class="opcion" data-ej="11" data-val="A">A) $2.400</button><button type="button" class="opcion" data-ej="11" data-val="B">B) $2.700</button><button type="button" class="opcion" data-ej="11" data-val="C">C) $3.000</button><button type="button" class="opcion" data-ej="11" data-val="D">D) $3.200</button><button type="button" class="opcion" data-ej="11" data-val="E">E) $3.600</button></div>
+    <div class="ej-respuesta">Desarrollo y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">12</span> Estadística</div>
+    <div class="ej-enun">Las notas de un alumno son 5, 6, 6, 4 y 7. ¿Cuál es su promedio?</div>
+    <div class="opciones" data-ej="12"><button type="button" class="opcion" data-ej="12" data-val="A">A) 5,4</button><button type="button" class="opcion" data-ej="12" data-val="B">B) 5,6</button><button type="button" class="opcion" data-ej="12" data-val="C">C) 5,8</button><button type="button" class="opcion" data-ej="12" data-val="D">D) 6,0</button><button type="button" class="opcion" data-ej="12" data-val="E">E) 6,2</button></div>
+    <div class="ej-respuesta">Desarrollo y respuesta</div>
+  </div>
+
+  
+<style>
+.opciones { display: flex; flex-wrap: wrap; gap: 8px; padding: 4px 16px 14px; }
+.opcion {
+    font-family: inherit; font-size: 10.5pt; line-height: 1.45; text-align: left;
+    background: #fff; color: #333B48;
+    border: 1.5px solid #C9D8F2; border-radius: 8px;
+    padding: 7px 12px; cursor: pointer; transition: all 0.12s;
+}
+.opcion:hover { border-color: #2E5A9E; background: #EAF0FA; }
+.opcion.seleccionada { border-color: #2E5A9E; background: #EAF0FA; box-shadow: 0 0 0 2px rgba(46,90,158,0.25); }
+.opcion.correcta { border-color: #15803D; background: #F0FDF4; color: #15803D; font-weight: 700; }
+.opcion.incorrecta { border-color: #B91C1C; background: #FEF2F2; color: #B91C1C; font-weight: 700; }
+.panel-correccion {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 12px;
+    margin: 20px 0 6px; padding: 14px 18px;
+    background: #F6F8FB; border: 1px solid #E2E8F0; border-radius: 12px;
+}
+.panel-correccion .btn-accion {
+    background: #2E5A9E; color: #fff; border: none; border-radius: 8px;
+    padding: 10px 20px; font-size: 0.95rem; font-weight: 600; cursor: pointer;
+    transition: background 0.15s;
+}
+.panel-correccion .btn-accion:hover { background: #1F3864; }
+.panel-correccion .btn-secundario { background: #fff; color: #2E5A9E; border: 1px solid #2E5A9E; }
+.panel-correccion .btn-secundario:hover { background: #EAF0FA; }
+.panel-correccion .progreso { font-size: 0.9rem; color: #64748B; margin-left: auto; }
+.panel-correccion .resultado { flex-basis: 100%; font-weight: 700; color: #1F3864; font-size: 1rem; }
+.panel-correccion .resultado.acierto-total { color: #15803D; }
+.panel-correccion .resultado.hay-errores { color: #B91C1C; }
+@media print { .opciones, .panel-correccion { display: none !important; } }
+</style>
+
+<div class="panel-correccion" id="panel-correccion">
+<button type="button" class="btn-accion" id="btn-corregir">Corregir</button>
+<button type="button" class="btn-accion btn-secundario" id="btn-reiniciar">Reiniciar</button>
+<span class="progreso" id="progreso-resp">0 de 12 respondidas</span>
+<div class="resultado" id="resultado-correcion"></div>
+</div>
+
+<script>
+(function () {
+  var CLAVES = {"1":"A", "2":"C", "3":"B", "4":"A", "5":"B", "6":"B", "7":"C", "8":"B", "9":"B", "10":"A", "11":"C", "12":"B"};
+  var TOTAL = 12;
+  var LS_KEY = "paes-resp-semana-04";
+  var seleccion = {};
+  try { seleccion = JSON.parse(localStorage.getItem(LS_KEY) || '{}') || {}; } catch (e) { seleccion = {}; }
+
+  function guardar() {
+    try { localStorage.setItem(LS_KEY, JSON.stringify(seleccion)); } catch (e) {}
+  }
+
+  function opcionesDe(ej) {
+    return document.querySelectorAll('.opcion[data-ej="' + ej + '"]');
+  }
+
+  function marcarSeleccion(ej) {
+    var val = seleccion[ej];
+    opcionesDe(ej).forEach(function (b) {
+      if (b.getAttribute('data-val') === val) { b.classList.add('seleccionada'); }
+      else { b.classList.remove('seleccionada'); }
+    });
+  }
+
+  function actualizarProgreso() {
+    var p = document.getElementById('progreso-resp');
+    if (p) { p.textContent = Object.keys(seleccion).length + ' de ' + TOTAL + ' respondidas'; }
+  }
+
+  Object.keys(seleccion).forEach(function (ej) { marcarSeleccion(ej); });
+  actualizarProgreso();
+
+  document.querySelectorAll('.opcion').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var ej = btn.getAttribute('data-ej');
+      var val = btn.getAttribute('data-val');
+      seleccion[ej] = val;
+      guardar();
+      marcarSeleccion(ej);
+      actualizarProgreso();
+      opcionesDe(ej).forEach(function (b) { b.classList.remove('correcta', 'incorrecta'); });
+      var res = document.getElementById('resultado-correcion');
+      if (res) { res.textContent = ''; res.className = 'resultado'; }
+    });
+  });
+
+  var btnCorregir = document.getElementById('btn-corregir');
+  if (btnCorregir) {
+    btnCorregir.addEventListener('click', function () {
+      var aciertos = 0, respondidas = 0;
+      Object.keys(CLAVES).forEach(function (ej) {
+        var correcta = CLAVES[ej];
+        var elegida = seleccion[ej];
+        opcionesDe(ej).forEach(function (b) {
+          b.classList.remove('correcta', 'incorrecta');
+          var v = b.getAttribute('data-val');
+          if (v === correcta) { b.classList.add('correcta'); }
+          if (elegida && v === elegida && elegida !== correcta) { b.classList.add('incorrecta'); }
+        });
+        if (elegida) {
+          respondidas++;
+          if (elegida === correcta) { aciertos++; }
+        }
+      });
+      var res = document.getElementById('resultado-correcion');
+      if (res) {
+        var texto = 'Puntaje: ' + aciertos + ' / ' + TOTAL + ' correctas';
+        if (respondidas < TOTAL) { texto += ' · respondidas ' + respondidas + ' / ' + TOTAL; }
+        res.textContent = texto;
+        res.className = 'resultado' + (aciertos === TOTAL ? ' acierto-total' : ' hay-errores');
+      }
+    });
+  }
+
+  var btnReiniciar = document.getElementById('btn-reiniciar');
+  if (btnReiniciar) {
+    btnReiniciar.addEventListener('click', function () {
+      seleccion = {};
+      guardar();
+      document.querySelectorAll('.opcion').forEach(function (b) {
+        b.classList.remove('seleccionada', 'correcta', 'incorrecta');
+      });
+      var res = document.getElementById('resultado-correcion');
+      if (res) { res.textContent = ''; res.className = 'resultado'; }
+      actualizarProgreso();
+    });
+  }
+})();
+</script>
+
+
+<div class="contenedor-claves">
+    <button class="btn-toggle-claves" onclick="toggleClaves()">
+        <span id="texto-toggle">Mostrar claves</span>
+    </button>
+    <div class="claves" id="claves-respuestas" style="display: none;">
+        <div class="claves">
+    <h3>Claves — Semana 4 (solo para el tutor)</h3>
+    <ul>
+      <li><strong>1.</strong> A — 6² + 8² = 36 + 64 = 100 → c = √100 = 10 cm.</li>
+      <li><strong>2.</strong> C — la escalera es la hipotenusa (10); h = √(10² − 6²) = √64 = 8 m.</li>
+      <li><strong>3.</strong> B — √(17² − 15²) = √(289 − 225) = √64 = 8.</li>
+      <li><strong>4.</strong> A — d = √(9² + 12²) = √(81 + 144) = √225 = 15.</li>
+      <li><strong>5.</strong> B — h = √(6² − 3²) = √27 = 3√3 cm.</li>
+      <li><strong>6.</strong> B — 5² + 12² = 25 + 144 = 169 = 13² (los otros no cumplen).</li>
+      <li><strong>7.</strong> C — diagonal = √(30² + 40²) = 50 m; por los lados = 30 + 40 = 70 m; ahorro = 20 m.</li>
+      <li><strong>8.</strong> B — d = lado·√2 = 5√2 cm.</li>
+      <li><strong>9.</strong> B — factor 3: lados 9, 12 y 15 → hipotenusa 15 cm.</li>
+      <li><strong>10.</strong> A — d = √(13² − 12²) = √25 = 5 m.</li>
+      <li><strong>11.</strong> C — 1.800/3 = 600 → 5·600 = $3.000.</li>
+      <li><strong>12.</strong> B — (5 + 6 + 6 + 4 + 7)/5 = 28/5 = 5,6.</li>
+    </ul>
+  </div>
+    </div>
+</div>
+
+<style>
+.contenedor-claves {
+    margin: 30px 0 20px;
+}
+.btn-toggle-claves {
+    background: #2E5A9E;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+.btn-toggle-claves:hover {
+    background: #1F3864;
+}
+.claves {
+    margin-top: 12px;
+    padding: 16px;
+    background: #F0FDF4;
+    border: 1px solid #BBF7D0;
+    border-radius: 10px;
+}
+.claves h3 {
+    color: #15803D;
+    margin-bottom: 8px;
+}
+</style>
+
+<script>
+function toggleClaves() {
+    var el = document.getElementById('claves-respuestas');
+    var btn = document.getElementById('texto-toggle');
+    if (el.style.display === 'none') {
+        el.style.display = 'block';
+        btn.textContent = 'Ocultar claves';
+    } else {
+        el.style.display = 'none';
+        btn.textContent = 'Mostrar claves';
+    }
+}
+</script>
+</div>
+<div style="max-width: 860px; margin: 0 auto; padding: 24px 26px 40px; border-top: 1px solid #E2E8F0; margin-top: 30px;">
+<div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; align-items: center;">
+<a href="../index.html" style="display:inline-block;padding:9px 18px;border-radius:20px;text-decoration:none;font-weight:700;font-size:10pt;background:#1F3864;color:#fff;">← Volver al inicio</a>
+<div style="display: flex; gap: 10px;">
+<a href="semana-03.html" style="display:inline-block;padding:9px 18px;border-radius:20px;text-decoration:none;font-weight:700;font-size:10pt;background:#EAF0FA;color:#1F3864;border:1px solid #C9D8F2;">← Semana anterior</a>
+<a href="semana-05.html" style="display:inline-block;padding:9px 18px;border-radius:20px;text-decoration:none;font-weight:700;font-size:10pt;background:#EAF0FA;color:#1F3864;border:1px solid #C9D8F2;">Semana siguiente →</a>
+</div>
+</div>
+</div>
+</body>
+</html>
