@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Semana 5 · Áreas y perímetros — Guía de estudio y práctica | PAES M1</title>
+<title>Semana 5 · Círculos y circunferencias — Guía de estudio y práctica | PAES M1</title>
 <style>
 /* ============================================================
    PAES M1 — Guía semanal de la estudiante
@@ -124,6 +124,16 @@ strong { color: var(--azul); }
   font-size: 10.6pt;
 }
 .ejemplo .tag { font-weight: 800; color: var(--verde); text-transform: uppercase; font-size: 8.5pt; letter-spacing: 0.6px; margin-right: 8px; }
+.historia {
+  background: #F8FAFF;
+  border: 1px solid #DCE5F5;
+  border-left: 5px solid var(--azul-suave);
+  border-radius: 10px;
+  padding: 12px 18px;
+  margin: 10px 0;
+  font-size: 10.6pt;
+}
+.historia h3 { margin-top: 0; }
 
 /* Ejercicios */
 .ejercicio {
@@ -229,7 +239,7 @@ tbody tr:nth-child(even) { background: var(--azul-claro); }
   .volver-indice { display: none; }
   h2 { font-size: 13pt; margin: 16px 0 7px; padding-bottom: 4px; border-bottom: 2px solid var(--azul); }
   h3 { font-size: 11pt; margin: 12px 0 5px; }
-  .teoria, .formula, .idea, .ejemplo { border-radius: 6px; padding: 7px 11px; margin: 6px 0; font-size: 9.4pt; }
+  .teoria, .formula, .idea, .ejemplo, .historia { border-radius: 6px; padding: 7px 11px; margin: 6px 0; font-size: 9.4pt; }
   .formula { font-size: 10pt; }
   .ejercicio { border-radius: 6px; margin: 7px 0; box-shadow: none; page-break-inside: avoid; }
   .ej-head { padding: 5px 10px; font-size: 9.2pt; }
@@ -245,7 +255,7 @@ tbody tr:nth-child(even) { background: var(--azul-claro); }
   table { font-size: 9pt; margin: 8px 0; }
   thead th { padding: 5px 9px; }
   tbody td { padding: 5px 9px; }
-  tr, .ejercicio, .teoria, .formula, .ejemplo { page-break-inside: avoid; }
+  tr, .ejercicio, .teoria, .formula, .ejemplo, .historia { page-break-inside: avoid; }
   h2, h3 { page-break-after: avoid; }
   .claves { page-break-before: always; }
 }
@@ -256,11 +266,11 @@ tbody tr:nth-child(even) { background: var(--azul-claro); }
 
   <header class="guia-header">
     <a class="volver-indice" href="../index.html">← Volver al índice</a>
-    <h1>Semana 5 · Áreas y perímetros</h1>
+    <h1>Semana 5 · Círculos y circunferencias</h1>
     <div class="subtitulo">Guía de estudio y práctica — Competencia Matemática 1 (PAES)</div>
     <div class="meta-linea">Sesión de 2 h · 26/10 - 01/11/2026 · Fase 1: Geometría básica</div>
-    <span class="pill">Tema nuevo: áreas y perímetros</span>
-    <span class="pill">Práctica: fórmulas, trapecio, radio vs diámetro, regiones sombreadas</span>
+    <span class="pill">Tema nuevo: círculos y circunferencias</span>
+    <span class="pill">π · ángulos · cuerdas · secantes · tangentes</span>
   </header>
 
   
@@ -273,268 +283,452 @@ tbody tr:nth-child(even) { background: var(--azul-claro); }
 
   <h2>Objetivos de la semana</h2>
   <ul>
-    <li>Aplicar las fórmulas de área y perímetro de cuadrado, rectángulo, triángulo, círculo y trapecio.</li>
-    <li>Distinguir área (superficie, cm²) de perímetro (contorno, cm).</li>
-    <li>No confundir el radio con el diámetro al usar π.</li>
-    <li>Calcular áreas de figuras compuestas y de regiones sombreadas (sumar o restar).</li>
-    <li>Resolver problemas inversos: desde el área, encontrar un lado o una altura.</li>
+    <li>Comprender qué es el número π y de dónde viene (razón entre la circunferencia y el diámetro).</li>
+    <li>Reconocer los elementos de una circunferencia: radio, diámetro, cuerda, arco, sector, secante y tangente.</li>
+    <li>Calcular la circunferencia (perímetro) y el área del círculo, y el arco y el área de un sector.</li>
+    <li>Relacionar ángulos centrales, inscritos, interiores y exteriores con los arcos que subtienden.</li>
+    <li>Aplicar la relación cuerda–distancia al centro (Pitágoras), la tangente perpendicular al radio y la potencia de un punto.</li>
   </ul>
 
-  <h2>1. Fórmulas de área y perímetro</h2>
+  <h2>1. El número π</h2>
 
   <div class="teoria">
-    <p>Estas son las fórmulas base. Fíjate en la <strong>unidad</strong>: el área siempre va en
-    unidades al cuadrado (cm², m²) y el perímetro en unidades lineales (cm, m).</p>
-  </div>
-
-  <div class="figura">
-    <svg viewBox="0 0 620 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Fórmulas de área y perímetro de cuadrado, rectángulo, triángulo y círculo">
-      <text x="65" y="40" text-anchor="middle" font-size="11.5" font-weight="700" fill="#64748B">Cuadrado</text>
-      <text x="230" y="40" text-anchor="middle" font-size="11.5" font-weight="700" fill="#64748B">Rectángulo</text>
-      <text x="390" y="40" text-anchor="middle" font-size="11.5" font-weight="700" fill="#64748B">Triángulo</text>
-      <text x="540" y="40" text-anchor="middle" font-size="11.5" font-weight="700" fill="#64748B">Círculo</text>
-      <polygon points="30,60 100,60 100,130 30,130" fill="#EAF0FA" stroke="#1F3864" stroke-width="2.2"/>
-      <path d="M 40 130 L 40 120 L 30 120" fill="none" stroke="#64748B" stroke-width="1.5"/>
-      <text x="65" y="148" text-anchor="middle" font-size="11" font-weight="700" fill="#64748B">lado</text>
-      <text x="65" y="214" text-anchor="middle" font-size="10.5" font-weight="700" fill="#1F3864">A = lado²</text>
-      <text x="65" y="230" text-anchor="middle" font-size="10.5" font-weight="700" fill="#1F3864">P = 4·lado</text>
-      <polygon points="170,75 290,75 290,135 170,135" fill="#EAF0FA" stroke="#1F3864" stroke-width="2.2"/>
-      <path d="M 180 135 L 180 125 L 170 125" fill="none" stroke="#64748B" stroke-width="1.5"/>
-      <text x="230" y="153" text-anchor="middle" font-size="11" font-weight="700" fill="#64748B">b</text>
-      <text x="158" y="108" text-anchor="middle" font-size="11" font-weight="700" fill="#64748B">h</text>
-      <text x="230" y="214" text-anchor="middle" font-size="10.5" font-weight="700" fill="#1F3864">A = b·h</text>
-      <text x="230" y="230" text-anchor="middle" font-size="10.5" font-weight="700" fill="#1F3864">P = 2(b+h)</text>
-      <polygon points="330,135 450,135 390,60" fill="#EAF0FA" stroke="#1F3864" stroke-width="2.2"/>
-      <line x1="390" y1="60" x2="390" y2="135" stroke="#64748B" stroke-width="1.6" stroke-dasharray="5,4"/>
-      <path d="M 400 135 L 400 125 L 390 125" fill="none" stroke="#64748B" stroke-width="1.5"/>
-      <text x="390" y="153" text-anchor="middle" font-size="11" font-weight="700" fill="#64748B">b</text>
-      <text x="398" y="100" text-anchor="middle" font-size="11" font-weight="700" fill="#64748B">h</text>
-      <text x="390" y="214" text-anchor="middle" font-size="10.5" font-weight="700" fill="#1F3864">A = b·h/2</text>
-      <text x="390" y="230" text-anchor="middle" font-size="9" font-weight="400" fill="#64748B">(P = suma de lados)</text>
-      <circle cx="540" cy="100" r="42" fill="#EAF0FA" stroke="#1F3864" stroke-width="2.2"/>
-      <line x1="540" y1="100" x2="582" y2="100" stroke="#B45309" stroke-width="2"/>
-      <text x="560" y="92" text-anchor="middle" font-size="11" font-weight="700" fill="#B45309">r</text>
-      <text x="540" y="214" text-anchor="middle" font-size="10.5" font-weight="700" fill="#1F3864">A = πr²</text>
-      <text x="540" y="230" text-anchor="middle" font-size="10.5" font-weight="700" fill="#1F3864">P = 2πr</text>
-    </svg>
-    <span class="cap">Las cuatro <strong>fórmulas de área y perímetro</strong> base: cuadrado, rectángulo, triángulo y círculo (con el radio r).</span>
+    <p>Si mides la <strong>longitud de una circunferencia</strong> (su perímetro) y la divides entre su
+    <strong>diámetro</strong>, siempre obtienes el mismo número, sin importar el tamaño del círculo.
+    Ese número es <strong>π (pi)</strong>, y vale aproximadamente <strong>3,14159…</strong>.</p>
   </div>
 
   <div class="formula">
-    Cuadrado: A = lado², P = 4·lado &nbsp;·&nbsp; Rectángulo: A = b·h, P = 2(b+h) &nbsp;·&nbsp;
-    Triángulo: A = b·h/2 &nbsp;·&nbsp; Círculo: A = πr², P = 2πr
-  </div>
-
-  <h2>2. Área vs. perímetro</h2>
-
-  <div class="teoria">
-    <p>El <strong>área</strong> mide la superficie que ocupa la figura (su interior); el
-    <strong>perímetro</strong> mide el contorno (su borde). Son cantidades distintas, con unidades
-    distintas: un rectángulo de 8 × 6 tiene A = 48 cm² y P = 28 cm.</p>
+    π = circunferencia / diámetro = C / d &nbsp;&nbsp;·&nbsp;&nbsp; C = π·d = 2πr
   </div>
 
   <div class="figura">
-    <svg viewBox="0 0 460 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rectángulo de 8 por 6 con su área y su perímetro">
-      <polygon points="120,215 312,215 312,71 120,71" fill="#EAF0FA" stroke="#B45309" stroke-width="3.2"/>
-      <text x="216" y="40" text-anchor="middle" font-size="12" font-weight="700" fill="#B45309">Borde = perímetro = 2(8+6) = 28 cm</text>
-      <text x="216" y="136" text-anchor="middle" font-size="12" font-weight="700" fill="#1F3864">Interior = área</text>
-      <text x="216" y="156" text-anchor="middle" font-size="12" font-weight="700" fill="#1F3864">= 8·6 = 48 cm²</text>
-      <text x="216" y="233" text-anchor="middle" font-size="11" font-weight="700" fill="#64748B">8 cm</text>
-      <text x="104" y="146" text-anchor="middle" font-size="11" font-weight="700" fill="#64748B">6 cm</text>
+    <svg viewBox="0 0 460 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Círculo con su diámetro: pi es la razón entre la circunferencia y el diámetro">
+      <circle cx="150" cy="120" r="80" fill="#EAF0FA" stroke="#1F3864" stroke-width="2.4"/>
+      <line x1="70" y1="120" x2="230" y2="120" stroke="#B45309" stroke-width="2.6"/>
+      <text x="150" y="108" text-anchor="middle" font-size="13" font-weight="700" fill="#B45309">d</text>
+      <circle cx="150" cy="120" r="3" fill="#1F3864" stroke="#1F3864" stroke-width="1"/>
+      <text x="150" y="140" text-anchor="middle" font-size="11" font-weight="700" fill="#64748B">O</text>
+      <text x="335" y="108" text-anchor="middle" font-size="13" font-weight="700" fill="#1F3864">C = π · d</text>
+      <text x="335" y="134" text-anchor="middle" font-size="12" font-weight="700" fill="#2E5A9E">π = C / d ≈ 3,14159…</text>
     </svg>
-    <span class="cap">Un rectángulo de <strong>8 × 6</strong>: el interior (sombreado) es el área, 48 cm²; el borde es el perímetro, 28 cm.</span>
+    <span class="cap"><strong>π es la razón entre la circunferencia y el diámetro</strong>: en todo círculo C/d = π ≈ 3,14159…, una constante independiente del tamaño.</span>
   </div>
 
-  <div class="idea">
-    💡 Error típico: entregar el perímetro cuando piden el área (o al revés). Relee la pregunta y
-    subraya "área" o "perímetro" antes de calcular.
-  </div>
-
-  <h2>3. Radio, no diámetro</h2>
-
-  <div class="teoria">
-    <p>En A = πr² y P = 2πr siempre se usa el <strong>radio r</strong>. El diámetro mide el doble:
-    d = 2r. Si el dato es el diámetro, <strong>divídelo por 2</strong> antes de calcular.</p>
-  </div>
-
-  <div class="figura">
-    <svg viewBox="0 0 460 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Círculo con radio y diámetro señalados">
-      <circle cx="150" cy="120" r="80" fill="#EAF0FA" stroke="#1F3864" stroke-width="2.2"/>
-      <line x1="150" y1="120" x2="150" y2="40" stroke="#B45309" stroke-width="2.4"/>
-      <text x="162" y="84" text-anchor="middle" font-size="12" font-weight="700" fill="#B45309">r</text>
-      <line x1="70" y1="120" x2="230" y2="120" stroke="#15803D" stroke-width="2.4"/>
-      <text x="104" y="112" text-anchor="middle" font-size="12" font-weight="700" fill="#15803D">d</text>
-      <circle cx="150" cy="120" r="3.5" fill="#1F3864" stroke="#1F3864" stroke-width="1"/>
-      <text x="150" y="138" text-anchor="middle" font-size="11" font-weight="700" fill="#64748B">O</text>
-      <text x="330" y="95" text-anchor="middle" font-size="13" font-weight="700" fill="#1F3864">d = 2r</text>
-      <text x="330" y="122" text-anchor="middle" font-size="11" font-weight="400" fill="#333B48">Usa el RADIO r</text>
-      <text x="330" y="144" text-anchor="middle" font-size="11" font-weight="400" fill="#333B48">en A = πr²</text>
-      <text x="330" y="166" text-anchor="middle" font-size="11" font-weight="400" fill="#333B48">y P = 2πr</text>
-    </svg>
-    <span class="cap">Relación entre el <strong>radio y diámetro</strong>: d = 2r. Un diámetro de 10 da r = 5 y un área de 25π.</span>
-  </div>
-
-  <div class="ejemplo">
-    <span class="tag">Ejemplo resuelto</span>
-    Diámetro 10 cm → r = 5 cm → A = π·5² = <strong>25π cm²</strong> (no 100π).
-  </div>
-
-  <h2>4. El trapecio</h2>
-
-  <div class="teoria">
-    <p>El trapecio tiene dos bases paralelas (una mayor B y una menor b) y una altura h. Su área es
-    el "promedio de las bases por la altura":</p>
-  </div>
-
-  <div class="formula">
-    A = (B + b)·h / 2
-  </div>
-
-  <div class="figura">
-    <svg viewBox="0 0 440 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Trapecio con base mayor, base menor y altura">
-      <polygon points="80,200 360,200 300,80 140,80" fill="#EAF0FA" stroke="#1F3864" stroke-width="2.4"/>
-      <line x1="220" y1="80" x2="220" y2="200" stroke="#64748B" stroke-width="1.6" stroke-dasharray="5,4"/>
-      <path d="M 232 200 L 232 188 L 220 188" fill="none" stroke="#64748B" stroke-width="1.5"/>
-      <text x="220" y="222" text-anchor="middle" font-size="13" font-weight="700" fill="#1F3864">B</text>
-      <text x="220" y="68" text-anchor="middle" font-size="13" font-weight="700" fill="#1F3864">b</text>
-      <text x="232" y="145" text-anchor="middle" font-size="12" font-weight="700" fill="#64748B">h</text>
-      <text x="220" y="240" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1F3864">A = (B + b)·h / 2</text>
-    </svg>
-    <span class="cap">Un <strong>trapecio</strong> con base mayor B, base menor b y altura h: A = (B + b)·h / 2.</span>
-  </div>
-
-  <div class="ejemplo">
-    <span class="tag">Ejemplo resuelto</span>
-    B = 10, b = 6, h = 4 → A = (10 + 6)·4/2 = 32 cm².
-  </div>
-
-  <h2>5. Figuras compuestas y regiones sombreadas</h2>
-
-  <div class="teoria">
-    <p>La estrategia es <strong>descomponer</strong> en figuras conocidas:</p>
+  <div class="historia">
+    <h3>Un poco de historia: cómo se descubrió y calculó π</h3>
+    <p>Desde la Antigüedad se sabía que la razón C/d era constante; el desafío era <strong>calcular
+    su valor</strong> con cada vez más precisión.</p>
     <ul>
-      <li><strong>Sumar</strong> cuando la figura es un "armado" de varias piezas.</li>
-      <li><strong>Restar</strong> cuando hay un "hoyo": sombreada = total − interior.</li>
+      <li><strong>Babilonios (≈ 1900 a.C.):</strong> usaban π ≈ <strong>3,125</strong> (= 25/8).</li>
+      <li><strong>Egipto, papiro de Rhind (≈ 1650 a.C.):</strong> π ≈ <strong>3,1605</strong> (= 256/81).</li>
+      <li><strong>Arquímedes (siglo III a.C.):</strong> encerró el círculo entre polígonos
+      <strong>inscritos y circunscritos</strong> y llegó a usar 96 lados. Demostró
+      <strong>223/71 &lt; π &lt; 22/7</strong>, es decir 3,1408… &lt; π &lt; 3,1429… La fracción
+      <strong>22/7</strong> se usa hasta hoy como aproximación rápida.</li>
+      <li><strong>π es irracional:</strong> no puede escribirse como una fracción exacta (su
+      desarrollo decimal no termina ni se repite). Y es <strong>trascendente</strong>: no es raíz de
+      ningún polinomio con coeficientes enteros.</li>
+      <li><strong>Hoy:</strong> se calcula con series infinitas y computadores; se conocen más de
+      100 billones de dígitos. Para la PAES basta <strong>π ≈ 3,14</strong> o dejar el resultado
+      "en π".</li>
     </ul>
   </div>
 
   <div class="figura">
-    <svg viewBox="0 0 440 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cuadrado con círculo inscrito y región sombreada">
-      <polygon points="60,30 240,30 240,210 60,210" fill="#EAF0FA" stroke="#1F3864" stroke-width="2.4"/>
-      <circle cx="150" cy="120" r="90" fill="#FFFFFF" stroke="#2E5A9E" stroke-width="2.2"/>
-      <line x1="150" y1="120" x2="240" y2="120" stroke="#B45309" stroke-width="2"/>
-      <text x="198" y="112" text-anchor="middle" font-size="11" font-weight="700" fill="#B45309">r = 5</text>
-      <text x="150" y="228" text-anchor="middle" font-size="12" font-weight="700" fill="#64748B">10</text>
-      <text x="345" y="108" text-anchor="middle" font-size="12" font-weight="700" fill="#1F3864">sombreada =</text>
-      <text x="345" y="130" text-anchor="middle" font-size="13" font-weight="700" fill="#1F3864">100 − 25π</text>
+    <svg viewBox="0 0 460 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Método de Arquímedes: hexágono inscrito y cuadrado circunscrito">
+      <circle cx="230" cy="125" r="80" fill="#FFFFFF" stroke="#1F3864" stroke-width="2.4"/>
+      <polygon points="310,125 270,194.28 190,194.28 150,125 190,55.72 270,55.72" fill="#EAF0FA" stroke="#2E5A9E" stroke-width="2"/>
+      <polygon points="150,45 310,45 310,205 150,205" fill="none" stroke="#B45309" stroke-width="2.2"/>
+      <text x="230" y="232" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1F3864">6r  &lt;  C = 2πr  &lt;  8r   →   3 &lt; π &lt; 4</text>
     </svg>
-    <span class="cap">La <strong>región sombreada</strong> de un cuadrado de lado 10 con un círculo inscrito: r = 5, sombreada = 100 − 25π.</span>
+    <span class="cap">El método de <strong>Arquímedes</strong>: el perímetro del hexágono inscrito (6r) es menor que la circunferencia y el del cuadrado circunscrito (8r) es mayor, así 3 &lt; π &lt; 4.</span>
   </div>
 
   <div class="ejemplo">
     <span class="tag">Ejemplo resuelto</span>
-    Cuadrado de lado 10 con círculo inscrito: r = 10/2 = 5 → sombreada = 10² − π·5² = 100 − 25π.
+    Si el diámetro mide 10 cm, la circunferencia mide C = π·10 ≈ <strong>31,4 cm</strong>.
   </div>
 
-  <h2>6. Problemas inversos</h2>
+  <div class="idea">
+    💡 π <strong>no</strong> es 3 ni 22/7 exactos: son aproximaciones. En la PAES suele usarse
+    π ≈ 3,14 o dejar el resultado "en π" (por ejemplo 9π).
+  </div>
+
+  <h2>2. Elementos de la circunferencia</h2>
 
   <div class="teoria">
-    <p>A veces dan el área y piden un lado o la altura: hay que <strong>despejar</strong> de la
-    fórmula. Ejemplo: si A = 48 cm² y el largo es 8 cm, el ancho es 48/8 = 6 cm; y si además piden
-    el perímetro, ahora sí P = 2(8 + 6) = 28 cm (cadena de dos pasos).</p>
+    <p>La <strong>circunferencia</strong> es la línea curva (el borde); el <strong>círculo</strong> es
+    la región que queda dentro. Sus elementos principales:</p>
+    <ul>
+      <li><strong>Radio (r):</strong> segmento del centro a un punto de la circunferencia.</li>
+      <li><strong>Diámetro (d):</strong> cuerda que pasa por el centro; d = 2r y es la mayor cuerda.</li>
+      <li><strong>Cuerda:</strong> segmento que une dos puntos de la circunferencia.</li>
+      <li><strong>Arco:</strong> parte de la circunferencia entre dos puntos.</li>
+      <li><strong>Sector:</strong> región entre dos radios y el arco (una "rebanada").</li>
+      <li><strong>Secante:</strong> recta que corta la circunferencia en <strong>dos</strong> puntos.</li>
+      <li><strong>Tangente:</strong> recta que toca la circunferencia en <strong>un solo</strong> punto.</li>
+    </ul>
   </div>
 
-  <h2>7. Ejercicios para practicar</h2>
+  <div class="figura">
+    <svg viewBox="0 0 620 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Elementos: radio, diámetro, cuerda, arco y sector">
+      <circle cx="230" cy="140" r="95" fill="#FFFFFF" stroke="#1F3864" stroke-width="2.4"/>
+      <circle cx="230" cy="140" r="3" fill="#1F3864" stroke="#1F3864" stroke-width="1"/>
+      <line x1="135" y1="140" x2="325" y2="140" stroke="#15803D" stroke-width="2.4"/>
+      <text x="165" y="128" text-anchor="middle" font-size="11" font-weight="700" fill="#15803D">diámetro</text>
+      <line x1="230" y1="140" x2="230" y2="45" stroke="#B45309" stroke-width="2.4"/>
+      <text x="244" y="92" text-anchor="start" font-size="11" font-weight="700" fill="#B45309">radio</text>
+      <line x1="147.73" y1="92.5" x2="312.27" y2="92.5" stroke="#2E5A9E" stroke-width="2.2"/>
+      <text x="230" y="82" text-anchor="middle" font-size="11" font-weight="700" fill="#2E5A9E">cuerda</text>
+      <path d="M 135 140 A 95 95 0 0 1 230 45" fill="none" stroke="#B45309" stroke-width="3.4"/>
+      <text x="150" y="62" text-anchor="middle" font-size="11" font-weight="700" fill="#B45309">arco</text>
+      <path d="M 230 140 L 325 140 A 95 95 0 0 1 230 235 Z" fill="#EAF0FA" stroke="#2E5A9E" stroke-width="1.6"/>
+      <text x="285" y="208" text-anchor="middle" font-size="11" font-weight="700" fill="#2E5A9E">sector</text>
+      <text x="240" y="156" text-anchor="start" font-size="11" font-weight="700" fill="#64748B">O</text>
+    </svg>
+    <span class="cap">Los <strong>elementos de una circunferencia</strong>: radio, diámetro, cuerda, arco, sector, secante y tangente. La tangente toca en un solo punto; la secante corta en dos.</span>
+  </div>
+
+  <h2>3. Circunferencia, área, arco y sector</h2>
+
+  <div class="teoria">
+    <p>La <strong>circunferencia</strong> (perímetro del círculo) y el <strong>área</strong> se calculan
+    con π y el radio:</p>
+  </div>
+
+  <div class="formula">
+    Circunferencia: C = 2πr = πd &nbsp;&nbsp;·&nbsp;&nbsp; Área del círculo: A = πr²
+  </div>
+
+  <div class="figura">
+    <svg viewBox="0 0 460 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Circunferencia y área de un círculo de radio r">
+      <circle cx="150" cy="125" r="85" fill="#EAF0FA" stroke="#1F3864" stroke-width="2.4"/>
+      <line x1="150" y1="125" x2="235" y2="125" stroke="#B45309" stroke-width="2.4"/>
+      <text x="195" y="114" text-anchor="middle" font-size="12" font-weight="700" fill="#B45309">r</text>
+      <circle cx="150" cy="125" r="3" fill="#1F3864" stroke="#1F3864" stroke-width="1"/>
+      <text x="333" y="108" text-anchor="middle" font-size="13" font-weight="700" fill="#1F3864">C = 2πr</text>
+      <text x="333" y="134" text-anchor="middle" font-size="13" font-weight="700" fill="#1F3864">A = πr²</text>
+      <text x="333" y="160" text-anchor="middle" font-size="10" font-weight="400" fill="#64748B">borde y superficie</text>
+    </svg>
+    <span class="cap">La <strong>circunferencia y el área</strong> de un círculo de radio r: C = 2πr = πd (borde) y A = πr² (superficie interior).</span>
+  </div>
+
+  <div class="idea">
+    💡 No confundas <strong>radio</strong> con <strong>diámetro</strong>: si te dan el diámetro (10),
+    el radio es 5, y el área es π·5² = 25π (no 100π).
+  </div>
+
+  <div class="teoria">
+    <p>Un <strong>sector</strong> es una fracción del círculo: la fracción es θ/360°, donde θ es el
+    ángulo del sector.</p>
+  </div>
+
+  <div class="formula">
+    Largo del arco = (θ/360°)·2πr &nbsp;&nbsp;·&nbsp;&nbsp; Área del sector = (θ/360°)·πr²
+    &nbsp;&nbsp;·&nbsp;&nbsp; Perímetro del sector = arco + 2r
+  </div>
+
+  <div class="figura">
+    <svg viewBox="0 0 460 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sector circular con su ángulo, arco y radio">
+      <circle cx="150" cy="118" r="88" fill="#FFFFFF" stroke="#1F3864" stroke-width="2.4"/>
+      <path d="M 150 118 L 238 118 A 88 88 0 0 1 194 194.21 Z" fill="#EAF0FA" stroke="#2E5A9E" stroke-width="1.6"/>
+      <line x1="150" y1="118" x2="238" y2="118" stroke="#B45309" stroke-width="2.2"/>
+      <line x1="150" y1="118" x2="194" y2="194.21" stroke="#B45309" stroke-width="2.2"/>
+      <path d="M 182 118 A 32 32 0 0 1 166 145.71" fill="none" stroke="#B45309" stroke-width="2.2"/>
+      <text x="186.37" y="139" text-anchor="middle" font-size="12" font-weight="700" fill="#B45309">θ</text>
+      <text x="150" y="178" text-anchor="middle" font-size="10.5" font-weight="700" fill="#2E5A9E">arco</text>
+      <text x="340" y="104" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1F3864">arco = (θ/360°)·2πr</text>
+      <text x="340" y="130" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1F3864">área = (θ/360°)·πr²</text>
+    </svg>
+    <span class="cap">Un <strong>sector circular</strong> de ángulo θ: el arco y el área son la fracción θ/360° de la circunferencia y del círculo completos.</span>
+  </div>
+
+  <div class="ejemplo">
+    <span class="tag">Ejemplo resuelto</span>
+    r = 6 cm y θ = 90° → arco = (90/360)·2π·6 = 3π cm; área = (90/360)·π·36 = <strong>9π cm²</strong>.
+  </div>
+
+  <h2>4. Ángulos en la circunferencia</h2>
+
+  <div class="teoria">
+    <p>Un <strong>ángulo central</strong> tiene el vértice en el centro y mide lo mismo que el arco
+    que subtiende. Un <strong>ángulo inscrito</strong> tiene el vértice en la circunferencia y mide
+    <strong>la mitad</strong> del arco (o del central) que subtiende.</p>
+  </div>
+
+  <div class="formula">
+    central = arco &nbsp;&nbsp;·&nbsp;&nbsp; inscrito = arco / 2
+  </div>
+
+  <div class="figura">
+    <svg viewBox="0 0 460 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ángulo central y ángulo inscrito que subtienden el mismo arco">
+      <circle cx="200" cy="150" r="95" fill="#FFFFFF" stroke="#1F3864" stroke-width="2.4"/>
+      <path d="M 117.73 102.5 A 95 95 0 0 1 282.27 102.5" fill="none" stroke="#B45309" stroke-width="3.4"/>
+      <line x1="200" y1="150" x2="117.73" y2="102.5" stroke="#2E5A9E" stroke-width="2"/>
+      <line x1="200" y1="150" x2="282.27" y2="102.5" stroke="#2E5A9E" stroke-width="2"/>
+      <line x1="200" y1="245" x2="117.73" y2="102.5" stroke="#15803D" stroke-width="2"/>
+      <line x1="200" y1="245" x2="282.27" y2="102.5" stroke="#15803D" stroke-width="2"/>
+      <path d="M 170.56 133 A 34 34 0 0 1 229.44 133" fill="none" stroke="#2E5A9E" stroke-width="2.2"/>
+      <text x="200" y="104" text-anchor="middle" font-size="10.5" font-weight="700" fill="#2E5A9E">central</text>
+      <path d="M 187 222.48 A 26 26 0 0 1 213 222.48" fill="none" stroke="#15803D" stroke-width="2.2"/>
+      <text x="200" y="208" text-anchor="middle" font-size="10.5" font-weight="700" fill="#15803D">inscrito</text>
+      <text x="200" y="26" text-anchor="middle" font-size="12" font-weight="700" fill="#1F3864">inscrito = central / 2</text>
+    </svg>
+    <span class="cap">El <strong>ángulo central</strong> y el inscrito que subtienden el mismo arco: el inscrito mide la mitad del central (inscrito = central/2).</span>
+  </div>
+
+  <div class="teoria">
+    <p>Un caso especial y muy usado: si el ángulo inscrito subtiende un <strong>diámetro</strong>,
+    entonces mide <strong>90°</strong> (teorema de Tales). Todo triángulo inscrito en una
+    semicircunferencia con un lado igual al diámetro es rectángulo.</p>
+  </div>
+
+  <div class="figura">
+    <svg viewBox="0 0 440 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ángulo inscrito en un semicírculo igual a 90 grados (Tales)">
+      <circle cx="210" cy="135" r="90" fill="#FFFFFF" stroke="#1F3864" stroke-width="2.4"/>
+      <line x1="120" y1="135" x2="300" y2="135" stroke="#B45309" stroke-width="2.6"/>
+      <line x1="210" y1="45" x2="120" y2="135" stroke="#2E5A9E" stroke-width="2"/>
+      <line x1="210" y1="45" x2="300" y2="135" stroke="#2E5A9E" stroke-width="2"/>
+      <path d="M 200.81 54.19 L 210 63.38 L 219.19 54.19" fill="none" stroke="#15803D" stroke-width="1.5"/>
+      <text x="210" y="244" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1F3864">todo ángulo inscrito en un semicírculo mide 90°</text>
+    </svg>
+    <span class="cap">Un ángulo inscrito que subtiende un <strong>semicírculo</strong> (un diámetro) mide siempre 90°: es el teorema de Tales.</span>
+  </div>
+
+  <div class="teoria">
+    <p>Cuando el vértice está <strong>dentro</strong> del círculo (dos cuerdas que se cortan), el
+    ángulo es el <strong>promedio</strong> de los dos arcos que abarca:</p>
+  </div>
+
+  <div class="formula">
+    ángulo interior = (arco₁ + arco₂) / 2
+  </div>
+
+  <div class="figura">
+    <svg viewBox="0 0 440 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ángulo interior formado por dos cuerdas que se cortan">
+      <circle cx="220" cy="140" r="95" fill="#FFFFFF" stroke="#1F3864" stroke-width="2.4"/>
+      <line x1="302.27" y1="187.5" x2="130.73" y2="107.51" stroke="#2E5A9E" stroke-width="2"/>
+      <line x1="187.51" y1="229.27" x2="267.5" y2="57.73" stroke="#2E5A9E" stroke-width="2"/>
+      <circle cx="224" cy="151" r="3.5" fill="#B91C1C" stroke="#B91C1C" stroke-width="1"/>
+      <path d="M 251.19 163.68 A 30 30 0 0 1 211.33 178.19" fill="none" stroke="#B91C1C" stroke-width="2.4"/>
+      <text x="238.37" y="190.47" text-anchor="middle" font-size="12" font-weight="700" fill="#B91C1C">α</text>
+      <text x="220" y="250" text-anchor="middle" font-size="12" font-weight="700" fill="#1F3864">interior = (arco₁ + arco₂) / 2</text>
+    </svg>
+    <span class="cap">El <strong>ángulo interior</strong> (vértice dentro, entre dos cuerdas que se cortan) es el promedio de los dos arcos que abarca.</span>
+  </div>
+
+  <div class="teoria">
+    <p>Cuando el vértice está <strong>fuera</strong> del círculo (dos secantes o dos tangentes), el
+    ángulo es la <strong>mitad de la diferencia</strong> de los arcos:</p>
+  </div>
+
+  <div class="formula">
+    ángulo exterior = (arco mayor − arco menor) / 2
+  </div>
+
+  <div class="figura">
+    <svg viewBox="0 0 440 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ángulo exterior formado por dos secantes desde un punto">
+      <circle cx="140" cy="150" r="80" fill="#FFFFFF" stroke="#1F3864" stroke-width="2.4"/>
+      <line x1="400" y1="150" x2="82.8" y2="94.07" stroke="#2E5A9E" stroke-width="2"/>
+      <line x1="400" y1="150" x2="82.8" y2="205.93" stroke="#2E5A9E" stroke-width="2"/>
+      <circle cx="212.88" cy="117.01" r="3" fill="#1F3864" stroke="#1F3864" stroke-width="1"/>
+      <circle cx="82.8" cy="94.07" r="3" fill="#1F3864" stroke="#1F3864" stroke-width="1"/>
+      <circle cx="212.88" cy="182.99" r="3" fill="#1F3864" stroke="#1F3864" stroke-width="1"/>
+      <circle cx="82.8" cy="205.93" r="3" fill="#1F3864" stroke="#1F3864" stroke-width="1"/>
+      <path d="M 348.79 140.97 A 52 52 0 0 0 348.79 159.03" fill="none" stroke="#B91C1C" stroke-width="2.4"/>
+      <text x="334" y="150" text-anchor="middle" font-size="12" font-weight="700" fill="#B91C1C">α</text>
+      <text x="220" y="250" text-anchor="middle" font-size="12" font-weight="700" fill="#1F3864">exterior = (arco mayor − arco menor) / 2</text>
+    </svg>
+    <span class="cap">El <strong>ángulo exterior</strong> (vértice fuera, entre dos secantes) es la mitad de la diferencia de los arcos mayor y menor.</span>
+  </div>
+
+  <h2>5. Cuerdas, secantes y tangentes</h2>
+
+  <div class="teoria">
+    <p>La perpendicular trazada desde el centro a una cuerda pasa por su <strong>punto medio</strong>
+    y forma un triángulo rectángulo con el radio. Así, si d es la distancia del centro a la cuerda:</p>
+  </div>
+
+  <div class="formula">
+    r² = d² + (cuerda/2)²
+  </div>
+
+  <div class="figura">
+    <svg viewBox="0 0 460 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cuerda, distancia al centro y radio formando un triángulo rectángulo">
+      <circle cx="180" cy="130" r="91" fill="#EAF0FA" stroke="#1F3864" stroke-width="2.4"/>
+      <line x1="96" y1="165" x2="264" y2="165" stroke="#2E5A9E" stroke-width="2.4"/>
+      <line x1="180" y1="130" x2="264" y2="165" stroke="#B45309" stroke-width="2.4"/>
+      <line x1="180" y1="130" x2="180" y2="165" stroke="#64748B" stroke-width="2" stroke-dasharray="5,4"/>
+      <path d="M 192 165 L 192 153 L 180 153" fill="none" stroke="#64748B" stroke-width="1.5"/>
+      <text x="232" y="116" text-anchor="middle" font-size="12" font-weight="700" fill="#B45309">r</text>
+      <text x="166" y="172" text-anchor="middle" font-size="12" font-weight="700" fill="#64748B">d</text>
+      <text x="130" y="200" text-anchor="middle" font-size="10.5" font-weight="700" fill="#2E5A9E">cuerda/2</text>
+      <text x="230" y="250" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1F3864">r² = d² + (cuerda/2)²</text>
+    </svg>
+    <span class="cap">La <strong>cuerda y su distancia</strong> al centro: el radio, la distancia y la media cuerda forman un triángulo rectángulo (r² = d² + (cuerda/2)²).</span>
+  </div>
+
+  <div class="teoria">
+    <p><strong>Propiedad de la tangente:</strong> es <strong>perpendicular al radio</strong> en el punto
+    de contacto (forman 90°). Además, las dos tangentes trazadas desde un mismo punto exterior miden
+    lo mismo.</p>
+  </div>
+
+  <div class="figura">
+    <svg viewBox="0 0 460 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="La tangente es perpendicular al radio en el punto de contacto">
+      <circle cx="150" cy="140" r="80" fill="#FFFFFF" stroke="#1F3864" stroke-width="2.4"/>
+      <line x1="150" y1="140" x2="150" y2="220" stroke="#B45309" stroke-width="2.4"/>
+      <line x1="55" y1="220" x2="245" y2="220" stroke="#15803D" stroke-width="2.6"/>
+      <path d="M 150 207 L 163 207 L 163 220" fill="none" stroke="#64748B" stroke-width="1.5"/>
+      <text x="112" y="180" text-anchor="middle" font-size="10.5" font-weight="700" fill="#B45309">radio</text>
+      <text x="248" y="224" text-anchor="start" font-size="11" font-weight="700" fill="#15803D">tangente</text>
+      <text x="163" y="208" text-anchor="start" font-size="10" font-weight="700" fill="#64748B">90°</text>
+      <text x="230" y="244" text-anchor="middle" font-size="11" font-weight="400" fill="#1F3864">la distancia del centro a la tangente es el radio</text>
+    </svg>
+    <span class="cap">La <strong>tangente</strong> es perpendicular al radio en el punto de contacto: la distancia del centro a la tangente es exactamente el radio.</span>
+  </div>
+
+  <div class="teoria">
+    <p><strong>Potencia de un punto:</strong> al cortar cuerdas o secantes desde un punto P, los
+    productos de los segmentos son iguales.</p>
+    <ul>
+      <li>Dos cuerdas que se cortan: PA·PB = PC·PD.</li>
+      <li>Dos secantes: PA·PB = PC·PD.</li>
+      <li>Secante y tangente: PA·PB = PT².</li>
+    </ul>
+  </div>
+
+  <div class="figura">
+    <svg viewBox="0 0 620 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Potencia de un punto: cuerdas que se cortan y secante-tangente">
+      <circle cx="95" cy="118" r="55" fill="#FFFFFF" stroke="#1F3864" stroke-width="2.2"/>
+      <line x1="142.63" y1="145.5" x2="43.32" y2="99.19" stroke="#2E5A9E" stroke-width="2"/>
+      <line x1="76.19" y1="169.68" x2="122.5" y2="70.37" stroke="#2E5A9E" stroke-width="2"/>
+      <circle cx="97.32" cy="124.37" r="3" fill="#B91C1C" stroke="#B91C1C" stroke-width="1"/>
+      <text x="95" y="210" text-anchor="middle" font-size="11" font-weight="700" fill="#1F3864">PA·PB = PC·PD</text>
+      <circle cx="330" cy="118" r="55" fill="#FFFFFF" stroke="#1F3864" stroke-width="2.2"/>
+      <line x1="435" y1="118" x2="303.14" y2="70.01" stroke="#2E5A9E" stroke-width="2"/>
+      <circle cx="381.43" cy="98.5" r="3" fill="#1F3864" stroke="#1F3864" stroke-width="1"/>
+      <circle cx="303.14" cy="70.01" r="3" fill="#1F3864" stroke="#1F3864" stroke-width="1"/>
+      <line x1="435" y1="118" x2="358.81" y2="71.15" stroke="#15803D" stroke-width="2.2"/>
+      <line x1="330" y1="118" x2="358.81" y2="71.15" stroke="#B45309" stroke-width="1.8" stroke-dasharray="5,4"/>
+      <circle cx="358.81" cy="71.15" r="3" fill="#15803D" stroke="#15803D" stroke-width="1"/>
+      <text x="330" y="210" text-anchor="middle" font-size="11" font-weight="700" fill="#1F3864">PA·PB = PT²</text>
+    </svg>
+    <span class="cap">La <strong>potencia de un punto</strong>: cuerdas que se cortan (PA·PB = PC·PD), secantes y secante-tangente (PA·PB = PT²).</span>
+  </div>
+
+  <div class="ejemplo">
+    <span class="tag">Ejemplo resuelto</span>
+    Cuerda: r = 10 y d = 6 → media cuerda = √(10² − 6²) = √64 = 8 → cuerda = <strong>16</strong>.
+    Potencia: PA = 4 y PB = 9 con una tangente PT → PT² = 4·9 = 36 → PT = <strong>6</strong>.
+  </div>
+
+  <h2>6. Ejercicios para practicar</h2>
 
   
 
   <div class="ejercicio">
-    <div class="ej-head"><span class="num">1</span> Inverso desde el área</div>
-    <div class="ej-enun">El área de un triángulo es 24 cm² y su base mide 8 cm. ¿Cuánto mide su altura?</div>
-    <div class="opciones" data-ej="1"><button type="button" class="opcion" data-ej="1" data-val="A">A) 3 cm</button><button type="button" class="opcion" data-ej="1" data-val="B">B) 4 cm</button><button type="button" class="opcion" data-ej="1" data-val="C">C) 6 cm</button><button type="button" class="opcion" data-ej="1" data-val="D">D) 8 cm</button><button type="button" class="opcion" data-ej="1" data-val="E">E) 12 cm</button></div>
+    <div class="ej-head"><span class="num">1</span> Del perímetro al diámetro</div>
+    <div class="ej-enun">La circunferencia de un círculo mide 31,4 cm. Usando π ≈ 3,14, ¿cuánto mide su diámetro?</div>
+    <div class="opciones" data-ej="1"><button type="button" class="opcion" data-ej="1" data-val="A">A) 10 cm</button><button type="button" class="opcion" data-ej="1" data-val="B">B) 15,7 cm</button><button type="button" class="opcion" data-ej="1" data-val="C">C) 31,4 cm</button><button type="button" class="opcion" data-ej="1" data-val="D">D) 5 cm</button><button type="button" class="opcion" data-ej="1" data-val="E">E) 100 cm</button></div>
     <div class="ej-respuesta">Desarrollo y respuesta</div>
   </div>
 
   <div class="ejercicio">
-    <div class="ej-head"><span class="num">2</span> Región sombreada</div>
-    <div class="ej-enun">Un cuadrado de lado 10 cm tiene inscrito un círculo. ¿Cuál es el área de la región del cuadrado que queda fuera del círculo?</div>
-    <div class="opciones" data-ej="2"><button type="button" class="opcion" data-ej="2" data-val="A">A) 100 − 10π cm²</button><button type="button" class="opcion" data-ej="2" data-val="B">B) 100 − 25π cm²</button><button type="button" class="opcion" data-ej="2" data-val="C">C) 100 − 50π cm²</button><button type="button" class="opcion" data-ej="2" data-val="D">D) 100 − 100π cm²</button><button type="button" class="opcion" data-ej="2" data-val="E">E) 25π cm²</button></div>
+    <div class="ej-head"><span class="num">2</span> Perímetro en π</div>
+    <div class="ej-enun">¿Cuál es el perímetro (circunferencia) de un círculo de radio 7 cm?</div>
+    <div class="opciones" data-ej="2"><button type="button" class="opcion" data-ej="2" data-val="A">A) 7π cm</button><button type="button" class="opcion" data-ej="2" data-val="B">B) 14π cm</button><button type="button" class="opcion" data-ej="2" data-val="C">C) 49π cm</button><button type="button" class="opcion" data-ej="2" data-val="D">D) 28π cm</button><button type="button" class="opcion" data-ej="2" data-val="E">E) 7 cm</button></div>
+    <div class="ej-respuesta">Desarrollo y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">3</span> Área desde el diámetro</div>
+    <div class="ej-enun">Un círculo tiene diámetro 12 cm. ¿Cuál es su área?</div>
+    <div class="opciones" data-ej="3"><button type="button" class="opcion" data-ej="3" data-val="A">A) 12π cm²</button><button type="button" class="opcion" data-ej="3" data-val="B">B) 24π cm²</button><button type="button" class="opcion" data-ej="3" data-val="C">C) 36π cm²</button><button type="button" class="opcion" data-ej="3" data-val="D">D) 144π cm²</button><button type="button" class="opcion" data-ej="3" data-val="E">E) 6π cm²</button></div>
+    <div class="ej-respuesta">Dibujo, desarrollo y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">4</span> Largo de arco</div>
+    <div class="ej-enun">Un sector tiene un ángulo de 60° en un círculo de radio 9 cm. ¿Cuál es el largo del arco?</div>
+    <div class="opciones" data-ej="4"><button type="button" class="opcion" data-ej="4" data-val="A">A) π cm</button><button type="button" class="opcion" data-ej="4" data-val="B">B) 3π cm</button><button type="button" class="opcion" data-ej="4" data-val="C">C) 6π cm</button><button type="button" class="opcion" data-ej="4" data-val="D">D) 9π cm</button><button type="button" class="opcion" data-ej="4" data-val="E">E) 18π cm</button></div>
+    <div class="ej-respuesta">Desarrollo y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">5</span> Área del sector</div>
+    <div class="ej-enun">Un sector de 90° pertenece a un círculo de radio 4 cm. ¿Cuál es el área del sector?</div>
+    <div class="opciones" data-ej="5"><button type="button" class="opcion" data-ej="5" data-val="A">A) 2π cm²</button><button type="button" class="opcion" data-ej="5" data-val="B">B) 4π cm²</button><button type="button" class="opcion" data-ej="5" data-val="C">C) 8π cm²</button><button type="button" class="opcion" data-ej="5" data-val="D">D) 16π cm²</button><button type="button" class="opcion" data-ej="5" data-val="E">E) 32π cm²</button></div>
+    <div class="ej-respuesta">Desarrollo y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">6</span> Longitud de una cuerda</div>
+    <div class="ej-enun">En una circunferencia de radio 10 cm, una cuerda dista 6 cm del centro. ¿Cuánto mide la cuerda?</div>
+    <div class="opciones" data-ej="6"><button type="button" class="opcion" data-ej="6" data-val="A">A) 8 cm</button><button type="button" class="opcion" data-ej="6" data-val="B">B) 12 cm</button><button type="button" class="opcion" data-ej="6" data-val="C">C) 16 cm</button><button type="button" class="opcion" data-ej="6" data-val="D">D) 20 cm</button><button type="button" class="opcion" data-ej="6" data-val="E">E) 6 cm</button></div>
     <div class="ej-respuesta doble">Dibujo, desarrollo y respuesta</div>
   </div>
 
   <div class="ejercicio">
-    <div class="ej-head"><span class="num">3</span> Vereda alrededor</div>
-    <div class="ej-enun">Un jardín rectangular de 12 m × 5 m se rodea completamente por una vereda de 1 m de ancho. ¿Cuál es el área de la vereda?</div>
-    <div class="opciones" data-ej="3"><button type="button" class="opcion" data-ej="3" data-val="A">A) 34 m²</button><button type="button" class="opcion" data-ej="3" data-val="B">B) 36 m²</button><button type="button" class="opcion" data-ej="3" data-val="C">C) 38 m²</button><button type="button" class="opcion" data-ej="3" data-val="D">D) 40 m²</button><button type="button" class="opcion" data-ej="3" data-val="E">E) 42 m²</button></div>
+    <div class="ej-head"><span class="num">7</span> Distancia de la cuerda al centro</div>
+    <div class="ej-enun">En una circunferencia de radio 13 cm, una cuerda mide 24 cm. ¿A qué distancia del centro está la cuerda?</div>
+    <div class="opciones" data-ej="7"><button type="button" class="opcion" data-ej="7" data-val="A">A) 5 cm</button><button type="button" class="opcion" data-ej="7" data-val="B">B) 6 cm</button><button type="button" class="opcion" data-ej="7" data-val="C">C) 12 cm</button><button type="button" class="opcion" data-ej="7" data-val="D">D) 24 cm</button><button type="button" class="opcion" data-ej="7" data-val="E">E) 13 cm</button></div>
     <div class="ej-respuesta doble">Dibujo, desarrollo y respuesta</div>
   </div>
 
   <div class="ejercicio">
-    <div class="ej-head"><span class="num">4</span> Área del círculo</div>
-    <div class="ej-enun">Un círculo de radio 3 cm tiene área igual a:</div>
-    <div class="opciones" data-ej="4"><button type="button" class="opcion" data-ej="4" data-val="A">A) 3π cm²</button><button type="button" class="opcion" data-ej="4" data-val="B">B) 6π cm²</button><button type="button" class="opcion" data-ej="4" data-val="C">C) 9π cm²</button><button type="button" class="opcion" data-ej="4" data-val="D">D) 18π cm²</button><button type="button" class="opcion" data-ej="4" data-val="E">E) 36π cm²</button></div>
+    <div class="ej-head"><span class="num">8</span> Ángulo inscrito</div>
+    <div class="ej-enun">Un ángulo del centro mide 100°. ¿Cuánto mide un ángulo inscrito que subtiende el mismo arco?</div>
+    <div class="opciones" data-ej="8"><button type="button" class="opcion" data-ej="8" data-val="A">A) 50°</button><button type="button" class="opcion" data-ej="8" data-val="B">B) 100°</button><button type="button" class="opcion" data-ej="8" data-val="C">C) 200°</button><button type="button" class="opcion" data-ej="8" data-val="D">D) 25°</button><button type="button" class="opcion" data-ej="8" data-val="E">E) 150°</button></div>
     <div class="ej-respuesta">Desarrollo y respuesta</div>
   </div>
 
   <div class="ejercicio">
-    <div class="ej-head"><span class="num">5</span> Perímetro desde el área</div>
-    <div class="ej-enun">Un rectángulo tiene área 48 cm² y largo 8 cm. ¿Cuál es su perímetro?</div>
-    <div class="opciones" data-ej="5"><button type="button" class="opcion" data-ej="5" data-val="A">A) 6 cm</button><button type="button" class="opcion" data-ej="5" data-val="B">B) 14 cm</button><button type="button" class="opcion" data-ej="5" data-val="C">C) 28 cm</button><button type="button" class="opcion" data-ej="5" data-val="D">D) 48 cm</button><button type="button" class="opcion" data-ej="5" data-val="E">E) 56 cm</button></div>
-    <div class="ej-respuesta">Desarrollo y respuesta</div>
-  </div>
-
-  <div class="ejercicio">
-    <div class="ej-head"><span class="num">6</span> Cuadrado desde el perímetro</div>
-    <div class="ej-enun">Un cuadrado tiene perímetro 36 cm. ¿Cuál es su área?</div>
-    <div class="opciones" data-ej="6"><button type="button" class="opcion" data-ej="6" data-val="A">A) 9 cm²</button><button type="button" class="opcion" data-ej="6" data-val="B">B) 36 cm²</button><button type="button" class="opcion" data-ej="6" data-val="C">C) 81 cm²</button><button type="button" class="opcion" data-ej="6" data-val="D">D) 144 cm²</button><button type="button" class="opcion" data-ej="6" data-val="E">E) 324 cm²</button></div>
-    <div class="ej-respuesta">Desarrollo y respuesta</div>
-  </div>
-
-  <div class="ejercicio">
-    <div class="ej-head"><span class="num">7</span> Circunferencia</div>
-    <div class="ej-enun">¿Cuál es el perímetro (circunferencia) de un círculo de radio 5 cm?</div>
-    <div class="opciones" data-ej="7"><button type="button" class="opcion" data-ej="7" data-val="A">A) 5π cm</button><button type="button" class="opcion" data-ej="7" data-val="B">B) 10π cm</button><button type="button" class="opcion" data-ej="7" data-val="C">C) 25π cm</button><button type="button" class="opcion" data-ej="7" data-val="D">D) 50π cm</button><button type="button" class="opcion" data-ej="7" data-val="E">E) 100π cm</button></div>
-    <div class="ej-respuesta">Desarrollo y respuesta</div>
-  </div>
-
-  <div class="ejercicio">
-    <div class="ej-head"><span class="num">8</span> Área del trapecio</div>
-    <div class="ej-enun">Un trapecio tiene bases de 10 cm y 6 cm y una altura de 4 cm. ¿Cuál es su área?</div>
-    <div class="opciones" data-ej="8"><button type="button" class="opcion" data-ej="8" data-val="A">A) 16 cm²</button><button type="button" class="opcion" data-ej="8" data-val="B">B) 24 cm²</button><button type="button" class="opcion" data-ej="8" data-val="C">C) 32 cm²</button><button type="button" class="opcion" data-ej="8" data-val="D">D) 40 cm²</button><button type="button" class="opcion" data-ej="8" data-val="E">E) 64 cm²</button></div>
-    <div class="ej-respuesta doble">Dibujo, desarrollo y respuesta</div>
-  </div>
-
-  <div class="ejercicio">
-    <div class="ej-head"><span class="num">9</span> Área del triángulo</div>
-    <div class="ej-enun">Un triángulo tiene base 10 cm y altura 6 cm. ¿Cuál es su área?</div>
-    <div class="opciones" data-ej="9"><button type="button" class="opcion" data-ej="9" data-val="A">A) 16 cm²</button><button type="button" class="opcion" data-ej="9" data-val="B">B) 30 cm²</button><button type="button" class="opcion" data-ej="9" data-val="C">C) 60 cm²</button><button type="button" class="opcion" data-ej="9" data-val="D">D) 120 cm²</button><button type="button" class="opcion" data-ej="9" data-val="E">E) 8 cm²</button></div>
-    <div class="ej-respuesta">Desarrollo y respuesta</div>
-  </div>
-
-  <div class="ejercicio">
-    <div class="ej-head"><span class="num">10</span> Cuidado con el diámetro</div>
-    <div class="ej-enun">El diámetro de un círculo mide 10 cm. ¿Cuál es su área?</div>
-    <div class="opciones" data-ej="10"><button type="button" class="opcion" data-ej="10" data-val="A">A) 5π cm²</button><button type="button" class="opcion" data-ej="10" data-val="B">B) 10π cm²</button><button type="button" class="opcion" data-ej="10" data-val="C">C) 25π cm²</button><button type="button" class="opcion" data-ej="10" data-val="D">D) 50π cm²</button><button type="button" class="opcion" data-ej="10" data-val="E">E) 100π cm²</button></div>
+    <div class="ej-head"><span class="num">9</span> Ángulo interior</div>
+    <div class="ej-enun">Dos cuerdas se cortan dentro de una circunferencia. Los arcos que abarca el ángulo miden 80° y 40°. ¿Cuánto mide el ángulo interior?</div>
+    <div class="opciones" data-ej="9"><button type="button" class="opcion" data-ej="9" data-val="A">A) 40°</button><button type="button" class="opcion" data-ej="9" data-val="B">B) 60°</button><button type="button" class="opcion" data-ej="9" data-val="C">C) 120°</button><button type="button" class="opcion" data-ej="9" data-val="D">D) 20°</button><button type="button" class="opcion" data-ej="9" data-val="E">E) 80°</button></div>
     <div class="ej-respuesta doble">Justificación y respuesta</div>
   </div>
 
-  <h2>8. Práctica de mantenimiento (fortalezas)</h2>
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">10</span> Ángulo exterior</div>
+    <div class="ej-enun">Desde un punto exterior salen dos secantes. El arco mayor mide 120° y el menor 40°. ¿Cuánto mide el ángulo exterior?</div>
+    <div class="opciones" data-ej="10"><button type="button" class="opcion" data-ej="10" data-val="A">A) 80°</button><button type="button" class="opcion" data-ej="10" data-val="B">B) 40°</button><button type="button" class="opcion" data-ej="10" data-val="C">C) 160°</button><button type="button" class="opcion" data-ej="10" data-val="D">D) 20°</button><button type="button" class="opcion" data-ej="10" data-val="E">E) 60°</button></div>
+    <div class="ej-respuesta doble">Justificación y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">11</span> Secante y tangente</div>
+    <div class="ej-enun">Desde un punto exterior P, una secante corta la circunferencia en A y B (PA = 4 cm, PB = 9 cm). ¿Cuánto mide la tangente PT trazada desde P?</div>
+    <div class="opciones" data-ej="11"><button type="button" class="opcion" data-ej="11" data-val="A">A) 4 cm</button><button type="button" class="opcion" data-ej="11" data-val="B">B) 6 cm</button><button type="button" class="opcion" data-ej="11" data-val="C">C) 9 cm</button><button type="button" class="opcion" data-ej="11" data-val="D">D) 13 cm</button><button type="button" class="opcion" data-ej="11" data-val="E">E) 36 cm</button></div>
+    <div class="ej-respuesta doble">Desarrollo y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">12</span> Tangente y radio</div>
+    <div class="ej-enun">Una recta es tangente a una circunferencia de radio 5 cm. ¿A qué distancia del centro está la recta?</div>
+    <div class="opciones" data-ej="12"><button type="button" class="opcion" data-ej="12" data-val="A">A) 0 cm</button><button type="button" class="opcion" data-ej="12" data-val="B">B) 2,5 cm</button><button type="button" class="opcion" data-ej="12" data-val="C">C) 5 cm</button><button type="button" class="opcion" data-ej="12" data-val="D">D) 10 cm</button><button type="button" class="opcion" data-ej="12" data-val="E">E) No se puede saber</button></div>
+    <div class="ej-respuesta doble">Justificación y respuesta</div>
+  </div>
+
+  <h2>7. Práctica de mantenimiento (fortalezas)</h2>
 
   <div class="teoria">
     <p>Estas preguntas repasan áreas que ya dominas (Proporcionalidad y Estadística). Resolverlas en 10 minutos.</p>
   </div>
 
   <div class="ejercicio">
-    <div class="ej-head"><span class="num">11</span> Proporcionalidad inversa</div>
-    <div class="ej-enun">Si 4 obreros construyen un muro en 9 días, ¿en cuántos días lo construyen 6 obreros al mismo ritmo?</div>
-    <div class="opciones" data-ej="11"><button type="button" class="opcion" data-ej="11" data-val="A">A) 4 días</button><button type="button" class="opcion" data-ej="11" data-val="B">B) 5 días</button><button type="button" class="opcion" data-ej="11" data-val="C">C) 6 días</button><button type="button" class="opcion" data-ej="11" data-val="D">D) 7 días</button><button type="button" class="opcion" data-ej="11" data-val="E">E) 13,5 días</button></div>
+    <div class="ej-head"><span class="num">13</span> Proporcionalidad</div>
+    <div class="ej-enun">Un auto recorre 180 km con 15 L de bencina. Al mismo rendimiento, ¿cuántos km recorre con 25 L?</div>
+    <div class="opciones" data-ej="13"><button type="button" class="opcion" data-ej="13" data-val="A">A) 240 km</button><button type="button" class="opcion" data-ej="13" data-val="B">B) 270 km</button><button type="button" class="opcion" data-ej="13" data-val="C">C) 300 km</button><button type="button" class="opcion" data-ej="13" data-val="D">D) 360 km</button><button type="button" class="opcion" data-ej="13" data-val="E">E) 450 km</button></div>
     <div class="ej-respuesta">Desarrollo y respuesta</div>
   </div>
 
   <div class="ejercicio">
-    <div class="ej-head"><span class="num">12</span> Estadística</div>
-    <div class="ej-enun">En una caja hay 3 bolitas rojas, 4 azules y 5 verdes. Si se saca una al azar, ¿cuál es la probabilidad de que sea azul?</div>
-    <div class="opciones" data-ej="12"><button type="button" class="opcion" data-ej="12" data-val="A">A) 1/3</button><button type="button" class="opcion" data-ej="12" data-val="B">B) 1/4</button><button type="button" class="opcion" data-ej="12" data-val="C">C) 2/3</button><button type="button" class="opcion" data-ej="12" data-val="D">D) 5/12</button><button type="button" class="opcion" data-ej="12" data-val="E">E) 7/12</button></div>
+    <div class="ej-head"><span class="num">14</span> Estadística</div>
+    <div class="ej-enun">El promedio de 4, 6, 8, 10 y 12 es:</div>
+    <div class="opciones" data-ej="14"><button type="button" class="opcion" data-ej="14" data-val="A">A) 8</button><button type="button" class="opcion" data-ej="14" data-val="B">B) 9</button><button type="button" class="opcion" data-ej="14" data-val="C">C) 10</button><button type="button" class="opcion" data-ej="14" data-val="D">D) 7</button><button type="button" class="opcion" data-ej="14" data-val="E">E) 6</button></div>
     <div class="ej-respuesta">Desarrollo y respuesta</div>
   </div>
 
@@ -574,14 +768,14 @@ tbody tr:nth-child(even) { background: var(--azul-claro); }
 <div class="panel-correccion" id="panel-correccion">
 <button type="button" class="btn-accion" id="btn-corregir">Corregir</button>
 <button type="button" class="btn-accion btn-secundario" id="btn-reiniciar">Reiniciar</button>
-<span class="progreso" id="progreso-resp">0 de 12 respondidas</span>
+<span class="progreso" id="progreso-resp">0 de 14 respondidas</span>
 <div class="resultado" id="resultado-correcion"></div>
 </div>
 
 <script>
 (function () {
-  var CLAVES = {"1":"C", "2":"B", "3":"C", "4":"C", "5":"C", "6":"C", "7":"B", "8":"C", "9":"B", "10":"C", "11":"C", "12":"A"};
-  var TOTAL = 12;
+  var CLAVES = {"1":"A", "2":"B", "3":"C", "4":"B", "5":"B", "6":"C", "7":"A", "8":"A", "9":"B", "10":"B", "11":"B", "12":"C", "13":"C", "14":"A"};
+  var TOTAL = 14;
   var LS_KEY = "paes-resp-semana-05";
   var seleccion = {};
   try { seleccion = JSON.parse(localStorage.getItem(LS_KEY) || '{}') || {}; } catch (e) { seleccion = {}; }
@@ -677,18 +871,20 @@ tbody tr:nth-child(even) { background: var(--azul-claro); }
         <div class="claves">
     <h3>Claves — Semana 5 (solo para el tutor)</h3>
     <ul>
-      <li><strong>1.</strong> C — 24 = 8·h/2 = 4h → h = 6 cm.</li>
-      <li><strong>2.</strong> B — círculo inscrito: r = 5 → 10² − π·5² = 100 − 25π cm².</li>
-      <li><strong>3.</strong> C — total (12+2)(5+2) = 14·7 = 98; jardín 12·5 = 60; vereda = 98 − 60 = 38 m².</li>
-      <li><strong>4.</strong> C — A = π·3² = 9π cm².</li>
-      <li><strong>5.</strong> C — ancho = 48/8 = 6 → P = 2(8 + 6) = 28 cm.</li>
-      <li><strong>6.</strong> C — lado = 36/4 = 9 → área = 9² = 81 cm².</li>
-      <li><strong>7.</strong> B — P = 2π·5 = 10π cm.</li>
-      <li><strong>8.</strong> C — A = (10 + 6)·4/2 = 32 cm².</li>
-      <li><strong>9.</strong> B — A = b·h/2 = 10·6/2 = 30 cm².</li>
-      <li><strong>10.</strong> C — r = 10/2 = 5 → A = π·5² = 25π cm².</li>
-      <li><strong>11.</strong> C — inversa: 4·9 = 36 (obreros·día) → 36/6 = 6 días.</li>
-      <li><strong>12.</strong> A — P(azul) = 4/12 = 1/3.</li>
+      <li><strong>1.</strong> A — d = C/π = 31,4/3,14 = 10 cm.</li>
+      <li><strong>2.</strong> B — C = 2πr = 2π·7 = 14π cm.</li>
+      <li><strong>3.</strong> C — r = 12/2 = 6 → A = π·6² = 36π cm².</li>
+      <li><strong>4.</strong> B — arco = (60/360)·2π·9 = (1/6)·18π = 3π cm.</li>
+      <li><strong>5.</strong> B — A = (90/360)·π·4² = (1/4)·16π = 4π cm².</li>
+      <li><strong>6.</strong> C — media cuerda = √(10² − 6²) = 8 → cuerda = 16 cm.</li>
+      <li><strong>7.</strong> A — media cuerda = 12 → d = √(13² − 12²) = √25 = 5 cm.</li>
+      <li><strong>8.</strong> A — inscrito = central/2 = 100°/2 = 50°.</li>
+      <li><strong>9.</strong> B — interior = (80° + 40°)/2 = 60°.</li>
+      <li><strong>10.</strong> B — exterior = (120° − 40°)/2 = 40°.</li>
+      <li><strong>11.</strong> B — PT² = PA·PB = 4·9 = 36 → PT = 6 cm.</li>
+      <li><strong>12.</strong> C — la tangente es perpendicular al radio → la distancia es igual al radio = 5 cm.</li>
+      <li><strong>13.</strong> C — 180/15 = 12 km/L → 25·12 = 300 km.</li>
+      <li><strong>14.</strong> A — (4 + 6 + 8 + 10 + 12)/5 = 40/5 = 8.</li>
     </ul>
   </div>
     </div>
@@ -744,6 +940,7 @@ function toggleClaves() {
 <a href="../index.html" style="display:inline-block;padding:9px 18px;border-radius:20px;text-decoration:none;font-weight:700;font-size:10pt;background:#1F3864;color:#fff;">← Volver al inicio</a>
 <div style="display: flex; gap: 10px;">
 <a href="semana-04.html" style="display:inline-block;padding:9px 18px;border-radius:20px;text-decoration:none;font-weight:700;font-size:10pt;background:#EAF0FA;color:#1F3864;border:1px solid #C9D8F2;">← Semana anterior</a>
+<a href="semana-06.html" style="display:inline-block;padding:9px 18px;border-radius:20px;text-decoration:none;font-weight:700;font-size:10pt;background:#EAF0FA;color:#1F3864;border:1px solid #C9D8F2;">Semana siguiente →</a>
 </div>
 </div>
 </div>
