@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Semana 7 · Problemas integrados de geometría — Guía de estudio y práctica | PAES M1</title>
+<style>
+/* ============================================================
+   PAES M1 — Guía semanal de la estudiante
+   Pantalla: lectura amigable. @media print: A4 compacto (PDF).
+   ============================================================ */
+:root {
+  --azul: #1F3864;
+  --azul-suave: #2E5A9E;
+  --azul-claro: #EAF0FA;
+  --gris-texto: #333B48;
+  --gris-suave: #64748B;
+  --borde: #E2E8F0;
+  --ambar: #B45309;
+  --ambar-claro: #FEF3C7;
+  --verde: #15803D;
+  --verde-claro: #F0FDF4;
+  --rojo: #B91C1C;
+  --rojo-claro: #FEF2F2;
+  --blanco: #FFFFFF;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "Calibri", "Segoe UI", "Arial", sans-serif;
+  color: var(--gris-texto);
+  font-size: 11pt;
+  line-height: 1.65;
+  background: #fff;
+}
+
+.guia-wrap { max-width: 860px; margin: 0 auto; padding: 26px 26px 60px; }
+
+/* Cabecera */
+.guia-header {
+  background: linear-gradient(135deg, var(--azul) 0%, var(--azul-suave) 100%);
+  color: #fff;
+  border-radius: 14px;
+  padding: 26px 30px;
+  margin-bottom: 20px;
+  box-shadow: 0 6px 18px rgba(31,56,100,0.25);
+}
+.guia-header h1 { font-size: 24pt; font-weight: 700; line-height: 1.2; }
+.guia-header .subtitulo { font-size: 11.5pt; opacity: 0.94; margin-top: 6px; }
+.guia-header .meta-linea { font-size: 9.8pt; opacity: 0.82; margin-top: 12px; }
+.guia-header .pill {
+  display: inline-block;
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 20px;
+  padding: 3px 14px;
+  font-size: 9.5pt;
+  font-weight: 600;
+  margin: 10px 6px 0 0;
+}
+.volver-indice {
+  display: inline-block;
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 20px;
+  padding: 4px 14px;
+  font-size: 9.5pt;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  margin-bottom: 4px;
+}
+.volver-indice:hover { background: rgba(255,255,255,0.32); }
+
+h2 {
+  color: var(--azul);
+  font-size: 17pt;
+  font-weight: 700;
+  margin: 34px 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 3px solid var(--azul);
+}
+h3 { color: var(--azul); font-size: 13.5pt; font-weight: 700; margin: 24px 0 8px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0 8px 22px; }
+li { margin: 5px 0; }
+strong { color: var(--azul); }
+
+/* Bloques */
+.teoria {
+  background: var(--azul-claro);
+  border: 1px solid #C9D8F2;
+  border-left: 5px solid var(--azul);
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin: 10px 0;
+}
+.formula {
+  background: var(--azul-claro);
+  border: 1px solid #C9D8F2;
+  border-left: 5px solid var(--azul);
+  border-radius: 10px;
+  padding: 12px 18px;
+  margin: 10px 0;
+  font-family: "Cambria Math", "Cambria", serif;
+  font-size: 11.5pt;
+  color: var(--azul);
+  line-height: 1.6;
+}
+.idea {
+  background: var(--ambar-claro);
+  border-left: 5px solid var(--ambar);
+  border-radius: 10px;
+  padding: 10px 16px;
+  margin: 10px 0;
+  font-size: 10.6pt;
+}
+.ejemplo {
+  background: var(--verde-claro);
+  border-left: 5px solid var(--verde);
+  border-radius: 10px;
+  padding: 10px 16px;
+  margin: 10px 0;
+  font-size: 10.6pt;
+}
+.ejemplo .tag { font-weight: 800; color: var(--verde); text-transform: uppercase; font-size: 8.5pt; letter-spacing: 0.6px; margin-right: 8px; }
+
+/* Ejercicios */
+.ejercicio {
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  margin: 14px 0;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+.ej-head {
+  background: var(--azul-claro);
+  padding: 8px 16px;
+  border-bottom: 1px solid var(--borde);
+  font-weight: 700;
+  color: var(--azul);
+  font-size: 10.5pt;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.ej-head .num {
+  background: var(--azul);
+  color: #fff;
+  border-radius: 8px;
+  font-size: 9pt;
+  padding: 2px 10px;
+}
+.ej-enun { padding: 12px 16px; font-size: 10.8pt; }
+.ej-alt { padding: 4px 16px 12px; font-size: 10.5pt; color: var(--gris-texto); }
+.ej-respuesta {
+  margin: 0 16px 14px;
+  border: 1px dashed var(--azul-suave);
+  border-radius: 8px;
+  padding: 22px 16px;
+  color: var(--gris-suave);
+  font-size: 9.8pt;
+  text-align: center;
+  background: #FAFBFD;
+}
+.ej-respuesta.doble { padding: 56px 16px; }
+
+/* Tablas */
+table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 10pt; }
+thead th { background: var(--azul); color: #fff; text-align: left; padding: 8px 12px; font-weight: 600; }
+tbody td { padding: 8px 12px; border-bottom: 1px solid var(--borde); vertical-align: top; }
+tbody tr:nth-child(even) { background: var(--azul-claro); }
+
+/* Claves (para el tutor) */
+.claves {
+  background: var(--rojo-claro);
+  border: 1px solid #F3C1C1;
+  border-left: 5px solid var(--rojo);
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin: 16px 0;
+}
+.claves h3 { color: var(--rojo); }
+.claves ul { font-size: 10.5pt; }
+.aviso-tutor {
+  background: var(--ambar-claro);
+  border-left: 5px solid var(--ambar);
+  border-radius: 10px;
+  padding: 10px 16px;
+  margin: 10px 0;
+  font-size: 10.6pt;
+  font-weight: 600;
+}
+
+/* Figuras */
+.figura {
+  background: #fff;
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin: 12px 0;
+  text-align: center;
+}
+.figura svg { max-width: 100%; height: auto; }
+.figura svg text { font-family: "Calibri", "Segoe UI", "Arial", sans-serif; }
+.figura .cap {
+  display: block;
+  margin-top: 8px;
+  font-size: 9.8pt;
+  color: var(--gris-suave);
+  font-style: italic;
+  line-height: 1.5;
+}
+.figura .cap strong { color: var(--azul); font-style: normal; }
+
+/* ============================================================
+   IMPRESION / PDF (A4 compacto)
+   ============================================================ */
+@media print {
+  @page { size: A4; margin: 13mm 13mm; }
+  body { font-size: 9.6pt; line-height: 1.45; }
+  .guia-wrap { max-width: none; padding: 0; }
+  .guia-header { border-radius: 8px; padding: 16px 20px; box-shadow: none; margin-bottom: 10px; }
+  .guia-header h1 { font-size: 17pt; }
+  .guia-header .subtitulo { font-size: 10pt; }
+  .guia-header .meta-linea { font-size: 8.8pt; }
+  .guia-header .pill { font-size: 8.5pt; }
+  .volver-indice { display: none; }
+  h2 { font-size: 13pt; margin: 16px 0 7px; padding-bottom: 4px; border-bottom: 2px solid var(--azul); }
+  h3 { font-size: 11pt; margin: 12px 0 5px; }
+  .teoria, .formula, .idea, .ejemplo { border-radius: 6px; padding: 7px 11px; margin: 6px 0; font-size: 9.4pt; }
+  .formula { font-size: 10pt; }
+  .ejercicio { border-radius: 6px; margin: 7px 0; box-shadow: none; page-break-inside: avoid; }
+  .ej-head { padding: 5px 10px; font-size: 9.2pt; }
+  .ej-head .num { font-size: 8.2pt; padding: 1px 8px; }
+  .ej-enun { padding: 6px 10px; font-size: 9.4pt; }
+  .ej-alt { padding: 3px 10px 6px; font-size: 9.2pt; }
+  .ej-respuesta { margin: 0 10px 8px; padding: 14px 12px; font-size: 8.8pt; }
+  .ej-respuesta.doble { padding: 40px 12px; }
+  .claves { border-radius: 6px; padding: 8px 11px; margin: 8px 0; }
+  .claves ul { font-size: 9.2pt; }
+  .figura { border-radius: 6px; padding: 5px 9px; margin: 5px 0; page-break-inside: avoid; }
+  .figura .cap { font-size: 8.4pt; margin-top: 4px; }
+  table { font-size: 9pt; margin: 8px 0; }
+  thead th { padding: 5px 9px; }
+  tbody td { padding: 5px 9px; }
+  tr, .ejercicio, .teoria, .formula, .ejemplo { page-break-inside: avoid; }
+  h2, h3 { page-break-after: avoid; }
+  .claves { page-break-before: always; }
+}
+</style>
+</head>
+<body>
+<div class="guia-wrap">
+
+  <header class="guia-header">
+    <a class="volver-indice" href="../index.html">← Volver al índice</a>
+    <h1>Semana 7 · Problemas integrados de geometría</h1>
+    <div class="subtitulo">Guía de estudio y práctica — Competencia Matemática 1 (PAES)</div>
+    <div class="meta-linea">Sesión de 2 h · 09/11 - 15/11/2026 · Fase 1: cierre de Geometría básica</div>
+    <span class="pill">Semana de integración: sin contenido nuevo</span>
+    <span class="pill">Medición: mini-control MC1</span>
+  </header>
+
+  
+
+  <p style="margin: 12px 0;">
+    <a href="semana-07.pdf" download style="display:inline-block;background:#1F3864;color:#fff;padding:8px 18px;border-radius:20px;text-decoration:none;font-weight:700;">
+      Descargar guía en PDF
+    </a>
+  </p>
+
+  <h2>Objetivos de la semana</h2>
+  <ul>
+    <li>Resolver problemas de geometría que combinan dos o tres temas de W1-W6.</li>
+    <li>Encadenar: área → lado faltante → perímetro; Pitágoras → perímetro; diagonal → área.</li>
+    <li>Aplicar semejanza y escala al área (la razón de áreas es k²).</li>
+    <li>Controlar unidades (cm vs cm², m² vs cm²) antes de elegir la alternativa.</li>
+    <li>Enfrentar el mini-control MC1 con método y sin dejar preguntas en blanco.</li>
+  </ul>
+
+  <h2>1. Método de ataque para problemas de varios pasos</h2>
+
+  <div class="teoria">
+    <p>Esta semana no hay fórmulas nuevas: el contenido es <strong>elegir bien la secuencia</strong>.
+    Todo problema integrado se ataca siempre igual:</p>
+    <ol>
+      <li><strong>Leer y dibujar:</strong> pasar el enunciado a un dibujo con los datos marcados.
+      Sin dibujo no se empieza.</li>
+      <li><strong>Identificar la cadena:</strong> preguntarse "¿qué necesito para calcular lo que
+      piden?" y trabajar hacia atrás. Si piden perímetro y dan el área, falta un lado: primero se
+      obtiene el lado desde el área.</li>
+      <li><strong>Ejecutar paso a paso:</strong> una operación por línea, sin saltarse pasos.</li>
+      <li><strong>Verificar unidades y formato:</strong> ¿la respuesta va en cm o en m? ¿en cm²?
+      ¿con π o con decimales? Recién entonces se marca la alternativa.</li>
+    </ol>
+  </div>
+
+  <div class="figura">
+    <svg viewBox="0 0 620 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rectángulo de área 60 y ancho 5: cadena de dos pasos para obtener el perímetro">
+      <polygon points="40,70 280,70 280,170 40,170" fill="#EAF0FA" stroke="#1F3864" stroke-width="2.4"/>
+      <path d="M 52 170 L 52 158 L 40 158" fill="none" stroke="#64748B" stroke-width="1.5"/>
+      <text x="160" y="192" text-anchor="middle" font-size="12" font-weight="700" fill="#64748B">12 cm</text>
+      <text x="32" y="124" text-anchor="end" font-size="12" font-weight="700" fill="#64748B">5 cm</text>
+      <text x="160" y="125" text-anchor="middle" font-size="12" font-weight="700" fill="#1F3864">A = 60 cm²</text>
+      <polygon points="330,50 600,50 600,105 330,105" fill="#EAF0FA" stroke="#2E5A9E" stroke-width="1.6"/>
+      <polygon points="330,115 600,115 600,170 330,170" fill="#EAF0FA" stroke="#2E5A9E" stroke-width="1.6"/>
+      <polygon points="330,180 600,180 600,235 330,235" fill="#EAF0FA" stroke="#2E5A9E" stroke-width="1.6"/>
+      <text x="345" y="72" text-anchor="start" font-size="11" font-weight="700" fill="#1F3864">1) Dato: A = 60 cm², ancho = 5 cm</text>
+      <text x="345" y="137" text-anchor="start" font-size="11" font-weight="700" fill="#1F3864">2) Falta el largo: 60 ÷ 5 = 12 cm</text>
+      <text x="345" y="202" text-anchor="start" font-size="11" font-weight="700" fill="#1F3864">3) Perímetro: P = 2(12 + 5) = 34 cm</text>
+      <line x1="465" y1="105" x2="465" y2="115" stroke="#64748B" stroke-width="1.6"/>
+      <line x1="465" y1="170" x2="465" y2="180" stroke="#64748B" stroke-width="1.6"/>
+    </svg>
+    <span class="cap">La <strong>cadena de dos pasos</strong>: con el área y un lado se obtiene el otro lado, y recién entonces el perímetro.</span>
+  </div>
+
+  <div class="ejemplo">
+    <span class="tag">Ejemplo resuelto</span>
+    A = 60 cm² y ancho 5 cm → largo = 60 ÷ 5 = 12 cm → P = 2(12 + 5) = <strong>34 cm</strong>.
+    El error típico es responder 60 (el área) o 17 (solo un largo más un ancho).
+  </div>
+
+  <h2>2. Cadenas típicas que aparecen en la PAES</h2>
+
+  <table>
+    <thead>
+      <tr><th>Situación</th><th>Qué usar</th><th>Ejemplo</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Dan área y un lado, piden perímetro</td><td>Despejar el otro lado y luego sumar</td><td>A = 60, ancho 5 → largo 12 → P = 34</td></tr>
+      <tr><td>Dan la diagonal del cuadrado</td><td>d = lado·√2, o directamente A = d²/2</td><td>d = 10 → A = 50</td></tr>
+      <tr><td>Triángulo rectángulo con dos lados</td><td>Pitágoras para el tercero, después sumar</td><td>5 y 12 → hip 13 → P = 30</td></tr>
+      <tr><td>Dos figuras semejantes de razón k</td><td>Lados × k; áreas × k²</td><td>k = 3, área menor 5 → 45</td></tr>
+      <tr><td>Plano a escala 1 : k</td><td>Medidas × k; área × k²</td><td>1:50, 8 × 6 cm → 12 m²</td></tr>
+      <tr><td>Círculo inscrito en un cuadrado</td><td>r = lado/2; sombreada = área cuadrado − área círculo</td><td>lado 6 → r = 3 → 36 − 9π</td></tr>
+      <tr><td>Rombo con sus diagonales</td><td>Las diagonales se cortan en el punto medio y son perpendiculares: lado por Pitágoras</td><td>16 y 12 → lado 10 → P = 40</td></tr>
+    </tbody>
+  </table>
+
+  <div class="idea">Antes de calcular, pregúntate: ¿el dato que me dan es un <strong>lado</strong>, una
+  <strong>diagonal</strong> o un <strong>área</strong>? Confundirlos es la causa más frecuente de error
+  en esta unidad.</div>
+
+  <h2>3. Tres atajos que conviene dominar</h2>
+
+  <h3>3.1 La diagonal del cuadrado</h3>
+
+  <div class="formula">
+    d = lado·√2 &nbsp;&nbsp;·&nbsp;&nbsp; lado = d/√2 &nbsp;&nbsp;·&nbsp;&nbsp;
+    A = lado² = d²/2
+  </div>
+
+  <div class="figura">
+    <svg viewBox="0 0 460 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cuadrado con su diagonal y la relación entre diagonal y área">
+      <polygon points="60,200 210,200 210,50 60,50" fill="#EAF0FA" stroke="#1F3864" stroke-width="2.4"/>
+      <path d="M 72 200 L 72 188 L 60 188" fill="none" stroke="#64748B" stroke-width="1.5"/>
+      <line x1="60" y1="200" x2="210" y2="50" stroke="#B45309" stroke-width="2.4"/>
+      <text x="135" y="222" text-anchor="middle" font-size="12" font-weight="700" fill="#64748B">lado</text>
+      <text x="112" y="104" text-anchor="middle" font-size="12" font-weight="700" fill="#B45309">d = 10 cm</text>
+      <text x="350" y="110" text-anchor="middle" font-size="14" font-weight="700" fill="#1F3864">A = d² / 2</text>
+      <text x="350" y="140" text-anchor="middle" font-size="12" font-weight="700" fill="#1F3864">= 100 / 2 = 50 cm²</text>
+      <text x="350" y="180" text-anchor="middle" font-size="11" font-weight="400" fill="#64748B">lado = d / √2</text>
+    </svg>
+    <span class="cap">La <strong>diagonal como atajo</strong>: en un cuadrado, d² = 2·lado², así que A = d²/2.</span>
+  </div>
+
+  <div class="ejemplo">
+    <span class="tag">Ejemplo resuelto</span>
+    d = 10 cm → A = 10²/2 = <strong>50 cm²</strong>. Si se calcula el lado: 10/√2 ≈ 7,07 y
+    7,07² ≈ 50. La alternativa 100 es el error de usar la diagonal como si fuera el lado.
+  </div>
+
+  <h3>3.2 Pitágoras para llegar al perímetro</h3>
+
+  <div class="figura">
+    <svg viewBox="0 0 460 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Triángulo rectángulo de catetos 5 y 12 e hipotenusa 13">
+      <polygon points="70,210 310,210 70,110" fill="#EAF0FA" stroke="#1F3864" stroke-width="2.4"/>
+      <path d="M 82 210 L 82 198 L 70 198" fill="none" stroke="#64748B" stroke-width="1.5"/>
+      <text x="190" y="232" text-anchor="middle" font-size="12" font-weight="700" fill="#64748B">12 cm</text>
+      <text x="52" y="166" text-anchor="end" font-size="12" font-weight="700" fill="#64748B">5 cm</text>
+      <text x="196.92" y="143.38" text-anchor="middle" font-size="13" font-weight="700" fill="#B45309">13 cm</text>
+      <text x="230" y="45" text-anchor="middle" font-size="13" font-weight="700" fill="#1F3864">P = 5 + 12 + 13 = 30 cm</text>
+    </svg>
+    <span class="cap">El <strong>perímetro desde Pitágoras</strong>: primero la hipotenusa (5-12-13) y después la suma de los tres lados.</span>
+  </div>
+
+  <div class="ejemplo">
+    <span class="tag">Ejemplo resuelto</span>
+    Catetos 5 y 12 → hipotenusa = √(25 + 144) = 13 → P = 5 + 12 + 13 = <strong>30 cm</strong>.
+    El área (30 cm²) coincide numéricamente con el perímetro en este caso: por eso hay que leer
+    qué se pide y no elegir por el número.
+  </div>
+
+  <h3>3.3 Escala y área</h3>
+
+  <div class="figura">
+    <svg viewBox="0 0 620 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Plano a escala 1 a 50: rectángulo de 8 por 6 centímetros que representa 4 por 3 metros">
+      <polygon points="40,80 160,80 160,170 40,170" fill="#EAF0FA" stroke="#1F3864" stroke-width="2.2"/>
+      <path d="M 50 170 L 50 160 L 40 160" fill="none" stroke="#64748B" stroke-width="1.5"/>
+      <text x="100" y="195" text-anchor="middle" font-size="11" font-weight="700" fill="#64748B">plano: 8 cm × 6 cm</text>
+      <polygon points="380,55 540,55 540,175 380,175" fill="#EAF0FA" stroke="#1F3864" stroke-width="2.2"/>
+      <path d="M 390 175 L 390 165 L 380 165" fill="none" stroke="#64748B" stroke-width="1.5"/>
+      <text x="460" y="200" text-anchor="middle" font-size="11" font-weight="700" fill="#64748B">real: 4 m × 3 m</text>
+      <text x="460" y="226" text-anchor="middle" font-size="12" font-weight="700" fill="#1F3864">A = 4 · 3 = 12 m²</text>
+      <line x1="190" y1="125" x2="360" y2="125" stroke="#B45309" stroke-width="2.2"/>
+      <polygon points="360,125 348,119 348,131" fill="#B45309" stroke="#B45309" stroke-width="0"/>
+      <text x="275" y="112" text-anchor="middle" font-size="13" font-weight="700" fill="#B45309">× 50</text>
+      <text x="300" y="34" text-anchor="middle" font-size="12" font-weight="700" fill="#64748B">escala 1 : 50</text>
+    </svg>
+    <span class="cap">La <strong>escala 1:50</strong>: cada medida se multiplica por 50 y el área por 50²; 8 × 6 cm en el plano son 12 m² reales.</span>
+  </div>
+
+  <div class="ejemplo">
+    <span class="tag">Ejemplo resuelto</span>
+    8 cm × 50 = 400 cm = 4 m; 6 cm × 50 = 300 cm = 3 m → A = 4 · 3 =
+    <strong>12 m²</strong>. También sirve: 48 cm² × 50² = 120.000 cm² = 12 m².
+    Recordar que 1 m² = 10.000 cm².
+  </div>
+
+  <h2>4. Errores comunes en problemas integrados</h2>
+
+  <ul>
+    <li><strong>No dibujar.</strong> Bajo presión de tiempo se salta el dibujo y se elige el
+    distractor de un solo paso.</li>
+    <li><strong>Confundir área con perímetro.</strong> Área en cm², perímetro en cm. Subrayar la
+    palabra antes de calcular.</li>
+    <li><strong>Usar la diagonal como lado.</strong> En el cuadrado, la diagonal siempre es mayor
+    que el lado (lado·√2).</li>
+    <li><strong>Escalar solo una dimensión.</strong> En una escala, largo y ancho se multiplican
+    por k, pero el área por k².</li>
+    <li><strong>Convertir mal cm² a m².</strong> Se divide por 10.000, no por 100.</li>
+    <li><strong>Rombo:</strong> el lado no es la mitad de una diagonal. Las semidiagonales (8 y 6)
+    son los catetos; el lado (10) es la hipotenusa.</li>
+  </ul>
+
+  <h2>5. Ejercicios para practicar</h2>
+
+  
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">1</span> Del área al perímetro</div>
+    <div class="ej-enun">Un rectángulo tiene área 60 cm² y ancho 5 cm. ¿Cuál es su perímetro?</div>
+    <div class="opciones" data-ej="1"><button type="button" class="opcion" data-ej="1" data-val="A">A) 17 cm</button><button type="button" class="opcion" data-ej="1" data-val="B">B) 30 cm</button><button type="button" class="opcion" data-ej="1" data-val="C">C) 34 cm</button><button type="button" class="opcion" data-ej="1" data-val="D">D) 60 cm</button><button type="button" class="opcion" data-ej="1" data-val="E">E) 120 cm</button></div>
+    <div class="ej-respuesta">Desarrollo y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">2</span> Diagonal del cuadrado</div>
+    <div class="ej-enun">La diagonal de un cuadrado mide 10 cm. ¿Cuál es el área del cuadrado?</div>
+    <div class="opciones" data-ej="2"><button type="button" class="opcion" data-ej="2" data-val="A">A) 25 cm²</button><button type="button" class="opcion" data-ej="2" data-val="B">B) 50 cm²</button><button type="button" class="opcion" data-ej="2" data-val="C">C) 50√2 cm²</button><button type="button" class="opcion" data-ej="2" data-val="D">D) 100 cm²</button><button type="button" class="opcion" data-ej="2" data-val="E">E) 200 cm²</button></div>
+    <div class="ej-respuesta">Desarrollo y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">3</span> Perímetro con Pitágoras</div>
+    <div class="ej-enun">Un triángulo rectángulo tiene catetos de 5 cm y 12 cm. ¿Cuál es su perímetro?</div>
+    <div class="opciones" data-ej="3"><button type="button" class="opcion" data-ej="3" data-val="A">A) 17 cm</button><button type="button" class="opcion" data-ej="3" data-val="B">B) 26 cm</button><button type="button" class="opcion" data-ej="3" data-val="C">C) 30 cm</button><button type="button" class="opcion" data-ej="3" data-val="D">D) 34 cm</button><button type="button" class="opcion" data-ej="3" data-val="E">E) 60 cm</button></div>
+    <div class="ej-respuesta">Desarrollo y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">4</span> Círculo inscrito</div>
+    <div class="ej-enun">Un cuadrado de lado 6 cm tiene inscrito un círculo. ¿Cuál es el área de la región del cuadrado que queda fuera del círculo?</div>
+    <div class="opciones" data-ej="4"><button type="button" class="opcion" data-ej="4" data-val="A">A) 36 − 9π cm²</button><button type="button" class="opcion" data-ej="4" data-val="B">B) 36 − 6π cm²</button><button type="button" class="opcion" data-ej="4" data-val="C">C) 36 − 36π cm²</button><button type="button" class="opcion" data-ej="4" data-val="D">D) 36 − 3π cm²</button><button type="button" class="opcion" data-ej="4" data-val="E">E) 9π cm²</button></div>
+    <div class="ej-respuesta doble">Dibujo, desarrollo y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">5</span> Escala y área</div>
+    <div class="ej-enun">En un plano a escala 1:50, una sala rectangular mide 8 cm × 6 cm. ¿Cuál es el área real de la sala?</div>
+    <div class="opciones" data-ej="5"><button type="button" class="opcion" data-ej="5" data-val="A">A) 4,8 m²</button><button type="button" class="opcion" data-ej="5" data-val="B">B) 12 m²</button><button type="button" class="opcion" data-ej="5" data-val="C">C) 24 m²</button><button type="button" class="opcion" data-ej="5" data-val="D">D) 48 m²</button><button type="button" class="opcion" data-ej="5" data-val="E">E) 120 m²</button></div>
+    <div class="ej-respuesta doble">Dibujo, desarrollo y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">6</span> Semejanza y área</div>
+    <div class="ej-enun">Dos triángulos semejantes tienen razón de semejanza 3. Si el área del menor es 5 cm², ¿cuál es el área del mayor?</div>
+    <div class="opciones" data-ej="6"><button type="button" class="opcion" data-ej="6" data-val="A">A) 15 cm²</button><button type="button" class="opcion" data-ej="6" data-val="B">B) 30 cm²</button><button type="button" class="opcion" data-ej="6" data-val="C">C) 90 cm²</button><button type="button" class="opcion" data-ej="6" data-val="D">D) 45 cm²</button><button type="button" class="opcion" data-ej="6" data-val="E">E) 135 cm²</button></div>
+    <div class="ej-respuesta">Desarrollo y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">7</span> Escalera y pared</div>
+    <div class="ej-enun">Una escalera de 13 m está apoyada en una pared vertical y su extremo superior alcanza 12 m de altura. ¿A qué distancia de la pared está la base de la escalera?</div>
+    <div class="opciones" data-ej="7"><button type="button" class="opcion" data-ej="7" data-val="A">A) 1 m</button><button type="button" class="opcion" data-ej="7" data-val="B">B) 5 m</button><button type="button" class="opcion" data-ej="7" data-val="C">C) 7 m</button><button type="button" class="opcion" data-ej="7" data-val="D">D) 12 m</button><button type="button" class="opcion" data-ej="7" data-val="E">E) 17,7 m</button></div>
+    <div class="ej-respuesta doble">Dibujo, desarrollo y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">8</span> Rombo: perímetro desde las diagonales</div>
+    <div class="ej-enun">Un rombo tiene diagonales de 16 cm y 12 cm. ¿Cuál es su perímetro?</div>
+    <div class="opciones" data-ej="8"><button type="button" class="opcion" data-ej="8" data-val="A">A) 28 cm</button><button type="button" class="opcion" data-ej="8" data-val="B">B) 48 cm</button><button type="button" class="opcion" data-ej="8" data-val="C">C) 56 cm</button><button type="button" class="opcion" data-ej="8" data-val="D">D) 96 cm</button><button type="button" class="opcion" data-ej="8" data-val="E">E) 40 cm</button></div>
+    <div class="ej-respuesta doble">Dibujo, desarrollo y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">9</span> Círculo inscrito a partir del área</div>
+    <div class="ej-enun">Un cuadrado tiene área 64 cm² y un círculo inscrito. ¿Cuál es el área de la región del cuadrado que queda fuera del círculo?</div>
+    <div class="opciones" data-ej="9"><button type="button" class="opcion" data-ej="9" data-val="A">A) 64 − 8π cm²</button><button type="button" class="opcion" data-ej="9" data-val="B">B) 16π cm²</button><button type="button" class="opcion" data-ej="9" data-val="C">C) 64 − 16π cm²</button><button type="button" class="opcion" data-ej="9" data-val="D">D) 64 − 4π cm²</button><button type="button" class="opcion" data-ej="9" data-val="E">E) 64 − 64π cm²</button></div>
+    <div class="ej-respuesta doble">Dibujo, desarrollo y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">10</span> Diagonal de un terreno</div>
+    <div class="ej-enun">Un terreno rectangular mide 40 m de largo y 30 m de ancho. ¿Cuánto mide su diagonal?</div>
+    <div class="opciones" data-ej="10"><button type="button" class="opcion" data-ej="10" data-val="A">A) 35 m</button><button type="button" class="opcion" data-ej="10" data-val="B">B) 70 m</button><button type="button" class="opcion" data-ej="10" data-val="C">C) 1200 m</button><button type="button" class="opcion" data-ej="10" data-val="D">D) 50 m</button><button type="button" class="opcion" data-ej="10" data-val="E">E) 2500 m</button></div>
+    <div class="ej-respuesta">Desarrollo y respuesta</div>
+  </div>
+
+  <h2>6. Práctica de mantenimiento (fortalezas)</h2>
+
+  <div class="teoria">
+    <p>Estas preguntas repasan áreas que ya dominas (Proporcionalidad y Álgebra). Resolverlas en 10 minutos.</p>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">11</span> Proporcionalidad directa</div>
+    <div class="ej-enun">Si 5 kg de fruta cuestan $8.000, ¿cuánto cuestan 8 kg al mismo precio por kilo?</div>
+    <div class="opciones" data-ej="11"><button type="button" class="opcion" data-ej="11" data-val="A">A) $10.000</button><button type="button" class="opcion" data-ej="11" data-val="B">B) $12.000</button><button type="button" class="opcion" data-ej="11" data-val="C">C) $12.500</button><button type="button" class="opcion" data-ej="11" data-val="D">D) $13.000</button><button type="button" class="opcion" data-ej="11" data-val="E">E) $12.800</button></div>
+    <div class="ej-respuesta">Desarrollo y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">12</span> Ecuación de primer grado</div>
+    <div class="ej-enun">Si 3x − 7 = 20, ¿cuánto vale x?</div>
+    <div class="opciones" data-ej="12"><button type="button" class="opcion" data-ej="12" data-val="A">A) 4</button><button type="button" class="opcion" data-ej="12" data-val="B">B) 6</button><button type="button" class="opcion" data-ej="12" data-val="C">C) 9</button><button type="button" class="opcion" data-ej="12" data-val="D">D) 13</button><button type="button" class="opcion" data-ej="12" data-val="E">E) 27</button></div>
+    <div class="ej-respuesta">Desarrollo y respuesta</div>
+  </div>
+
+  <h2>7. Mini-control MC1 (medición de la semana)</h2>
+
+  <div class="teoria">
+    <p>Esta semana se aplica el <strong>MC1: 10 preguntas de Geometría + 2 de mantenimiento</strong>.
+    Se resuelve en 30-40 minutos, sin ayuda y sin mirar las guías. Las preguntas las entrega el tutor.</p>
+    <ul>
+      <li>Registrar el resultado como <strong>X/10</strong> en Geometría; las preguntas 11 y 12 se
+      registran aparte como mantenimiento de fortalezas.</li>
+      <li><strong>Criterio de la fase:</strong> ≥ 50% en Geometría (5/10 o más).</li>
+      <li>Si el resultado es menor a 50%, no se avanza a Funciones: se refuerzan los temas errados
+      con los ejercicios de W1-W6 y se repite el control en la semana siguiente.</li>
+      <li>No dejar preguntas en blanco: marcar la mejor alternativa y seguir.</li>
+    </ul>
+  </div>
+
+  
+<style>
+.opciones { display: flex; flex-wrap: wrap; gap: 8px; padding: 4px 16px 14px; }
+.opcion {
+    font-family: inherit; font-size: 10.5pt; line-height: 1.45; text-align: left;
+    background: #fff; color: #333B48;
+    border: 1.5px solid #C9D8F2; border-radius: 8px;
+    padding: 7px 12px; cursor: pointer; transition: all 0.12s;
+}
+.opcion:hover { border-color: #2E5A9E; background: #EAF0FA; }
+.opcion.seleccionada { border-color: #2E5A9E; background: #EAF0FA; box-shadow: 0 0 0 2px rgba(46,90,158,0.25); }
+.opcion.correcta { border-color: #15803D; background: #F0FDF4; color: #15803D; font-weight: 700; }
+.opcion.incorrecta { border-color: #B91C1C; background: #FEF2F2; color: #B91C1C; font-weight: 700; }
+.panel-correccion {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 12px;
+    margin: 20px 0 6px; padding: 14px 18px;
+    background: #F6F8FB; border: 1px solid #E2E8F0; border-radius: 12px;
+}
+.panel-correccion .btn-accion {
+    background: #2E5A9E; color: #fff; border: none; border-radius: 8px;
+    padding: 10px 20px; font-size: 0.95rem; font-weight: 600; cursor: pointer;
+    transition: background 0.15s;
+}
+.panel-correccion .btn-accion:hover { background: #1F3864; }
+.panel-correccion .btn-secundario { background: #fff; color: #2E5A9E; border: 1px solid #2E5A9E; }
+.panel-correccion .btn-secundario:hover { background: #EAF0FA; }
+.panel-correccion .progreso { font-size: 0.9rem; color: #64748B; margin-left: auto; }
+.panel-correccion .resultado { flex-basis: 100%; font-weight: 700; color: #1F3864; font-size: 1rem; }
+.panel-correccion .resultado.acierto-total { color: #15803D; }
+.panel-correccion .resultado.hay-errores { color: #B91C1C; }
+@media print { .opciones, .panel-correccion { display: none !important; } }
+</style>
+
+<div class="panel-correccion" id="panel-correccion">
+<button type="button" class="btn-accion" id="btn-corregir">Corregir</button>
+<button type="button" class="btn-accion btn-secundario" id="btn-reiniciar">Reiniciar</button>
+<span class="progreso" id="progreso-resp">0 de 12 respondidas</span>
+<div class="resultado" id="resultado-correcion"></div>
+</div>
+
+<script>
+(function () {
+  var CLAVES = {"1":"C", "2":"B", "3":"C", "4":"A", "5":"B", "6":"D", "7":"B", "8":"E", "9":"C", "10":"D", "11":"E", "12":"C"};
+  var TOTAL = 12;
+  var LS_KEY = "paes-resp-semana-07";
+  var seleccion = {};
+  try { seleccion = JSON.parse(localStorage.getItem(LS_KEY) || '{}') || {}; } catch (e) { seleccion = {}; }
+
+  function guardar() {
+    try { localStorage.setItem(LS_KEY, JSON.stringify(seleccion)); } catch (e) {}
+  }
+
+  function opcionesDe(ej) {
+    return document.querySelectorAll('.opcion[data-ej="' + ej + '"]');
+  }
+
+  function marcarSeleccion(ej) {
+    var val = seleccion[ej];
+    opcionesDe(ej).forEach(function (b) {
+      if (b.getAttribute('data-val') === val) { b.classList.add('seleccionada'); }
+      else { b.classList.remove('seleccionada'); }
+    });
+  }
+
+  function actualizarProgreso() {
+    var p = document.getElementById('progreso-resp');
+    if (p) { p.textContent = Object.keys(seleccion).length + ' de ' + TOTAL + ' respondidas'; }
+  }
+
+  Object.keys(seleccion).forEach(function (ej) { marcarSeleccion(ej); });
+  actualizarProgreso();
+
+  document.querySelectorAll('.opcion').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var ej = btn.getAttribute('data-ej');
+      var val = btn.getAttribute('data-val');
+      seleccion[ej] = val;
+      guardar();
+      marcarSeleccion(ej);
+      actualizarProgreso();
+      opcionesDe(ej).forEach(function (b) { b.classList.remove('correcta', 'incorrecta'); });
+      var res = document.getElementById('resultado-correcion');
+      if (res) { res.textContent = ''; res.className = 'resultado'; }
+    });
+  });
+
+  var btnCorregir = document.getElementById('btn-corregir');
+  if (btnCorregir) {
+    btnCorregir.addEventListener('click', function () {
+      var aciertos = 0, respondidas = 0;
+      Object.keys(CLAVES).forEach(function (ej) {
+        var correcta = CLAVES[ej];
+        var elegida = seleccion[ej];
+        opcionesDe(ej).forEach(function (b) {
+          b.classList.remove('correcta', 'incorrecta');
+          var v = b.getAttribute('data-val');
+          if (v === correcta) { b.classList.add('correcta'); }
+          if (elegida && v === elegida && elegida !== correcta) { b.classList.add('incorrecta'); }
+        });
+        if (elegida) {
+          respondidas++;
+          if (elegida === correcta) { aciertos++; }
+        }
+      });
+      var res = document.getElementById('resultado-correcion');
+      if (res) {
+        var texto = 'Puntaje: ' + aciertos + ' / ' + TOTAL + ' correctas';
+        if (respondidas < TOTAL) { texto += ' · respondidas ' + respondidas + ' / ' + TOTAL; }
+        res.textContent = texto;
+        res.className = 'resultado' + (aciertos === TOTAL ? ' acierto-total' : ' hay-errores');
+      }
+    });
+  }
+
+  var btnReiniciar = document.getElementById('btn-reiniciar');
+  if (btnReiniciar) {
+    btnReiniciar.addEventListener('click', function () {
+      seleccion = {};
+      guardar();
+      document.querySelectorAll('.opcion').forEach(function (b) {
+        b.classList.remove('seleccionada', 'correcta', 'incorrecta');
+      });
+      var res = document.getElementById('resultado-correcion');
+      if (res) { res.textContent = ''; res.className = 'resultado'; }
+      actualizarProgreso();
+    });
+  }
+})();
+</script>
+
+
+<div class="contenedor-claves">
+    <button class="btn-toggle-claves" onclick="toggleClaves()">
+        <span id="texto-toggle">Mostrar claves</span>
+    </button>
+    <div class="claves" id="claves-respuestas" style="display: none;">
+        <div class="claves">
+    <h3>Claves — Semana 7 (solo para el tutor)</h3>
+    <ul>
+      <li><strong>1.</strong> C — largo = 60 ÷ 5 = 12 cm; P = 2(12 + 5) = 34 cm.</li>
+      <li><strong>2.</strong> B — A = d²/2 = 100/2 = 50 cm² (o lado = 10/√2 → lado² = 50).</li>
+      <li><strong>3.</strong> C — hipotenusa = √(5² + 12²) = 13; P = 5 + 12 + 13 = 30 cm.</li>
+      <li><strong>4.</strong> A — r = 6/2 = 3; sombreada = 36 − π·3² = 36 − 9π cm².</li>
+      <li><strong>5.</strong> B — real: 8·50 = 400 cm = 4 m y 6·50 = 300 cm = 3 m → A = 12 m².</li>
+      <li><strong>6.</strong> D — áreas en razón k² = 9; 5·9 = 45 cm².</li>
+      <li><strong>7.</strong> B — base = √(13² − 12²) = √25 = 5 m.</li>
+      <li><strong>8.</strong> E — semidiagonales 8 y 6 → lado = √(64 + 36) = 10; P = 4·10 = 40 cm.</li>
+      <li><strong>9.</strong> C — área 64 → lado 8 → r = 4; sombreada = 64 − π·4² = 64 − 16π cm².</li>
+      <li><strong>10.</strong> D — diagonal = √(40² + 30²) = √2500 = 50 m.</li>
+      <li><strong>11.</strong> E — $8.000 ÷ 5 = $1.600 por kg → 8·$1.600 = $12.800.</li>
+      <li><strong>12.</strong> C — 3x = 27 → x = 9.</li>
+    </ul>
+  </div>
+    </div>
+</div>
+
+<style>
+.contenedor-claves {
+    margin: 30px 0 20px;
+}
+.btn-toggle-claves {
+    background: #2E5A9E;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+.btn-toggle-claves:hover {
+    background: #1F3864;
+}
+.claves {
+    margin-top: 12px;
+    padding: 16px;
+    background: #F0FDF4;
+    border: 1px solid #BBF7D0;
+    border-radius: 10px;
+}
+.claves h3 {
+    color: #15803D;
+    margin-bottom: 8px;
+}
+</style>
+
+<script>
+function toggleClaves() {
+    var el = document.getElementById('claves-respuestas');
+    var btn = document.getElementById('texto-toggle');
+    if (el.style.display === 'none') {
+        el.style.display = 'block';
+        btn.textContent = 'Ocultar claves';
+    } else {
+        el.style.display = 'none';
+        btn.textContent = 'Mostrar claves';
+    }
+}
+</script>
+</div>
+<div style="max-width: 860px; margin: 0 auto; padding: 24px 26px 40px; border-top: 1px solid #E2E8F0; margin-top: 30px;">
+<div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; align-items: center;">
+<a href="../index.html" style="display:inline-block;padding:9px 18px;border-radius:20px;text-decoration:none;font-weight:700;font-size:10pt;background:#1F3864;color:#fff;">← Volver al inicio</a>
+<div style="display: flex; gap: 10px;">
+<a href="semana-06.html" style="display:inline-block;padding:9px 18px;border-radius:20px;text-decoration:none;font-weight:700;font-size:10pt;background:#EAF0FA;color:#1F3864;border:1px solid #C9D8F2;">← Semana anterior</a>
+</div>
+</div>
+</div>
+</body>
+</html>
