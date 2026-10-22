@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guía extra · Lógica y pensamiento matemático — Guía de estudio y práctica | PAES M1</title>
+<style>
+/* ============================================================
+   PAES M1 — Guía extra de razonamiento
+   Pantalla: lectura amigable. @media print: A4 compacto (PDF).
+   ============================================================ */
+:root {
+  --azul: #1F3864;
+  --azul-suave: #2E5A9E;
+  --azul-claro: #EAF0FA;
+  --gris-texto: #333B48;
+  --gris-suave: #64748B;
+  --borde: #E2E8F0;
+  --ambar: #B45309;
+  --ambar-claro: #FEF3C7;
+  --verde: #15803D;
+  --verde-claro: #F0FDF4;
+  --rojo: #B91C1C;
+  --rojo-claro: #FEF2F2;
+  --blanco: #FFFFFF;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "Calibri", "Segoe UI", "Arial", sans-serif;
+  color: var(--gris-texto);
+  font-size: 11pt;
+  line-height: 1.65;
+  background: #fff;
+}
+
+.guia-wrap { max-width: 860px; margin: 0 auto; padding: 26px 26px 60px; }
+
+/* Cabecera */
+.guia-header {
+  background: linear-gradient(135deg, var(--azul) 0%, var(--azul-suave) 100%);
+  color: #fff;
+  border-radius: 14px;
+  padding: 26px 30px;
+  margin-bottom: 20px;
+  box-shadow: 0 6px 18px rgba(31,56,100,0.25);
+}
+.guia-header h1 { font-size: 24pt; font-weight: 700; line-height: 1.2; }
+.guia-header .subtitulo { font-size: 11.5pt; opacity: 0.94; margin-top: 6px; }
+.guia-header .meta-linea { font-size: 9.8pt; opacity: 0.82; margin-top: 12px; }
+.guia-header .pill {
+  display: inline-block;
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 20px;
+  padding: 3px 14px;
+  font-size: 9.5pt;
+  font-weight: 600;
+  margin: 10px 6px 0 0;
+}
+.volver-indice {
+  display: inline-block;
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 20px;
+  padding: 4px 14px;
+  font-size: 9.5pt;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  margin-bottom: 4px;
+}
+.volver-indice:hover { background: rgba(255,255,255,0.32); }
+
+h2 {
+  color: var(--azul);
+  font-size: 17pt;
+  font-weight: 700;
+  margin: 34px 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 3px solid var(--azul);
+}
+h3 { color: var(--azul); font-size: 13.5pt; font-weight: 700; margin: 24px 0 8px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0 8px 22px; }
+li { margin: 5px 0; }
+strong { color: var(--azul); }
+
+/* Bloques */
+.teoria {
+  background: var(--azul-claro);
+  border: 1px solid #C9D8F2;
+  border-left: 5px solid var(--azul);
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin: 10px 0;
+}
+.formula {
+  background: var(--azul-claro);
+  border: 1px solid #C9D8F2;
+  border-left: 5px solid var(--azul);
+  border-radius: 10px;
+  padding: 12px 18px;
+  margin: 10px 0;
+  font-family: "Cambria Math", "Cambria", serif;
+  font-size: 11.5pt;
+  color: var(--azul);
+  line-height: 1.6;
+}
+.idea {
+  background: var(--ambar-claro);
+  border-left: 5px solid var(--ambar);
+  border-radius: 10px;
+  padding: 10px 16px;
+  margin: 10px 0;
+  font-size: 10.6pt;
+}
+.ejemplo {
+  background: var(--verde-claro);
+  border-left: 5px solid var(--verde);
+  border-radius: 10px;
+  padding: 10px 16px;
+  margin: 10px 0;
+  font-size: 10.6pt;
+}
+.ejemplo .tag { font-weight: 800; color: var(--verde); text-transform: uppercase; font-size: 8.5pt; letter-spacing: 0.6px; margin-right: 8px; }
+
+/* Ejercicios */
+.ejercicio {
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  margin: 14px 0;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+.ej-head {
+  background: var(--azul-claro);
+  padding: 8px 16px;
+  border-bottom: 1px solid var(--borde);
+  font-weight: 700;
+  color: var(--azul);
+  font-size: 10.5pt;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.ej-head .num {
+  background: var(--azul);
+  color: #fff;
+  border-radius: 8px;
+  font-size: 9pt;
+  padding: 2px 10px;
+}
+.ej-enun { padding: 12px 16px; font-size: 10.8pt; }
+.ej-alt { padding: 4px 16px 12px; font-size: 10.5pt; color: var(--gris-texto); }
+.ej-respuesta {
+  margin: 0 16px 14px;
+  border: 1px dashed var(--azul-suave);
+  border-radius: 8px;
+  padding: 22px 16px;
+  color: var(--gris-suave);
+  font-size: 9.8pt;
+  text-align: center;
+  background: #FAFBFD;
+}
+.ej-respuesta.doble { padding: 56px 16px; }
+
+/* Tablas */
+table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 10pt; }
+thead th { background: var(--azul); color: #fff; text-align: left; padding: 8px 12px; font-weight: 600; }
+tbody td { padding: 8px 12px; border-bottom: 1px solid var(--borde); vertical-align: top; }
+tbody tr:nth-child(even) { background: var(--azul-claro); }
+
+/* Claves (para el tutor) */
+.claves {
+  background: var(--rojo-claro);
+  border: 1px solid #F3C1C1;
+  border-left: 5px solid var(--rojo);
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin: 16px 0;
+}
+.claves h3 { color: var(--rojo); }
+.claves ul { font-size: 10.5pt; }
+.aviso-tutor {
+  background: var(--ambar-claro);
+  border-left: 5px solid var(--ambar);
+  border-radius: 10px;
+  padding: 10px 16px;
+  margin: 10px 0;
+  font-size: 10.6pt;
+  font-weight: 600;
+}
+
+/* Figuras */
+.figura {
+  background: #fff;
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin: 12px 0;
+  text-align: center;
+}
+.figura svg { max-width: 100%; height: auto; }
+.figura svg text { font-family: "Calibri", "Segoe UI", "Arial", sans-serif; }
+.figura .cap {
+  display: block;
+  margin-top: 8px;
+  font-size: 9.8pt;
+  color: var(--gris-suave);
+  font-style: italic;
+  line-height: 1.5;
+}
+.figura .cap strong { color: var(--azul); font-style: normal; }
+
+/* ============================================================
+   IMPRESION / PDF (A4 compacto)
+   ============================================================ */
+@media print {
+  @page { size: A4; margin: 13mm 13mm; }
+  body { font-size: 9.6pt; line-height: 1.45; }
+  .guia-wrap { max-width: none; padding: 0; }
+  .guia-header { border-radius: 8px; padding: 16px 20px; box-shadow: none; margin-bottom: 10px; }
+  .guia-header h1 { font-size: 17pt; }
+  .guia-header .subtitulo { font-size: 10pt; }
+  .guia-header .meta-linea { font-size: 8.8pt; }
+  .guia-header .pill { font-size: 8.5pt; }
+  .volver-indice { display: none; }
+  h2 { font-size: 13pt; margin: 16px 0 7px; padding-bottom: 4px; border-bottom: 2px solid var(--azul); }
+  h3 { font-size: 11pt; margin: 12px 0 5px; }
+  .teoria, .formula, .idea, .ejemplo { border-radius: 6px; padding: 7px 11px; margin: 6px 0; font-size: 9.4pt; }
+  .formula { font-size: 10pt; }
+  .ejercicio { border-radius: 6px; margin: 7px 0; box-shadow: none; page-break-inside: avoid; }
+  .ej-head { padding: 5px 10px; font-size: 9.2pt; }
+  .ej-head .num { font-size: 8.2pt; padding: 1px 8px; }
+  .ej-enun { padding: 6px 10px; font-size: 9.4pt; }
+  .ej-alt { padding: 3px 10px 6px; font-size: 9.2pt; }
+  .ej-respuesta { margin: 0 10px 8px; padding: 14px 12px; font-size: 8.8pt; }
+  .ej-respuesta.doble { padding: 40px 12px; }
+  .claves { border-radius: 6px; padding: 8px 11px; margin: 8px 0; }
+  .claves ul { font-size: 9.2pt; }
+  .figura { border-radius: 6px; padding: 5px 9px; margin: 5px 0; page-break-inside: avoid; }
+  .figura .cap { font-size: 8.4pt; margin-top: 4px; }
+  table { font-size: 9pt; margin: 8px 0; }
+  thead th { padding: 5px 9px; }
+  tbody td { padding: 5px 9px; }
+  tr, .ejercicio, .teoria, .formula, .ejemplo { page-break-inside: avoid; }
+  h2, h3 { page-break-after: avoid; }
+  .claves { page-break-before: always; }
+}
+</style>
+</head>
+<body>
+<div class="guia-wrap">
+
+  <header class="guia-header">
+    <a class="volver-indice" href="../index.html">← Volver al índice</a>
+    <h1>Guía extra · Lógica y pensamiento matemático</h1>
+    <div class="subtitulo">Guía transversal — Competencia Matemática 1 (PAES)</div>
+    <div class="meta-linea">Sesión de 2 h · entre Semana 7 y Semana 8 · Fase 1</div>
+    <span class="pill">Sin contenido nuevo: entrenamiento de razonamiento</span>
+    <span class="pill">Razonar antes que memorizar</span>
+  </header>
+
+  
+
+  <p style="margin: 12px 0;">
+    <a href="semana-extra.pdf" download style="display:inline-block;background:#1F3864;color:#fff;padding:8px 18px;border-radius:20px;text-decoration:none;font-weight:700;">
+      Descargar guía en PDF
+    </a>
+  </p>
+
+  <h2>Objetivos de la guía</h2>
+  <ul>
+    <li>Adquirir un <strong>protocolo general</strong> para enfrentar cualquier problema, no una receta por tema.</li>
+    <li>Separar siempre <strong>qué me piden</strong> de <strong>qué me dan</strong> antes de empezar a calcular.</li>
+    <li>Usar tres herramientas de razonamiento: <strong>descartar</strong>, <strong>estimar</strong> y <strong>verificar</strong>.</li>
+    <li>Reconocer las <strong>trampas</strong> que la PAES usa con más frecuencia.</li>
+  </ul>
+
+  <h2>1. Por qué razonar y no memorizar</h2>
+
+  <div class="teoria">
+    <p>La PAES no pregunta "¿te acuerdas de la fórmula?". Pregunta si puedes <strong>usar</strong> lo que
+    sabes en una situación que no viste antes. Un método memorizado sirve mientras el enunciado sea
+    idéntico al del ejemplo; si cambia una palabra, se cae.</p>
+    <p>En cambio, un <strong>modo de razonar</strong> se adapta: sirve en geometría, en números y en
+    funciones, y también en las preguntas que parecen no tener fórmula.</p>
+  </div>
+
+  <div class="idea">Regla de oro de esta guía: <strong>primero se piensa, después se calcula.</strong>
+  Si empiezas a operar sin haber entendido qué te piden, el cálculo te va a arrastrar a una alternativa
+  equivocada.</div>
+
+  <h2>2. El protocolo de los 5 pasos</h2>
+
+  <p>Todo problema, de cualquier tema, se ataca con la misma secuencia. Al principio se hace lento;
+  con práctica se vuelve automática.</p>
+
+  <div class="figura">
+    <svg viewBox="0 0 700 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Protocolo de cinco pasos: leer, representar, planear, calcular y verificar">
+      <rect x="8" y="40" width="118" height="52" rx="10" fill="#EAF0FA" stroke="#1F3864" stroke-width="2"/>
+      <text x="67" y="64" text-anchor="middle" font-size="12" font-weight="700" fill="#1F3864">1. Leer</text>
+      <text x="67" y="81" text-anchor="middle" font-size="9" fill="#64748B">qué dan / qué piden</text>
+
+      <rect x="148" y="40" width="118" height="52" rx="10" fill="#EAF0FA" stroke="#1F3864" stroke-width="2"/>
+      <text x="207" y="64" text-anchor="middle" font-size="12" font-weight="700" fill="#1F3864">2. Representar</text>
+      <text x="207" y="81" text-anchor="middle" font-size="9" fill="#64748B">dibujo / tabla</text>
+
+      <rect x="288" y="40" width="118" height="52" rx="10" fill="#EAF0FA" stroke="#1F3864" stroke-width="2"/>
+      <text x="347" y="64" text-anchor="middle" font-size="12" font-weight="700" fill="#1F3864">3. Planear</text>
+      <text x="347" y="81" text-anchor="middle" font-size="9" fill="#64748B">estrategia</text>
+
+      <rect x="428" y="40" width="118" height="52" rx="10" fill="#EAF0FA" stroke="#1F3864" stroke-width="2"/>
+      <text x="487" y="64" text-anchor="middle" font-size="12" font-weight="700" fill="#1F3864">4. Calcular</text>
+      <text x="487" y="81" text-anchor="middle" font-size="9" fill="#64748B">orden y estimación</text>
+
+      <rect x="568" y="40" width="118" height="52" rx="10" fill="#EAF0FA" stroke="#1F3864" stroke-width="2"/>
+      <text x="627" y="64" text-anchor="middle" font-size="12" font-weight="700" fill="#1F3864">5. Verificar</text>
+      <text x="627" y="81" text-anchor="middle" font-size="9" fill="#64748B">¿tiene sentido?</text>
+
+      <line x1="126" y1="66" x2="148" y2="66" stroke="#2E5A9E" stroke-width="2"/>
+      <polygon points="148,66 141,62 141,70" fill="#2E5A9E"/>
+      <line x1="266" y1="66" x2="288" y2="66" stroke="#2E5A9E" stroke-width="2"/>
+      <polygon points="288,66 281,62 281,70" fill="#2E5A9E"/>
+      <line x1="406" y1="66" x2="428" y2="66" stroke="#2E5A9E" stroke-width="2"/>
+      <polygon points="428,66 421,62 421,70" fill="#2E5A9E"/>
+      <line x1="546" y1="66" x2="568" y2="66" stroke="#2E5A9E" stroke-width="2"/>
+      <polygon points="568,66 561,62 561,70" fill="#2E5A9E"/>
+    </svg>
+    <span class="cap">El <strong>protocolo de 5 pasos</strong>: la misma secuencia sirve para cualquier problema y evita el error de calcular antes de pensar.</span>
+  </div>
+
+  <table>
+    <thead>
+      <tr><th>Paso</th><th>Qué haces</th><th>Pregunta guía</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>1. Leer</strong></td><td>Leer dos veces y subrayar. Encerrar en un círculo lo que piden.</td><td>¿Qué me piden exactamente? ¿Qué datos entregan?</td></tr>
+      <tr><td><strong>2. Representar</strong></td><td>Dibujar, hacer una tabla o anotar los datos con sus unidades.</td><td>¿Cómo puedo <em>ver</em> el problema en vez de solo leerlo?</td></tr>
+      <tr><td><strong>3. Planear</strong></td><td>Elegir la estrategia antes de operar. A veces conviene ir hacia atrás.</td><td>¿Qué necesito para responder? ¿Qué herramienta me sirve?</td></tr>
+      <tr><td><strong>4. Calcular</strong></td><td>Una operación por línea, sin saltarse pasos. Estimar el resultado esperado.</td><td>¿El resultado que me sale está en el rango que anticipé?</td></tr>
+      <tr><td><strong>5. Verificar</strong></td><td>Comprobar coherencia y unidades. Releer el enunciado.</td><td>¿La respuesta cumple lo que pedían? ¿Es lógica?</td></tr>
+    </tbody>
+  </table>
+
+  <div class="ejemplo">
+    <span class="tag">Ejemplo aplicado</span>
+    "Un terreno rectangular mide 40 m por 30 m. ¿Cuánto mide su diagonal?" →
+    <strong>1.</strong> Piden la diagonal; dan dos lados. <strong>2.</strong> Dibujo el rectángulo y marco
+    la diagonal. <strong>3.</strong> Es la hipotenusa de un triángulo rectángulo: Pitágoras.
+    <strong>4.</strong> √(40² + 30²) = √(1600 + 900) = √2500 = 50 m. <strong>5.</strong> 50 m es mayor que
+    40 y 30, como debe ser: una diagonal siempre es el lado más largo. Coherente.
+  </div>
+
+  <h2>3. La caja de herramientas del razonamiento</h2>
+
+  <p>Estas herramientas no reemplazan el protocolo: se usan dentro de él, sobre todo en los pasos 3 y 5.
+  No todas sirven en todos los problemas; la habilidad está en elegir la correcta.</p>
+
+  <table>
+    <thead>
+      <tr><th>Herramienta</th><th>Cuándo usarla</th><th>Ejemplo breve</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Descartar por absurdo</strong></td><td>Las alternativas son muy distintas entre sí.</td><td>Si piden un área y una alternativa es negativa, se elimina sin calcular.</td></tr>
+      <tr><td><strong>Estimar el orden</strong></td><td>Hay que decidir entre números de tamaño muy distinto.</td><td>0,25 × 3.996 es cercano a 1.000, no a 100.</td></tr>
+      <tr><td><strong>Probar un caso simple</strong></td><td>Hay una regla general y no sabes si se cumple siempre.</td><td>Probar n = 2 y n = 4 para ver si "n² siempre par" es verdad.</td></tr>
+      <tr><td><strong>Ir hacia atrás</strong></td><td>El camino directo es largo o confuso.</td><td>Partir de las alternativas y ver cuál cumple el enunciado.</td></tr>
+      <tr><td><strong>Detectar el dato sobrante</strong></td><td>El enunciado trae más números de los necesarios.</td><td>Un dato que no se usa no debe cambiar la respuesta.</td></tr>
+      <tr><td><strong>Reconocer el patrón</strong></td><td>Un problema se parece a otro que ya resolviste.</td><td>La misma estructura de "parte de un total".</td></tr>
+      <tr><td><strong>Reformular con tus palabras</strong></td><td>El enunciado es enredado.</td><td>Decirlo en una frase simple antes de operar.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="idea">La herramienta más rentable en la PAES es <strong>descartar</strong>: muchas veces se
+  llega a la respuesta correcta eliminando tres alternativas imposibles, sin resolver el problema completo.</div>
+
+  <h3>3.1 Estimación: el radar de errores</h3>
+
+  <div class="teoria">
+    <p>Antes de calcular, anticipa <strong>entre qué números</strong> debería estar la respuesta.
+    Si el resultado se sale de ese rango, hay un error. Esto detecta en segundos los errores de
+    unidades y los de "me comí un cero".</p>
+    <p>Ejemplo: 3.000 ÷ 0,5. La respuesta debe ser <strong>mayor</strong> que 3.000 (dividir por un número
+    menor que 1 agranda). Si una alternativa dice 1.500, se descarta sin hacer la división.</p>
+  </div>
+
+  <h3>3.2 Verificación: la última línea de defensa</h3>
+
+  <div class="teoria">
+    <p>Verificar no es repetir el cálculo: es comprobar si el resultado <strong>tiene sentido</strong> con
+    el problema. Tres chequeos rápidos:</p>
+    <ol>
+      <li><strong>Unidades:</strong> si piden área, la respuesta va en unidades al cuadrado.</li>
+      <li><strong>Orden de magnitud:</strong> ¿el número es razonable para lo que describe?</li>
+      <li><strong>Coherencia:</strong> si la respuesta se reemplaza en el enunciado, ¿lo cumple?</li>
+    </ol>
+  </div>
+
+  <h2>4. Las trampas más comunes</h2>
+
+  <ul>
+    <li><strong>Responder lo primero que sale.</strong> En un descuento del 25% se calcula 300 y se marca
+    300, cuando lo que se paga es 900.</li>
+    <li><strong>Inventar datos.</strong> Suponer que un triángulo es rectángulo o que un número es entero
+    sin que el enunciado lo diga.</li>
+    <li><strong>Cambiar de objetivo a mitad de camino.</strong> Se empieza buscando el área y se termina
+    respondiendo el perímetro.</li>
+    <li><strong>Error de unidades o de escala.</strong> Mezclar cm con m, o multiplicar por 50 en vez de
+    por 50² al trabajar con áreas.</li>
+    <li><strong>Saltarse la verificación.</strong> No revisar si el resultado cumple el enunciado.</li>
+    <li><strong>Confundir "no se puede determinar" con "no lo sé".</strong> A veces los datos no alcanzan,
+    y esa es justamente la respuesta correcta.</li>
+  </ul>
+
+  
+
+  <h2>5. Ejercicios para practicar</h2>
+
+  
+
+  <h3>Parte A — Lógica y deducción</h3>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">1</span> Quién es el mayor</div>
+    <div class="ej-enun">Ana, Benja y Carla tienen edades distintas. Benja es mayor que Carla. Ana no es la mayor. ¿Quién es la mayor?</div>
+    <div class="opciones" data-ej="1"><button type="button" class="opcion" data-ej="1" data-val="A">A) Carla</button><button type="button" class="opcion" data-ej="1" data-val="B">B) Ana</button><button type="button" class="opcion" data-ej="1" data-val="C">C) Benja</button><button type="button" class="opcion" data-ej="1" data-val="D">D) No se puede determinar</button><button type="button" class="opcion" data-ej="1" data-val="E">E) Ana y Carla</button></div>
+    <div class="ej-respuesta">Razonamiento y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">2</span> La regla escondida</div>
+    <div class="ej-enun">En una secuencia, cada número se obtiene multiplicando el anterior por 3 y restando 1. Si el primer número es 2, ¿cuál es el cuarto?</div>
+    <div class="opciones" data-ej="2"><button type="button" class="opcion" data-ej="2" data-val="A">A) 14</button><button type="button" class="opcion" data-ej="2" data-val="B">B) 17</button><button type="button" class="opcion" data-ej="2" data-val="C">C) 40</button><button type="button" class="opcion" data-ej="2" data-val="D">D) 41</button><button type="button" class="opcion" data-ej="2" data-val="E">E) 42</button></div>
+    <div class="ej-respuesta">Desarrollo y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">3</span> ¿Con qué dato alcanza?</div>
+    <div class="ej-enun">Para calcular el perímetro de un cuadrado basta con conocer:</div>
+    <div class="opciones" data-ej="3"><button type="button" class="opcion" data-ej="3" data-val="A">A) su área</button><button type="button" class="opcion" data-ej="3" data-val="B">B) su diagonal</button><button type="button" class="opcion" data-ej="3" data-val="C">C) el lado</button><button type="button" class="opcion" data-ej="3" data-val="D">D) ninguna por separado</button><button type="button" class="opcion" data-ej="3" data-val="E">E) cualquiera de las tres anteriores</button></div>
+    <div class="ej-respuesta">Razonamiento y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">4</span> Paridad</div>
+    <div class="ej-enun">Si n es un número entero par, ¿cuál de las siguientes expresiones es SIEMPRE impar?</div>
+    <div class="opciones" data-ej="4"><button type="button" class="opcion" data-ej="4" data-val="A">A) n + 2</button><button type="button" class="opcion" data-ej="4" data-val="B">B) n + 1</button><button type="button" class="opcion" data-ej="4" data-val="C">C) 2n</button><button type="button" class="opcion" data-ej="4" data-val="D">D) n²</button><button type="button" class="opcion" data-ej="4" data-val="E">E) n ÷ 2</button></div>
+    <div class="ej-respuesta">Razonamiento y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">5</span> Deducción lógica</div>
+    <div class="ej-enun">Todos los múltiplos de 6 son pares. El número 45 no es par. ¿Qué se concluye?</div>
+    <div class="opciones" data-ej="5"><button type="button" class="opcion" data-ej="5" data-val="A">A) 45 no es múltiplo de 6</button><button type="button" class="opcion" data-ej="5" data-val="B">B) 45 es múltiplo de 6</button><button type="button" class="opcion" data-ej="5" data-val="C">C) 45 es par</button><button type="button" class="opcion" data-ej="5" data-val="D">D) Todos los impares son múltiplos de 6</button><button type="button" class="opcion" data-ej="5" data-val="E">E) No se puede concluir nada</button></div>
+    <div class="ej-respuesta">Razonamiento y respuesta</div>
+  </div>
+
+  <h3>Parte B — Trampas estilo PAES</h3>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">6</span> Estimar una raíz</div>
+    <div class="ej-enun">¿Cuál de los siguientes números es el más cercano a √50?</div>
+    <div class="opciones" data-ej="6"><button type="button" class="opcion" data-ej="6" data-val="A">A) 5</button><button type="button" class="opcion" data-ej="6" data-val="B">B) 10</button><button type="button" class="opcion" data-ej="6" data-val="C">C) 7</button><button type="button" class="opcion" data-ej="6" data-val="D">D) 25</button><button type="button" class="opcion" data-ej="6" data-val="E">E) 50</button></div>
+    <div class="ej-respuesta">Razonamiento y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">7</span> Descarte por estimación</div>
+    <div class="ej-enun">Sin hacer el cálculo completo, 0,25 × 3.996 es aproximadamente:</div>
+    <div class="opciones" data-ej="7"><button type="button" class="opcion" data-ej="7" data-val="A">A) 100</button><button type="button" class="opcion" data-ej="7" data-val="B">B) 10</button><button type="button" class="opcion" data-ej="7" data-val="C">C) 10.000</button><button type="button" class="opcion" data-ej="7" data-val="D">D) 1.000</button><button type="button" class="opcion" data-ej="7" data-val="E">E) 1</button></div>
+    <div class="ej-respuesta">Razonamiento y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">8</span> El dato que sobra</div>
+    <div class="ej-enun">Un rectángulo mide 8 cm de largo y 5 cm de ancho. Además, se sabe que su diagonal mide aproximadamente 9,4 cm. ¿Cuál es su área?</div>
+    <div class="opciones" data-ej="8"><button type="button" class="opcion" data-ej="8" data-val="A">A) 13 cm²</button><button type="button" class="opcion" data-ej="8" data-val="B">B) 26 cm²</button><button type="button" class="opcion" data-ej="8" data-val="C">C) 47 cm²</button><button type="button" class="opcion" data-ej="8" data-val="D">D) 80 cm²</button><button type="button" class="opcion" data-ej="8" data-val="E">E) 40 cm²</button></div>
+    <div class="ej-respuesta">Razonamiento y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">9</span> Datos necesarios</div>
+    <div class="ej-enun">Para calcular el área de un triángulo se necesita conocer:</div>
+    <div class="opciones" data-ej="9"><button type="button" class="opcion" data-ej="9" data-val="A">A) base y altura</button><button type="button" class="opcion" data-ej="9" data-val="B">B) solo la base</button><button type="button" class="opcion" data-ej="9" data-val="C">C) solo la altura</button><button type="button" class="opcion" data-ej="9" data-val="D">D) solo el perímetro</button><button type="button" class="opcion" data-ej="9" data-val="E">E) la suma de dos lados</button></div>
+    <div class="ej-respuesta">Razonamiento y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">10</span> Leer qué piden</div>
+    <div class="ej-enun">Un producto cuesta $1.200 y tiene un descuento del 25%. ¿Cuánto se paga por el producto?</div>
+    <div class="opciones" data-ej="10"><button type="button" class="opcion" data-ej="10" data-val="A">A) $300</button><button type="button" class="opcion" data-ej="10" data-val="B">B) $900</button><button type="button" class="opcion" data-ej="10" data-val="C">C) $1.175</button><button type="button" class="opcion" data-ej="10" data-val="D">D) $1.500</button><button type="button" class="opcion" data-ej="10" data-val="E">E) $1.000</button></div>
+    <div class="ej-respuesta">Razonamiento y respuesta</div>
+  </div>
+
+  <h2>6. Práctica de mantenimiento (fortalezas)</h2>
+
+  <div class="teoria">
+    <p>Estas dos preguntas repasan áreas que ya dominas (Proporcionalidad y Álgebra). Resolverlas en 10 minutos.</p>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">11</span> Proporcionalidad directa</div>
+    <div class="ej-enun">Si 4 cuadernos cuestan $6.000, ¿cuánto cuestan 10 cuadernos al mismo precio unitario?</div>
+    <div class="opciones" data-ej="11"><button type="button" class="opcion" data-ej="11" data-val="A">A) $12.000</button><button type="button" class="opcion" data-ej="11" data-val="B">B) $24.000</button><button type="button" class="opcion" data-ej="11" data-val="C">C) $15.000</button><button type="button" class="opcion" data-ej="11" data-val="D">D) $10.000</button><button type="button" class="opcion" data-ej="11" data-val="E">E) $9.000</button></div>
+    <div class="ej-respuesta">Desarrollo y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">12</span> Ecuación de primer grado</div>
+    <div class="ej-enun">Si 5x + 3 = 2x + 18, ¿cuánto vale x?</div>
+    <div class="opciones" data-ej="12"><button type="button" class="opcion" data-ej="12" data-val="A">A) 3</button><button type="button" class="opcion" data-ej="12" data-val="B">B) 7</button><button type="button" class="opcion" data-ej="12" data-val="C">C) 15</button><button type="button" class="opcion" data-ej="12" data-val="D">D) 5</button><button type="button" class="opcion" data-ej="12" data-val="E">E) 21</button></div>
+    <div class="ej-respuesta">Desarrollo y respuesta</div>
+  </div>
+
+  <h2>7. Cómo seguir usando esta guía</h2>
+
+  <div class="idea">
+    El protocolo de los 5 pasos no es solo para esta guía: úsalo en cada problema de ahora en adelante,
+    sobre todo en los de Funciones (Semana 8 en adelante). Al terminar cada ejercicio, pregúntate
+    <strong>qué herramienta</strong> usaste y <strong>qué trampa</strong> evitó. Eso es lo que se
+    entrena: no el resultado, sino el razonamiento que lleva al resultado.
+  </div>
+
+  
+<style>
+.opciones { display: flex; flex-wrap: wrap; gap: 8px; padding: 4px 16px 14px; }
+.opcion {
+    font-family: inherit; font-size: 10.5pt; line-height: 1.45; text-align: left;
+    background: #fff; color: #333B48;
+    border: 1.5px solid #C9D8F2; border-radius: 8px;
+    padding: 7px 12px; cursor: pointer; transition: all 0.12s;
+}
+.opcion:hover { border-color: #2E5A9E; background: #EAF0FA; }
+.opcion.seleccionada { border-color: #2E5A9E; background: #EAF0FA; box-shadow: 0 0 0 2px rgba(46,90,158,0.25); }
+.opcion.correcta { border-color: #15803D; background: #F0FDF4; color: #15803D; font-weight: 700; }
+.opcion.incorrecta { border-color: #B91C1C; background: #FEF2F2; color: #B91C1C; font-weight: 700; }
+.panel-correccion {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 12px;
+    margin: 20px 0 6px; padding: 14px 18px;
+    background: #F6F8FB; border: 1px solid #E2E8F0; border-radius: 12px;
+}
+.panel-correccion .btn-accion {
+    background: #2E5A9E; color: #fff; border: none; border-radius: 8px;
+    padding: 10px 20px; font-size: 0.95rem; font-weight: 600; cursor: pointer;
+    transition: background 0.15s;
+}
+.panel-correccion .btn-accion:hover { background: #1F3864; }
+.panel-correccion .btn-secundario { background: #fff; color: #2E5A9E; border: 1px solid #2E5A9E; }
+.panel-correccion .btn-secundario:hover { background: #EAF0FA; }
+.panel-correccion .progreso { font-size: 0.9rem; color: #64748B; margin-left: auto; }
+.panel-correccion .resultado { flex-basis: 100%; font-weight: 700; color: #1F3864; font-size: 1rem; }
+.panel-correccion .resultado.acierto-total { color: #15803D; }
+.panel-correccion .resultado.hay-errores { color: #B91C1C; }
+@media print { .opciones, .panel-correccion { display: none !important; } }
+</style>
+
+<div class="panel-correccion" id="panel-correccion">
+<button type="button" class="btn-accion" id="btn-corregir">Corregir</button>
+<button type="button" class="btn-accion btn-secundario" id="btn-reiniciar">Reiniciar</button>
+<span class="progreso" id="progreso-resp">0 de 12 respondidas</span>
+<div class="resultado" id="resultado-correcion"></div>
+</div>
+
+<script>
+(function () {
+  var CLAVES = {"1":"C", "2":"D", "3":"E", "4":"B", "5":"A", "6":"C", "7":"D", "8":"E", "9":"A", "10":"B", "11":"C", "12":"D"};
+  var TOTAL = 12;
+  var LS_KEY = "paes-resp-semana-extra";
+  var seleccion = {};
+  try { seleccion = JSON.parse(localStorage.getItem(LS_KEY) || '{}') || {}; } catch (e) { seleccion = {}; }
+
+  function guardar() {
+    try { localStorage.setItem(LS_KEY, JSON.stringify(seleccion)); } catch (e) {}
+  }
+
+  function opcionesDe(ej) {
+    return document.querySelectorAll('.opcion[data-ej="' + ej + '"]');
+  }
+
+  function marcarSeleccion(ej) {
+    var val = seleccion[ej];
+    opcionesDe(ej).forEach(function (b) {
+      if (b.getAttribute('data-val') === val) { b.classList.add('seleccionada'); }
+      else { b.classList.remove('seleccionada'); }
+    });
+  }
+
+  function actualizarProgreso() {
+    var p = document.getElementById('progreso-resp');
+    if (p) { p.textContent = Object.keys(seleccion).length + ' de ' + TOTAL + ' respondidas'; }
+  }
+
+  Object.keys(seleccion).forEach(function (ej) { marcarSeleccion(ej); });
+  actualizarProgreso();
+
+  document.querySelectorAll('.opcion').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var ej = btn.getAttribute('data-ej');
+      var val = btn.getAttribute('data-val');
+      seleccion[ej] = val;
+      guardar();
+      marcarSeleccion(ej);
+      actualizarProgreso();
+      opcionesDe(ej).forEach(function (b) { b.classList.remove('correcta', 'incorrecta'); });
+      var res = document.getElementById('resultado-correcion');
+      if (res) { res.textContent = ''; res.className = 'resultado'; }
+    });
+  });
+
+  var btnCorregir = document.getElementById('btn-corregir');
+  if (btnCorregir) {
+    btnCorregir.addEventListener('click', function () {
+      var aciertos = 0, respondidas = 0;
+      Object.keys(CLAVES).forEach(function (ej) {
+        var correcta = CLAVES[ej];
+        var elegida = seleccion[ej];
+        opcionesDe(ej).forEach(function (b) {
+          b.classList.remove('correcta', 'incorrecta');
+          var v = b.getAttribute('data-val');
+          if (v === correcta) { b.classList.add('correcta'); }
+          if (elegida && v === elegida && elegida !== correcta) { b.classList.add('incorrecta'); }
+        });
+        if (elegida) {
+          respondidas++;
+          if (elegida === correcta) { aciertos++; }
+        }
+      });
+      var res = document.getElementById('resultado-correcion');
+      if (res) {
+        var texto = 'Puntaje: ' + aciertos + ' / ' + TOTAL + ' correctas';
+        if (respondidas < TOTAL) { texto += ' · respondidas ' + respondidas + ' / ' + TOTAL; }
+        res.textContent = texto;
+        res.className = 'resultado' + (aciertos === TOTAL ? ' acierto-total' : ' hay-errores');
+      }
+    });
+  }
+
+  var btnReiniciar = document.getElementById('btn-reiniciar');
+  if (btnReiniciar) {
+    btnReiniciar.addEventListener('click', function () {
+      seleccion = {};
+      guardar();
+      document.querySelectorAll('.opcion').forEach(function (b) {
+        b.classList.remove('seleccionada', 'correcta', 'incorrecta');
+      });
+      var res = document.getElementById('resultado-correcion');
+      if (res) { res.textContent = ''; res.className = 'resultado'; }
+      actualizarProgreso();
+    });
+  }
+})();
+</script>
+
+
+<div class="contenedor-claves">
+    <button class="btn-toggle-claves" onclick="toggleClaves()">
+        <span id="texto-toggle">Mostrar claves</span>
+    </button>
+    <div class="claves" id="claves-respuestas" style="display: none;">
+        <div class="claves">
+    <h3>Claves — Guía extra (solo para el tutor)</h3>
+    <ul>
+      <li><strong>1.</strong> C — Benja es mayor que Carla, y Ana no es la mayor; luego la mayor solo puede ser Benja.</li>
+      <li><strong>2.</strong> D — 2 → 5 → 14 → 41 (multiplicar por 3 y restar 1 en cada paso).</li>
+      <li><strong>3.</strong> E — Con el área (lado = √A), con la diagonal (lado = d/√2) o con el lado directo se obtiene el perímetro.</li>
+      <li><strong>4.</strong> B — Par + 1 es siempre impar. n + 2 es par, 2n es par, n² es par y n ÷ 2 puede ser par o impar (n = 4 → 2; n = 6 → 3).</li>
+      <li><strong>5.</strong> A — Si 45 fuera múltiplo de 6, sería par; como no es par, no es múltiplo de 6 (contrapositiva).</li>
+      <li><strong>6.</strong> C — 7² = 49, así que √50 ≈ 7,07; el más cercano es 7.</li>
+      <li><strong>7.</strong> D — Un cuarto de 3.996 es 999, es decir, aproximadamente 1.000.</li>
+      <li><strong>8.</strong> E — El área es 8 × 5 = 40 cm². La diagonal es un dato sobrante: no se necesita y no debe cambiar la respuesta.</li>
+      <li><strong>9.</strong> A — Área del triángulo = (base × altura) ÷ 2; con solo un lado o con el perímetro no alcanza.</li>
+      <li><strong>10.</strong> B — Se paga el 75% de 1.200 = $900. La alternativa A ($300) es el descuento, no el precio final: es la trampa de responder lo primero que sale.</li>
+      <li><strong>11.</strong> C — $6.000 ÷ 4 = $1.500 por cuaderno; 10 × $1.500 = $15.000.</li>
+      <li><strong>12.</strong> D — 5x − 2x = 18 − 3 → 3x = 15 → x = 5.</li>
+    </ul>
+  </div>
+    </div>
+</div>
+
+<style>
+.contenedor-claves {
+    margin: 30px 0 20px;
+}
+.btn-toggle-claves {
+    background: #2E5A9E;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+.btn-toggle-claves:hover {
+    background: #1F3864;
+}
+.claves {
+    margin-top: 12px;
+    padding: 16px;
+    background: #F0FDF4;
+    border: 1px solid #BBF7D0;
+    border-radius: 10px;
+}
+.claves h3 {
+    color: #15803D;
+    margin-bottom: 8px;
+}
+</style>
+
+<script>
+function toggleClaves() {
+    var el = document.getElementById('claves-respuestas');
+    var btn = document.getElementById('texto-toggle');
+    if (el.style.display === 'none') {
+        el.style.display = 'block';
+        btn.textContent = 'Ocultar claves';
+    } else {
+        el.style.display = 'none';
+        btn.textContent = 'Mostrar claves';
+    }
+}
+</script>
+</div>
+<div style="max-width: 860px; margin: 0 auto; padding: 24px 26px 40px; border-top: 1px solid #E2E8F0; margin-top: 30px;">
+<div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; align-items: center;">
+<a href="../index.html" style="display:inline-block;padding:9px 18px;border-radius:20px;text-decoration:none;font-weight:700;font-size:10pt;background:#1F3864;color:#fff;">← Volver al inicio</a>
+<div style="display: flex; gap: 10px;">
+<a href="semana-07.html" style="display:inline-block;padding:9px 18px;border-radius:20px;text-decoration:none;font-weight:700;font-size:10pt;background:#EAF0FA;color:#1F3864;border:1px solid #C9D8F2;">← Semana anterior</a>
+</div>
+</div>
+</div>
+</body>
+</html>
