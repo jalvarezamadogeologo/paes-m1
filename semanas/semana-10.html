@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Semana 10 · Función cuadrática — Guía de estudio y práctica | PAES M1</title>
+<style>
+/* ============================================================
+   PAES M1 — Guía semanal de la estudiante
+   Pantalla: lectura amigable. @media print: A4 compacto (PDF).
+   ============================================================ */
+:root {
+  --azul: #1F3864;
+  --azul-suave: #2E5A9E;
+  --azul-claro: #EAF0FA;
+  --gris-texto: #333B48;
+  --gris-suave: #64748B;
+  --borde: #E2E8F0;
+  --ambar: #B45309;
+  --ambar-claro: #FEF3C7;
+  --verde: #15803D;
+  --verde-claro: #F0FDF4;
+  --rojo: #B91C1C;
+  --rojo-claro: #FEF2F2;
+  --blanco: #FFFFFF;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "Calibri", "Segoe UI", "Arial", sans-serif;
+  color: var(--gris-texto);
+  font-size: 11pt;
+  line-height: 1.65;
+  background: #fff;
+}
+
+.guia-wrap { max-width: 860px; margin: 0 auto; padding: 26px 26px 60px; }
+
+/* Cabecera */
+.guia-header {
+  background: linear-gradient(135deg, var(--azul) 0%, var(--azul-suave) 100%);
+  color: #fff;
+  border-radius: 14px;
+  padding: 26px 30px;
+  margin-bottom: 20px;
+  box-shadow: 0 6px 18px rgba(31,56,100,0.25);
+}
+.guia-header h1 { font-size: 24pt; font-weight: 700; line-height: 1.2; }
+.guia-header .subtitulo { font-size: 11.5pt; opacity: 0.94; margin-top: 6px; }
+.guia-header .meta-linea { font-size: 9.8pt; opacity: 0.82; margin-top: 12px; }
+.guia-header .pill {
+  display: inline-block;
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 20px;
+  padding: 3px 14px;
+  font-size: 9.5pt;
+  font-weight: 600;
+  margin: 10px 6px 0 0;
+}
+.volver-indice {
+  display: inline-block;
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 20px;
+  padding: 4px 14px;
+  font-size: 9.5pt;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  margin-bottom: 4px;
+}
+.volver-indice:hover { background: rgba(255,255,255,0.32); }
+
+h2 {
+  color: var(--azul);
+  font-size: 17pt;
+  font-weight: 700;
+  margin: 34px 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 3px solid var(--azul);
+}
+h3 { color: var(--azul); font-size: 13.5pt; font-weight: 700; margin: 24px 0 8px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0 8px 22px; }
+li { margin: 5px 0; }
+strong { color: var(--azul); }
+
+/* Bloques */
+.teoria {
+  background: var(--azul-claro);
+  border: 1px solid #C9D8F2;
+  border-left: 5px solid var(--azul);
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin: 10px 0;
+}
+.formula {
+  background: var(--azul-claro);
+  border: 1px solid #C9D8F2;
+  border-left: 5px solid var(--azul);
+  border-radius: 10px;
+  padding: 12px 18px;
+  margin: 10px 0;
+  font-family: "Cambria Math", "Cambria", serif;
+  font-size: 11.5pt;
+  color: var(--azul);
+  line-height: 1.6;
+}
+.idea {
+  background: var(--ambar-claro);
+  border-left: 5px solid var(--ambar);
+  border-radius: 10px;
+  padding: 10px 16px;
+  margin: 10px 0;
+  font-size: 10.6pt;
+}
+.ejemplo {
+  background: var(--verde-claro);
+  border-left: 5px solid var(--verde);
+  border-radius: 10px;
+  padding: 10px 16px;
+  margin: 10px 0;
+  font-size: 10.6pt;
+}
+.ejemplo .tag { font-weight: 800; color: var(--verde); text-transform: uppercase; font-size: 8.5pt; letter-spacing: 0.6px; margin-right: 8px; }
+
+/* Ejercicios */
+.ejercicio {
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  margin: 14px 0;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+.ej-head {
+  background: var(--azul-claro);
+  padding: 8px 16px;
+  border-bottom: 1px solid var(--borde);
+  font-weight: 700;
+  color: var(--azul);
+  font-size: 10.5pt;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.ej-head .num {
+  background: var(--azul);
+  color: #fff;
+  border-radius: 8px;
+  font-size: 9pt;
+  padding: 2px 10px;
+}
+.ej-enun { padding: 12px 16px; font-size: 10.8pt; }
+.ej-alt { padding: 4px 16px 12px; font-size: 10.5pt; color: var(--gris-texto); }
+.ej-respuesta {
+  margin: 0 16px 14px;
+  border: 1px dashed var(--azul-suave);
+  border-radius: 8px;
+  padding: 22px 16px;
+  color: var(--gris-suave);
+  font-size: 9.8pt;
+  text-align: center;
+  background: #FAFBFD;
+}
+.ej-respuesta.doble { padding: 56px 16px; }
+
+/* Tablas */
+table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 10pt; }
+thead th { background: var(--azul); color: #fff; text-align: left; padding: 8px 12px; font-weight: 600; }
+tbody td { padding: 8px 12px; border-bottom: 1px solid var(--borde); vertical-align: top; }
+tbody tr:nth-child(even) { background: var(--azul-claro); }
+
+/* Claves (para el tutor) */
+.claves {
+  background: var(--rojo-claro);
+  border: 1px solid #F3C1C1;
+  border-left: 5px solid var(--rojo);
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin: 16px 0;
+}
+.claves h3 { color: var(--rojo); }
+.claves ul { font-size: 10.5pt; }
+.aviso-tutor {
+  background: var(--ambar-claro);
+  border-left: 5px solid var(--ambar);
+  border-radius: 10px;
+  padding: 10px 16px;
+  margin: 10px 0;
+  font-size: 10.6pt;
+  font-weight: 600;
+}
+
+/* Figuras */
+.figura {
+  background: #fff;
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin: 12px 0;
+  text-align: center;
+}
+.figura svg { max-width: 100%; height: auto; }
+.figura svg text { font-family: "Calibri", "Segoe UI", "Arial", sans-serif; }
+.figura .cap {
+  display: block;
+  margin-top: 8px;
+  font-size: 9.8pt;
+  color: var(--gris-suave);
+  font-style: italic;
+  line-height: 1.5;
+}
+.figura .cap strong { color: var(--azul); font-style: normal; }
+
+/* ============================================================
+   IMPRESION / PDF (A4 compacto)
+   ============================================================ */
+@media print {
+  @page { size: A4; margin: 13mm 13mm; }
+  body { font-size: 9.6pt; line-height: 1.45; }
+  .guia-wrap { max-width: none; padding: 0; }
+  .guia-header { border-radius: 8px; padding: 16px 20px; box-shadow: none; margin-bottom: 10px; }
+  .guia-header h1 { font-size: 17pt; }
+  .guia-header .subtitulo { font-size: 10pt; }
+  .guia-header .meta-linea { font-size: 8.8pt; }
+  .guia-header .pill { font-size: 8.5pt; }
+  .volver-indice { display: none; }
+  h2 { font-size: 13pt; margin: 16px 0 7px; padding-bottom: 4px; border-bottom: 2px solid var(--azul); }
+  h3 { font-size: 11pt; margin: 12px 0 5px; }
+  .teoria, .formula, .idea, .ejemplo { border-radius: 6px; padding: 7px 11px; margin: 6px 0; font-size: 9.4pt; }
+  .formula { font-size: 10pt; }
+  .ejercicio { border-radius: 6px; margin: 7px 0; box-shadow: none; page-break-inside: avoid; }
+  .ej-head { padding: 5px 10px; font-size: 9.2pt; }
+  .ej-head .num { font-size: 8.2pt; padding: 1px 8px; }
+  .ej-enun { padding: 6px 10px; font-size: 9.4pt; }
+  .ej-alt { padding: 3px 10px 6px; font-size: 9.2pt; }
+  .ej-respuesta { margin: 0 10px 8px; padding: 14px 12px; font-size: 8.8pt; }
+  .ej-respuesta.doble { padding: 40px 12px; }
+  .claves { border-radius: 6px; padding: 8px 11px; margin: 8px 0; }
+  .claves ul { font-size: 9.2pt; }
+  .figura { border-radius: 6px; padding: 5px 9px; margin: 5px 0; page-break-inside: avoid; }
+  .figura .cap { font-size: 8.4pt; margin-top: 4px; }
+  table { font-size: 9pt; margin: 8px 0; }
+  thead th { padding: 5px 9px; }
+  tbody td { padding: 5px 9px; }
+  tr, .ejercicio, .teoria, .formula, .ejemplo { page-break-inside: avoid; }
+  h2, h3 { page-break-after: avoid; }
+  .claves { page-break-before: always; }
+}
+</style>
+</head>
+<body>
+<div class="guia-wrap">
+
+  <header class="guia-header">
+    <a class="volver-indice" href="../index.html">← Volver al índice</a>
+    <h1>Semana 10 · Función cuadrática</h1>
+    <div class="subtitulo">Guía de estudio y práctica — Competencia Matemática 1 (PAES)</div>
+    <div class="meta-linea">Sesión de 2 h · 30/11 - 06/12/2026 · Fase 1: bloque Funciones</div>
+    <span class="pill">Contenido nuevo: parábola, vértice y raíces</span>
+    <span class="pill">Sin mini-control esta semana (MC2 en W11)</span>
+  </header>
+
+  
+
+  <p style="margin: 12px 0;">
+    <a href="semana-10.pdf" download style="display:inline-block;background:#1F3864;color:#fff;padding:8px 18px;border-radius:20px;text-decoration:none;font-weight:700;">
+      Descargar guía en PDF
+    </a>
+  </p>
+
+  <h2>Objetivos de la semana</h2>
+  <ul>
+    <li>Reconocer la forma f(x) = ax² + bx + c y anticipar cómo será su gráfica.</li>
+    <li>Decidir, mirando solo el signo de a, si la parábola abre hacia arriba o hacia abajo y si
+    tiene mínimo o máximo.</li>
+    <li>Calcular el vértice con x<sub>v</sub> = −b/(2a) y distinguir la coordenada x del valor
+    extremo.</li>
+    <li>Encontrar las raíces por factorización e interpretarlas como los puntos donde la parábola
+    corta al eje X.</li>
+    <li>Leer el intercepto c sobre el eje Y.</li>
+    <li>Usar el modelo del proyectil h(t) = −5t² + v<sub>0</sub>t + h<sub>0</sub> para responder
+    por la altura máxima y por el tiempo de vuelo.</li>
+  </ul>
+
+  <h2>1. De la recta a la parábola</h2>
+
+  <div class="teoria">
+    <p>En la recta, cada paso de x sumaba <strong>siempre lo mismo</strong>. En la parábola no: el
+    cambio se hace cada vez más grande, porque la x se multiplica por sí misma.</p>
+    <p>La forma general es <strong>f(x) = ax² + bx + c</strong>, con <strong>a ≠ 0</strong>. Si
+    a = 0 el término cuadrado desaparece y queda una recta: por eso la condición es obligatoria.</p>
+  </div>
+
+  <div class="formula">
+    f(x) = ax² + bx + c &nbsp;&nbsp;(a ≠ 0) &nbsp;&nbsp;→&nbsp;&nbsp; su gráfica es una <strong>parábola</strong>
+  </div>
+
+  <table>
+    <thead>
+      <tr><th>x</th><th>−2</th><th>−1</th><th>0</th><th>1</th><th>2</th><th>3</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>f(x) = x²</td><td>4</td><td>1</td><td>0</td><td>1</td><td>4</td><td>9</td></tr>
+      <tr><td>Cuánto sube</td><td>—</td><td>−3</td><td>−1</td><td>+1</td><td>+3</td><td>+5</td></tr>
+    </tbody>
+  </table>
+
+  <div class="ejemplo">
+    <span class="tag">Ejemplo resuelto</span>
+    En f(x) = x², al pasar de x = 3 a x = 4 la función sube 7 (de 9 a 16); al pasar de 4 a 5 sube 9
+    (de 16 a 25). El salto crece: eso es lo que hace la curva y no la recta.
+  </div>
+
+  <div class="idea">Cada coeficiente tiene su papel: <strong>a</strong> decide la apertura,
+  <strong>b</strong> participa en la ubicación del vértice y <strong>c</strong> es el corte con el
+  eje Y. Los tres se leen directamente de la fórmula, sin calcular nada.</div>
+
+  <h2>2. El signo de a: hacia dónde abre y qué extremo tiene</h2>
+
+  <div class="teoria">
+    <ul>
+      <li>Si <strong>a &gt; 0</strong>, la parábola abre hacia <strong>arriba</strong> y tiene un
+      <strong>mínimo</strong> (su punto más bajo).</li>
+      <li>Si <strong>a &lt; 0</strong>, abre hacia <strong>abajo</strong> y tiene un
+      <strong>máximo</strong> (su punto más alto).</li>
+    </ul>
+    <p>Ese único punto extremo se llama <strong>vértice</strong>.</p>
+  </div>
+
+  <div class="figura">
+    <svg viewBox="0 0 620 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Dos parabolas: y igual a x al cuadrado con minimo e y igual a menos x al cuadrado con maximo">
+      <line x1="55" y1="156" x2="295" y2="156" stroke="#1F3864" stroke-width="1.5"/>
+      <polygon points="308,156 294,150.6 294,161.4" fill="#1F3864" stroke="#1F3864" stroke-width="1"/>
+      <line x1="170" y1="250" x2="170" y2="52" stroke="#1F3864" stroke-width="1.5"/>
+      <polygon points="170,39 164.6,53 175.4,53" fill="#1F3864" stroke="#1F3864" stroke-width="1"/>
+      <text x="282" y="146" text-anchor="end" font-size="12.5" font-weight="700" fill="#1F3864">x</text>
+      <text x="182" y="58" text-anchor="start" font-size="12.5" font-weight="700" fill="#1F3864">y</text>
+      <polyline points="91.59,67.87 92.57,70.06 93.55,72.23 94.53,74.36 95.51,76.47 96.49,78.55 97.47,80.6 98.45,82.62 99.43,84.62 100.41,86.59 101.39,88.53 102.37,90.44 103.35,92.33 104.33,94.19 105.31,96.02 106.29,97.82 107.27,99.6 108.25,101.35 109.23,103.07 110.21,104.76 111.19,106.43 112.17,108.07 113.15,109.68 114.13,111.26 115.11,112.82 116.09,114.35 117.07,115.85 118.05,117.32 119.03,118.77 120.01,120.19 120.99,121.58 121.97,122.94 122.95,124.27 123.93,125.58 124.91,126.86 125.89,128.12 126.88,129.34 127.86,130.54 128.84,131.71 129.82,132.85 130.8,133.97 131.78,135.06 132.76,136.12 133.74,137.15 134.72,138.15 135.7,139.13 136.68,140.08 137.66,141 138.64,141.9 139.62,142.77 140.6,143.61 141.58,144.42 142.56,145.2 143.54,145.96 144.52,146.69 145.5,147.39 146.48,148.07 147.46,148.72 148.44,149.34 149.42,149.93 150.4,150.49 151.38,151.03 152.36,151.54 153.34,152.02 154.32,152.48 155.3,152.9 156.28,153.3 157.26,153.67 158.24,154.02 159.22,154.33 160.2,154.62 161.18,154.88 162.16,155.12 163.14,155.33 164.12,155.5 165.1,155.66 166.08,155.78 167.06,155.88 168.04,155.94 169.02,155.99 170,156 170.98,155.99 171.96,155.94 172.94,155.88 173.92,155.78 174.9,155.66 175.88,155.5 176.86,155.33 177.84,155.12 178.82,154.88 179.8,154.62 180.78,154.33 181.76,154.02 182.74,153.67 183.72,153.3 184.7,152.9 185.68,152.48 186.66,152.02 187.64,151.54 188.62,151.03 189.6,150.49 190.58,149.93 191.56,149.34 192.54,148.72 193.52,148.07 194.5,147.39 195.48,146.69 196.46,145.96 197.44,145.2 198.42,144.42 199.4,143.61 200.38,142.77 201.36,141.9 202.34,141 203.32,140.08 204.3,139.13 205.28,138.15 206.26,137.15 207.24,136.12 208.22,135.06 209.2,133.97 210.18,132.85 211.16,131.71 212.14,130.54 213.12,129.34 214.11,128.12 215.09,126.86 216.07,125.58 217.05,124.27 218.03,122.94 219.01,121.58 219.99,120.19 220.97,118.77 221.95,117.32 222.93,115.85 223.91,114.35 224.89,112.82 225.87,111.26 226.85,109.68 227.83,108.07 228.81,106.43 229.79,104.76 230.77,103.07 231.75,101.35 232.73,99.6 233.71,97.82 234.69,96.02 235.67,94.19 236.65,92.33 237.63,90.44 238.61,88.53 239.59,86.59 240.57,84.62 241.55,82.62 242.53,80.6 243.51,78.55 244.49,76.47 245.47,74.36 246.45,72.23 247.43,70.06 248.41,67.87" fill="none" stroke="#1F3864" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+      <circle cx="170" cy="156" r="4.6" fill="#B45309" stroke="#B45309" stroke-width="1.4"/>
+      <text x="182" y="178" text-anchor="start" font-size="11.5" font-weight="700" fill="#B45309">mínimo en (0, 0)</text>
+      <text x="170" y="32" text-anchor="middle" font-size="13" font-weight="700" fill="#1F3864">y = x²</text>
+      <line x1="335" y1="156" x2="575" y2="156" stroke="#1F3864" stroke-width="1.5"/>
+      <polygon points="588,156 574,150.6 574,161.4" fill="#1F3864" stroke="#1F3864" stroke-width="1"/>
+      <line x1="450" y1="250" x2="450" y2="52" stroke="#1F3864" stroke-width="1.5"/>
+      <polygon points="450,39 444.6,53 455.4,53" fill="#1F3864" stroke="#1F3864" stroke-width="1"/>
+      <text x="562" y="146" text-anchor="end" font-size="12.5" font-weight="700" fill="#1F3864">x</text>
+      <text x="462" y="58" text-anchor="start" font-size="12.5" font-weight="700" fill="#1F3864">y</text>
+      <polyline points="371.59,244.12 372.57,241.94 373.55,239.77 374.53,237.64 375.51,235.53 376.49,233.45 377.47,231.4 378.45,229.38 379.43,227.38 380.41,225.41 381.39,223.47 382.37,221.56 383.35,219.67 384.33,217.81 385.31,215.98 386.29,214.18 387.27,212.4 388.25,210.65 389.23,208.93 390.21,207.24 391.19,205.57 392.17,203.93 393.15,202.32 394.13,200.74 395.11,199.18 396.09,197.65 397.07,196.15 398.05,194.68 399.03,193.23 400.01,191.81 400.99,190.42 401.97,189.06 402.95,187.72 403.93,186.42 404.91,185.14 405.89,183.88 406.88,182.66 407.86,181.46 408.84,180.29 409.82,179.15 410.8,178.03 411.78,176.94 412.76,175.88 413.74,174.85 414.72,173.85 415.7,172.87 416.68,171.92 417.66,171 418.64,170.1 419.62,169.23 420.6,168.39 421.58,167.58 422.56,166.8 423.54,166.04 424.52,165.31 425.5,164.61 426.48,163.93 427.46,163.28 428.44,162.66 429.42,162.07 430.4,161.51 431.38,160.97 432.36,160.46 433.34,159.98 434.32,159.52 435.3,159.1 436.28,158.7 437.26,158.33 438.24,157.98 439.22,157.67 440.2,157.38 441.18,157.12 442.16,156.88 443.14,156.67 444.12,156.5 445.1,156.34 446.08,156.22 447.06,156.12 448.04,156.06 449.02,156.01 450,156 450.98,156.01 451.96,156.06 452.94,156.12 453.92,156.22 454.9,156.34 455.88,156.5 456.86,156.67 457.84,156.88 458.82,157.12 459.8,157.38 460.78,157.67 461.76,157.98 462.74,158.33 463.72,158.7 464.7,159.1 465.68,159.52 466.66,159.98 467.64,160.46 468.62,160.97 469.6,161.51 470.58,162.07 471.56,162.66 472.54,163.28 473.52,163.93 474.5,164.61 475.48,165.31 476.46,166.04 477.44,166.8 478.42,167.58 479.4,168.39 480.38,169.23 481.36,170.1 482.34,171 483.32,171.92 484.3,172.87 485.28,173.85 486.26,174.85 487.24,175.88 488.22,176.94 489.2,178.03 490.18,179.15 491.16,180.29 492.14,181.46 493.12,182.66 494.11,183.88 495.09,185.14 496.07,186.42 497.05,187.72 498.03,189.06 499.01,190.42 499.99,191.81 500.97,193.23 501.95,194.68 502.93,196.15 503.91,197.65 504.89,199.18 505.87,200.74 506.85,202.32 507.83,203.93 508.81,205.57 509.79,207.24 510.77,208.93 511.75,210.65 512.73,212.4 513.71,214.18 514.69,215.98 515.67,217.81 516.65,219.67 517.63,221.56 518.61,223.47 519.59,225.41 520.57,227.38 521.55,229.38 522.53,231.4 523.51,233.45 524.49,235.53 525.47,237.64 526.45,239.77 527.43,241.94 528.41,244.12" fill="none" stroke="#B91C1C" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+      <circle cx="450" cy="156" r="4.6" fill="#B45309" stroke="#B45309" stroke-width="1.4"/>
+      <text x="438" y="144" text-anchor="end" font-size="11.5" font-weight="700" fill="#B45309">máximo en (0, 0)</text>
+      <text x="450" y="32" text-anchor="middle" font-size="13" font-weight="700" fill="#B91C1C">y = −x²</text>
+      <text x="170" y="285" text-anchor="middle" font-size="11.5" font-weight="400" fill="#64748B">a &gt; 0: abre hacia arriba y tiene mínimo</text>
+      <text x="450" y="285" text-anchor="middle" font-size="11.5" font-weight="400" fill="#64748B">a &lt; 0: abre hacia abajo y tiene máximo</text>
+    </svg>
+    <span class="cap">El <strong>signo de a</strong> decide la apertura: con a &gt; 0 la parábola abre hacia arriba y tiene mínimo; con a &lt; 0 abre hacia abajo y tiene máximo.</span>
+  </div>
+
+  <div class="teoria">
+    <p>El <strong>valor</strong> de a (no solo su signo) controla qué tan abierta es la curva: un a
+    grande la hace angosta, un a pequeño la hace ancha. Lo que <em>no</em> hace es mover el vértice
+    de lugar.</p>
+  </div>
+
+  <div class="figura">
+    <svg viewBox="0 0 620 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Tres parabolas con el mismo vertice: 0 coma 5 x al cuadrado, x al cuadrado y 2 x al cuadrado">
+      <polygon points="28,62 208,62 208,232 28,232" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2"/>
+      <line x1="28" y1="216.55" x2="218" y2="216.55" stroke="#1F3864" stroke-width="1.4"/>
+      <polygon points="231,216.55 217,211.15 217,221.95" fill="#1F3864" stroke="#1F3864" stroke-width="1"/>
+      <line x1="118" y1="232" x2="118" y2="52" stroke="#1F3864" stroke-width="1.4"/>
+      <polygon points="118,39 112.6,53 123.4,53" fill="#1F3864" stroke="#1F3864" stroke-width="1"/>
+      <text x="205" y="206.55" text-anchor="end" font-size="12.5" font-weight="700" fill="#1F3864">x</text>
+      <text x="130" y="58" text-anchor="start" font-size="12.5" font-weight="700" fill="#1F3864">y</text>
+      <polyline points="30.05,145.11 31.14,146.88 32.24,148.63 33.34,150.36 34.44,152.07 35.54,153.76 36.64,155.42 37.74,157.06 38.84,158.68 39.94,160.28 41.04,161.85 42.14,163.4 43.24,164.93 44.34,166.44 45.44,167.92 46.54,169.38 47.64,170.82 48.74,172.24 49.84,173.64 50.93,175.01 52.03,176.36 53.13,177.69 54.23,179 55.33,180.28 56.43,181.54 57.53,182.78 58.63,184 59.73,185.19 60.83,186.36 61.93,187.51 63.03,188.64 64.13,189.74 65.23,190.83 66.33,191.89 67.43,192.93 68.53,193.94 69.62,194.94 70.72,195.91 71.82,196.86 72.92,197.78 74.02,198.69 75.12,199.57 76.22,200.43 77.32,201.26 78.42,202.08 79.52,202.87 80.62,203.64 81.72,204.39 82.82,205.12 83.92,205.82 85.02,206.5 86.12,207.16 87.22,207.79 88.32,208.41 89.41,209 90.51,209.57 91.61,210.12 92.71,210.64 93.81,211.14 94.91,211.62 96.01,212.08 97.11,212.52 98.21,212.93 99.31,213.32 100.41,213.69 101.51,214.03 102.61,214.36 103.71,214.66 104.81,214.94 105.91,215.19 107.01,215.43 108.11,215.64 109.2,215.83 110.3,216 111.4,216.14 112.5,216.27 113.6,216.37 114.7,216.44 115.8,216.5 116.9,216.53 118,216.55 119.1,216.53 120.2,216.5 121.3,216.44 122.4,216.37 123.5,216.27 124.6,216.14 125.7,216 126.8,215.83 127.89,215.64 128.99,215.43 130.09,215.19 131.19,214.94 132.29,214.66 133.39,214.36 134.49,214.03 135.59,213.69 136.69,213.32 137.79,212.93 138.89,212.52 139.99,212.08 141.09,211.62 142.19,211.14 143.29,210.64 144.39,210.12 145.49,209.57 146.59,209 147.68,208.41 148.78,207.79 149.88,207.16 150.98,206.5 152.08,205.82 153.18,205.12 154.28,204.39 155.38,203.64 156.48,202.87 157.58,202.08 158.68,201.26 159.78,200.43 160.88,199.57 161.98,198.69 163.08,197.78 164.18,196.86 165.28,195.91 166.38,194.94 167.47,193.94 168.57,192.93 169.67,191.89 170.77,190.83 171.87,189.74 172.97,188.64 174.07,187.51 175.17,186.36 176.27,185.19 177.37,184 178.47,182.78 179.57,181.54 180.67,180.28 181.77,179 182.87,177.69 183.97,176.36 185.07,175.01 186.16,173.64 187.26,172.24 188.36,170.82 189.46,169.38 190.56,167.92 191.66,166.44 192.76,164.93 193.86,163.4 194.96,161.85 196.06,160.28 197.16,158.68 198.26,157.06 199.36,155.42 200.46,153.76 201.56,152.07 202.66,150.36 203.76,148.63 204.86,146.88 205.95,145.11" fill="none" stroke="#15803D" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+      <circle cx="118" cy="216.55" r="3.6" fill="#15803D" stroke="#15803D" stroke-width="1.2"/>
+      <text x="118" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#15803D">y = 0,5x²</text>
+      <text x="118" y="254" text-anchor="middle" font-size="11" font-weight="400" fill="#64748B">a = 0,5: más ancha</text>
+      <polygon points="228,62 408,62 408,232 228,232" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2"/>
+      <line x1="228" y1="216.55" x2="418" y2="216.55" stroke="#1F3864" stroke-width="1.4"/>
+      <polygon points="431,216.55 417,211.15 417,221.95" fill="#1F3864" stroke="#1F3864" stroke-width="1"/>
+      <line x1="318" y1="232" x2="318" y2="52" stroke="#1F3864" stroke-width="1.4"/>
+      <polygon points="318,39 312.6,53 323.4,53" fill="#1F3864" stroke="#1F3864" stroke-width="1"/>
+      <text x="405" y="206.55" text-anchor="end" font-size="12.5" font-weight="700" fill="#1F3864">x</text>
+      <text x="330" y="58" text-anchor="start" font-size="12.5" font-weight="700" fill="#1F3864">y</text>
+      <polyline points="228,66.95 229.12,70.66 230.25,74.33 231.38,77.96 232.5,81.53 233.62,85.06 234.75,88.54 235.88,91.98 237,95.37 238.12,98.71 239.25,102.01 240.38,105.26 241.5,108.46 242.62,111.62 243.75,114.72 244.88,117.79 246,120.8 247.12,123.77 248.25,126.69 249.38,129.57 250.5,132.4 251.62,135.18 252.75,137.91 253.88,140.6 255,143.24 256.12,145.84 257.25,148.38 258.38,150.89 259.5,153.34 260.62,155.75 261.75,158.11 262.88,160.42 264,162.69 265.12,164.91 266.25,167.08 267.38,169.21 268.5,171.29 269.62,173.33 270.75,175.31 271.88,177.25 273,179.15 274.12,180.99 275.25,182.79 276.38,184.55 277.5,186.25 278.62,187.91 279.75,189.52 280.88,191.09 282,192.61 283.12,194.08 284.25,195.51 285.38,196.89 286.5,198.22 287.62,199.51 288.75,200.74 289.88,201.94 291,203.08 292.12,204.18 293.25,205.23 294.38,206.24 295.5,207.2 296.62,208.11 297.75,208.97 298.88,209.79 300,210.56 301.12,211.29 302.25,211.96 303.38,212.6 304.5,213.18 305.62,213.72 306.75,214.21 307.88,214.65 309,215.05 310.12,215.4 311.25,215.7 312.38,215.96 313.5,216.17 314.62,216.34 315.75,216.45 316.88,216.52 318,216.55 319.12,216.52 320.25,216.45 321.38,216.34 322.5,216.17 323.62,215.96 324.75,215.7 325.88,215.4 327,215.05 328.12,214.65 329.25,214.21 330.38,213.72 331.5,213.18 332.62,212.6 333.75,211.96 334.88,211.29 336,210.56 337.12,209.79 338.25,208.97 339.38,208.11 340.5,207.2 341.62,206.24 342.75,205.23 343.88,204.18 345,203.08 346.12,201.94 347.25,200.74 348.38,199.51 349.5,198.22 350.62,196.89 351.75,195.51 352.88,194.08 354,192.61 355.12,191.09 356.25,189.52 357.38,187.91 358.5,186.25 359.62,184.55 360.75,182.79 361.88,180.99 363,179.15 364.12,177.25 365.25,175.31 366.38,173.33 367.5,171.29 368.62,169.21 369.75,167.08 370.88,164.91 372,162.69 373.12,160.42 374.25,158.11 375.38,155.75 376.5,153.34 377.62,150.89 378.75,148.38 379.88,145.84 381,143.24 382.12,140.6 383.25,137.91 384.38,135.18 385.5,132.4 386.62,129.57 387.75,126.69 388.88,123.77 390,120.8 391.12,117.79 392.25,114.72 393.38,111.62 394.5,108.46 395.62,105.26 396.75,102.01 397.88,98.71 399,95.37 400.12,91.98 401.25,88.54 402.38,85.06 403.5,81.53 404.62,77.96 405.75,74.33 406.88,70.66 408,66.95" fill="none" stroke="#1F3864" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+      <circle cx="318" cy="216.55" r="3.6" fill="#1F3864" stroke="#1F3864" stroke-width="1.2"/>
+      <text x="318" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1F3864">y = x²</text>
+      <text x="318" y="254" text-anchor="middle" font-size="11" font-weight="400" fill="#64748B">a = 1: intermedia</text>
+      <polygon points="428,62 598,62 598,232 428,232" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2"/>
+      <line x1="428" y1="216.55" x2="608" y2="216.55" stroke="#1F3864" stroke-width="1.4"/>
+      <polygon points="621,216.55 607,211.15 607,221.95" fill="#1F3864" stroke="#1F3864" stroke-width="1"/>
+      <line x1="513" y1="232" x2="513" y2="52" stroke="#1F3864" stroke-width="1.4"/>
+      <polygon points="513,39 507.6,53 518.4,53" fill="#1F3864" stroke="#1F3864" stroke-width="1"/>
+      <text x="595" y="206.55" text-anchor="end" font-size="12.5" font-weight="700" fill="#1F3864">x</text>
+      <text x="525" y="58" text-anchor="start" font-size="12.5" font-weight="700" fill="#1F3864">y</text>
+      <polyline points="452.73,66.1 453.48,69.84 454.23,73.53 454.99,77.18 455.74,80.77 456.49,84.32 457.25,87.82 458,91.28 458.75,94.69 459.51,98.05 460.26,101.36 461.01,104.63 461.77,107.85 462.52,111.03 463.27,114.15 464.03,117.23 464.78,120.26 465.54,123.25 466.29,126.19 467.04,129.08 467.8,131.92 468.55,134.72 469.3,137.47 470.06,140.17 470.81,142.83 471.56,145.44 472.32,148 473.07,150.52 473.82,152.98 474.58,155.41 475.33,157.78 476.08,160.11 476.84,162.39 477.59,164.62 478.34,166.81 479.1,168.95 479.85,171.04 480.6,173.08 481.36,175.08 482.11,177.03 482.86,178.94 483.62,180.79 484.37,182.6 485.12,184.37 485.88,186.08 486.63,187.75 487.38,189.37 488.14,190.95 488.89,192.47 489.64,193.96 490.4,195.39 491.15,196.78 491.9,198.12 492.66,199.41 493.41,200.66 494.16,201.85 494.92,203.01 495.67,204.11 496.43,205.17 497.18,206.18 497.93,207.14 498.69,208.06 499.44,208.93 500.19,209.75 500.95,210.53 501.7,211.26 502.45,211.94 503.21,212.57 503.96,213.16 504.71,213.7 505.47,214.19 506.22,214.64 506.97,215.04 507.73,215.39 508.48,215.7 509.23,215.96 509.99,216.17 510.74,216.33 511.49,216.45 512.25,216.52 513,216.55 513.75,216.52 514.51,216.45 515.26,216.33 516.01,216.17 516.77,215.96 517.52,215.7 518.27,215.39 519.03,215.04 519.78,214.64 520.53,214.19 521.29,213.7 522.04,213.16 522.79,212.57 523.55,211.94 524.3,211.26 525.05,210.53 525.81,209.75 526.56,208.93 527.31,208.06 528.07,207.14 528.82,206.18 529.58,205.17 530.33,204.11 531.08,203.01 531.84,201.85 532.59,200.66 533.34,199.41 534.1,198.12 534.85,196.78 535.6,195.39 536.36,193.96 537.11,192.47 537.86,190.95 538.62,189.37 539.37,187.75 540.12,186.08 540.88,184.37 541.63,182.6 542.38,180.79 543.14,178.94 543.89,177.03 544.64,175.08 545.4,173.08 546.15,171.04 546.9,168.95 547.66,166.81 548.41,164.62 549.16,162.39 549.92,160.11 550.67,157.78 551.42,155.41 552.18,152.98 552.93,150.52 553.68,148 554.44,145.44 555.19,142.83 555.94,140.17 556.7,137.47 557.45,134.72 558.2,131.92 558.96,129.08 559.71,126.19 560.46,123.25 561.22,120.26 561.97,117.23 562.73,114.15 563.48,111.03 564.23,107.85 564.99,104.63 565.74,101.36 566.49,98.05 567.25,94.69 568,91.28 568.75,87.82 569.51,84.32 570.26,80.77 571.01,77.18 571.77,73.53 572.52,69.84 573.27,66.1" fill="none" stroke="#B45309" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+      <circle cx="513" cy="216.55" r="3.6" fill="#B45309" stroke="#B45309" stroke-width="1.2"/>
+      <text x="513" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#B45309">y = 2x²</text>
+      <text x="513" y="254" text-anchor="middle" font-size="11" font-weight="400" fill="#64748B">a = 2: más angosta</text>
+    </svg>
+    <span class="cap">El valor de a <strong>no mueve el vértice</strong>, que sigue en el origen: solo <strong>agranda o achica la apertura</strong> de la parábola.</span>
+  </div>
+
+  <div class="idea">En la PAES, la pregunta "¿tiene máximo o mínimo?" se responde <strong>solo
+  mirando el signo de a</strong>. No hay que calcular el vértice para eso.</div>
+
+  <h2>3. El vértice: el punto más alto o más bajo</h2>
+
+  <div class="teoria">
+    <p>La coordenada x del vértice se calcula siempre igual:</p>
+    <p><strong>x<sub>v</sub> = −b / (2a)</strong></p>
+    <p>Después se evalúa la función en ese valor para obtener la altura del punto:
+    <strong>y<sub>v</sub> = f(x<sub>v</sub>)</strong>. La recta vertical x = x<sub>v</sub> es el
+    <strong>eje de simetría</strong>: la parábola es un espejo a ambos lados de la estudiante.</p>
+  </div>
+
+  <div class="formula">
+    x<sub>v</sub> = −b / (2a) &nbsp;&nbsp;·&nbsp;&nbsp; vértice = ( x<sub>v</sub> , f(x<sub>v</sub>) ) &nbsp;&nbsp;·&nbsp;&nbsp; eje de simetría: x = x<sub>v</sub>
+  </div>
+
+  <div class="ejemplo">
+    <span class="tag">Ejemplo resuelto</span>
+    f(x) = x² − 4x + 3: aquí a = 1 y b = −4. Entonces x<sub>v</sub> = −(−4)/(2·1) = 4/2 =
+    <strong>2</strong>. La altura es f(2) = 4 − 8 + 3 = <strong>−1</strong>, así que el vértice es
+    <strong>(2, −1)</strong>. Como a &gt; 0, ese punto es el <strong>mínimo</strong> de la función.
+  </div>
+
+  <div class="figura">
+    <svg viewBox="0 0 620 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Parabola f de x igual x al cuadrado menos 4x mas 3 con vertice, raices y corte con el eje Y">
+      <line x1="95" y1="198.38" x2="555" y2="198.38" stroke="#1F3864" stroke-width="1.6"/>
+      <polygon points="568,198.38 554,192.98 554,203.78" fill="#1F3864" stroke="#1F3864" stroke-width="1"/>
+      <line x1="158.16" y1="262" x2="158.16" y2="38" stroke="#1F3864" stroke-width="1.6"/>
+      <polygon points="158.16,25 152.76,39 163.56,39" fill="#1F3864" stroke="#1F3864" stroke-width="1"/>
+      <text x="542" y="188.38" text-anchor="end" font-size="12.5" font-weight="700" fill="#1F3864">x</text>
+      <text x="170.16" y="44" text-anchor="start" font-size="12.5" font-weight="700" fill="#1F3864">y</text>
+      <line x1="237.11" y1="194.38" x2="237.11" y2="202.38" stroke="#1F3864" stroke-width="1.3"/>
+      <text x="237.11" y="217.38" text-anchor="middle" font-size="11.5" font-weight="400" fill="#333B48">1</text>
+      <line x1="395" y1="194.38" x2="395" y2="202.38" stroke="#1F3864" stroke-width="1.3"/>
+      <text x="395" y="217.38" text-anchor="middle" font-size="11.5" font-weight="400" fill="#333B48">3</text>
+      <line x1="473.95" y1="194.38" x2="473.95" y2="202.38" stroke="#1F3864" stroke-width="1.3"/>
+      <text x="473.95" y="217.38" text-anchor="middle" font-size="11.5" font-weight="400" fill="#333B48">4</text>
+      <line x1="154.16" y1="256.22" x2="162.16" y2="256.22" stroke="#1F3864" stroke-width="1.3"/>
+      <text x="149.16" y="260.22" text-anchor="end" font-size="11.5" font-weight="400" fill="#333B48">-2</text>
+      <line x1="154.16" y1="227.3" x2="162.16" y2="227.3" stroke="#1F3864" stroke-width="1.3"/>
+      <text x="149.16" y="231.3" text-anchor="end" font-size="11.5" font-weight="400" fill="#333B48">-1</text>
+      <line x1="154.16" y1="169.46" x2="162.16" y2="169.46" stroke="#1F3864" stroke-width="1.3"/>
+      <text x="149.16" y="173.46" text-anchor="end" font-size="11.5" font-weight="400" fill="#333B48">1</text>
+      <line x1="154.16" y1="140.54" x2="162.16" y2="140.54" stroke="#1F3864" stroke-width="1.3"/>
+      <text x="149.16" y="144.54" text-anchor="end" font-size="11.5" font-weight="400" fill="#333B48">2</text>
+      <line x1="154.16" y1="111.62" x2="162.16" y2="111.62" stroke="#1F3864" stroke-width="1.3"/>
+      <text x="149.16" y="115.62" text-anchor="end" font-size="11.5" font-weight="400" fill="#333B48">3</text>
+      <line x1="154.16" y1="82.7" x2="162.16" y2="82.7" stroke="#1F3864" stroke-width="1.3"/>
+      <text x="149.16" y="86.7" text-anchor="end" font-size="11.5" font-weight="400" fill="#333B48">4</text>
+      <line x1="154.16" y1="53.78" x2="162.16" y2="53.78" stroke="#1F3864" stroke-width="1.3"/>
+      <text x="149.16" y="57.78" text-anchor="end" font-size="11.5" font-weight="400" fill="#333B48">5</text>
+      <polyline points="130.53,67.59 132.85,71.56 135.16,75.48 137.48,79.35 139.8,83.16 142.12,86.93 144.44,90.65 146.76,94.32 149.08,97.94 151.4,101.5 153.72,105.02 156.04,108.49 158.36,111.91 160.67,115.28 162.99,118.6 165.31,121.87 167.63,125.09 169.95,128.26 172.27,131.37 174.59,134.44 176.91,137.46 179.23,140.43 181.55,143.35 183.87,146.22 186.18,149.04 188.5,151.81 190.82,154.53 193.14,157.2 195.46,159.82 197.78,162.39 200.1,164.91 202.42,167.38 204.74,169.8 207.06,172.17 209.38,174.49 211.69,176.77 214.01,178.99 216.33,181.16 218.65,183.28 220.97,185.35 223.29,187.37 225.61,189.34 227.93,191.26 230.25,193.14 232.57,194.96 234.88,196.73 237.2,198.45 239.52,200.12 241.84,201.74 244.16,203.32 246.48,204.84 248.8,206.31 251.12,207.73 253.44,209.11 255.76,210.43 258.08,211.7 260.39,212.92 262.71,214.1 265.03,215.22 267.35,216.29 269.67,217.32 271.99,218.29 274.31,219.21 276.63,220.09 278.95,220.91 281.27,221.68 283.59,222.41 285.9,223.08 288.22,223.7 290.54,224.28 292.86,224.8 295.18,225.28 297.5,225.7 299.82,226.07 302.14,226.4 304.46,226.67 306.78,226.9 309.1,227.07 311.41,227.2 313.73,227.27 316.05,227.3 318.37,227.27 320.69,227.2 323.01,227.07 325.33,226.9 327.65,226.67 329.97,226.4 332.29,226.07 334.61,225.7 336.92,225.28 339.24,224.8 341.56,224.28 343.88,223.7 346.2,223.08 348.52,222.41 350.84,221.68 353.16,220.91 355.48,220.09 357.8,219.21 360.12,218.29 362.43,217.32 364.75,216.29 367.07,215.22 369.39,214.1 371.71,212.92 374.03,211.7 376.35,210.43 378.67,209.11 380.99,207.73 383.31,206.31 385.62,204.84 387.94,203.32 390.26,201.74 392.58,200.12 394.9,198.45 397.22,196.73 399.54,194.96 401.86,193.14 404.18,191.26 406.5,189.34 408.82,187.37 411.13,185.35 413.45,183.28 415.77,181.16 418.09,178.99 420.41,176.77 422.73,174.49 425.05,172.17 427.37,169.8 429.69,167.38 432.01,164.91 434.33,162.39 436.64,159.82 438.96,157.2 441.28,154.53 443.6,151.81 445.92,149.04 448.24,146.22 450.56,143.35 452.88,140.43 455.2,137.46 457.52,134.44 459.84,131.37 462.15,128.26 464.47,125.09 466.79,121.87 469.11,118.6 471.43,115.28 473.75,111.91 476.07,108.49 478.39,105.02 480.71,101.5 483.03,97.94 485.35,94.32 487.66,90.65 489.98,86.93 492.3,83.16 494.62,79.35 496.94,75.48 499.26,71.56 501.58,67.59" fill="none" stroke="#1F3864" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+      <line x1="316.05" y1="53.78" x2="316.05" y2="227.3" stroke="#64748B" stroke-width="1.5" stroke-dasharray="6 5"/>
+      <circle cx="316.05" cy="227.3" r="4.8" fill="#B45309" stroke="#B45309" stroke-width="1.4"/>
+      <text x="327.05" y="244.3" text-anchor="start" font-size="11.5" font-weight="700" fill="#B45309">(2, −1): vértice</text>
+      <text x="323.05" y="65.78" text-anchor="start" font-size="11.5" font-weight="400" fill="#64748B">eje de simetría x = 2</text>
+      <circle cx="237.11" cy="198.38" r="4.2" fill="#1F3864" stroke="#1F3864" stroke-width="1.4"/>
+      <circle cx="395" cy="198.38" r="4.2" fill="#1F3864" stroke="#1F3864" stroke-width="1.4"/>
+      <circle cx="158.16" cy="111.62" r="4.2" fill="#B45309" stroke="#B45309" stroke-width="1.4"/>
+      <text x="168.16" y="103.62" text-anchor="start" font-size="11.5" font-weight="700" fill="#B45309">c = 3: corta el eje Y</text>
+      <text x="320" y="300" text-anchor="middle" font-size="13.5" font-weight="700" fill="#1F3864">f(x) = x² − 4x + 3</text>
+    </svg>
+    <span class="cap">La misma parábola reúne <strong>las tres lecturas</strong> de la semana: el vértice (2, −1), las raíces x = 1 y x = 3, y el corte con el eje Y en (0, 3).</span>
+  </div>
+
+  <div class="idea">La misma parábola admite <strong>tres preguntas distintas</strong>: ¿en qué valor
+  de x ocurre? (x<sub>v</sub>), ¿cuál es el valor máximo o mínimo? (f(x<sub>v</sub>)) y ¿cuál es el
+  punto? ((x<sub>v</sub>, f(x<sub>v</sub>))). Antes de responder, subraya cuál te están pidiendo.</div>
+
+  <h2>4. Las raíces: dónde corta el eje X</h2>
+
+  <div class="teoria">
+    <p>Las <strong>raíces</strong> (también llamadas ceros) son los valores de x para los cuales
+    <strong>f(x) = 0</strong>: los puntos donde la parábola toca o cruza el eje X, es decir
+    (r, 0).</p>
+    <p>Cuando a = 1, se buscan <strong>dos números que sumen −b y que multipliquen c</strong>; con
+    ellos se escribe la factorización y se leen las raíces. Siempre se verifica expandiendo.</p>
+  </div>
+
+  <div class="ejemplo">
+    <span class="tag">Ejemplo resuelto</span>
+    f(x) = x² − 4x + 3: dos números que suman 4 y multiplican 3 son 3 y 1 →
+    (x − 1)(x − 3) = 0 → las raíces son <strong>x = 1</strong> y <strong>x = 3</strong>. Control
+    expandiendo: x² − 3x − x + 3 = x² − 4x + 3 ✓. Los puntos de corte son (1, 0) y (3, 0).
+  </div>
+
+  <div class="teoria">
+    <ul>
+      <li><strong>Raíz</strong> → y = 0 → corte con el eje <strong>X</strong>.</li>
+      <li><strong>c</strong> → x = 0 → corte con el eje <strong>Y</strong>, en el punto (0, c).</li>
+    </ul>
+    <p>Las raíces están simétricas respecto del vértice: su punto medio es siempre x<sub>v</sub>
+    (en el ejemplo, (1 + 3)/2 = 2).</p>
+  </div>
+
+  <div class="idea">Si al buscar los dos números no aparecen, la parábola no corta al eje X. Ese
+  caso se profundiza más adelante; esta semana todas las parábolas de los ejercicios sí lo cortan.</div>
+
+  <h2>5. El modelo del proyectil</h2>
+
+  <div class="teoria">
+    <p>Un objeto lanzado hacia arriba sigue una parábola con a = −5 (la gravedad, con g ≈ 10 m/s²,
+    aporta −g/2 = −5):</p>
+    <p><strong>h(t) = −5t² + v<sub>0</sub>t + h<sub>0</sub></strong></p>
+    <ul>
+      <li><strong>v<sub>0</sub></strong> es la velocidad inicial; <strong>h<sub>0</sub></strong>, la
+      altura desde donde parte.</li>
+      <li>La <strong>altura máxima</strong> está en el vértice: ocurre en t = v<sub>0</sub>/10.</li>
+      <li>La <strong>segunda raíz</strong> es el instante en que vuelve al suelo.</li>
+    </ul>
+  </div>
+
+  <div class="figura">
+    <svg viewBox="0 0 620 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Altura de un proyectil: h de t igual menos 5 t al cuadrado mas 40 t, maximo en 4 segundos y 80 metros">
+      <line x1="105" y1="232.76" x2="555" y2="232.76" stroke="#1F3864" stroke-width="1.6"/>
+      <polygon points="568,232.76 554,227.36 554,238.16" fill="#1F3864" stroke="#1F3864" stroke-width="1"/>
+      <line x1="124.13" y1="245" x2="124.13" y2="35" stroke="#1F3864" stroke-width="1.6"/>
+      <polygon points="124.13,22 118.73,36 129.53,36" fill="#1F3864" stroke="#1F3864" stroke-width="1"/>
+      <text x="542" y="222.76" text-anchor="end" font-size="12.5" font-weight="700" fill="#1F3864">t (s)</text>
+      <text x="136.13" y="41" text-anchor="start" font-size="12.5" font-weight="700" fill="#1F3864">h (m)</text>
+      <line x1="219.78" y1="228.76" x2="219.78" y2="236.76" stroke="#1F3864" stroke-width="1.3"/>
+      <text x="219.78" y="251.76" text-anchor="middle" font-size="11.5" font-weight="400" fill="#333B48">2</text>
+      <line x1="315.43" y1="228.76" x2="315.43" y2="236.76" stroke="#1F3864" stroke-width="1.3"/>
+      <text x="315.43" y="251.76" text-anchor="middle" font-size="11.5" font-weight="400" fill="#333B48">4</text>
+      <line x1="411.09" y1="228.76" x2="411.09" y2="236.76" stroke="#1F3864" stroke-width="1.3"/>
+      <text x="411.09" y="251.76" text-anchor="middle" font-size="11.5" font-weight="400" fill="#333B48">6</text>
+      <line x1="506.74" y1="228.76" x2="506.74" y2="236.76" stroke="#1F3864" stroke-width="1.3"/>
+      <text x="506.74" y="251.76" text-anchor="middle" font-size="11.5" font-weight="400" fill="#333B48">8</text>
+      <line x1="120.13" y1="191.94" x2="128.13" y2="191.94" stroke="#1F3864" stroke-width="1.3"/>
+      <text x="115.13" y="195.94" text-anchor="end" font-size="11.5" font-weight="400" fill="#333B48">20</text>
+      <line x1="120.13" y1="151.12" x2="128.13" y2="151.12" stroke="#1F3864" stroke-width="1.3"/>
+      <text x="115.13" y="155.12" text-anchor="end" font-size="11.5" font-weight="400" fill="#333B48">40</text>
+      <line x1="120.13" y1="110.31" x2="128.13" y2="110.31" stroke="#1F3864" stroke-width="1.3"/>
+      <text x="115.13" y="114.31" text-anchor="end" font-size="11.5" font-weight="400" fill="#333B48">60</text>
+      <line x1="120.13" y1="69.49" x2="128.13" y2="69.49" stroke="#1F3864" stroke-width="1.3"/>
+      <text x="115.13" y="73.49" text-anchor="end" font-size="11.5" font-weight="400" fill="#333B48">80</text>
+      <polyline points="124.13,232.76 126.52,228.7 128.91,224.69 131.3,220.74 133.7,216.84 136.09,212.98 138.48,209.18 140.87,205.43 143.26,201.73 145.65,198.09 148.04,194.49 150.43,190.94 152.83,187.45 155.22,184.01 157.61,180.61 160,177.27 162.39,173.98 164.78,170.74 167.17,167.55 169.57,164.41 171.96,161.33 174.35,158.29 176.74,155.31 179.13,152.37 181.52,149.49 183.91,146.66 186.3,143.88 188.7,141.15 191.09,138.47 193.48,135.84 195.87,133.27 198.26,130.74 200.65,128.27 203.04,125.84 205.43,123.47 207.83,121.15 210.22,118.88 212.61,116.66 215,114.49 217.39,112.37 219.78,110.31 222.17,108.29 224.57,106.33 226.96,104.41 229.35,102.55 231.74,100.74 234.13,98.98 236.52,97.27 238.91,95.61 241.3,94.01 243.7,92.45 246.09,90.94 248.48,89.49 250.87,88.09 253.26,86.73 255.65,85.43 258.04,84.18 260.43,82.98 262.83,81.84 265.22,80.74 267.61,79.69 270,78.7 272.39,77.76 274.78,76.86 277.17,76.02 279.57,75.23 281.96,74.49 284.35,73.8 286.74,73.16 289.13,72.58 291.52,72.04 293.91,71.56 296.3,71.12 298.7,70.74 301.09,70.41 303.48,70.13 305.87,69.9 308.26,69.72 310.65,69.59 313.04,69.52 315.43,69.49 317.83,69.52 320.22,69.59 322.61,69.72 325,69.9 327.39,70.13 329.78,70.41 332.17,70.74 334.57,71.12 336.96,71.56 339.35,72.04 341.74,72.58 344.13,73.16 346.52,73.8 348.91,74.49 351.3,75.23 353.7,76.02 356.09,76.86 358.48,77.76 360.87,78.7 363.26,79.69 365.65,80.74 368.04,81.84 370.43,82.98 372.83,84.18 375.22,85.43 377.61,86.73 380,88.09 382.39,89.49 384.78,90.94 387.17,92.45 389.57,94.01 391.96,95.61 394.35,97.27 396.74,98.98 399.13,100.74 401.52,102.55 403.91,104.41 406.3,106.33 408.7,108.29 411.09,110.31 413.48,112.37 415.87,114.49 418.26,116.66 420.65,118.88 423.04,121.15 425.43,123.47 427.83,125.84 430.22,128.27 432.61,130.74 435,133.27 437.39,135.84 439.78,138.47 442.17,141.15 444.57,143.88 446.96,146.66 449.35,149.49 451.74,152.37 454.13,155.31 456.52,158.29 458.91,161.33 461.3,164.41 463.7,167.55 466.09,170.74 468.48,173.98 470.87,177.27 473.26,180.61 475.65,184.01 478.04,187.45 480.43,190.94 482.83,194.49 485.22,198.09 487.61,201.73 490,205.43 492.39,209.18 494.78,212.98 497.17,216.84 499.57,220.74 501.96,224.69 504.35,228.7 506.74,232.76" fill="none" stroke="#1F3864" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+      <line x1="124.13" y1="69.49" x2="315.43" y2="69.49" stroke="#B45309" stroke-width="1.7" stroke-dasharray="7 5"/>
+      <line x1="315.43" y1="69.49" x2="315.43" y2="232.76" stroke="#B45309" stroke-width="1.7" stroke-dasharray="7 5"/>
+      <text x="307.43" y="61.49" text-anchor="end" font-size="11.5" font-weight="700" fill="#B45309">máximo: 80 m</text>
+      <text x="323.43" y="171.53" text-anchor="start" font-size="11.5" font-weight="700" fill="#B45309">t = 4 s</text>
+      <circle cx="315.43" cy="69.49" r="4.8" fill="#B45309" stroke="#B45309" stroke-width="1.4"/>
+      <circle cx="506.74" cy="232.76" r="4.8" fill="#B45309" stroke="#B45309" stroke-width="1.4"/>
+      <text x="300" y="285" text-anchor="middle" font-size="13.5" font-weight="700" fill="#1F3864">h(t) = −5t² + 40t</text>
+    </svg>
+    <span class="cap">La altura del proyectil es una parábola: el <strong>máximo</strong> está en el vértice (4 s, 80 m) y la pelota <strong>vuelve al suelo en la segunda raíz</strong>, a los 8 s.</span>
+  </div>
+
+  <div class="ejemplo">
+    <span class="tag">Ejemplo resuelto</span>
+    h(t) = −5t² + 20t (en metros, con t en segundos). Vértice: t = −20/(2·(−5)) = <strong>2 s</strong>
+    y h(2) = −20 + 40 = <strong>20 m</strong>. Vuelve al suelo cuando h(t) = 0 →
+    −5t(t − 4) = 0 → t = 4 s. La pelota sube 2 s, alcanza 20 m y baja en los otros 2 s.
+  </div>
+
+  <div class="idea">El error más caro de esta unidad: calcular t = 2 y responder "2" cuando la
+  pregunta era <strong>cuánto</strong> sube. 2 es el instante; la altura es 20 m. Subraya en el
+  enunciado si piden tiempo o altura.</div>
+
+  <h2>6. Errores comunes en esta unidad</h2>
+
+  <ul>
+    <li><strong>Responder x<sub>v</sub> cuando piden el valor máximo o mínimo.</strong> x<sub>v</sub>
+    es dónde ocurre; el valor es f(x<sub>v</sub>).</li>
+    <li><strong>Perder el signo en x<sub>v</sub> = −b/(2a)</strong>, sobre todo cuando b o a son
+    negativos. Escribir la fórmula antes de reemplazar.</li>
+    <li><strong>Factorizar con los signos cambiados:</strong> (x − 3)(x + 1) no es lo mismo que
+    (x + 3)(x − 1). Verificar expandiendo.</li>
+    <li><strong>Creer que c es una raíz.</strong> c es el corte con el eje Y: f(0) = c.</li>
+    <li><strong>Confundir el instante con la altura</strong> en los problemas de proyectil.</li>
+    <li><strong>Decidir la apertura por el signo de b.</strong> La apertura depende solo de a.</li>
+  </ul>
+
+  <h2>7. Ejercicios para practicar</h2>
+
+  <h2 style="font-size:13pt;border-bottom:none;margin-top:18px;">Parte A — Función cuadrática (1 a 10)</h2>
+
+  
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">1</span> Apertura y extremo</div>
+    <div class="ej-enun">En la función f(x) = 2x² − 3x + 1, ¿cómo es la parábola y qué extremo tiene?</div>
+    <div class="opciones" data-ej="1"><button type="button" class="opcion" data-ej="1" data-val="A">A) Abre hacia arriba y tiene mínimo</button><button type="button" class="opcion" data-ej="1" data-val="B">B) Abre hacia arriba y tiene máximo</button><button type="button" class="opcion" data-ej="1" data-val="C">C) Abre hacia abajo y tiene mínimo</button><button type="button" class="opcion" data-ej="1" data-val="D">D) Abre hacia abajo y tiene máximo</button><button type="button" class="opcion" data-ej="1" data-val="E">E) No es una parábola, es una recta</button></div>
+    <div class="ej-respuesta">Desarrollo y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">2</span> Identificar a, b y c</div>
+    <div class="ej-enun">En f(x) = −3x² + 6x − 2, ¿cuánto valen a, b y c?</div>
+    <div class="opciones" data-ej="2"><button type="button" class="opcion" data-ej="2" data-val="A">A) a = −3, b = 6, c = −2</button><button type="button" class="opcion" data-ej="2" data-val="B">B) a = 3, b = 6, c = 2</button><button type="button" class="opcion" data-ej="2" data-val="C">C) a = −3, b = −6, c = −2</button><button type="button" class="opcion" data-ej="2" data-val="D">D) a = 2, b = 6, c = −3</button><button type="button" class="opcion" data-ej="2" data-val="E">E) a = −3, b = 6, c = 2</button></div>
+    <div class="ej-respuesta">Desarrollo y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">3</span> Valor mínimo</div>
+    <div class="ej-enun">¿Cuál es el valor mínimo de la función f(x) = x² − 6x + 5?</div>
+    <div class="opciones" data-ej="3"><button type="button" class="opcion" data-ej="3" data-val="A">A) −4</button><button type="button" class="opcion" data-ej="3" data-val="B">B) 3</button><button type="button" class="opcion" data-ej="3" data-val="C">C) 5</button><button type="button" class="opcion" data-ej="3" data-val="D">D) −9</button><button type="button" class="opcion" data-ej="3" data-val="E">E) 0</button></div>
+    <div class="ej-respuesta">Desarrollo y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">4</span> Coordenadas del vértice</div>
+    <div class="ej-enun">¿Cuál es el vértice de la parábola f(x) = x² + 2x − 3?</div>
+    <div class="opciones" data-ej="4"><button type="button" class="opcion" data-ej="4" data-val="A">A) (−1, −4)</button><button type="button" class="opcion" data-ej="4" data-val="B">B) (1, −4)</button><button type="button" class="opcion" data-ej="4" data-val="C">C) (−1, −3)</button><button type="button" class="opcion" data-ej="4" data-val="D">D) (−2, −3)</button><button type="button" class="opcion" data-ej="4" data-val="E">E) (2, 5)</button></div>
+    <div class="ej-respuesta">Desarrollo y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">5</span> Raíces por factorización</div>
+    <div class="ej-enun">¿Cuáles son las raíces de f(x) = x² − 5x + 6?</div>
+    <div class="opciones" data-ej="5"><button type="button" class="opcion" data-ej="5" data-val="A">A) 2 y 3</button><button type="button" class="opcion" data-ej="5" data-val="B">B) −2 y −3</button><button type="button" class="opcion" data-ej="5" data-val="C">C) 1 y 6</button><button type="button" class="opcion" data-ej="5" data-val="D">D) −1 y −6</button><button type="button" class="opcion" data-ej="5" data-val="E">E) 0 y 5</button></div>
+    <div class="ej-respuesta">Desarrollo y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">6</span> Cortes con el eje X</div>
+    <div class="ej-enun">¿En qué puntos corta al eje X la parábola f(x) = x² − 2x − 3?</div>
+    <div class="opciones" data-ej="6"><button type="button" class="opcion" data-ej="6" data-val="A">A) (−1, 0) y (3, 0)</button><button type="button" class="opcion" data-ej="6" data-val="B">B) (1, 0) y (−3, 0)</button><button type="button" class="opcion" data-ej="6" data-val="C">C) (0, −3)</button><button type="button" class="opcion" data-ej="6" data-val="D">D) (0, −1) y (0, 3)</button><button type="button" class="opcion" data-ej="6" data-val="E">E) (3, 0) solamente</button></div>
+    <div class="ej-respuesta">Desarrollo y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">7</span> Valor máximo</div>
+    <div class="ej-enun">¿Cuál es el valor máximo de la función f(x) = −x² + 6x?</div>
+    <div class="opciones" data-ej="7"><button type="button" class="opcion" data-ej="7" data-val="A">A) 9</button><button type="button" class="opcion" data-ej="7" data-val="B">B) 3</button><button type="button" class="opcion" data-ej="7" data-val="C">C) 6</button><button type="button" class="opcion" data-ej="7" data-val="D">D) 0</button><button type="button" class="opcion" data-ej="7" data-val="E">E) 36</button></div>
+    <div class="ej-respuesta">Desarrollo y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">8</span> Altura máxima</div>
+    <div class="ej-enun">Se lanza una pelota y su altura, en metros, es h(t) = −5t² + 20t + 1, con t en segundos. ¿Cuál es la altura máxima que alcanza?</div>
+    <div class="opciones" data-ej="8"><button type="button" class="opcion" data-ej="8" data-val="A">A) 1 m</button><button type="button" class="opcion" data-ej="8" data-val="B">B) 2 m</button><button type="button" class="opcion" data-ej="8" data-val="C">C) 20 m</button><button type="button" class="opcion" data-ej="8" data-val="D">D) 21 m</button><button type="button" class="opcion" data-ej="8" data-val="E">E) 25 m</button></div>
+    <div class="ej-respuesta">Desarrollo y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">9</span> Tiempo de vuelo</div>
+    <div class="ej-enun">Un cohete de juguete sube según h(t) = −5t² + 30t, con h en metros y t en segundos. ¿Cuánto tarda en volver al suelo?</div>
+    <div class="opciones" data-ej="9"><button type="button" class="opcion" data-ej="9" data-val="A">A) 3 s</button><button type="button" class="opcion" data-ej="9" data-val="B">B) 5 s</button><button type="button" class="opcion" data-ej="9" data-val="C">C) 6 s</button><button type="button" class="opcion" data-ej="9" data-val="D">D) 30 s</button><button type="button" class="opcion" data-ej="9" data-val="E">E) 45 s</button></div>
+    <div class="ej-respuesta">Desarrollo y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">10</span> Maximizar un ingreso</div>
+    <div class="ej-enun">El ingreso diario por vender x entradas es I(x) = −2x² + 120x, en miles de pesos. ¿Cuántas entradas conviene vender para que el ingreso sea máximo?</div>
+    <div class="opciones" data-ej="10"><button type="button" class="opcion" data-ej="10" data-val="A">A) 30</button><button type="button" class="opcion" data-ej="10" data-val="B">B) 60</button><button type="button" class="opcion" data-ej="10" data-val="C">C) 15</button><button type="button" class="opcion" data-ej="10" data-val="D">D) 120</button><button type="button" class="opcion" data-ej="10" data-val="E">E) 45</button></div>
+    <div class="ej-respuesta">Desarrollo y respuesta</div>
+  </div>
+
+  <h2 style="font-size:13pt;border-bottom:none;margin-top:22px;">Parte B — Mantenimiento (11 y 12)</h2>
+
+  <div class="teoria">
+    <p>Estas dos preguntas repasan áreas que ya dominas (Proporcionalidad y Estadística). Resolverlas
+    al final, en 10 minutos, sin calculadora.</p>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">11</span> Proporcionalidad directa</div>
+    <div class="ej-enun">Si 3 kg de fruta cuestan $7.500, ¿cuánto cuestan 5 kg del mismo producto?</div>
+    <div class="opciones" data-ej="11"><button type="button" class="opcion" data-ej="11" data-val="A">A) $12.500</button><button type="button" class="opcion" data-ej="11" data-val="B">B) $11.500</button><button type="button" class="opcion" data-ej="11" data-val="C">C) $15.000</button><button type="button" class="opcion" data-ej="11" data-val="D">D) $4.500</button><button type="button" class="opcion" data-ej="11" data-val="E">E) $22.500</button></div>
+    <div class="ej-respuesta">Desarrollo y respuesta</div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-head"><span class="num">12</span> Mediana</div>
+    <div class="ej-enun">Las edades de cinco personas son 12, 15, 15, 18 y 20. ¿Cuál es la mediana?</div>
+    <div class="opciones" data-ej="12"><button type="button" class="opcion" data-ej="12" data-val="A">A) 15</button><button type="button" class="opcion" data-ej="12" data-val="B">B) 16</button><button type="button" class="opcion" data-ej="12" data-val="C">C) 15,5</button><button type="button" class="opcion" data-ej="12" data-val="D">D) 17</button><button type="button" class="opcion" data-ej="12" data-val="E">E) 18</button></div>
+    <div class="ej-respuesta">Desarrollo y respuesta</div>
+  </div>
+
+  <h2>8. Cómo se evalúa esta semana</h2>
+
+  <div class="teoria">
+    <p>Esta semana <strong>no hay mini-control</strong>: el MC2 (Funciones) se aplica en W11, cuando el
+    bloque esté completo.</p>
+    <ul>
+      <li>La referencia de la semana es el resultado de la Parte A: <strong>X/10</strong>.</li>
+      <li>Si el resultado es menor a 6/10, antes de avanzar a modelación (W11) se repasan los
+      ejercicios errados y los del compendio (sección 4.3).</li>
+      <li>La Parte B se registra aparte como mantenimiento: no cambia el criterio de avance.</li>
+      <li>Anotar en la bitácora qué costó más: identificar a, b y c; el signo en x<sub>v</sub>;
+      evaluar f(x<sub>v</sub>) sin equivocarse de pregunta; factorizar; o distinguir instante de
+      altura.</li>
+    </ul>
+  </div>
+
+  
+<style>
+.opciones { display: flex; flex-wrap: wrap; gap: 8px; padding: 4px 16px 14px; }
+.opcion {
+    font-family: inherit; font-size: 10.5pt; line-height: 1.45; text-align: left;
+    background: #fff; color: #333B48;
+    border: 1.5px solid #C9D8F2; border-radius: 8px;
+    padding: 7px 12px; cursor: pointer; transition: all 0.12s;
+}
+.opcion:hover { border-color: #2E5A9E; background: #EAF0FA; }
+.opcion.seleccionada { border-color: #2E5A9E; background: #EAF0FA; box-shadow: 0 0 0 2px rgba(46,90,158,0.25); }
+.opcion.correcta { border-color: #15803D; background: #F0FDF4; color: #15803D; font-weight: 700; }
+.opcion.incorrecta { border-color: #B91C1C; background: #FEF2F2; color: #B91C1C; font-weight: 700; }
+.panel-correccion {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 12px;
+    margin: 20px 0 6px; padding: 14px 18px;
+    background: #F6F8FB; border: 1px solid #E2E8F0; border-radius: 12px;
+}
+.panel-correccion .btn-accion {
+    background: #2E5A9E; color: #fff; border: none; border-radius: 8px;
+    padding: 10px 20px; font-size: 0.95rem; font-weight: 600; cursor: pointer;
+    transition: background 0.15s;
+}
+.panel-correccion .btn-accion:hover { background: #1F3864; }
+.panel-correccion .btn-secundario { background: #fff; color: #2E5A9E; border: 1px solid #2E5A9E; }
+.panel-correccion .btn-secundario:hover { background: #EAF0FA; }
+.panel-correccion .progreso { font-size: 0.9rem; color: #64748B; margin-left: auto; }
+.panel-correccion .resultado { flex-basis: 100%; font-weight: 700; color: #1F3864; font-size: 1rem; }
+.panel-correccion .resultado.acierto-total { color: #15803D; }
+.panel-correccion .resultado.hay-errores { color: #B91C1C; }
+@media print { .opciones, .panel-correccion { display: none !important; } }
+</style>
+
+<div class="panel-correccion" id="panel-correccion">
+<button type="button" class="btn-accion" id="btn-corregir">Corregir</button>
+<button type="button" class="btn-accion btn-secundario" id="btn-reiniciar">Reiniciar</button>
+<span class="progreso" id="progreso-resp">0 de 12 respondidas</span>
+<div class="resultado" id="resultado-correcion"></div>
+</div>
+
+<script>
+(function () {
+  var CLAVES = {"1":"A", "2":"A", "3":"A", "4":"A", "5":"A", "6":"A", "7":"A", "8":"D", "9":"C", "10":"A", "11":"A", "12":"A"};
+  var TOTAL = 12;
+  var LS_KEY = "paes-resp-semana-10";
+  var seleccion = {};
+  try { seleccion = JSON.parse(localStorage.getItem(LS_KEY) || '{}') || {}; } catch (e) { seleccion = {}; }
+
+  function guardar() {
+    try { localStorage.setItem(LS_KEY, JSON.stringify(seleccion)); } catch (e) {}
+  }
+
+  function opcionesDe(ej) {
+    return document.querySelectorAll('.opcion[data-ej="' + ej + '"]');
+  }
+
+  function marcarSeleccion(ej) {
+    var val = seleccion[ej];
+    opcionesDe(ej).forEach(function (b) {
+      if (b.getAttribute('data-val') === val) { b.classList.add('seleccionada'); }
+      else { b.classList.remove('seleccionada'); }
+    });
+  }
+
+  function actualizarProgreso() {
+    var p = document.getElementById('progreso-resp');
+    if (p) { p.textContent = Object.keys(seleccion).length + ' de ' + TOTAL + ' respondidas'; }
+  }
+
+  Object.keys(seleccion).forEach(function (ej) { marcarSeleccion(ej); });
+  actualizarProgreso();
+
+  document.querySelectorAll('.opcion').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var ej = btn.getAttribute('data-ej');
+      var val = btn.getAttribute('data-val');
+      seleccion[ej] = val;
+      guardar();
+      marcarSeleccion(ej);
+      actualizarProgreso();
+      opcionesDe(ej).forEach(function (b) { b.classList.remove('correcta', 'incorrecta'); });
+      var res = document.getElementById('resultado-correcion');
+      if (res) { res.textContent = ''; res.className = 'resultado'; }
+    });
+  });
+
+  var btnCorregir = document.getElementById('btn-corregir');
+  if (btnCorregir) {
+    btnCorregir.addEventListener('click', function () {
+      var aciertos = 0, respondidas = 0;
+      Object.keys(CLAVES).forEach(function (ej) {
+        var correcta = CLAVES[ej];
+        var elegida = seleccion[ej];
+        opcionesDe(ej).forEach(function (b) {
+          b.classList.remove('correcta', 'incorrecta');
+          var v = b.getAttribute('data-val');
+          if (v === correcta) { b.classList.add('correcta'); }
+          if (elegida && v === elegida && elegida !== correcta) { b.classList.add('incorrecta'); }
+        });
+        if (elegida) {
+          respondidas++;
+          if (elegida === correcta) { aciertos++; }
+        }
+      });
+      var res = document.getElementById('resultado-correcion');
+      if (res) {
+        var texto = 'Puntaje: ' + aciertos + ' / ' + TOTAL + ' correctas';
+        if (respondidas < TOTAL) { texto += ' · respondidas ' + respondidas + ' / ' + TOTAL; }
+        res.textContent = texto;
+        res.className = 'resultado' + (aciertos === TOTAL ? ' acierto-total' : ' hay-errores');
+      }
+    });
+  }
+
+  var btnReiniciar = document.getElementById('btn-reiniciar');
+  if (btnReiniciar) {
+    btnReiniciar.addEventListener('click', function () {
+      seleccion = {};
+      guardar();
+      document.querySelectorAll('.opcion').forEach(function (b) {
+        b.classList.remove('seleccionada', 'correcta', 'incorrecta');
+      });
+      var res = document.getElementById('resultado-correcion');
+      if (res) { res.textContent = ''; res.className = 'resultado'; }
+      actualizarProgreso();
+    });
+  }
+})();
+</script>
+
+
+<div class="contenedor-claves">
+    <button class="btn-toggle-claves" onclick="toggleClaves()">
+        <span id="texto-toggle">Mostrar claves</span>
+    </button>
+    <div class="claves" id="claves-respuestas" style="display: none;">
+        <div class="claves">
+    <h3>Claves — Semana 10 (solo para el tutor)</h3>
+    <ul>
+      <li><strong>1.</strong> A — a = 2 &gt; 0, así que abre hacia arriba y tiene mínimo. La opción E es falsa: a ≠ 0.</li>
+      <li><strong>2.</strong> A — el término cuadrado es −3x², el lineal +6x y el constante −2. La opción E pierde el signo de c.</li>
+      <li><strong>3.</strong> A — x<sub>v</sub> = 6/2 = 3 y f(3) = 9 − 18 + 5 = −4. La B (3) es la coordenada x y la C (5) es c.</li>
+      <li><strong>4.</strong> A — x<sub>v</sub> = −2/2 = −1 y f(−1) = 1 − 2 − 3 = −4. La B invierte el signo y la C toma c.</li>
+      <li><strong>5.</strong> A — x² − 5x + 6 = (x − 2)(x − 3), así que las raíces son 2 y 3.</li>
+      <li><strong>6.</strong> A — (x − 3)(x + 1) = 0 → x = 3 y x = −1. La C es el corte con el eje Y (0, −3).</li>
+      <li><strong>7.</strong> A — x<sub>v</sub> = −6/(−2) = 3 y f(3) = −9 + 18 = 9. La B (3) es el instante donde ocurre.</li>
+      <li><strong>8.</strong> D — t = −20/(−10) = 2 s y h(2) = −20 + 40 + 1 = 21 m. La B (2) es el tiempo, no la altura.</li>
+      <li><strong>9.</strong> C — −5t² + 30t = 0 → −5t(t − 6) = 0 → t = 6 s (t = 0 es el lanzamiento). La A (3 s) es el instante del vértice.</li>
+      <li><strong>10.</strong> A — x<sub>v</sub> = −120/(2·(−2)) = 30 entradas. La B (60) es una raíz, no el máximo.</li>
+      <li><strong>11.</strong> A — $7.500 ÷ 3 = $2.500 por kg, y $2.500 · 5 = $12.500.</li>
+      <li><strong>12.</strong> A — con cinco datos ordenados, la mediana es el tercero: 15.</li>
+    </ul>
+  </div>
+    </div>
+</div>
+
+<style>
+.contenedor-claves {
+    margin: 30px 0 20px;
+}
+.btn-toggle-claves {
+    background: #2E5A9E;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+.btn-toggle-claves:hover {
+    background: #1F3864;
+}
+.claves {
+    margin-top: 12px;
+    padding: 16px;
+    background: #F0FDF4;
+    border: 1px solid #BBF7D0;
+    border-radius: 10px;
+}
+.claves h3 {
+    color: #15803D;
+    margin-bottom: 8px;
+}
+</style>
+
+<script>
+function toggleClaves() {
+    var el = document.getElementById('claves-respuestas');
+    var btn = document.getElementById('texto-toggle');
+    if (el.style.display === 'none') {
+        el.style.display = 'block';
+        btn.textContent = 'Ocultar claves';
+    } else {
+        el.style.display = 'none';
+        btn.textContent = 'Mostrar claves';
+    }
+}
+</script>
+</div>
+<div style="max-width: 860px; margin: 0 auto; padding: 24px 26px 40px; border-top: 1px solid #E2E8F0; margin-top: 30px;">
+<div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; align-items: center;">
+<a href="../index.html" style="display:inline-block;padding:9px 18px;border-radius:20px;text-decoration:none;font-weight:700;font-size:10pt;background:#1F3864;color:#fff;">← Volver al inicio</a>
+<div style="display: flex; gap: 10px;">
+<a href="semana-09.html" style="display:inline-block;padding:9px 18px;border-radius:20px;text-decoration:none;font-weight:700;font-size:10pt;background:#EAF0FA;color:#1F3864;border:1px solid #C9D8F2;">← Semana anterior</a>
+</div>
+</div>
+</div>
+</body>
+</html>
